@@ -3575,6 +3575,11 @@ export default class API {
   GET_PRODUCT_EMBED_PATTERNS(shop_id) {
     return `${this.selldone_api_url}/shops/${shop_id}/embed-patterns/product`;
   }
+
+
+  PUT_PRODUCT_SET_TRANSLATIONS(shop_id:string|number,product_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/translations/${key}`;
+  }
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
   GET_INVESTORS_FILES(category) {
     return `${this.selldone_api_url}/investors/files/${category}`;
