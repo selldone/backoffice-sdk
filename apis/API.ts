@@ -3580,8 +3580,14 @@ export default class API {
   PUT_PRODUCT_SET_TRANSLATIONS(shop_id:string|number,product_id:number|string,key:string) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/translations/${key}`;
   }
+  PUT_CATEGORY_SET_TRANSLATIONS(shop_id:string|number,category_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/translations/${key}`;
+  }
+  PUT_CROSS_SELL_SET_TRANSLATIONS(shop_id:string|number,product_id:number|string,cross_sell_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells/${cross_sell_id}/translations/${key}`;
+  }
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
-  GET_INVESTORS_FILES(category) {
+  GET_INVESTORS_FILES(category:string) {
     return `${this.selldone_api_url}/investors/files/${category}`;
   }
 
