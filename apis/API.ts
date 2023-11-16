@@ -1,4 +1,5 @@
 import SetupService from "../../../core/server/SetupService";
+import {ShopMenuType} from "../../../core/enums/shop/ShopMenu";
 
 export default class API {
   selldone_api_url = "";
@@ -1684,7 +1685,7 @@ export default class API {
   }
 
   //―――――――――――――――――――――― Shop > Theme ――――――――――――――――――――
-  POST_EDIT_SHOP_THEME(shop_id) {
+  POST_EDIT_SHOP_THEME(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/theme`;
   }
 
@@ -1697,15 +1698,23 @@ export default class API {
    * @returns {string}
    * @constructor
    */
-  GET_SHOP_MENU(shop_id:string|number, type) {
+  GET_SHOP_MENU(shop_id:string|number, type: ShopMenuType) {
     return `${this.selldone_api_url}/shops/${shop_id}/menus/${type}`;
   }
-  POST_EDIT_SHOP_MENU(shop_id:string|number, type) {
+  POST_EDIT_SHOP_MENU(shop_id:string|number, type: ShopMenuType) {
     return `${this.selldone_api_url}/shops/${shop_id}/menus/${type}`;
   }
-  GET_SHOP_MENU_GENERATE_CATEGORIES(shop_id) {
+  GET_SHOP_MENU_GENERATE_CATEGORIES(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/menus/generate/categories`;
   }
+
+
+  POST_TRANSLATE_SHOP_MENU(shop_id:string|number, type: ShopMenuType) {
+    return `${this.selldone_api_url}/shops/${shop_id}/menus/${type}/translate`;
+  }
+
+
+
   //―――――――――――――――――――――― Shop > Social ――――――――――――――――――――
   PUT_SET_SHOP_SOCIAL(shop_id:string|number, network_code) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/social/${network_code}`;
@@ -1715,7 +1724,7 @@ export default class API {
   }
   //―――――――――――――――――――――― Shop > Discount Codes ――――――――――――――――――――
 
-  GET_DISCOUNT_CODES(shop_id) {
+  GET_DISCOUNT_CODES(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes`;
   }
 
@@ -3585,6 +3594,9 @@ export default class API {
   }
   PUT_CROSS_SELL_SET_TRANSLATIONS(shop_id:string|number,product_id:number|string,cross_sell_id:number|string,key:string) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells/${cross_sell_id}/translations/${key}`;
+  }
+  PUT_SHOP_SET_TRANSLATIONS(shop_id:string|number,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/translations/${key}`;
   }
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
   GET_INVESTORS_FILES(category:string) {
