@@ -295,38 +295,48 @@ export default class API {
     return `${this.selldone_api_url}/shop/add`;
   }
 
-  PUT_EDIT_SHOP(shop_id) {
+  PUT_EDIT_SHOP(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit`;
   }
-  PUT_EDIT_SHOP_INFO(shop_id) {
+  PUT_EDIT_SHOP_INFO(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/info`;
   }
-  DELETE_SHOP(shop_id) {
+  DELETE_SHOP(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/delete`;
   }
 
-  POST_SET_SHOP_CURRENCIES(shop_id) {
+  POST_SET_SHOP_CURRENCIES(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/currencies`;
   }
 
-  POST_TRANSFER_OWNERSHIP(shop_id) {
+  POST_TRANSFER_OWNERSHIP(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/ownership`;
   }
-    POST_SHOP_CREATE_TEMPORARY_ACCESS(shop_id) {
+
+  POST_CHECK_TIME_CAN_TRANSFER_OWNERSHIP(shop_id:number|string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/ownership/check-time`;
+  }
+  POST_CHECK_USER_CAN_TRANSFER_OWNERSHIP(shop_id:number|string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/ownership/check-user`;
+  }
+
+
+
+    POST_SHOP_CREATE_TEMPORARY_ACCESS(shop_id:number|string) {
         return `${this.selldone_api_url}/shops/${shop_id}/temporary-access`;
     }
-  PUT_SHOP_SET_RESTRICTION(shop_id) {
+  PUT_SHOP_SET_RESTRICTION(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/restriction`;
   }
 
   //―――――――――――――――――――――― Realtime Data ――――――――――――――――――――
 
-  GET_SHOP_REALTIME_DATA(shop_id) {
+  GET_SHOP_REALTIME_DATA(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/real-time`;
   }
   //―――――――――――――――――――――― Shop > Category ――――――――――――――――――――
 
-  GET_MY_SHOP_CATEGORIES(shop_id) {
+  GET_MY_SHOP_CATEGORIES(shop_id:number|string) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories`;
   }
   PUT_SET_CATEGORY_PARENT(shop_id:string|number, category_id) {
