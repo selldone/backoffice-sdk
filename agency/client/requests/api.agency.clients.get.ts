@@ -13,7 +13,7 @@
  */
 
 import type {ApiAgencyClient} from "../ApiAgencyClient";
-import type {AgencyClient} from "../../../../../core/models/agency/agency-client.model";
+import type {AgencyClient} from "@core/models/agency/agency-client.model";
 
 export default function list(
     this: ApiAgencyClient,

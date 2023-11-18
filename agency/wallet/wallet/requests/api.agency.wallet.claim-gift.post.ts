@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type {AgencyWallet} from "../../../../../../core/models/agency/agency-wallet.model";
+import type {AgencyWallet} from "@core/models/agency/agency-wallet.model";
 import {ApiAgencyWallet} from "../ApiAgencyWallet";
-import {Currency} from "../../../../../../core/enums/payment/Currency";
+import {Currency} from "@core/enums/payment/Currency";
 
 
 /**

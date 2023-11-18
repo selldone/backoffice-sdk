@@ -13,7 +13,7 @@
  */
 
 import type {ApiAgencyShops} from "../ApiAgencyShops";
-import type {Shop} from "../../../../../core/models/shop/shop.model";
+import type {Shop} from "@core/models/shop/shop.model";
 
 
 

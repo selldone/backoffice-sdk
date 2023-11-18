@@ -13,9 +13,9 @@
  */
 
 import type {ApiAgencyShops} from "../ApiAgencyShops";
-import {Currency} from "../../../../../core/enums/payment/Currency";
-import {Language} from "../../../../../core/enums/language/Language";
-import type {Shop} from "../../../../../core/models/shop/shop.model";
+import {Currency} from "@core/enums/payment/Currency";
+import {Language} from "@core/enums/language/Language";
+import type {Shop} from "@core/models/shop/shop.model";
 
 export default function add(
     this: ApiAgencyShops,

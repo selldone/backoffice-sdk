@@ -13,8 +13,8 @@
  */
 
 import type {ApiAgency} from "../../../ApiAgency";
-import {Currency} from "../../../../../../core/enums/payment/Currency";
-import type {AgencyWallet} from "../../../../../../core/models/agency/agency-wallet.model";
+import {Currency} from "@core/enums/payment/Currency";
+import type {AgencyWallet} from "@core/models/agency/agency-wallet.model";
 import {ApiAgencyWallet} from "../ApiAgencyWallet";
 
 
