@@ -3608,6 +3608,32 @@ export default class API {
   PUT_SHOP_SET_TRANSLATIONS(shop_id:string|number,key:string) {
     return `${this.selldone_api_url}/shops/${shop_id}/translations/${key}`;
   }
+
+  PUT_DISCOUNT_CODE_SET_TRANSLATIONS(shop_id:string|number,discount_code_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/translations/${key}`;
+  }
+
+  PUT_COUPON_SET_TRANSLATIONS(shop_id:string|number,coupon_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/coupons/${coupon_id}/translations/${key}`;
+  }
+
+  PUT_OFFER_SET_TRANSLATIONS(shop_id:string|number,offer_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/offers/${offer_id}/translations/${key}`;
+  }
+  PUT_GIFT_CARD_SET_TRANSLATIONS(shop_id:string|number,gift_card_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gift-cards/${gift_card_id}/translations/${key}`;
+  }
+  PUT_LOTTERY_SET_TRANSLATIONS(shop_id:string|number,lottery_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/lotteries/${lottery_id}/translations/${key}`;
+  }
+  PUT_INCLUDE_SET_TRANSLATIONS(shop_id:string|number,include_id:number|string,key:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/includes/${include_id}/translations/${key}`;
+  }
+
+  POS_SHOP_TRANSLATE(shop_id:string|number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/translate`;
+  }
+
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
   GET_INVESTORS_FILES(category:string) {
     return `${this.selldone_api_url}/investors/files/${category}`;
