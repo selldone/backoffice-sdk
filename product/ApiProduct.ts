@@ -1,4 +1,4 @@
-import {APIAbstract} from "../../../core/server/APIAbstract";
+import {APIAbstract} from "@core/server/APIAbstract";
 import list from "./requests/api.shop.products.get";
 import changeCategory from "./requests/api.shop.product.change-category.put";
 import getInfo from "./requests/api.shop.product.info.get";

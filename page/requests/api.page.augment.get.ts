@@ -13,7 +13,7 @@
  */
 
 import { ApiPage } from "../ApiPage";
-import AugmentHelper from "../../../../core/helper/augment/AugmentHelper";
+import AugmentHelper from "@core/helper/augment/AugmentHelper";
 
 export default function getPageAugment(
   this: ApiPage,

@@ -1,4 +1,4 @@
-import {APIAbstract} from "../../../../core/server/APIAbstract";
+import {APIAbstract} from "@core/server/APIAbstract";
 import setArticleTags from "./requests/api.article.tags.post";
 import updateTag from "./requests/api.article.tags.put";
 import getTags from "./requests/api.article.tags.get";

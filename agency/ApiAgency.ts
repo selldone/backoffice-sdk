@@ -1,4 +1,4 @@
-import {APIAbstract} from "../../../core/server/APIAbstract";
+import {APIAbstract} from "@core/server/APIAbstract";
 import {ApiAgencyShops} from "./shop/ApiAgencyShops";
 import getInfo from "./requests/api.agency.get";
 import {ApiAgencyClient} from "./client/ApiAgencyClient";

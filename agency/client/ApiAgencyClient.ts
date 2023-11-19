@@ -1,4 +1,4 @@
-import {APIAbstract} from "../../../../core/server/APIAbstract";
+import {APIAbstract} from "@core/server/APIAbstract";
 import list from "./requests/api.agency.clients.get";
 
 

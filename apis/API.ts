@@ -1,5 +1,5 @@
-import SetupService from "../../../core/server/SetupService";
-import {ShopMenuType} from "../../../core/enums/shop/ShopMenu";
+import SetupService from "@core/server/SetupService";
+import {ShopMenuType} from "@core/enums/shop/ShopMenu";
 
 export default class API {
   selldone_api_url = "";

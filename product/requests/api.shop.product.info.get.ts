@@ -13,25 +13,25 @@
  */
 
 import type { ApiProduct } from "../ApiProduct";
-import type { Product } from "../../../../core/models/shop/product/product.model";
-import { Category } from "../../../../core/models/shop/category/category.model";
-import type { ProductVariant } from "../../../../core/models/shop/product/product_variant.model";
-import type { Shop } from "../../../../core/models/shop/shop.model";
-import { Vendor } from "../../../../core/models/shop/vendor/vendor.model";
-import type { SubscriptionPrice } from "../../../../core/models/shop/product/subscription_price.model";
-import type { Valuation } from "../../../../core/models/shop/accounting/valuation/valuation.model";
-import type { MapTag } from "../../../../core/models/shop/map/map-tag.model";
-import type { Connect } from "../../../../core/models/connect/connect.model";
-import type { ExtraPricing } from "../../../../core/models/shop/extra-pricing/extra-pricing.model";
-import type { ShopInclude } from "../../../../core/models/shop/shop-include/shop-include.model";
-import type { Page } from "../../../../core/models/shop/page/page.model";
-import type { Article } from "../../../../core/models/article/article.model";
-import type { ProductRating } from "../../../../core/models/shop/product/product-rating.model";
-import type { ProductFile } from "../../../../core/models/shop/product/product-file.model";
-import type { ProductImage } from "../../../../core/models/shop/product/product-image.model";
-import type { ProductData } from "../../../../core/models/shop/product/product-data.model";
-import { DeliveryStateCode } from "../../../../core/enums/delivery/DeliveryStateCode";
-import type { OrderTypeCode } from "../../../../core/models/shop/order/order-type.model";
+import type { Product } from "@core/models/shop/product/product.model";
+import { Category } from "@core/models/shop/category/category.model";
+import type { ProductVariant } from "@core/models/shop/product/product_variant.model";
+import type { Shop } from "@core/models/shop/shop.model";
+import { Vendor } from "@core/models/shop/vendor/vendor.model";
+import type { SubscriptionPrice } from "@core/models/shop/product/subscription_price.model";
+import type { Valuation } from "@core/models/shop/accounting/valuation/valuation.model";
+import type { MapTag } from "@core/models/shop/map/map-tag.model";
+import type { Connect } from "@core/models/connect/connect.model";
+import type { ExtraPricing } from "@core/models/shop/extra-pricing/extra-pricing.model";
+import type { ShopInclude } from "@core/models/shop/shop-include/shop-include.model";
+import type { Page } from "@core/models/shop/page/page.model";
+import type { Article } from "@core/models/article/article.model";
+import type { ProductRating } from "@core/models/shop/product/product-rating.model";
+import type { ProductFile } from "@core/models/shop/product/product-file.model";
+import type { ProductImage } from "@core/models/shop/product/product-image.model";
+import type { ProductData } from "@core/models/shop/product/product-data.model";
+import { DeliveryStateCode } from "@core/enums/delivery/DeliveryStateCode";
+import type { OrderTypeCode } from "@core/models/shop/order/order-type.model";
 
 export default function getInfo(
   this: ApiProduct,

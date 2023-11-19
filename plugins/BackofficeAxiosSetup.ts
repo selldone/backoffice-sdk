@@ -1,4 +1,4 @@
-import SetupService from "../../../core/server/SetupService";
+import SetupService from "@core/server/SetupService";
 
 export function BackofficeAxiosSetup() {
   window.axios = require("axios");
