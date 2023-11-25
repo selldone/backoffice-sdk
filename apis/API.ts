@@ -3698,6 +3698,10 @@ export default class API {
   PUT_MY_AGENCY_UPDATE_PLAN(agency_id:string|number,plan_id:string|number) {
     return `${this.selldone_api_url}/agencies/${agency_id}/plans/${plan_id}`;
   }
+  DELETE_MY_AGENCY_PLAN(agency_id:string|number,plan_id:string|number) {
+    return `${this.selldone_api_url}/agencies/${agency_id}/plans/${plan_id}`;
+  }
+
   POST_CALCULATE_MY_AGENCY_PLAN_PRICE(agency_id:string|number) {
     return `${this.selldone_api_url}/agencies/${agency_id}/subscription/price`;
   }
