@@ -3605,6 +3605,7 @@ export default class API {
   }
 
 
+
   GET_PRODUCT_EMBED_PATTERNS(shop_id) {
     return `${this.selldone_api_url}/shops/${shop_id}/embed-patterns/product`;
   }
@@ -3647,6 +3648,7 @@ export default class API {
   POS_SHOP_TRANSLATE(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/translate`;
   }
+
 
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
   GET_INVESTORS_FILES(category:string) {
@@ -3836,6 +3838,13 @@ export default class API {
   GET_SHOP_PAGE_AUGMENT_STRUCTURE(shop_id:string|number,page_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/augment`;
   }
+
+  //―――――――――――――――――――――― Shop > Product > Category ――――――――――――――――――――
+
+  POST_PRODUCT_SET_SHORTCUT_CATEGORIES(shop_id:string|number,product_id:number|string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/shortcuts`;
+  }
+
 
   //―――――――――――――――――――――― Shop > Product > Cross-selling ――――――――――――――――――――
   GET_PRODUCT_CROSS_SELL_ITEMS(shop_id:string|number,product_id:string|number) {
