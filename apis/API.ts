@@ -3372,21 +3372,21 @@ export default class API {
     if (!extra) return `${this.selldone_api_url}/article/${type}/upload`;
     return `${this.selldone_api_url}/article/${type}/upload/${extra}`;
   }
-  UPLOAD_ARTICLE_BLOG_IMAGE(shop_id) {
+  UPLOAD_ARTICLE_BLOG_IMAGE(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/blogs/upload`;
   }
 
 
   //―――――――――――――――――――――― Delete ――――――――――――――――――――
-  DELETE_ARTICLE(type, article_id) {
+  DELETE_ARTICLE(type, article_id:string|number) {
     return `${this.selldone_api_url}/article/${type}/${article_id}`;
   }
 
   //―――――――――――――――――――――― Tags ――――――――――――――――――――
-  GET_SHOP_ARTICLE_TAGS(shop_id) {
+  GET_SHOP_ARTICLE_TAGS(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/articles/tags`;
   }
-  PUT_CHANGE_TAG(shop_id) {
+  PUT_CHANGE_TAG(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/articles/tags`;
   }
   POST_SET_SHOP_ARTICLE_TAGS(shop_id:string|number, article_id) {
@@ -3394,18 +3394,18 @@ export default class API {
   }
 
   //―――――――――――――――――――――― Comments ――――――――――――――――――――
-  POST_ADD_COMMENT(article_id) {
+  POST_ADD_COMMENT(article_id:string|number) {
     return `${this.selldone_api_url}/article/${article_id}/comment`;
   }
-  PUT_UPDATE_COMMENT(comment_id) {
+  PUT_UPDATE_COMMENT(comment_id:string|number) {
     return `${this.selldone_api_url}/comment/${comment_id}`;
   }
-  DELETE_COMMENT(comment_id) {
+  DELETE_COMMENT(comment_id:string|number) {
     return `${this.selldone_api_url}/comment/${comment_id}`;
   }
 
   //―――――――――――――――――――――― Follow ――――――――――――――――――――
-  POST_FOLLOW_USER(user_id) {
+  POST_FOLLOW_USER(user_id:string|number) {
     return `${this.selldone_api_url}/user/follow/${user_id}`;
   }
 
@@ -3418,57 +3418,78 @@ export default class API {
   POST_ADD_PROVIDER() {
     return `${this.selldone_api_url}/providers`;
   }
-  PUT_MY_PROVIDER_UPDATE(provider_id) {
+  PUT_MY_PROVIDER_UPDATE(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}`;
   }
-  POST_MY_PROVIDER_UPLOAD_ICON(provider_id) {
+  POST_MY_PROVIDER_UPLOAD_ICON(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/icon`;
   }
-  GET_MY_PROVIDER_INFO(provider_id) {
+  GET_MY_PROVIDER_INFO(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}`;
   }
-  PUT_MY_PROVIDER_AUTH(provider_id) {
+  PUT_MY_PROVIDER_AUTH(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/auth`;
   }
-  PUT_MY_PROVIDER_WEBHOOKS(provider_id) {
+  PUT_MY_PROVIDER_WEBHOOKS(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/webhooks`;
   }
-  POST_MY_PROVIDER_WEBHOOKS_REGENERATE_SIGN_KEY(provider_id) {
+  POST_MY_PROVIDER_WEBHOOKS_REGENERATE_SIGN_KEY(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/webhooks/invalidate-sign-key`;
   }
-  POST_MY_PROVIDER_SECRET_REGENERATE_SIGN_KEY(provider_id) {
+  POST_MY_PROVIDER_SECRET_REGENERATE_SIGN_KEY(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/invalidate-secret-key`;
   }
 
-  GET_MY_PROVIDER_SHOPS(provider_id) {
+  GET_MY_PROVIDER_SHOPS(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/shops`;
   }
 
-  POST_MY_PROVIDER_PAY25USD_AND_CREATE_BRIDGE(provider_id) {
+  POST_MY_PROVIDER_PAY25USD_AND_CREATE_BRIDGE(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/pay`;
   }
 
-  POST_MY_PROVIDER_REQUEST_VERIFY(provider_id) {
+  POST_MY_PROVIDER_REQUEST_VERIFY(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/request-verify`;
   }
-  GET_MY_PROVIDER_LOGS(provider_id) {
+  GET_MY_PROVIDER_LOGS(provider_id:string|number) {
     return `${this.selldone_api_url}/providers/${provider_id}/logs`;
   }
 
+
+  //―――――――――――――――――――――― Layouts (Custom storefront & backoffice) ――――――――――――――――――――
+
+  GET_PUBLIC_LAYOUTS() {
+    return `${this.selldone_api_url}/layouts`;
+  }
+  POST_SET_SHOP_LAYOUT(shop_id:number|string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/layout`;
+  }
+
+
+  GET_MY_LAYOUTS() {
+    return `${this.selldone_api_url}/developer/layouts`;
+  }
+  GET_MY_LAYOUT_INFO(layout_id:string|number) {
+    return `${this.selldone_api_url}/developer/layouts/${layout_id}`;
+  }
+  GET_MY_LAYOUT_DEPLOYS(layout_id:string|number) {
+    return `${this.selldone_api_url}/developer/layouts/${layout_id}/deploys`;
+  }
+
   //―――――――――――――――――――――― Shop > Map Search (tags) ――――――――――――――――――――
-  GET_SHOP_MAP_TAGS(shop_id) {
+  GET_SHOP_MAP_TAGS(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags`;
   }
-  POST_CREATE_SHOP_MAP_TAG(shop_id) {
+  POST_CREATE_SHOP_MAP_TAG(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags`;
   }
-  PUT_EDIT_SHOP_MAP_TAG(shop_id:string|number,map_tag_id) {
+  PUT_EDIT_SHOP_MAP_TAG(shop_id:string|number,map_tag_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags/${map_tag_id}`;
   }
-  DELETE_SHOP_MAP_TAG(shop_id:string|number,map_tag_id) {
+  DELETE_SHOP_MAP_TAG(shop_id:string|number,map_tag_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags/${map_tag_id}`;
   }
-  GET_SHOP_MAP_TAG_PRODUCTS(shop_id:string|number,map_tag_id) {
+  GET_SHOP_MAP_TAG_PRODUCTS(shop_id:string|number,map_tag_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags/${map_tag_id}/products`;
   }
 
@@ -3482,7 +3503,7 @@ export default class API {
   POST_MY_PARTICIPANTS_ADD() {
     return `${this.selldone_api_url}/participants`;
   }
-  POST_MY_PARTICIPANTS_PLAY_GAME(participant_id) {
+  POST_MY_PARTICIPANTS_PLAY_GAME(participant_id:string|number) {
     return `${this.selldone_api_url}/participants/${participant_id}`;
   }
   //―――――――――――――――――――――― User > Agency affiliate deals ――――――――――――――――――――
@@ -3491,40 +3512,40 @@ export default class API {
   }
 
   //―――――――――――――――――――――― Shop > Metaverse ――――――――――――――――――――
-  POST_METAVERSE_LANDS_ADD(shop_id) {
+  POST_METAVERSE_LANDS_ADD(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/metaverse/lands`;
   }
-  PUT_METAVERSE_LANDS_EDIT(shop_id:string|number,land_id) {
+  PUT_METAVERSE_LANDS_EDIT(shop_id:string|number,land_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/metaverse/lands/${land_id}`;
   }
-  GET_METAVERSE_LANDS(shop_id:string|number,land_id) {
+  GET_METAVERSE_LANDS(shop_id:string|number,land_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/metaverse/lands`;
   }
 
 
   //―――――――――――――――――――――― 🎗️ Product > Subscription Prices ――――――――――――――――――――
 
-  POST_PRODUCT_ADD_SUBSCRIPTION_PRICE(shop_id:string|number, product_id) {
+  POST_PRODUCT_ADD_SUBSCRIPTION_PRICE(shop_id:string|number, product_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices`;
   }
 
-  PUT_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id, price_id) {
+  PUT_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id:string|number, price_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}`;
   }
 
-  DELETE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id, price_id) {
+  DELETE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id:string|number, price_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}`;
   }
-  POST_RESTORE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id, price_id) {
+  POST_RESTORE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(shop_id:string|number, product_id:string|number, price_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}/restore`;
   }
 
 
-  GET_SHOP_SUBSCRIPTION_PRICES(shop_id) {
+  GET_SHOP_SUBSCRIPTION_PRICES(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/subscription-prices`;
   }
 
-  GET_EXPORT_PRODUCT_SUBSCRIBERS(shop_id:string|number,product_id,render) {
+  GET_EXPORT_PRODUCT_SUBSCRIBERS(shop_id:string|number,product_id:string|number,render) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/export/subscribers/${render}`;
   }
 
@@ -3535,7 +3556,7 @@ export default class API {
    * @returns {string}
    * @constructor
    */
-  GET_PRODUCT_SUBSCRIPTION_PRICE_AVAILABLE_BILLINGS(shop_id) {
+  GET_PRODUCT_SUBSCRIPTION_PRICE_AVAILABLE_BILLINGS(shop_id:string|number) {
     return `${this.selldone_api_url}/shops/${shop_id}/ribbon/billings`;
   }
 
