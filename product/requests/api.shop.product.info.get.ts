@@ -31,7 +31,7 @@ import type { ProductFile } from "@core/models/shop/product/product-file.model";
 import type { ProductImage } from "@core/models/shop/product/product-image.model";
 import type { ProductData } from "@core/models/shop/product/product-data.model";
 import { DeliveryStateCode } from "@core/enums/delivery/DeliveryStateCode";
-import type { OrderTypeCode } from "@core/models/shop/order/order-type.model";
+import type { OrderTypeCode } from "@core/enums/order/OrderTypeCode";
 
 export default function getInfo(
   this: ApiProduct,
