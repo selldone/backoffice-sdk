@@ -1164,6 +1164,14 @@ export default class API {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/check-payment/${unique_id}`;
   }
 
+  POST_PAYMENT_GATEWAY_CAPTURE(
+    shop_id: string | number,
+    gateway_code: string,
+    payment_id: string | number
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/capture`;
+  }
+
   POST_CONFIRM_DIR_PAYMENT_MANUALLY(
     shop_id: string | number,
     basket_id: string | number,
