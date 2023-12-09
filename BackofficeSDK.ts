@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import API from "./apis/API";
+import {API} from "./apis/API";
 import { BackofficeAxiosSetup } from "./plugins/BackofficeAxiosSetup";
 import { ApiPage } from "./page/ApiPage";
 import { ApiAgency } from "./agency/ApiAgency";

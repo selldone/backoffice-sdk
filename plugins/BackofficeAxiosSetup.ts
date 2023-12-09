@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "@core/server/SetupService";
+import { SetupService } from "@core/server/SetupService";
 
 export function BackofficeAxiosSetup() {
   window.axios = require("axios");

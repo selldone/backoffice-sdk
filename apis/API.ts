@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "@core/server/SetupService";
+import { SetupService } from "@core/server/SetupService";
 import { ShopMenuType } from "@core/enums/shop/ShopMenu";
 import { OrderType } from "@core/enums/order/OrderType";
 import { TimelineEmailType } from "@core/enums/timeline/TimelineEmailType";
@@ -27,7 +27,7 @@ import { IArticleTypeCode } from "@core/enums/article/ArticleTypes";
 import { ShopChannelType } from "@core/enums/shop/notification-channels/ShopNotificationsChannels";
 import { Language } from "@core/enums/language/Language";
 
-export default class API {
+export class API {
   selldone_api_url = "";
 
   constructor() {
