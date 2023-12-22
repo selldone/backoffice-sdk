@@ -3085,6 +3085,18 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/remove-bg`;
   }
 
+  POST_AI_ADD_PRODUCT(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/product/add-ai`;
+  }
+  POST_AI_EDIT_PRODUCT(
+      shop_id: string | number,
+      product_id: string | number
+
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/update-ai`;
+  }
   //―――――――――――――――――――――― TAX ――――――――――――――――――――
   PUT_SET_SHOP_TAX_SETTING(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/tax`;
