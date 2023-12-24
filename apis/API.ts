@@ -388,11 +388,17 @@ export class API {
 
   PUT_EDIT_CATEGORY_FILTER(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number|'root'
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/filter`;
   }
-  GET_CATEGORY_FILTER(shop_id: string | number, category_id: string | number) {
+  DELETE_CATEGORY_FILTER(
+      shop_id: string | number,
+      category_id: string | number|'root'
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/filter`;
+  }
+  GET_CATEGORY_FILTER(shop_id: string | number, category_id: string | number|'root') {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/filter`;
   }
 
