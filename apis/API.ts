@@ -1144,6 +1144,9 @@ export class API {
   PUT_GATEWAY_SHOP_CONFIG(shop_id: string | number, gateway_code: string) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/config`;
   }
+  PUT_GATEWAY_SHOP_THEME(shop_id: string | number, gateway_code: string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/theme`;
+  }
 
   DELETE_GATEWAY(shop_id: string | number, gateway_code: string) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}`;
