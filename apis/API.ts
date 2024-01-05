@@ -3840,6 +3840,18 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/options/shipping_restriction`;
   }
 
+  POST_SET_SHOP_OPTIONS_LABELING(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/options/labeling`;
+  }
+
+  //―――――――――――――――――――――― Custom Order ID ――――――――――――――――――――
+
+  GET_SHOP_ORDER_LAST_ID(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/order-last-id`;
+  }
+  POST_SET_SHOP_ORDER_LAST_ID(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/order-last-id`;
+  }
   //―――――――――――――――――――――― Search Console ――――――――――――――――――――
   DELETE_SEARCH_CONSOLE_CONNECTION(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/services/google/search`;
