@@ -111,7 +111,7 @@ export class API {
   }
   GET_KYC_IMAGE(
     type: "identify-card" | "address-doc" | "passport",
-    version = null
+    version = null,
   ) {
     return `${this.selldone_api_url}/personal-information/image/${type}.jpg${
       version ? "?v=" + version : ""
@@ -206,19 +206,19 @@ export class API {
   }
   AFFILIATE_POS_BASKET_REMOVE_ITEM(
     affiliate_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/affiliates/${affiliate_id}/pos/${item_id}`;
   }
   PUT_AFFILIATE_POS_ACTION(
     affiliate_id: string | number,
-    action: "delivery" | "discount-code" | "coupon" | "campaign"
+    action: "delivery" | "discount-code" | "coupon" | "campaign",
   ) {
     return `${this.selldone_api_url}/affiliates/${affiliate_id}/pos/actions/${action}`;
   }
   DELETE_AFFILIATE_POS_ACTION(
     affiliate_id: string | number,
-    action: "delivery" | "discount-code" | "coupon" | "campaign"
+    action: "delivery" | "discount-code" | "coupon" | "campaign",
   ) {
     return `${this.selldone_api_url}/affiliates/${affiliate_id}/pos/actions/${action}`;
   }
@@ -232,7 +232,7 @@ export class API {
 
   GET_AFFILIATE_POS_CONFIRM_PAYMENT(
     affiliate_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/affiliates/${affiliate_id}/pos/payment/${gateway_code}`;
   }
@@ -249,7 +249,7 @@ export class API {
 
   POST_AFFILIATE_POS_UPLOAD_DIRECT_PAYMENT_RECEIPT(
     affiliate_id: string | number,
-    transaction_id: string
+    transaction_id: string,
   ) {
     return `${this.selldone_api_url}/affiliates/${affiliate_id}/pos/transactions/${transaction_id}/upload`;
   }
@@ -265,14 +265,14 @@ export class API {
   POST_REFERRAL_PROGRAM_GET_CREDIT(
     program_id: string | number,
     link_id: string | number,
-    currency: keyof typeof Currency
+    currency: keyof typeof Currency,
   ) {
     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/get/${currency}`;
   }
   POST_REFERRAL_PROGRAM_REQUEST_CREDIT_TO_BANK(
     program_id: string | number,
     link_id: string | number,
-    currency: keyof typeof Currency
+    currency: keyof typeof Currency,
   ) {
     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/request/${currency}`;
   }
@@ -293,7 +293,7 @@ export class API {
   }
   PUT_REFERRAL_PROGRAM_SAVE_BANK_DETAILS(
     program_id: string | number,
-    link_id: string | number
+    link_id: string | number,
   ) {
     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/bank`;
   }
@@ -381,30 +381,33 @@ export class API {
   }
   PUT_SET_CATEGORY_PARENT(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/parent`;
   }
 
   PUT_EDIT_CATEGORY_FILTER(
     shop_id: string | number,
-    category_id: string | number|'root'
+    category_id: string | number | "root",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/filter`;
   }
   DELETE_CATEGORY_FILTER(
-      shop_id: string | number,
-      category_id: string | number|'root'
+    shop_id: string | number,
+    category_id: string | number | "root",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/filter`;
   }
-  GET_CATEGORY_FILTER(shop_id: string | number, category_id: string | number|'root') {
+  GET_CATEGORY_FILTER(
+    shop_id: string | number,
+    category_id: string | number | "root",
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/filter`;
   }
 
   POST_UPLOAD_CATEGORY_IMAGE(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/edit/upload`;
   }
@@ -425,14 +428,14 @@ export class API {
 
   POST_CATEGORY_ADD_NOTE(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/note`;
   }
   DELETE_CATEGORY_NOTE(
     shop_id: string | number,
     category_id: string | number,
-    note_index: number
+    note_index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/note/${note_index}`;
   }
@@ -445,7 +448,7 @@ export class API {
 
   PUT_SET_PRODUCT_CATEGORY(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/category`;
   }
@@ -463,7 +466,7 @@ export class API {
   POST_EDIT_VARIANT(
     shop_id: string | number,
     product_id: string | number,
-    variant_id: string | number
+    variant_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/variants/${variant_id}/edit`;
   }
@@ -477,21 +480,21 @@ export class API {
   DELETE_VARIANT(
     shop_id: string | number,
     product_id: string | number,
-    variant_id: string | number
+    variant_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/variants/${variant_id}/delete`;
   }
   POST_RESTORE_DELETED_VARIANT(
     shop_id: string | number,
     product_id: string | number,
-    variant_id: string | number
+    variant_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/variants/${variant_id}/restore`;
   }
   POST_PRODUCT_QUANTITY(
     shop_id: string | number,
     product_id: string | number,
-    variant_id = null
+    variant_id = null,
   ) {
     if (variant_id !== null)
       return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/variants/${variant_id}/quantity`;
@@ -506,13 +509,13 @@ export class API {
   EDIT_VIRTUAL_ITEM(
     shop_id: string | number,
     product_id: string | number,
-    virtualItem_id: string | number
+    virtualItem_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit-virtual/${virtualItem_id}`;
   }
   POST_VIRTUAL_ITEM_BULK(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/add-virtual-bulk`;
   }
@@ -520,7 +523,7 @@ export class API {
   DELETE_VIRTUAL_ITEM(
     shop_id: string | number,
     product_id: string | number,
-    virtualItem_id: string | number
+    virtualItem_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit-virtual/${virtualItem_id}`;
   }
@@ -531,7 +534,7 @@ export class API {
 
   GET_PRODUCT_INFO_ADMIN(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/admin`;
   }
@@ -545,7 +548,7 @@ export class API {
   PUT_EDIT_PRODUCT_PRICE(
     shop_id: string | number,
     product_id: string | number,
-    variant_id: string | number
+    variant_id: string | number,
   ) {
     // Fast edit price
     return `${
@@ -563,7 +566,7 @@ export class API {
 
   POST_RESTORE_DELETED_PRODUCT(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/restore`;
   }
@@ -573,7 +576,7 @@ export class API {
 
   POST_ADD_PRODUCT_RATING(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/rating`;
   }
@@ -619,7 +622,7 @@ export class API {
   POST_UPLOAD_PRODUCT_COVER(
     shop_id: string | number,
     product_id: string | number,
-    variant_id: string | number | null = null
+    variant_id: string | number | null = null,
   ) {
     if (variant_id)
       return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/upload/cover/${variant_id}`; // Maybe '/' cause problem!
@@ -627,28 +630,28 @@ export class API {
   }
   POST_UPLOAD_PRODUCT_MAIN_IMAGE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/upload/icon`;
   }
 
   PUT_PRODUCT_IMAGES_ORDER(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/images/order`;
   }
   PUT_PRODUCT_IMAGE_ALT(
     shop_id: string | number,
     product_id: string | number,
-    image_id: string | number
+    image_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/images/${image_id}/alt`;
   }
   DELETE_PRODUCT_IMAGE(
     shop_id: string | number,
     product_id: string | number,
-    image_id: string | number
+    image_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/images/${image_id}/delete`;
   }
@@ -657,13 +660,13 @@ export class API {
   }
   GET_PRODUCT_FILE_UPLOAD_URL(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/upload/url`;
   }
   POST_UPLOAD_PRODUCT_FILE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     // Auto get by upload url generation!
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/upload/file`;
@@ -671,34 +674,34 @@ export class API {
   DELETE_PRODUCT_FILE(
     shop_id: string | number,
     product_id: string | number,
-    file_id: string | number
+    file_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/files/${file_id}`;
   }
   DOWNLOAD_PRODUCT_FILE(
     shop_id: string | number,
     product_id: string | number,
-    file_id: string | number
+    file_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/files/${file_id}`;
   }
   PUT_SET_PRODUCT_FILE_NAME(
     shop_id: string | number,
     product_id: string | number,
-    file_id: string | number
+    file_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/files/${file_id}/name`;
   }
   PUT_SET_PRODUCT_FILES_SORT(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/files/sort`;
   }
   PUT_SET_PRODUCT_FILE_SAMPLE(
     shop_id: string | number,
     product_id: string | number,
-    file_id: string | number
+    file_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/files/${file_id}/sample`;
   }
@@ -709,7 +712,7 @@ export class API {
   DELETE_PRODUCT_NOTE(
     shop_id: string | number,
     product_id: string | number,
-    note_index: string | number
+    note_index: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/note/${note_index}`;
   }
@@ -724,14 +727,14 @@ export class API {
 
   POST_PRODUCT_SET_OUTPUTS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/outputs`;
   }
 
   PUT_SET_PRODUCT_LOCATIONS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/locations`;
   }
@@ -761,14 +764,14 @@ export class API {
   }
   POST_SET_PRODUCT_BADGE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/badges`;
   }
 
   POST_CATEGORY_MOVE_PRODUCTS_ORDER(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${
       category_id ? category_id : "root"
@@ -776,7 +779,7 @@ export class API {
   }
   POST_CATEGORY_MOVE_CATEGORIES_ORDER(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${
       category_id ? category_id : "root"
@@ -789,7 +792,7 @@ export class API {
 
   POST_ASSIGN_PROFILE_TO_PRODUCTS_IN_CATEGORY(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${
       category_id ? category_id : "root"
@@ -804,21 +807,21 @@ export class API {
 
   POST_PRODUCT_ADD_EXTRA_PRICINGS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/extra-pricings`;
   }
   PUT_PRODUCT_EDIT_EXTRA_PRICINGS(
     shop_id: string | number,
     product_id: string | number,
-    extra_pricing_id: string | number
+    extra_pricing_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/extra-pricings/${extra_pricing_id}`;
   }
   DELETE_PRODUCT_EDIT_EXTRA_PRICINGS(
     shop_id: string | number,
     product_id: string | number,
-    extra_pricing_id: string | number
+    extra_pricing_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/extra-pricings/${extra_pricing_id}`;
   }
@@ -829,7 +832,7 @@ export class API {
     shop_id: string | number,
     product_id: string | number,
     file_type: "src" | "ios",
-    variant_id = null
+    variant_id = null,
   ) {
     if (variant_id)
       return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/edit/upload/ar/${file_type}/${variant_id}`; // Maybe '/' cause problem!
@@ -840,7 +843,7 @@ export class API {
     shop_id: string | number,
     product_id: string | number,
     file_type: "src" | "ios",
-    variant_id: string | number | null = null
+    variant_id: string | number | null = null,
   ) {
     if (variant_id)
       return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ar/${file_type}/${variant_id}`; // Maybe '/' cause problem!
@@ -861,7 +864,7 @@ export class API {
   }
   POST_UPDATE_ORDER_STATE(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/state`;
   }
@@ -873,7 +876,7 @@ export class API {
   }
   POST_UPDATE_ORDER_DELIVERY_RETURN(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/delivery-returned`;
   }
@@ -889,7 +892,7 @@ export class API {
   PUT_SERVICE_ITEM(
     shop_id: string | number,
     basket_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/service/${item_id}`;
   }
@@ -897,7 +900,7 @@ export class API {
   PUT_SERVICE_ITEM_TASKS(
     shop_id: string | number,
     basket_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/service/${item_id}/tasks`;
   }
@@ -905,28 +908,28 @@ export class API {
   GET_BASKET_ITEM_FILE_DOWNLOAD_LINK(
     shop_id: string | number,
     basket_id: string | number,
-    file_id: string | number
+    file_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/files/${file_id}`;
   }
 
   PUT_UPDATE_VENDOR_ORDER_BY_MARKETPLACE_OWNER(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/vendor-orders`;
   }
 
   PUT_UPDATE_ORDER_RECEIVER_INFO(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/receiver-info`;
   }
 
   POST_BASKET_CHAT_ADD_MESSAGE(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/chat`;
   }
@@ -934,14 +937,14 @@ export class API {
   DELETE_BASKET_CHAT_MESSAGE(
     shop_id: string | number,
     basket_id: string | number,
-    message_index: string | number
+    message_index: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/chat/${message_index}`;
   }
 
   POST_BASKET_REFUND_VENDOR_ORDER(
     shop_id: string | number,
-    vendor_order_id: string | number
+    vendor_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-orders/${vendor_order_id}/refund`;
   }
@@ -949,31 +952,31 @@ export class API {
   //―――――――――――――――――――――― Shop > Fulfillments ――――――――――――――――――――
   POST_UPDATE_FULFILLMENT_ORDER_STATE(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/fulfillments/${basket_id}/state`;
   }
   POST_UPDATE_FULFILLMENT_ORDER_DELIVERY_RETURN(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/fulfillments/${basket_id}/delivery-returned`;
   }
   PUT_REJECT_FULFILLMENT_ORDER(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/fulfillments/${basket_id}/reject`;
   }
   DELETE_REJECT_FULFILLMENT_ORDER(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/fulfillments/${basket_id}/reject`;
   }
   PUT_SET_TRACKING_FULFILLMENT_ORDER(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/fulfillments/${basket_id}/tracking`;
   }
@@ -999,7 +1002,7 @@ export class API {
       | "avocado"
       | "hyper"
       | "dropshipping",
-    order_id: string | number
+    order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/timeline/${type}/${order_id}`;
   }
@@ -1007,13 +1010,13 @@ export class API {
   GET_ORDER_EMAIL_PREVIEW(
     shop_id: string | number,
     order_id: string | number,
-    email_type: TimelineEmailType
+    email_type: TimelineEmailType,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/timeline/orders/${order_id}/emails/${email_type}`;
   }
   POST_ORDER_RESEND_EMAIL(
     shop_id: string | number,
-    timeline_id: string | number
+    timeline_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/timelines/${timeline_id}/email`;
   }
@@ -1021,7 +1024,7 @@ export class API {
   GET_ORDERS_PDF(
     shop_id: string | number,
     basket_id: string | number,
-    type: OrderExportPdfType
+    type: OrderExportPdfType,
   ) {
     // type: label receipt
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/${type}/pdf`;
@@ -1029,7 +1032,7 @@ export class API {
   GET_POS_ORDERS_PDF(
     shop_id: string | number,
     basket_id: string | number,
-    type: OrderExportPdfType
+    type: OrderExportPdfType,
   ) {
     // type: label receipt
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/pos-baskets/${basket_id}/${type}/pdf`;
@@ -1046,7 +1049,7 @@ export class API {
   }
   DELETE_SHOP_PERMISSION(
     shop_id: string | number,
-    permission_id: string | number
+    permission_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/permissions/${permission_id}`;
   }
@@ -1057,14 +1060,14 @@ export class API {
   PUT_SHOP_INVITE_ACTION(
     shop_id: string | number,
     invite_id: string | number,
-    action: "ACCEPT" | "REJECT"
+    action: "ACCEPT" | "REJECT",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/invites/${invite_id}/action/${action}`;
   }
 
   POST_SHOP_PERMISSION_LEAVE(
     shop_id: string | number,
-    permission_id: string | number
+    permission_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/permissions/${permission_id}/leave`;
   }
@@ -1088,7 +1091,7 @@ export class API {
 
   PUT_ROLE_INVITE_ACTION(
     role_id: string | number,
-    action: "ACCEPT" | "REJECT"
+    action: "ACCEPT" | "REJECT",
   ) {
     return `${this.selldone_api_url}/roles/${role_id}/action/${action}`;
   }
@@ -1111,7 +1114,7 @@ export class API {
   POST_MY_ROLE_TASK_ACTION(
     role_id: string | number,
     task_id: string | number,
-    action: "update-status" | "return-request"
+    action: "update-status" | "return-request",
   ) {
     return `${this.selldone_api_url}/roles/${role_id}/tasks/${task_id}/actions/${action}`;
   }
@@ -1120,7 +1123,7 @@ export class API {
 
   GET_AVAILABLE_GATEWAYS(
     shop_id: string | number,
-    currency: keyof typeof Currency
+    currency: keyof typeof Currency,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/available-gateways/${currency}`;
   }
@@ -1130,13 +1133,13 @@ export class API {
   }
   POST_GATEWAY_SHOP_ADD_BLOCKCHAIN_WALLET(
     shop_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/blockchain/wallet`;
   }
   POST_GATEWAY_SHOP_GENERATE_BLOCKCHAIN_RECOVERY_PHRASES(
     shop_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/blockchain/recovery`;
   }
@@ -1160,7 +1163,7 @@ export class API {
 
   GET_SHOP_GATEWAY_TRANSACTIONS(
     shop_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/transactions`;
   }
@@ -1168,7 +1171,7 @@ export class API {
   GET_CHECK_PAYMENT_GATEWAY(
     shop_id: string | number,
     gateway_code: string,
-    unique_id: string
+    unique_id: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/check-payment/${unique_id}`;
   }
@@ -1176,7 +1179,7 @@ export class API {
   POST_PAYMENT_GATEWAY_CAPTURE(
     shop_id: string | number,
     gateway_code: string,
-    payment_id: string | number
+    payment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/capture`;
   }
@@ -1184,7 +1187,7 @@ export class API {
   POST_CONFIRM_DIR_PAYMENT_MANUALLY(
     shop_id: string | number,
     basket_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/dir/${gateway_code}/completed`;
   }
@@ -1199,21 +1202,21 @@ export class API {
   PUT_UPDATE_BILL_STATUS(
     shop_id: string | number,
     basket_id: string | number,
-    bill_id: string | number
+    bill_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/bill/${bill_id}/status`;
   }
   PUT_EDIT_BILL_PRICE(
     shop_id: string | number,
     basket_id: string | number,
-    bill_id: string | number
+    bill_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/bill/${bill_id}/price`;
   }
   DELETE_BILL(
     shop_id: string | number,
     basket_id: string | number,
-    bill_id: string | number
+    bill_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/bill/${bill_id}`;
   }
@@ -1221,7 +1224,7 @@ export class API {
     shop_id: string | number,
     basket_id: string | number,
     bill_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/bill/${bill_id}/payment/${gateway_code}/completed`;
   }
@@ -1235,7 +1238,7 @@ export class API {
   POST_CONFIRM_COD_PAYMENT_MANUALLY_FOR_ONLINE_BASKET(
     shop_id: string | number,
     basket_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/cod/${gateway_code}/completed`;
   }
@@ -1243,7 +1246,7 @@ export class API {
   POST_CONFIRM_COD_PAYMENT_MANUALLY_FOR_POS_BASKET(
     shop_id: string | number,
     pos_basket_id: string | number,
-    gateway_code: string
+    gateway_code: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/pos-baskets/${pos_basket_id}/cod/${gateway_code}/completed`;
   }
@@ -1266,19 +1269,19 @@ export class API {
   }
   PUT_EDIT_SHOP_BLOG_CATEGORY(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/blog/categories/${category_id}`;
   }
   DELETE_SHOP_BLOG_CATEGORY(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/blog/categories/${category_id}`;
   }
   POST_UPLOAD_SHOP_BLOG_CATEGORY_ICON(
     shop_id: string | number,
-    category_id: string | number
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/blog/categories/${category_id}/icon`;
   }
@@ -1319,14 +1322,14 @@ export class API {
   }
   GET_MY_COMPANY_DOWNLOAD_DOCUMENT(
     company_id: string | number,
-    document_id: string | number
+    document_id: string | number,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/documents/${document_id}/download`;
   }
 
   DELETE_MY_COMPANY_DOCUMENT(
     company_id: string | number,
-    document_id: string | number
+    document_id: string | number,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/documents/${document_id}`;
   }
@@ -1348,7 +1351,7 @@ export class API {
   POST_UPLOAD_APP_IMAGE(
     company_id: string | number,
     app_id: string | number,
-    type: "icon" | "logo"
+    type: "icon" | "logo",
   ) {
     return `${this.selldone_api_url}/company/${company_id}/apps/${app_id}/image/${type}`;
   }
@@ -1358,7 +1361,7 @@ export class API {
   DELETE_UPLOAD_APP_IMAGE(
     company_id: string | number,
     app_id: string | number,
-    image_id: string | number
+    image_id: string | number,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/apps/${app_id}/images/${image_id}`;
   }
@@ -1377,7 +1380,7 @@ export class API {
 
   POST_GENERATE_ENTERPRISE_CREDENTIAL(
     company_id: string | number,
-    app_id: string | number
+    app_id: string | number,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/apps/${app_id}/enterprise/credential`;
   }
@@ -1393,7 +1396,7 @@ export class API {
   POST_APP_EDIT_PUBLISH(
     company_id: string | number,
     app_id: string | number,
-    upload_mode: AppVersionType
+    upload_mode: AppVersionType,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/apps/${app_id}/publish/${upload_mode}`;
   }
@@ -1446,20 +1449,20 @@ export class API {
   }
   POST_UPLOAD_TRANSPORTATION_LOGO(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/logo`;
   }
   DELETE_TRANSPORTATION(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}`;
   }
 
   GET_SHOP_TRANSPORTATION_INFO(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}`;
   }
@@ -1470,20 +1473,20 @@ export class API {
 
   GET_TRANSPORTATION_PERSONS(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/persons`;
   }
   POST_TRANSPORTATION_ADD_PERSON(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/persons`;
   }
   PUT_TRANSPORTATION_PERSON_UPDATE(
     shop_id: string | number,
     transportation_id: string | number,
-    person_id: string | number
+    person_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/persons/${person_id}`;
   }
@@ -1491,34 +1494,34 @@ export class API {
   DELETE_TRANSPORTATION_PERSON(
     shop_id: string | number,
     transportation_id: string | number,
-    person_id: string | number
+    person_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/persons/${person_id}`;
   }
   POST_TRANSPORTATION_PERSON_RESET(
     shop_id: string | number,
     transportation_id: string | number,
-    person_id: string | number
+    person_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/persons/${person_id}/reset`;
   }
 
   GET_TRANSPORTATION_SERVICES(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services`;
   }
   POST_TRANSPORTATION_ADD_SERVICE(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services`;
   }
   PUT_TRANSPORTATION_SERVICE_UPDATE(
     shop_id: string | number,
     transportation_id: string | number,
-    service_id: string | number
+    service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}`;
   }
@@ -1526,21 +1529,21 @@ export class API {
   DELETE_TRANSPORTATION_SERVICE(
     shop_id: string | number,
     transportation_id: string | number,
-    service_id: string | number
+    service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}`;
   }
   POST_TRANSPORTATION_SERVICE_RESET(
     shop_id: string | number,
     transportation_id: string | number,
-    service_id: string | number
+    service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}/reset`;
   }
 
   GET_DELIVERY_SERVICES_OPTIONS(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/delivery-services`;
   }
@@ -1548,7 +1551,7 @@ export class API {
   GET_DELIVERY_SERVICE_INFO(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number
+    delivery_service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}`;
   }
@@ -1556,14 +1559,14 @@ export class API {
   GET_DELIVERY_SERVICE_PRICE(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number
+    delivery_service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/price`;
   }
   POST_DELIVERY_SERVICE_ADD_ORDER(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number
+    delivery_service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/order`;
   }
@@ -1572,14 +1575,14 @@ export class API {
     shop_id: string | number,
     transportation_id: string | number,
     delivery_service_id: string | number,
-    uid: string
+    uid: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/order/${uid}`;
   }
   GET_DELIVERY_SERVICE_PROFILE(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number
+    delivery_service_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/profile`;
   }
@@ -1588,7 +1591,7 @@ export class API {
   POST_TRANSPORTATION_ORDER_STATUS(
     shop_id: string | number,
     transportation_id: string | number,
-    transportation_order_id: string | number
+    transportation_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/orders/${transportation_order_id}`;
   }
@@ -1596,21 +1599,21 @@ export class API {
   GET_TRANSPORTATION_ORDER_INFO_FOR_DELIVERY_PERSON(
     shop_id: string | number,
     transportation_id: string | number,
-    transportation_order_id: string | number
+    transportation_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/orders/${transportation_order_id}`;
   }
   POST_TRANSPORTATION_ORDER_COD_PAYMENT(
     shop_id: string | number,
     transportation_id: string | number,
-    transportation_order_id: string | number
+    transportation_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/orders/${transportation_order_id}/payment`;
   }
 
   POST_TRANSPORTATION_SET_PICKUP_ADDRESSES(
     shop_id: string | number,
-    transportation_id: string | number
+    transportation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/pickups`;
   }
@@ -1648,7 +1651,7 @@ export class API {
   //―――――――――――――――――――――― Page Builder ――――――――――――――――――――
   POST_UPLOAD_PAGE_COVER_IMAGE(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/upload/cover-image`;
   }
@@ -1656,7 +1659,7 @@ export class API {
   GET_PAGE_HISTORY(
     shop_id: string | number,
     page_id: string | number,
-    history_id: string | number
+    history_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/history/${history_id}`;
   }
@@ -1664,7 +1667,7 @@ export class API {
   PUT_SET_HISTORY_PERSISTENT(
     shop_id: string | number,
     page_id: string | number,
-    history_id: string | number
+    history_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/history/${history_id}`;
   }
@@ -1688,13 +1691,13 @@ export class API {
   }
   POST_PAGE_DATA_UPDATE_PREVIEW(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/preview`;
   }
   POST_PAGE_PREVIEW_ACKNOWLEDGE(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/acknowledge`;
   }
@@ -1726,7 +1729,7 @@ export class API {
 
   POST_PAGE_ELEMENT_UPLOAD_IMAGE(
     shop_id: string | number,
-    element_id: string | number
+    element_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/elements/${element_id}/image`;
   }
@@ -1748,7 +1751,7 @@ export class API {
   }
   POST_UPLOAD_POPUP_COVER_IMAGE(
     shop_id: string | number,
-    popup_id: string | number
+    popup_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/popups/${popup_id}/upload/cover-image`;
   }
@@ -1772,7 +1775,7 @@ export class API {
   GET_PRIVATE_IMAGE_PATH(
     shop_id: string | number,
     file_name: string,
-    size = null
+    size = null,
   ) {
     return (
       `${this.selldone_api_url}/shops/${shop_id}/assets/images/${file_name}` +
@@ -1786,7 +1789,7 @@ export class API {
   POST_UPDATE_RETURN_REQUEST_STATE(
     shop_id: string | number,
     basket_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/return/${item_id}/state`;
   }
@@ -1818,7 +1821,7 @@ export class API {
 
   GET_SEO_PREVIEW_PRODUCT(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/seo/preview`;
   }
@@ -1831,21 +1834,21 @@ export class API {
 
   POST_UPDATE_SHOP_PROFILE_IMAGE(
     shop_id: string | number,
-    type: "about-us" | "contact-us" | "privacy" | "terms"
+    type: "about-us" | "contact-us" | "privacy" | "terms",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/profiles/${type}/upload`;
   }
 
   POST_SAVE_SHOP_PROFILE(
     shop_id: string | number,
-    type: "about-us" | "contact-us" | "privacy" | "terms"
+    type: "about-us" | "contact-us" | "privacy" | "terms",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/profiles/${type}`;
   }
 
   GET_SHOP_PROFILE(
     shop_id: string | number,
-    type: "about-us" | "contact-us" | "privacy" | "terms"
+    type: "about-us" | "contact-us" | "privacy" | "terms",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/profiles/${type}`;
   }
@@ -1887,7 +1890,7 @@ export class API {
   GET_CHECK_CHARGE_PAYMENT_GATEWAY(
     account_number: string,
     gateway_code: string,
-    unique_id: string
+    unique_id: string,
   ) {
     return `${this.selldone_api_url}/accounts/${account_number}/charges/${gateway_code}/check-payment/${unique_id}`;
   }
@@ -1896,7 +1899,7 @@ export class API {
   }
   GET_ACCOUNT_DOWNLOAD_SINGLE_CHARGE_RECEIPT(
     account_number: string,
-    charge_id: string | number
+    charge_id: string | number,
   ) {
     return `${this.selldone_api_url}/accounts/${account_number}/charges/${charge_id}/receipt`;
   }
@@ -1926,7 +1929,7 @@ export class API {
 
   DELETE_SHOP_SUBSCRIPTION(
     shop_id: string | number,
-    subscription_id: string | number
+    subscription_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/subscriptions/${subscription_id}`;
   }
@@ -1936,7 +1939,7 @@ export class API {
   }
   PUT_SHOP_SUBSCRIPTION(
     shop_id: string | number,
-    subscription_id: string | number
+    subscription_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/subscriptions/${subscription_id}`;
   }
@@ -1957,7 +1960,7 @@ export class API {
   GET_PAYMENT_STATUS_INTERVAL(
     gateway: string,
     transaction_id: string | number,
-    unique_id: string
+    unique_id: string,
   ) {
     return `${this.selldone_api_url}/gateways/${gateway}/transactions/${transaction_id}/${unique_id}`;
   }
@@ -1995,7 +1998,7 @@ export class API {
    * @constructor
    */
   POST_ACCOUNT_SUBSCRIPTION_MANUALLY_CHECK_AUTO_CHARGES(
-    account_number: string
+    account_number: string,
   ) {
     return `${this.selldone_api_url}/accounts/${account_number}/check-subscribe`;
   }
@@ -2039,7 +2042,7 @@ export class API {
       | "640x1136"
       | "1536x2048"
       | "1668x2224"
-      | "2048x2732"
+      | "2048x2732",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/native/ios/splash/${size}`;
   }
@@ -2055,7 +2058,7 @@ export class API {
    */
   POST_SHOP_PLUGIN_SET_CONFIG(
     shop_id: string | number,
-    plugin_code: "TagManager" | "VerificationTag"
+    plugin_code: "TagManager" | "VerificationTag",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/plugins/${plugin_code}`;
   }
@@ -2078,7 +2081,7 @@ export class API {
   GET_EXPORT_GIFT_CARDS(
     shop_id: string | number,
     giftcard_type_id: string | number,
-    file: "excel" | "csv"
+    file: "excel" | "csv",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${giftcard_type_id}/export/${file}`;
   }
@@ -2086,7 +2089,7 @@ export class API {
   GET_EXPORT_GIFT_CARDS_DATA(
     shop_id: string | number,
     giftcard_type_id: string | number,
-    file: "excel" | "csv"
+    file: "excel" | "csv",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${giftcard_type_id}/data/export/${file}`;
   }
@@ -2096,13 +2099,13 @@ export class API {
 
   GET_EXPORT_FOR_AUCTION(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/for-auction/excel`;
   }
   GET_EXPORT_FOR_AVAILABLE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/for-available/excel`;
   }
@@ -2110,13 +2113,13 @@ export class API {
   GET_EXPORT_BASKET_TASKS(
     shop_id: string | number,
     type: Lowercase<OrderTypeCode>,
-    render: "excel" | "csv" | "pdf"
+    render: "excel" | "csv" | "pdf",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${type}/export/tasks/${render}`;
   }
   GET_EXPORT_BASKET_LABELS(
     shop_id: string | number,
-    type: Lowercase<OrderTypeCode>
+    type: Lowercase<OrderTypeCode>,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${type}/export/labels`;
   }
@@ -2133,7 +2136,7 @@ export class API {
 
   POST_CREATE_CLIENT_FOR_DOMAIN(
     shop_id: string | number,
-    domain_id: string | number
+    domain_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/domain/${domain_id}/add-client`;
   }
@@ -2148,7 +2151,7 @@ export class API {
   PUT_EDIT_DOMAIN(
     shop_id: string | number,
     domain: string,
-    param: "primary" | "enable"
+    param: "primary" | "enable",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/domains/${domain}/${param}`;
   }
@@ -2158,7 +2161,7 @@ export class API {
 
   POST_SET_DOMAIN_SETTING(
     shop_id: string | number,
-    domain_id: string | number
+    domain_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/domain/${domain_id}/setting`;
   }
@@ -2181,7 +2184,7 @@ export class API {
   }
   DELETE_SHOP_DOMAIN_VERIFICATION(
     shop_id: string | number,
-    verification_id: string | number
+    verification_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/verifications/${verification_id}`;
   }
@@ -2189,7 +2192,7 @@ export class API {
   //―――――――――――――――――――――― Shop > Footer ――――――――――――――――――――
   POST_EDIT_SHOP_FOOTER_SECTIONS(
     shop_id: string | number,
-    sec_index: 1 | 2 | 3 | 4
+    sec_index: 1 | 2 | 3 | 4,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/footer/sections/${sec_index}`;
   }
@@ -2225,13 +2228,13 @@ export class API {
   //―――――――――――――――――――――― Shop > Social ――――――――――――――――――――
   PUT_SET_SHOP_SOCIAL(
     shop_id: string | number,
-    network_code: keyof typeof SocialNetwork
+    network_code: keyof typeof SocialNetwork,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/social/${network_code}`;
   }
   DELETE_SHOP_SOCIAL(
     shop_id: string | number,
-    network_code: keyof typeof SocialNetwork
+    network_code: keyof typeof SocialNetwork,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/social/${network_code}`;
   }
@@ -2247,45 +2250,45 @@ export class API {
 
   PUT_EDIT_DISCOUNT_CODE(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}`;
   }
   DELETE_DISCOUNT_CODE(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}`;
   }
   POST_RESTORE_DISCOUNT_CODE(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/restore`;
   }
   GET_DISCOUNT_CODE_DATA(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}`;
   }
 
   GET_DISCOUNT_CODE_ORDERS(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/orders`;
   }
   POST_DISCOUNT_CODE_ADD_NOTE(
     shop_id: string | number,
-    discount_code_id: string | number
+    discount_code_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/note`;
   }
   DELETE_DISCOUNT_CODE_NOTE(
     shop_id: string | number,
     discount_code_id: string | number,
-    note_index: number
+    note_index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/note/${note_index}`;
   }
@@ -2323,7 +2326,7 @@ export class API {
   DELETE_COUPON_NOTE(
     shop_id: string | number,
     coupon_id: string | number,
-    note_index: number
+    note_index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/coupons/${coupon_id}/note/${note_index}`;
   }
@@ -2363,7 +2366,7 @@ export class API {
   DELETE_OFFER_NOTE(
     shop_id: string | number,
     offer_id: string | number,
-    note_index: number
+    note_index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/offers/${offer_id}/note/${note_index}`;
   }
@@ -2389,7 +2392,7 @@ export class API {
   }
   POST_UPLOAD_LOTTERY_IMAGE(
     shop_id: string | number,
-    lottery_id: string | number
+    lottery_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/lotteries/${lottery_id}/image`;
   }
@@ -2422,55 +2425,55 @@ export class API {
   }
   DELETE_GIFT_CARD_TYPE(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}`;
   }
   PUT_EDIT_GIFT_CARD_TYPE(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}`;
   }
 
   GET_GIFT_CARD_TYPE_DATA(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}`;
   }
 
   GET_GIFT_CARD_TYPE_CARDS(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards`;
   }
 
   POST_UPDATE_GIFT_CARD_TYPE_BG(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/bg`;
   }
   DELETE_GIFT_CARD_TYPE_CARD(
     shop_id: string | number,
     gift_card_type_id: string | number,
-    card_id: string | number
+    card_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards/${card_id}`;
   }
   PUT_EDIT_GIFT_CARD_TYPE_CARD(
     shop_id: string | number,
     gift_card_type_id: string | number,
-    card_id: string | number
+    card_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards/${card_id}`;
   }
 
   GET_GIFT_CARD_TYPE_ORDERS(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/orders`;
   }
@@ -2478,14 +2481,14 @@ export class API {
   POST_ISSUE_GIFT_CARD_TYPE_CARD(
     shop_id: string | number,
     gift_card_type_id: string | number,
-    card_id: string | number
+    card_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards/${card_id}/issue`;
   }
 
   POST_ISSUE_GIFT_CARD_TYPE_CARD_POS(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     // Auto assign giftcard!
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/issue`;
@@ -2493,21 +2496,21 @@ export class API {
 
   POST_GIFT_CARD_TYPE_ADD_NOTE(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/note`;
   }
   DELETE_GIFT_CARD_TYPE_NOTE(
     shop_id: string | number,
     gift_card_type_id: string | number,
-    note_index: number
+    note_index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/note/${note_index}`;
   }
 
   POST_GIFT_CARD_AUTO_CREATE_PRODUCT(
     shop_id: string | number,
-    gift_card_type_id: string | number
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/auto-create-product`;
   }
@@ -2528,20 +2531,20 @@ export class API {
 
   PUT_EDIT_CAMPAIGN_INFO(
     shop_id: string | number,
-    campaign_id: string | number
+    campaign_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/campaigns/${campaign_id}`;
   }
   PUT_SET_CAMPAIGN_LANDING(
     shop_id: string | number,
-    campaign_id: string | number
+    campaign_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/campaigns/${campaign_id}/page`;
   }
 
   POST_ADD_CAMPAIGN_LINK(
     shop_id: string | number,
-    campaign_id: string | number
+    campaign_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/campaigns/${campaign_id}/links`;
   }
@@ -2549,7 +2552,7 @@ export class API {
   DELETE_CAMPAIGN_LINK(
     shop_id: string | number,
     campaign_id: string | number,
-    link_id: string | number
+    link_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/campaigns/${campaign_id}/links/${link_id}`;
   }
@@ -2563,7 +2566,7 @@ export class API {
 
   PUT_UPDATE_AFFILIATE(
     shop_id: string | number,
-    affiliate_id: string | number
+    affiliate_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}`;
   }
@@ -2572,7 +2575,7 @@ export class API {
   }
   GET_AFFILIATE_ORDERS(
     shop_id: string | number,
-    affiliate_id: string | number
+    affiliate_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}/orders`;
   }
@@ -2583,19 +2586,19 @@ export class API {
   POST_UPDATE_AFFILIATE_STATUS(
     shop_id: string | number,
     affiliate_id: string | number,
-    affiliate_order_id: string | number
+    affiliate_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}/orders/${affiliate_order_id}/status`;
   }
   POST_AFFILIATE_PAYMENT(
     shop_id: string | number,
-    affiliate_id: string | number
+    affiliate_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}/payment`;
   }
   GET_AFFILIATE_PAYMENTS(
     shop_id: string | number,
-    affiliate_id: string | number
+    affiliate_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}/payments`;
   }
@@ -2603,7 +2606,7 @@ export class API {
   GET_EXPORT_AFFILIATE_ORDERS(
     shop_id: string | number,
     affiliate_id: string | number,
-    render: "excel" | "csv" | "pdf"
+    render: "excel" | "csv" | "pdf",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/affiliates/${affiliate_id}/export/orders/${render}`;
   }
@@ -2643,7 +2646,7 @@ export class API {
 
   POST_EMAIL_REVIEW_ACTION(
     shop_id: string | number,
-    email_id: string | number
+    email_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/emails/${email_id}/approve`;
   }
@@ -2664,7 +2667,7 @@ export class API {
   POST_UPLOAD_CAMPAIGN_NOTIFICATION_IMAGE(
     shop_id: string | number,
     campaign_id: string | number,
-    type: "image" | "bg"
+    type: "image" | "bg",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/campaigns/${campaign_id}/notification/upload/${type}`;
   }
@@ -2675,7 +2678,7 @@ export class API {
   }
   DELETE_SHOP_CLUB(
     shop_id: string | number,
-    level: keyof typeof CustomerClubLevels
+    level: keyof typeof CustomerClubLevels,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/clubs/${level}`;
   }
@@ -2700,26 +2703,26 @@ export class API {
   }
   PUT_SHOP_CONTACT_US_UPDATE_MESSAGE(
     shop_id: string | number,
-    contact_id: string | number
+    contact_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/contacts/${contact_id}`;
   }
   DELETE_SHOP_CONTACT_US_MESSAGE(
     shop_id: string | number,
-    contact_id: string | number
+    contact_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/contacts/${contact_id}`;
   }
   DELETE_SHOP_CONTACT_US_MESSAGE_RESPONSE(
     shop_id: string | number,
     contact_id: string | number,
-    index: number
+    index: number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/contacts/${contact_id}/${index}`;
   }
   POST_SHOP_CONTACT_US_CLOSE_TICKET(
     shop_id: string | number,
-    contact_id: string | number
+    contact_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/contacts/${contact_id}/close`;
   }
@@ -2768,7 +2771,7 @@ export class API {
 
   //―――――――――――――――――――――― Stripe ――――――――――――――――――――
   GET_CHECK_SAMIN_STRIPE_PAYMENT_INTENT(
-    paymentIntent_id: string /*Stripe payment intent ID*/
+    paymentIntent_id: string /*Stripe payment intent ID*/,
   ) {
     return `${this.selldone_api_url}/gateways/stripe/${paymentIntent_id}/check`;
   }
@@ -2794,14 +2797,14 @@ export class API {
 
   SET_SHOP_NOTIFICATION_CHANNELS(
     shop_id: string | number,
-    channel: ShopChannelType
+    channel: ShopChannelType,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/notification-channels/${channel}`;
   }
 
   PUT_SHOP_NOTIFICATION_CHANNEL_CONFIG(
     shop_id: string | number,
-    channel: ShopChannelType
+    channel: ShopChannelType,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/notification-channels/${channel}`;
   }
@@ -2811,7 +2814,7 @@ export class API {
   }
   SET_TEST_SHOP_NOTIFICATION_CHANNEL(
     shop_id: string | number,
-    channel: ShopChannelType
+    channel: ShopChannelType,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/notification-channels/${channel}/test`;
   }
@@ -2841,25 +2844,25 @@ export class API {
   }
   PUT_SHOP_SMS_EDIT_TEMPLATE(
     shop_id: string | number,
-    template_id: string | number
+    template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/sms/templates/${template_id}`;
   }
   DELETE_SHOP_SMS_TEMPLATE(
     shop_id: string | number,
-    template_id: string | number
+    template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/sms/templates/${template_id}`;
   }
   POST_SHOP_SMS_TEMPLATE_RESET_ERRORS(
     shop_id: string | number,
-    template_id: string | number
+    template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/sms/templates/${template_id}/reset`;
   }
   POST_SHOP_SMS_TEMPLATE_SEND_TEST(
     shop_id: string | number,
-    template_id: string | number
+    template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/sms/templates/${template_id}/test`;
   }
@@ -2881,7 +2884,7 @@ export class API {
       | "avocado-order-submit-seller"
       | "avocado-ready-to-pay"
       | string,
-    language: keyof typeof Language
+    language: keyof typeof Language,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/sms/defaults/${code}/${language}`;
   }
@@ -2914,7 +2917,7 @@ export class API {
       | "shop-vendor-invite"
       | "shop-vendor-order"
       | "shop-vendor-products"
-      | string
+      | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/email/render/${code}`;
   }
@@ -2952,7 +2955,7 @@ export class API {
       | "shop-vendor-invite"
       | "shop-vendor-order"
       | "shop-vendor-products"
-      | string
+      | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/email/templates/${code}`;
   }
@@ -3004,27 +3007,27 @@ export class API {
   }
   DELETE_UNINSTALL_SHOP_LANGUAGE_PACK(
     shop_id: string | number,
-    language_code: keyof typeof Language
+    language_code: keyof typeof Language,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/languages/${language_code}`;
   }
   POST_SHOP_SAVE_OVERRIDE_LANGUAGE_PACK(
     shop_id: string | number,
     language_code: keyof typeof Language,
-    pack: "global" | "shop"
+    pack: "global" | "shop",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/languages/${language_code}/packs/${pack}`;
   }
   GET_SHOP_OVERRIDE_LANGUAGE_PACK(
     shop_id: string | number,
     language_code: keyof typeof Language,
-    pack: "global" | "shop"
+    pack: "global" | "shop",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/languages/${language_code}/packs/${pack}`;
   }
   GET_SHOP_DOWNLOAD_OVERRIDE_LANGUAGE_PACK(
     shop_id: string | number,
-    language_code: keyof typeof Language
+    language_code: keyof typeof Language,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/languages/${language_code}/export`;
   }
@@ -3054,7 +3057,7 @@ export class API {
   }
   DELETE_SHOP_STATIC_ASSET(
     shop_id: string | number,
-    asset_id: string | number
+    asset_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/static/${asset_id}`;
   }
@@ -3087,23 +3090,24 @@ export class API {
   }
 
   //―――――――――――――――――――――― AI ――――――――――――――――――――
-  POST_AI_REMOVE_BACKGROUND_PRODUCT_IMAGE(
+  POST_AI_REMOVE_BACKGROUND_PRODUCT_MAIN_IMAGE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/remove-bg`;
   }
-
-  POST_AI_ADD_PRODUCT(
-      shop_id: string | number,
+  POST_AI_REMOVE_BACKGROUND_PRODUCT_IMAGES(
+    shop_id: string | number,
+    product_id: string | number,
+    image_id: string | number,
   ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/images/${image_id}/ai/remove-bg`;
+  }
+
+  POST_AI_ADD_PRODUCT(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/product/add-ai`;
   }
-  POST_AI_EDIT_PRODUCT(
-      shop_id: string | number,
-      product_id: string | number
-
-  ) {
+  POST_AI_EDIT_PRODUCT(shop_id: string | number, product_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/update-ai`;
   }
   //―――――――――――――――――――――― TAX ――――――――――――――――――――
@@ -3120,7 +3124,7 @@ export class API {
   }
   POST_SET_OVERRIDE_SHOP_TAX(
     shop_id: string | number,
-    vat_id: string | number
+    vat_id: string | number,
   ) {
     // By vat id! Not shop_vat_id!
     return `${this.selldone_api_url}/shops/${shop_id}/tax/${vat_id}`;
@@ -3131,13 +3135,13 @@ export class API {
   }
   DELETE_SHOP_TAX_PROFILE(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/tax-profiles/${profile_id}`;
   }
   GET_SHOP_TAX_PROFILE_STATISTIC(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/tax-profiles/${profile_id}/statistic`;
   }
@@ -3157,7 +3161,7 @@ export class API {
   }
   DELETE_OFFLINE_BASKET_REMOVE_ITEM(
     shop_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pos/${item_id}`;
   }
@@ -3173,7 +3177,7 @@ export class API {
       | "delivery"
       | "discount-code"
       | "coupon"
-      | "campaign"
+      | "campaign",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pos/actions/${action}`;
   }
@@ -3185,7 +3189,7 @@ export class API {
       | "delivery"
       | "discount-code"
       | "coupon"
-      | "campaign"
+      | "campaign",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pos/actions/${action}`;
   }
@@ -3213,7 +3217,7 @@ export class API {
   GET_FETCH_CUSTOMER_VIEW_DATA(
     shop_id: string | number,
     user_id: string | number,
-    token: string
+    token: string,
   ) {
     return `/dapi/shops/${shop_id}/pos/${user_id}/customer-view/${token}`;
   }
@@ -3226,28 +3230,28 @@ export class API {
 
   GET_SHOP_CUSTOMER_INFO(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}`;
   }
 
   PUT_SHOP_CUSTOMER_CHIPS(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/chips`;
   }
 
   PUT_SHOP_CUSTOMER_CLUB(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/club`;
   }
 
   GET_SHOP_CUSTOMER_ACTIVITY(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/activity`;
   }
@@ -3256,13 +3260,13 @@ export class API {
   }
   PUT_SHOP_CUSTOMER_UPDATE(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}`;
   }
   PUT_SHOP_CUSTOMER_SEGMENTS(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/segments`;
   }
@@ -3276,7 +3280,7 @@ export class API {
   }
   PUT_SHOP_CUSTOMER_SET_ACCESS(
     shop_id: string | number,
-    customer_id: string | number
+    customer_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/access`;
   }
@@ -3284,7 +3288,7 @@ export class API {
   POST_SHOP_CUSTOMER_CREATE_SUBSCRIPTION_PORTAL_URL(
     shop_id: string | number,
     customer_id: string | number,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/meta/${key}/portal`;
   }
@@ -3298,7 +3302,7 @@ export class API {
   }
   DELETE_IMPORT_PRODUCT_ITEM(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/import/products/${product_id}`;
   }
@@ -3307,13 +3311,13 @@ export class API {
   }
   DELETE_IMPORT_IMAGE_ITEM(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/import/images/${product_id}`;
   }
   PUT_IMPORT_IMAGE_ITEM_TRY(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/import/images/${product_id}/try`;
   }
@@ -3352,7 +3356,7 @@ export class API {
 
   PUT_SET_PRODUCT_DROP_SHIPPING_SETTINGS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/dropshipping`;
   }
@@ -3362,7 +3366,7 @@ export class API {
   }
   PUT_SET_DROP_SHIPPING_REQUEST_STATUS(
     shop_id: string | number,
-    request_id: string | number
+    request_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/dropshipping/requests/${request_id}`;
   }
@@ -3372,21 +3376,21 @@ export class API {
   }
   GET_DROP_SHIPPING_RESELLER_SHOP_INFO(
     shop_id: string | number,
-    reseller_id: string | number
+    reseller_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/dropshipping/resellers/${reseller_id}`;
   }
 
   POST_DROP_SHIPPING_RESELLER_CREATE_ACCOUNT(
     shop_id: string | number,
-    reseller_id: string | number
+    reseller_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/dropshipping/resellers/${reseller_id}/accounts`;
   }
   PUT_DROP_SHIPPING_RESELLER_EDIT_ACCOUNT(
     shop_id: string | number,
     reseller_id: string | number,
-    account_id: string | number
+    account_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/dropshipping/resellers/${reseller_id}/accounts/${account_id}`;
   }
@@ -3394,7 +3398,7 @@ export class API {
   // Process Center
   GET_DROP_SHIPPING_ORDER_INFO(
     shop_id: string | number,
-    fulfillment_id: string | number
+    fulfillment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/dropshipping-baskets/${fulfillment_id}`;
   }
@@ -3411,7 +3415,7 @@ export class API {
 
   GET_DROP_SHIPPING_SHOP_PRODUCTS(
     shop_id: string | number,
-    drop_shop_id: string | number
+    drop_shop_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reseller/shops/${drop_shop_id}/products`;
   }
@@ -3429,14 +3433,14 @@ export class API {
   }
   GET_DROP_SHIPPING_RESELLER_ACCOUNT_CHARGES(
     shop_id: string | number,
-    account_id: string | number
+    account_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/finance/reseller/accounts/${account_id}/charges`;
   }
   POST_DROP_SHIPPING_RESELLER_ACCOUNT_CHARGE_REFRESH_STATE(
     shop_id: string | number,
     account_id: string | number,
-    charge_id: string | number
+    charge_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/finance/reseller/accounts/${account_id}/charges/${charge_id}/check`;
   }
@@ -3452,20 +3456,20 @@ export class API {
   }
   POST_ADD_DROP_SHIPPING_VARIANT(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/reseller/add-variant`;
   }
 
   POST_DROP_SHIPPING_PRODUCT_RE_ENABLE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/reseller/re-enable`;
   }
   POST_DROP_SHIPPING_PRODUCT_APPLY_CHANGES(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/reseller/apply-changes`;
   }
@@ -3473,7 +3477,7 @@ export class API {
   POST_DROP_SHIPPING_RESELLER_ACCOUNT_CHARGE(
     shop_id: string | number,
     account_id: string | number,
-    gateway: string
+    gateway: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/finance/reseller/accounts/${account_id}/charge/${gateway}`;
   }
@@ -3494,20 +3498,20 @@ export class API {
   }
   PUT_INSTAGRAM_MEDIA_SET_PRODUCTS(
     shop_id: string | number,
-    media_id: string | number
+    media_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/medias/${media_id}/products`;
   }
   PUT_INSTAGRAM_MEDIA_SET_CAPTION(
     shop_id: string | number,
-    media_id: string | number
+    media_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/medias/${media_id}/caption`;
   }
 
   PUT_INSTAGRAM_STORY_SET_PRODUCTS(
     shop_id: string | number,
-    story_id: string | number
+    story_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/stories/${story_id}/products`;
   }
@@ -3548,7 +3552,7 @@ export class API {
   }
   GET_EXPERT_JOB_CONTRACTS_FOR_USER(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/contracts/users/${user_id}`;
   }
@@ -3558,7 +3562,7 @@ export class API {
   }
   POST_EXPERT_JOB_REQUEST_START_NEGOTIATION(
     job_id: string | number,
-    request_id: string | number
+    request_id: string | number,
   ) {
     // Signal only!
     return `${this.selldone_api_url}/expert/jobs/${job_id}/requests/${request_id}`;
@@ -3569,46 +3573,46 @@ export class API {
   }
   GET_EXPERT_JOB_CHAT_MESSAGES(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/chats/${user_id}/messages`;
   }
   PUT_EXPERT_JOB_CHAT_MESSAGE(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/chats/${user_id}/messages`;
   }
   DELETE_EXPERT_JOB_CHAT_MESSAGE(
     job_id: string | number,
     user_id: string | number,
-    message_id: string | number
+    message_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/chats/${user_id}/messages/${message_id}`;
   }
   POST_EXPERT_JOB_CHAT_ATTACHMENT(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/chats/${user_id}/attachments`;
   }
   GET_EXPERT_JOB_CHAT_ATTACHMENT_URL(
     job_id: string | number,
     user_id: string | number,
-    message_id: string | number
+    message_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/chats/${user_id}/attachments/${message_id}`;
   }
 
   POST_EXPERT_JOB_CONTRACT_CREATE(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/contracts/users/${user_id}`;
   }
   GET_EXPERT_JOB_CONTRACT_REQUIRED_DATA(
     job_id: string | number,
-    user_id: string | number
+    user_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert/jobs/${job_id}/contracts/users/${user_id}/required-data`;
   }
@@ -3646,7 +3650,7 @@ export class API {
   }
   DELETE_EXPERT_CUSTOMER_CHAT_MESSAGE(
     job_id: string | number,
-    message_id: string | number
+    message_id: string | number,
   ) {
     return `${this.selldone_api_url}/expert-customer/chats/${job_id}/messages/${message_id}`;
   }
@@ -3722,46 +3726,46 @@ export class API {
   PUT_AVOCADO_ITEM_PRICE(
     shop_id: string | number,
     avocado_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/avocados/${avocado_id}/items/${item_id}/price`;
   }
   PUT_AVOCADO_ITEM_STATUS(
     shop_id: string | number,
     avocado_id: string | number,
-    item_id: string | number
+    item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/avocados/${avocado_id}/items/${item_id}/status`;
   }
 
   GET_AVOCADO_ORDER_INFO(
     shop_id: string | number,
-    avocado_id: string | number
+    avocado_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/avocados/${avocado_id}`;
   }
 
   POST_UPDATE_AVOCADO_ORDER_STATE(
     shop_id: string | number,
-    avocado_id: string | number
+    avocado_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/avocados/${avocado_id}/state`;
   }
   POST_UPDATE_AVOCADO_ORDER_DELIVERY_RETURN(
     shop_id: string | number,
-    avocado_id: string | number
+    avocado_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/avocados/${avocado_id}/delivery-returned`;
   }
   PUT_REJECT_AVOCADO_ORDER(
     shop_id: string | number,
-    avocado_id: string | number
+    avocado_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/avocados/${avocado_id}/reject`;
   }
   DELETE_REJECT_AVOCADO_ORDER(
     shop_id: string | number,
-    avocado_id: string | number
+    avocado_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/avocados/${avocado_id}/reject`;
   }
@@ -3792,13 +3796,13 @@ export class API {
   }
   POST_GUILD_MEMBER_LIKE(
     guild_id: string | number,
-    member_id: string | number
+    member_id: string | number,
   ) {
     return `${this.selldone_api_url}/guilds/${guild_id}/members/${member_id}/like`;
   }
   POST_GUILD_MEMBER_RECOMMENDATION(
     guild_id: string | number,
-    member_id: string | number
+    member_id: string | number,
   ) {
     return `${this.selldone_api_url}/guilds/${guild_id}/members/${member_id}/recommendation`;
   }
@@ -3886,7 +3890,7 @@ export class API {
     return `${this.selldone_api_url}/partners/deals`;
   }
   GET_MY_PARTNER_PURCHASE_DEAL_SHOPS(
-    agency_affiliate_purchase_id: string | number
+    agency_affiliate_purchase_id: string | number,
   ) {
     return `${this.selldone_api_url}/partners/deals/${agency_affiliate_purchase_id}/shops`;
   }
@@ -3897,33 +3901,33 @@ export class API {
   POST_PARTNER_PURCHASE_A_DEAL(
     ref_code: string,
     plan_code: string,
-    gateway: string
+    gateway: string,
   ) {
     return `${this.selldone_api_url}/partners/deals/${ref_code}/plans/${plan_code}/purchase/${gateway}`;
   }
 
   POST_MY_PARTNER_PENDING_PURCHASE_CHECK_TRANSACTION(
-    agency_affiliate_purchase_id: string | number
+    agency_affiliate_purchase_id: string | number,
   ) {
     return `${this.selldone_api_url}/partners/deals/pending/${agency_affiliate_purchase_id}/check`;
   }
 
   POST_MY_PARTNER_PURCHASE_REFUND(
     agency_affiliate_purchase_id: string | number,
-    uuid: string
+    uuid: string,
   ) {
     return `${this.selldone_api_url}/partners/deals/${agency_affiliate_purchase_id}/refund/${uuid}`;
   }
 
   GET_MY_PARTNER_PURCHASE_DOWNLOAD_RECEIPT(
-    agency_affiliate_purchase_id: string | number
+    agency_affiliate_purchase_id: string | number,
   ) {
     return `${this.selldone_api_url}/partners/deals/${agency_affiliate_purchase_id}/receipt`;
   }
 
   POST_MY_PARTNER_PURCHASE_TRANSFER_OWNERSHIP(
     agency_affiliate_purchase_id: string | number,
-    uuid: string
+    uuid: string,
   ) {
     return `${this.selldone_api_url}/partners/deals/${agency_affiliate_purchase_id}/transfer-ownership/${uuid}`;
   }
@@ -3940,13 +3944,13 @@ export class API {
   }
   PUT_UPDATE_SHOP_WEBHOOK(
     shop_id: string | number,
-    webhook_id: string | number
+    webhook_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/webhooks/${webhook_id}`;
   }
   GET_SHOP_WEBHOOK_CALLS(
     shop_id: string | number,
-    webhook_id: string | number
+    webhook_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/webhooks/${webhook_id}/calls`;
   }
@@ -3956,13 +3960,13 @@ export class API {
 
   POST_SHOP_WEBHOOK_RESET(
     shop_id: string | number,
-    webhook_id: string | number
+    webhook_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/webhooks/${webhook_id}/reset`;
   }
   POST_SHOP_WEBHOOK_TEST(
     shop_id: string | number,
-    webhook_id: string | number
+    webhook_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/webhooks/${webhook_id}/test`;
   }
@@ -3989,13 +3993,13 @@ export class API {
   }
   DELETE_SHOP_EDIT_VENDOR(
     shop_id: string | number,
-    vendor_id: string | number
+    vendor_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}`;
   }
   POST_UPLOAD_VENDOR_ICON(
     shop_id: string | number,
-    vendor_id: string | number
+    vendor_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/icon`;
   }
@@ -4008,13 +4012,13 @@ export class API {
   }
   PUT_SHOP_EDIT_VENDOR_PRICINGS(
     shop_id: string | number,
-    pricing_id: string | number
+    pricing_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pricings/${pricing_id}`;
   }
   DELETE_SHOP_EDIT_VENDOR_PRICINGS(
     shop_id: string | number,
-    pricing_id: string | number
+    pricing_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pricings/${pricing_id}`;
   }
@@ -4028,21 +4032,21 @@ export class API {
   }
   POST_ADD_PRODUCT_VENDOR(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/vendors`;
   }
   PUT_EDIT_PRODUCT_VENDOR(
     shop_id: string | number,
     product_id: string | number,
-    vendor_product_id: string | number
+    vendor_product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/vendors/${vendor_product_id}`;
   }
   DELETE_PRODUCT_VENDOR(
     shop_id: string | number,
     product_id: string | number,
-    vendor_product_id: string | number
+    vendor_product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/vendors/${vendor_product_id}`;
   }
@@ -4052,7 +4056,7 @@ export class API {
   }
   GET_SHOP_VENDOR_ACCOUNT_TRANSACTIONS(
     shop_id: string | number,
-    account_id: string | number
+    account_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-accounts/${account_id}/transactions`;
   }
@@ -4065,7 +4069,7 @@ export class API {
   }
   DELETE_SHOP_VENDOR_PAYMENT(
     shop_id: string | number,
-    payment_id: string | number
+    payment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-payments/${payment_id}`;
   }
@@ -4075,21 +4079,21 @@ export class API {
   }
   POST_SHOP_VENDOR_REQUESTS_ACCEPT(
     shop_id: string | number,
-    request_id: string | number
+    request_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-requests/${request_id}`;
   }
 
   GET_SHOP_VENDOR_PAYMENT_OPTIONS(
     shop_id: string | number,
-    vendor_id: string | number
+    vendor_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/payment-options`;
   }
 
   POST_SHOP_VENDOR_PAYMENT_REVERSE_TRANSFER(
     shop_id: string | number,
-    payment_id: string | number
+    payment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-payments/${payment_id}/revers`;
   }
@@ -4114,77 +4118,77 @@ export class API {
 
   GET_SHOP_CONNECT_INFO(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}`;
   }
   PUT_UPDATE_SHOP_CONNECT(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}`;
   }
   DELETE_SHOP_CONNECT(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}`;
   }
   GET_SHOP_CONNECT_PRODUCTS(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/products`;
   }
 
   POST_SHOP_CONNECT_REQUEST_SYNC(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/sync`;
   }
   GET_SHOP_CONNECT_TEST(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/test`;
   }
 
   GET_SHOP_CONNECT_ORDERS(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/orders`;
   }
 
   POST_SHOP_CONNECT_BASKET_SYNC(
     shop_id: string | number,
-    shop_connect_order_id: string | number
+    shop_connect_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connect-orders/${shop_connect_order_id}/sync`;
   }
   POST_SHOP_CONNECT_BASKET_CONFIRM(
     shop_id: string | number,
-    shop_connect_order_id: string | number
+    shop_connect_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connect-orders/${shop_connect_order_id}/confirm`;
   }
   POST_SHOP_CONNECT_BASKET_REFRESH(
     shop_id: string | number,
-    shop_connect_order_id: string | number
+    shop_connect_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connect-orders/${shop_connect_order_id}/refresh`;
   }
   POST_SHOP_CONNECT_BASKET_CANCEL(
     shop_id: string | number,
-    shop_connect_order_id: string | number
+    shop_connect_order_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connect-orders/${shop_connect_order_id}/cancel`;
   }
 
   GET_SHOP_CONNECT_LOGS(
     shop_id: string | number,
-    shop_connect_id: string | number
+    shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/logs`;
   }
@@ -4198,19 +4202,19 @@ export class API {
   }
   PUT_EDIT_SHOP_VALUATION(
     shop_id: string | number,
-    valuation_id: string | number
+    valuation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/valuations/${valuation_id}`;
   }
   DELETE_SHOP_VALUATION(
     shop_id: string | number,
-    valuation_id: string | number
+    valuation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/valuations/${valuation_id}`;
   }
   POST_SET_PRODUCT_VALUATION(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/valuation`;
   }
@@ -4226,13 +4230,13 @@ export class API {
   }
   PUT_SHOP_COMMENT_REPLY(
     shop_id: string | number,
-    comment_id: string | number
+    comment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/comments/${comment_id}/reply`;
   }
   PUT_SHOP_COMMENT_REVIEWED(
     shop_id: string | number,
-    comment_id: string | number
+    comment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/comments/${comment_id}/review`;
   }
@@ -4241,13 +4245,13 @@ export class API {
   }
   GET_SHOP_COMMENT_DETAIL(
     shop_id: string | number,
-    comment_id: string | number
+    comment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/comments/${comment_id}`;
   }
   POST_SHOP_COMMENT_RESTORE(
     shop_id: string | number,
-    comment_id: string | number
+    comment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/comments/${comment_id}/restore`;
   }
@@ -4282,46 +4286,46 @@ export class API {
   }
   PUT_SHOP_LOGISTIC_PROFILE_EDIT(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}`;
   }
   DELETE_SHOP_LOGISTIC_PROFILE(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}`;
   }
   GET_SHOP_LOGISTIC_PROFILE(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}`;
   }
   POST_SHOP_LOGISTIC_PROFILE_SET_ARTICLE(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}/articles`;
   }
   DELETE_SHOP_LOGISTIC_PROFILE_ARTICLE(
     shop_id: string | number,
     profile_id: string | number,
-    article_id: string | number
+    article_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}/articles/${article_id}`;
   }
 
   GET_SHOP_LOGISTIC_PROFILE_PRODUCTS(
     shop_id: string | number,
-    profile_id: string | number
+    profile_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}/products`;
   }
   POST_SHOP_LOGISTIC_PROFILE_AUTO_TRANSLATE(
     shop_id: string | number,
     profile_id: string | number,
-    article_id: string | number
+    article_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/logistic-profiles/${profile_id}/articles/${article_id}/translate-article`;
   }
@@ -4342,7 +4346,7 @@ export class API {
   //―――――――――――――――――――――― Translate ――――――――――――――――――――
   POST_TRANSLATE_PRODUCT_ARTICLE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/translate-article`;
   }
@@ -4359,7 +4363,7 @@ export class API {
   }
   POST_REPORT_ARTICLE(
     article_id: string | number,
-    report: keyof typeof ArticleReport
+    report: keyof typeof ArticleReport,
   ) {
     return `${this.selldone_api_url}/articles/${article_id}/report/${report}`;
   }
@@ -4410,7 +4414,7 @@ export class API {
   }
   POST_SET_SHOP_ARTICLE_TAGS(
     shop_id: string | number,
-    article_id: string | number
+    article_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/articles/tags/${article_id}`;
   }
@@ -4510,7 +4514,7 @@ export class API {
   }
   GET_SHOP_MAP_TAG_PRODUCTS(
     shop_id: string | number,
-    map_tag_id: string | number
+    map_tag_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags/${map_tag_id}/products`;
   }
@@ -4545,7 +4549,7 @@ export class API {
 
   POST_PRODUCT_ADD_SUBSCRIPTION_PRICE(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices`;
   }
@@ -4553,7 +4557,7 @@ export class API {
   PUT_PRODUCT_EDIT_SUBSCRIPTION_PRICE(
     shop_id: string | number,
     product_id: string | number,
-    price_id: string | number
+    price_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}`;
   }
@@ -4561,14 +4565,14 @@ export class API {
   DELETE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(
     shop_id: string | number,
     product_id: string | number,
-    price_id: string | number
+    price_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}`;
   }
   POST_RESTORE_PRODUCT_EDIT_SUBSCRIPTION_PRICE(
     shop_id: string | number,
     product_id: string | number,
-    price_id: string | number
+    price_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/subscription-prices/${price_id}/restore`;
   }
@@ -4580,7 +4584,7 @@ export class API {
   GET_EXPORT_PRODUCT_SUBSCRIBERS(
     shop_id: string | number,
     product_id: string | number,
-    render: "excel" | "pdf"
+    render: "excel" | "pdf",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/export/subscribers/${render}`;
   }
@@ -4616,7 +4620,7 @@ export class API {
 
   POST_BASKET_SUBSCRIPTION_BILLS_SYNC_MANUALLY(
     shop_id: string | number,
-    basket_id: string | number
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/sync-bills`;
   }
@@ -4644,20 +4648,20 @@ export class API {
 
   GET_PRODUCT_SUBSCRIPTION_CONTENTS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents`;
   }
   POST_PRODUCT_SUBSCRIPTION_ADD_CONTENT(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents`;
   }
   PUT_PRODUCT_SUBSCRIPTION_EDIT_CONTENT(
     shop_id: string | number,
     product_id: string | number,
-    content_id: string | number
+    content_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents/${content_id}`;
   }
@@ -4665,21 +4669,21 @@ export class API {
   POST_PRODUCT_SUBSCRIPTION_CONTENT_CONFIRM(
     shop_id: string | number,
     product_id: string | number,
-    content_id: string | number
+    content_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents/${content_id}/confirm`;
   }
   DELETE_PRODUCT_SUBSCRIPTION_CONTENT(
     shop_id: string | number,
     product_id: string | number,
-    content_id: string | number
+    content_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents/${content_id}`;
   }
   GET_PRODUCT_SUBSCRIPTION_CONTENT_EMAIL_PREVIEW(
     shop_id: string | number,
     product_id: string | number,
-    content_id: string | number
+    content_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ribbon/contents/${content_id}/email-preview`;
   }
@@ -4691,14 +4695,14 @@ export class API {
   PUT_PRODUCT_SET_TRANSLATIONS(
     shop_id: string | number,
     product_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/translations/${key}`;
   }
   PUT_CATEGORY_SET_TRANSLATIONS(
     shop_id: string | number,
     category_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/translations/${key}`;
   }
@@ -4706,7 +4710,7 @@ export class API {
     shop_id: string | number,
     product_id: number | string,
     cross_sell_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells/${cross_sell_id}/translations/${key}`;
   }
@@ -4717,7 +4721,7 @@ export class API {
   PUT_DISCOUNT_CODE_SET_TRANSLATIONS(
     shop_id: string | number,
     discount_code_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/${discount_code_id}/translations/${key}`;
   }
@@ -4725,7 +4729,7 @@ export class API {
   PUT_COUPON_SET_TRANSLATIONS(
     shop_id: string | number,
     coupon_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/coupons/${coupon_id}/translations/${key}`;
   }
@@ -4733,28 +4737,28 @@ export class API {
   PUT_OFFER_SET_TRANSLATIONS(
     shop_id: string | number,
     offer_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/offers/${offer_id}/translations/${key}`;
   }
   PUT_GIFT_CARD_SET_TRANSLATIONS(
     shop_id: string | number,
     gift_card_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-cards/${gift_card_id}/translations/${key}`;
   }
   PUT_LOTTERY_SET_TRANSLATIONS(
     shop_id: string | number,
     lottery_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/lotteries/${lottery_id}/translations/${key}`;
   }
   PUT_INCLUDE_SET_TRANSLATIONS(
     shop_id: string | number,
     include_id: number | string,
-    key: string
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/includes/${include_id}/translations/${key}`;
   }
@@ -4783,7 +4787,7 @@ export class API {
   }
   POST_MY_AGENCY_SEND_CLIENT_ACTIVATION_EMAIL(
     agency_id: string | number,
-    client_id: string | number
+    client_id: string | number,
   ) {
     return `${this.selldone_api_url}/agencies/${agency_id}/clients/${client_id}/send-activation`;
   }
@@ -4806,7 +4810,7 @@ export class API {
 
   POST_MY_AGENCY_CREATE_SHOP_TEMPORARY_ACCESS(
     agency_id: string | number,
-    shop_id: string | number
+    shop_id: string | number,
   ) {
     return `${this.selldone_api_url}/agencies/${agency_id}/shops/${shop_id}/access`;
   }
@@ -4816,7 +4820,7 @@ export class API {
   }
   PUT_MY_AGENCY_UPDATE_PLAN(
     agency_id: string | number,
-    plan_id: string | number
+    plan_id: string | number,
   ) {
     return `${this.selldone_api_url}/agencies/${agency_id}/plans/${plan_id}`;
   }
@@ -4852,7 +4856,7 @@ export class API {
   }
   GET_MY_AGENCY_DOCUMENTS_DOWNLOAD_URL(
     agency_id: string | number,
-    document_id: string | number
+    document_id: string | number,
   ) {
     return `${this.selldone_api_url}/agencies/${agency_id}/documents/${document_id}`;
   }
@@ -4861,7 +4865,7 @@ export class API {
   }
   DELETE_MY_AGENCY_DOCUMENT(
     agency_id: string | number,
-    document_id: string | number
+    document_id: string | number,
   ) {
     return `${this.selldone_api_url}/agencies/${agency_id}/documents/${document_id}`;
   }
@@ -4895,7 +4899,7 @@ export class API {
   }
   DELETE_SHOP_STREAM_USER(
     shop_id: string | number,
-    stream_user_id: string | number
+    stream_user_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/stream-users/${stream_user_id}`;
   }
@@ -4907,27 +4911,27 @@ export class API {
 
   POST_AI_PAGE_BUILDER_AUTO_GENERATE(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/ai`;
   }
   POST_AI_ARTICLE_AUTO_GENERATE(
     shop_id: string | number,
-    article_id: string | number
+    article_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/articles/${article_id}/ai`;
   }
 
   POST_AI_PAGE_BUILDER_SECTION_CONTENT_GENERATE(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/ai/sections`;
   }
 
   POST_AI_PRODUCT_AUTO_CREATE_SPEC(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/spec`;
   }
@@ -4946,7 +4950,7 @@ export class API {
   }
   DELETE_SHOP_VARIANT_ASSET_UPLOAD(
     shop_id: string | number,
-    variant_asset_id: string | number
+    variant_asset_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/variant-assets/${variant_asset_id}`;
   }
@@ -4961,13 +4965,13 @@ export class API {
 
   POST_SHOP_INCLUDE_EDIT(
     shop_id: string | number,
-    include_id: string | number
+    include_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/includes/${include_id}`;
   }
   DELETE_SHOP_INCLUDE_EDIT(
     shop_id: string | number,
-    include_id: string | number
+    include_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/includes/${include_id}`;
   }
@@ -4978,14 +4982,14 @@ export class API {
 
   POST_PRODUCT_INCLUDE_SET(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/includes`;
   }
 
   GET_SHOP_PAGE_AUGMENT_STRUCTURE(
     shop_id: string | number,
-    page_id: string | number
+    page_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/augment`;
   }
@@ -4994,7 +4998,7 @@ export class API {
 
   POST_PRODUCT_SET_SHORTCUT_CATEGORIES(
     shop_id: string | number,
-    product_id: number | string
+    product_id: number | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/shortcuts`;
   }
@@ -5002,27 +5006,27 @@ export class API {
   //―――――――――――――――――――――― Shop > Product > Cross-selling ――――――――――――――――――――
   GET_PRODUCT_CROSS_SELL_ITEMS(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells`;
   }
   POST_PRODUCT_CROSS_SELL_ADD(
     shop_id: string | number,
-    product_id: string | number
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells`;
   }
   PUT_PRODUCT_CROSS_SELL_EDIT(
     shop_id: string | number,
     product_id: string | number,
-    cross_sell_id: string | number
+    cross_sell_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells/${cross_sell_id}`;
   }
   DELETE_PRODUCT_CROSS_SELL_EDIT(
     shop_id: string | number,
     product_id: string | number,
-    cross_sell_id: string | number
+    cross_sell_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/cross-sells/${cross_sell_id}`;
   }
@@ -5055,7 +5059,7 @@ export class API {
   }
   PUT_SHOP_CLUSTERS_EDIT(
     shop_id: string | number,
-    cluster_id: string | number
+    cluster_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/clusters/${cluster_id}`;
   }
@@ -5064,14 +5068,14 @@ export class API {
   }
   POST_SHOP_CLUSTER_UPLOAD_ICON(
     shop_id: string | number,
-    cluster_id: string | number
+    cluster_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/clusters/${cluster_id}/icon`;
   }
 
   GET_SHOP_CLUSTERS_RESOURCES(
     shop_id: string | number,
-    cluster_id: string | number
+    cluster_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/resources${
       cluster_id ? "/" + cluster_id : ""
