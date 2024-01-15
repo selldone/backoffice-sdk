@@ -4767,6 +4767,22 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/translate`;
   }
 
+  PUT_VENDOR_SET_TRANSLATIONS(
+    shop_id: string | number,
+    vendor_id: number | string,
+    key: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/translations/${key}`;
+  }
+
+  PUT_VENDOR_PRICING_SET_TRANSLATIONS(
+    shop_id: string | number,
+    vendor_pricing_id: number | string,
+    key: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/vendor-pricings/${vendor_pricing_id}/translations/${key}`;
+  }
+
   //―――――――――――――――――――――― Investors ――――――――――――――――――――
   GET_INVESTORS_FILES(category: string) {
     return `${this.selldone_api_url}/investors/files/${category}`;
