@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,27 +12,28 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
+import {ImportQueImage} from "@core/models/shop/importer/import-que-image.model";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+export default function apiProductImporterQueImageSyncPut(
+  this: ApiProductImporterQue,
+  shop_id: number,
+  item_id: number,
+) {
+  const url = window.API.PUT_IMPORT_IMAGE_ITEM_TRY(shop_id, item_id);
+  return this.putNow<api.product.importer.que.image.sync.put.IResponse>(url);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.importer.que.image.sync.put {
+  export interface IResponse {
+    success: boolean;
+    id?: number; // The que image resolved and you can delete item!
+    item?: ImportQueImage;  // Just the status of the image in the que has been updated.
+  }
+
+  export interface IResponse {}
+}

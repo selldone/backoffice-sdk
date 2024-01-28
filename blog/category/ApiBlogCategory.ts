@@ -13,26 +13,25 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import ApiShopBlogCategoriesListGet from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.get";
+import ApiShopBlogCategoriesEditPut from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.edit.put";
+import ApiShopBlogCategoriesAddPost from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.add.post";
+import ApiShopBlogCategoriesDelete from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.delete";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
+export class ApiBlogCategory extends APIAbstract {
+  public list = ApiShopBlogCategoriesListGet;
 
-  public getInfo = apiShopProductInfoGet;
+  public edit = ApiShopBlogCategoriesEditPut;
 
-  public importer = new ApiProductImporter();
+  public add = ApiShopBlogCategoriesAddPost;
+
+  public remove = ApiShopBlogCategoriesDelete;
 
   constructor() {
     super();
   }
-}
-
-//█████████████████████████████████████████████████████████████
+} //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace ApiPage {}

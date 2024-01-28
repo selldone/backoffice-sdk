@@ -75,6 +75,9 @@ export class API {
   LOGOUT() {
     return `${this.selldone_api_url}/logout-selldone`;
   }
+  LOGIN() {
+    return `${this.selldone_api_url}/login`;
+  }
 
   POST_PROFILE_UPLOAD_IMAGE(type: "avatar", profile_id: string | number) {
     if (!profile_id)

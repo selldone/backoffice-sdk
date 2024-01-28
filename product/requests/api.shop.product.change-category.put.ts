@@ -12,9 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
-
-
 import type {ApiProduct} from "../ApiProduct";
 
 /**
@@ -27,19 +24,19 @@ import type {ApiProduct} from "../ApiProduct";
  *
  * @returns Promise promise with the response of the change category action.
  */
-export default function changeCategory(
-    this: ApiProduct,
-    shop_id: number,
-    product_id: number,
-    category_id: number|null,
-    bundle?:number[]|null
-
+export default function apiShopProductChangeCategoryPut(
+  this: ApiProduct,
+  shop_id: number,
+  product_id: number,
+  category_id: number | null,
+  bundle?: number[] | null,
 ) {
-    const params = {category_id: category_id,bundle:bundle}
-    const url = window.API.PUT_SET_PRODUCT_CATEGORY(shop_id,product_id);
-    return this.putNow<api.shop.product.change_category.put.IResponse>(url, params);
-
-
+  const params = { category_id: category_id, bundle: bundle };
+  const url = window.API.PUT_SET_PRODUCT_CATEGORY(shop_id, product_id);
+  return this.putNow<api.shop.product.change_category.put.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
@@ -47,9 +44,8 @@ export default function changeCategory(
 //█████████████████████████████████████████████████████████████
 
 export namespace api.shop.product.change_category.put {
-    export interface IResponse {
-        success: boolean;
-        count: number;  // Count of products change
-    }
-
+  export interface IResponse {
+    success: boolean;
+    count: number; // Count of products change
+  }
 }

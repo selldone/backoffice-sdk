@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,27 +12,26 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+export default function apiProductImporterQueImagesDelete(
+  this: ApiProductImporterQue,
+  shop_id: number,
+  item_id: number,
+) {
+  const url = window.API.DELETE_IMPORT_IMAGE_ITEM(shop_id, item_id);
+  return this.deleteNow<api.product.importer.que.images.deleter.IResponse>(url);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.importer.que.images.deleter {
+  export interface IResponse {
+    success: boolean;
+    id: number;
+  }
+
+  export interface IResponse {}
+}

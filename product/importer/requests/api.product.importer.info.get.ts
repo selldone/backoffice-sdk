@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,27 +12,23 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
 import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+export default function apiProductImporterInfoGet(
+  this: ApiProductImporter,
+  shop_id: number,
+) {
+  const url = window.API.GET_SHOP_IMPORTING_INFO(shop_id);
+  return this.getNow<api.product.importer.info.get.IResponse>(url, null);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.importer.info.get {
+  export interface IResponse {
+    importing: number;
+    "images-que": number;
+  }
+}

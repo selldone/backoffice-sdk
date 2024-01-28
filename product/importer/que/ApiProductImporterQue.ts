@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -13,18 +13,24 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import apiProductImporterQueImagesGet
+  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.images.get";
+import apiProductImporterQueImagesDelete
+  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.images.delete";
+import apiProductImporterQueImageSyncPut
+  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.image.sync.put";
+import apiProductImporterQueProductsGet
+  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.products.get";
+import apiProductImporterQueProductsDelete
+  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.products.delete";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
+export class ApiProductImporterQue extends APIAbstract {
+  public images = apiProductImporterQueImagesGet;
+  public removeImage = apiProductImporterQueImagesDelete;
+  public syncImage = apiProductImporterQueImageSyncPut;
 
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
+  public products = apiProductImporterQueProductsGet;
+  public removeProduct = apiProductImporterQueProductsDelete;
 
   constructor() {
     super();

@@ -13,26 +13,16 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import ApiAuthLogoutPost from "@sdk-backoffice/auth/requests/api.auth.logout.post";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
+export class ApiAuth extends APIAbstract {
+  public logout = ApiAuthLogoutPost;
 
   constructor() {
     super();
   }
-}
-
-//█████████████████████████████████████████████████████████████
+} //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace ApiPage {}

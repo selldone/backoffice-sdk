@@ -18,8 +18,10 @@ import { ApiPage } from "./page/ApiPage";
 import { ApiAgency } from "./agency/ApiAgency";
 import { ApiProduct } from "./product/ApiProduct";
 import { ApiArticle } from "./article/ApiArticle";
+import {ApiBlog} from "@sdk-backoffice/blog/ApiBlog";
+import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
 
-const SDK_VERSION = "0.01";
+const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.
 declare global {
   interface Window {
@@ -44,9 +46,16 @@ declare global {
 
     // Global SDK Interface
     $backoffice: {
+
+
+      // Auth:
+      auth: ApiAuth;
+
+
       // Shop:
       page: ApiPage;
       product: ApiProduct;
+      blog: ApiBlog;
 
       // Agency:
       agency: ApiAgency;
@@ -76,9 +85,13 @@ export class BackofficeSDK {
     window.ARTICLE_API = window.API;
 
     window.$backoffice = {
+      // Auth:
+      auth: new ApiAuth(),
+
       // Shop:
       page: new ApiPage(),
       product: new ApiProduct(),
+      blog: new ApiBlog(),
 
       // Agency:
       agency: new ApiAgency(),

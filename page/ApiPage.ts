@@ -14,8 +14,11 @@
 
 import { APIAbstract } from "@core/server/APIAbstract";
 import getPageAugment from "./requests/api.page.augment.get";
+import ApiShopShopPagesGet from "@sdk-backoffice/page/requests/api.shop.pages.get";
 
 export class ApiPage extends APIAbstract {
+
+  public list = ApiShopShopPagesGet;
 
   public getPageAugment = getPageAugment;
 

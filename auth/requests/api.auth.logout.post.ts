@@ -12,27 +12,19 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+export default function ApiAuthLogoutPost(this: ApiAuth) {
+  const url = window.API.LOGOUT();
+  return this.postNow<api.auth.logout.post.IResponse>(url, null);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.auth.logout.post {
+  export interface IResponse {
+    success: true;
+  }
+}

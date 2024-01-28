@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -13,18 +13,15 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
+import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
+import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
+import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
 
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
+export class ApiProductImporter extends APIAbstract {
+  public send = apiProductImporterPost;
+  public info = apiProductImporterInfoGet;
+  public que = new ApiProductImporterQue();
 
   constructor() {
     super();

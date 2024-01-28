@@ -12,27 +12,32 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
+import {BlogCategory} from "@core/models/shop/blog/blog-category.model";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+export default function ApiShopBlogCategoriesEditPut(
+  this: ApiBlogCategory,
+  shop_id: number,
+  category_id: number,
+  params?: api.shop.blog.categories.edit.put.IParams,
+) {
+  const url = window.API.PUT_EDIT_SHOP_BLOG_CATEGORY(shop_id, category_id);
+  return this.putNow<api.shop.blog.categories.edit.put.IResponse>(url, params);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.shop.blog.categories.edit.put {
+  export interface IResponse {
+    category: BlogCategory;
+    success: boolean;
+  }
+
+  export interface IParams {
+    category?: string;
+    description?: string;
+    star?: boolean;
+  }
+}

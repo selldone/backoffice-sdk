@@ -12,27 +12,35 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
+import {BlogCategory} from "@core/models/shop/blog/blog-category.model";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
+export default function ApiShopBlogCategoriesListGet(
+  this: ApiBlogCategory,
+  shop_id: number,
+  offset: number,
+  limit: number,
+  options?: api.shop.blog.categories.get.IParams,
+) {
+  const params = { offset: offset, limit: limit, ...options };
 
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  constructor() {
-    super();
-  }
+  const url = window.API.GET_SHOP_BLOG_CATEGORIES(shop_id);
+  return this.getNow<api.shop.blog.categories.get.IResponse>(url, params);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.shop.blog.categories.get {
+  export interface IResponse {
+    categories: Partial<BlogCategory>[];
+    total: number;
+  }
+
+  export interface IParams {
+    search?: string; // Optional: Search query
+    sortBy?: string; // Optional: Sort by this field
+    sortDesc?: boolean; // Optional: Whether to sort in descending order
+  }
+}
