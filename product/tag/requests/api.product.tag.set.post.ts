@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,30 +12,25 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiShopProductsGet from "./requests/api.shop.products.get";
-import apiShopProductChangeCategoryPut from "./requests/api.shop.product.change-category.put";
-import apiShopProductInfoGet from "./requests/api.shop.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
 import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiShopProductsGet;
-  public changeCategory = apiShopProductChangeCategoryPut;
-
-  public getInfo = apiShopProductInfoGet;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  constructor() {
-    super();
-  }
+export default function apiProductTagSetPost(
+  this: ApiProductTag,
+  shop_id: number,
+  product_id: number,
+  tags: string[] | null,
+) {
+  const url = window.API.POST_PRODUCT_SET_TAGS(shop_id, product_id);
+  return this.postNow<api.product.tag.set.post.IResponse>(url, { tags: tags });
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.tag.set.post {
+  export interface IResponse {
+    tags: string[];
+    success: boolean;
+  }
+}
