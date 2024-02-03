@@ -33,7 +33,7 @@ import type { ProductData } from "@core/models/shop/product/product-data.model";
 import { DeliveryStateCode } from "@core/enums/delivery/DeliveryStateCode";
 import type { OrderTypeCode } from "@core/enums/order/OrderTypeCode";
 
-export default function apiShopProductInfoGet(
+export default function apiProductInfoGet(
   this: ApiProduct,
   shop_id: number,
   product_id: number,

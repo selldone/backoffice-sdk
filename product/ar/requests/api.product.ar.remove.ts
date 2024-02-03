@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,40 +12,32 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiProductsListGet from "./requests/api.products.list.get";
-import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
-import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
 import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
+import {Product} from "@core/models/shop/product/product.model";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
-
-  public getInfo = apiProductInfoGet;
-
-  public setQuantity = apiProductSetQuantityPost;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  public variants = new ApiProductVariant();
-
-  public ar = new ApiProductAR();
-
-
-  constructor() {
-    super();
-  }
+export default function apiProductArRemove(
+  this: ApiProductAR,
+  shop_id: number,
+  product_id: number,
+  file_type: "src" | "ios",
+  variant_id: number | null = null,
+) {
+  const url = window.API.DELETE_PRODUCT_3D_MODEL(
+    shop_id,
+    product_id,
+    file_type,
+    variant_id,
+  );
+  return this.deleteNow<api.product.ar.remove.IResponse>(url);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.ar.remove {
+  export interface IResponse {
+    success: boolean;
+    ar: Product.IAR;
+  }
+}

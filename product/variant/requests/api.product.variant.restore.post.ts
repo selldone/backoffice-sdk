@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,40 +12,32 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiProductsListGet from "./requests/api.products.list.get";
-import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
-import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
+import {ProductVariant} from "@core/models/shop/product/product_variant.model";
 import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
-
-  public getInfo = apiProductInfoGet;
-
-  public setQuantity = apiProductSetQuantityPost;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  public variants = new ApiProductVariant();
-
-  public ar = new ApiProductAR();
-
-
-  constructor() {
-    super();
-  }
+export default function apiProductVariantRestorePost(
+  this: ApiProductVariant,
+  shop_id: number,
+  product_id: number,
+  variant_id: number,
+) {
+  const url = window.API.POST_RESTORE_DELETED_VARIANT(
+    shop_id,
+    product_id,
+    variant_id,
+  );
+  return this.postNow<api.product.variant.restore.post.IResponse>(url, null);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.product.variant.restore.post {
+  export interface IResponse {
+    success: boolean;
+    variants: ProductVariant[];
+    quantity: number;
+    product_variant: ProductVariant; // Restored variant
+  }
+}

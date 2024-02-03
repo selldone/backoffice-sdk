@@ -16,7 +16,7 @@ import type { ApiProduct } from "../ApiProduct";
 import type { Product } from "@core/models/shop/product/product.model";
 import { Category } from "@core/models/shop/category/category.model";
 
-export default function apiShopProductsGet(
+export default function apiProductsListGet(
   this: ApiProduct,
   shop_id: number,
   offset: number,

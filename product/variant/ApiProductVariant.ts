@@ -12,32 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import apiProductVariantRemove from "@sdk-backoffice/product/variant/requests/api.product.variant.remove";
+import apiProductVariantRestorePost from "@sdk-backoffice/product/variant/requests/api.product.variant.restore.post";
 import {APIAbstract} from "@core/server/APIAbstract";
-import apiProductsListGet from "./requests/api.products.list.get";
-import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
-import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
-
-  public getInfo = apiProductInfoGet;
-
-  public setQuantity = apiProductSetQuantityPost;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  public variants = new ApiProductVariant();
-
-  public ar = new ApiProductAR();
-
+export class ApiProductVariant extends APIAbstract {
+  public remove = apiProductVariantRemove;
+  public restore = apiProductVariantRestorePost;
 
   constructor() {
     super();
@@ -48,4 +29,4 @@ export class ApiProduct extends APIAbstract {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace ApiProductVariant {}

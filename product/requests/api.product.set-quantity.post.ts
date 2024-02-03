@@ -12,40 +12,36 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiProductsListGet from "./requests/api.products.list.get";
-import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
-import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
+import type {ApiProduct} from "../ApiProduct";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
-
-  public getInfo = apiProductInfoGet;
-
-  public setQuantity = apiProductSetQuantityPost;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  public variants = new ApiProductVariant();
-
-  public ar = new ApiProductAR();
-
-
-  constructor() {
-    super();
-  }
+/**
+ * Update Quantity of the product.
+ *
+ * @param shop_id - The ID of the shop.
+ * @param product_id - The ID of the product.
+ *
+ */
+export default function apiProductSetQuantityPost(
+  this: ApiProduct,
+  shop_id: number,
+  product_id: number,
+  quantity: number,
+) {
+  const params = { quantity: quantity };
+  const url = window.API.POST_PRODUCT_QUANTITY(shop_id, product_id);
+  return this.postNow<api.shop.product.set_quantity.post.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.shop.product.set_quantity.post {
+  export interface IResponse {
+    success: boolean;
+    quantity: number;
+  }
+}

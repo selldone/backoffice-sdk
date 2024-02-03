@@ -12,40 +12,40 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiProductsListGet from "./requests/api.products.list.get";
-import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
-import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
+import type {ApiProduct} from "../ApiProduct";
 
-export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
-
-  public getInfo = apiProductInfoGet;
-
-  public setQuantity = apiProductSetQuantityPost;
-
-  public importer = new ApiProductImporter();
-
-  public tags = new ApiProductTag();
-
-  public variants = new ApiProductVariant();
-
-  public ar = new ApiProductAR();
-
-
-  constructor() {
-    super();
-  }
+/**
+ * Changes the category of a given product.
+ *
+ * @param shop_id - The ID of the shop.
+ * @param product_id - The ID of the product.
+ * @param category_id - The ID of the category to which the product should be moved. Use `null` if removing from a category.
+ * @param bundle - An array of product IDs representing the bundle. Use `null` if there's no bundle.
+ *
+ * @returns Promise promise with the response of the change category action.
+ */
+export default function apiProductChangeCategoryPut(
+  this: ApiProduct,
+  shop_id: number,
+  product_id: number,
+  category_id: number | null,
+  bundle?: number[] | null,
+) {
+  const params = { category_id: category_id, bundle: bundle };
+  const url = window.API.PUT_SET_PRODUCT_CATEGORY(shop_id, product_id);
+  return this.putNow<api.shop.product.change_category.put.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace api.shop.product.change_category.put {
+  export interface IResponse {
+    success: boolean;
+    count: number; // Count of products change
+  }
+}

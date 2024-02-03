@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,40 +12,28 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type {ApiProduct} from "../ApiProduct";
+import {ProductVariant} from "@core/models/shop/product/product_variant.model";
+import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
 
-/**
- * Changes the category of a given product.
- *
- * @param shop_id - The ID of the shop.
- * @param product_id - The ID of the product.
- * @param category_id - The ID of the category to which the product should be moved. Use `null` if removing from a category.
- * @param bundle - An array of product IDs representing the bundle. Use `null` if there's no bundle.
- *
- * @returns Promise promise with the response of the change category action.
- */
-export default function apiShopProductChangeCategoryPut(
-  this: ApiProduct,
+export default function apiProductVariantRemove(
+  this: ApiProductVariant,
   shop_id: number,
   product_id: number,
-  category_id: number | null,
-  bundle?: number[] | null,
+  variant_id: number,
 ) {
-  const params = { category_id: category_id, bundle: bundle };
-  const url = window.API.PUT_SET_PRODUCT_CATEGORY(shop_id, product_id);
-  return this.putNow<api.shop.product.change_category.put.IResponse>(
-    url,
-    params,
-  );
+  const url = window.API.DELETE_VARIANT(shop_id, product_id, variant_id);
+  return this.deleteNow<api.product.variant.remove.IResponse>(url);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace api.shop.product.change_category.put {
+export namespace api.product.variant.remove {
   export interface IResponse {
     success: boolean;
-    count: number; // Count of products change
+    variants: ProductVariant[];
+    quantity: number;
+    variant_id: number; // Remove variant id
   }
 }
