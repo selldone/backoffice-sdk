@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,16 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import apiProductVariantRemove from "@sdk-backoffice/product/variant/requests/api.product.variant.remove";
+import apiProductVariantRestorePost from "@sdk-backoffice/product/variant/requests/api.product.variant.restore.post";
 import {APIAbstract} from "@core/server/APIAbstract";
+import apiProductVendorsListGet from "@sdk-backoffice/product/vendor/requests/api.product.vendors.list.get";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
+export class ApiProductVendor extends APIAbstract {
+  public list = apiProductVendorsListGet;
 
   constructor() {
     super();
@@ -32,4 +29,4 @@ export class ApiProductImporter extends APIAbstract {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace ApiProductVariant {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,16 +12,12 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import apiProductLogisticProfilesListGet
+  from "@sdk-backoffice/logistic/profile/requests/api.product.logistic.profiles.list.get";
 import {APIAbstract} from "@core/server/APIAbstract";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
+export class ApiLogisticProfile extends APIAbstract {
+  public list = apiProductLogisticProfilesListGet;
 
   constructor() {
     super();
@@ -32,4 +28,4 @@ export class ApiProductImporter extends APIAbstract {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace ApiLogisticProfile {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,24 +12,35 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
+import {Vendor} from "@core/models/shop/vendor/vendor.model";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
-
-  constructor() {
-    super();
-  }
+export default function apiVendorsListGet(
+  this: ApiVendor,
+  shop_id: number,
+  offset: number,
+  limit: number,
+  options?: api.vendors.list.get.IParams,
+) {
+  const params = { offset: offset, limit: limit, ...options };
+  const url = window.API.GET_SHOP_VENDORS(shop_id);
+  return this.getNow<api.vendors.list.get.IResponse>(url, params);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace api.vendors.list.get {
+  export interface IResponse {
+    vendors: Vendor[];
+    total: number;
+  }
+
+  export interface IParams {
+    contain: number | null;
+    search: string | null;
+    active_only: boolean | null;
+    compact: boolean | null;
+  }
+}

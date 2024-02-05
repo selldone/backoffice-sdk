@@ -13,15 +13,11 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
+import apiProductSubscriptionPriceListGet
+    from "@sdk-backoffice/product/subscription-price/requests/api.product.subscription-price.list.get";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
+export class ApiProductSubscriptionPrice extends APIAbstract {
+  public list = apiProductSubscriptionPriceListGet;
 
   constructor() {
     super();
@@ -32,4 +28,4 @@ export class ApiProductImporter extends APIAbstract {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace ApiProductSubscriptionPrice {}

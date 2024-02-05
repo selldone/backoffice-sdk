@@ -21,6 +21,10 @@ import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
 import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
 import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
 import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
+import {ApiProductVendor} from "@sdk-backoffice/product/vendor/ApiProductVendor";
+import {
+  ApiProductSubscriptionPrice
+} from "@sdk-backoffice/product/subscription-price/ApiProductSubscriptionPrice";
 
 export class ApiProduct extends APIAbstract {
   public list = apiProductsListGet;
@@ -38,6 +42,10 @@ export class ApiProduct extends APIAbstract {
 
   public ar = new ApiProductAR();
 
+  public vendor = new ApiProductVendor();
+
+
+  public subscriptionPricing = new ApiProductSubscriptionPrice();
 
   constructor() {
     super();

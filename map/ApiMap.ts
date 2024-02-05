@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -13,15 +13,10 @@
  */
 
 import {APIAbstract} from "@core/server/APIAbstract";
+import {ApiMapTag} from "@sdk-backoffice/map/tag/ApiMapTag";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
+export class ApiMap extends APIAbstract {
+  public tag = new ApiMapTag();
 
   constructor() {
     super();
@@ -32,4 +27,4 @@ export class ApiProductImporter extends APIAbstract {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace ApiMap {}

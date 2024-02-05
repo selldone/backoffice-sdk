@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,24 +12,41 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {LogisticProfileType} from "@core/enums/logistic/LogisticProfileType";
+import {LogisticProfile} from "@core/models/shop/logistic/profile/logistic-profile.model";
+import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
-
-  constructor() {
-    super();
-  }
+export default function apiProductLogisticProfilesListGet(
+  this: ApiLogisticProfile,
+  shop_id: number,
+  offset: number,
+  limit: number,
+  options?: api.product.logistic.profiles.list.get.IParams,
+) {
+  const params = { offset: offset, limit: limit, ...options };
+  const url = window.API.GET_SHOP_LOGISTIC_PROFILES(shop_id);
+  return this.getNow<api.product.logistic.profiles.list.get.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace api.product.logistic.profiles.list.get {
+  export interface IResponse {
+    profiles: LogisticProfile[];
+    total: number;
+  }
+
+  export interface IParams {
+    sortBy: string | null;
+    sortDesc: boolean | null;
+    search: string | null;
+    contain: number | null;
+    compact: boolean | null;
+    type: keyof typeof LogisticProfileType | null;
+  }
+}

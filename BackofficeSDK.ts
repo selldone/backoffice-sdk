@@ -13,13 +13,16 @@
  */
 
 import {API} from "./apis/API";
-import { BackofficeAxiosSetup } from "./plugins/BackofficeAxiosSetup";
-import { ApiPage } from "./page/ApiPage";
-import { ApiAgency } from "./agency/ApiAgency";
-import { ApiProduct } from "./product/ApiProduct";
-import { ApiArticle } from "./article/ApiArticle";
+import {BackofficeAxiosSetup} from "./plugins/BackofficeAxiosSetup";
+import {ApiPage} from "./page/ApiPage";
+import {ApiAgency} from "./agency/ApiAgency";
+import {ApiProduct} from "./product/ApiProduct";
+import {ApiArticle} from "./article/ApiArticle";
 import {ApiBlog} from "@sdk-backoffice/blog/ApiBlog";
 import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
+import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
+import {ApiLogistic} from "@sdk-backoffice/logistic/ApiLogistic";
+import {ApiMap} from "@sdk-backoffice/map/ApiMap";
 
 const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.
@@ -46,16 +49,14 @@ declare global {
 
     // Global SDK Interface
     $backoffice: {
-
-
       // Auth:
       auth: ApiAuth;
-
 
       // Shop:
       page: ApiPage;
       product: ApiProduct;
       blog: ApiBlog;
+      vendor: ApiVendor;
 
       // Agency:
       agency: ApiAgency;
@@ -63,7 +64,11 @@ declare global {
       // Article:
       article: ApiArticle;
 
+      // Logistic:
+      logistic: ApiLogistic;
 
+      // Map:
+      map: ApiMap;
     };
   }
 }
@@ -92,6 +97,7 @@ export class BackofficeSDK {
       page: new ApiPage(),
       product: new ApiProduct(),
       blog: new ApiBlog(),
+      vendor: new ApiVendor(),
 
       // Agency:
       agency: new ApiAgency(),
@@ -99,13 +105,18 @@ export class BackofficeSDK {
       // Article:
       article: new ApiArticle(),
 
+      // Logistic:
+      logistic: new ApiLogistic(),
+
+      // Map:
+      map: new ApiMap(),
     };
   }
 
   static CheckDependencies() {
     if (typeof console.style !== "function") {
       throw new Error(
-        "❌ console.style not found. Please initialize 'SelldoneCore.Setup()' before initializing the Backoffice SDK."
+        "❌ console.style not found. Please initialize 'SelldoneCore.Setup()' before initializing the Backoffice SDK.",
       );
     }
   }

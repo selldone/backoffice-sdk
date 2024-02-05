@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,24 +12,40 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {ApiProductSubscriptionPrice} from "@sdk-backoffice/product/subscription-price/ApiProductSubscriptionPrice";
+import {SubscriptionPrice} from "@core/models/shop/product/subscription_price.model";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-
-export class ApiProductImporter extends APIAbstract {
-  public send = apiProductImporterPost;
-  public info = apiProductImporterInfoGet;
-  public que = new ApiProductImporterQue();
-
-  constructor() {
-    super();
-  }
+export default function apiProductSubscriptionPriceListGet(
+  this: ApiProductSubscriptionPrice,
+  shop_id: number,
+  offset: number,
+  limit: number,
+  options?: api.product.subscription_price.list.get.IParams,
+) {
+  const params = { offset: offset, limit: limit, ...options };
+  const url = window.API.GET_SHOP_SUBSCRIPTION_PRICES(shop_id);
+  return this.getNow<api.product.subscription_price.list.get.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductImporter {}
+export namespace api.product.subscription_price.list.get {
+  export interface IResponse {
+    subscription_prices: SubscriptionPrice[];
+    total: number;
+  }
+
+  export interface IParams {
+    sortBy: string | null;
+    sortDesc: boolean | null;
+    search: string | null;
+    compact: boolean | null;
+    product_id: number | null; //Only for this product
+    with_product: boolean | null;
+  }
+}
