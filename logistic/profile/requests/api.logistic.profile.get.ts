@@ -12,41 +12,30 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {LogisticProfileType} from "@core/enums/logistic/LogisticProfileType";
 import {LogisticProfile} from "@core/models/shop/logistic/profile/logistic-profile.model";
 import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
+import {Article} from "@core/models/article/article.model";
 
-export default function apiProductLogisticProfilesListGet(
+export default function apiLogisticProfileGet(
   this: ApiLogisticProfile,
   shop_id: number,
-  offset: number,
-  limit: number,
-  options?: api.product.logistic.profiles.list.get.IParams,
+  profile_id: number,
+  options?: api.logistic.profile.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
-  const url = window.API.GET_SHOP_LOGISTIC_PROFILES(shop_id);
-  return this.getNow<api.product.logistic.profiles.list.get.IResponse>(
-    url,
-    params,
-  );
+  const params = { ...options };
+  const url = window.API.GET_SHOP_LOGISTIC_PROFILE(shop_id, profile_id);
+  return this.getNow<api.logistic.profile.get.IResponse>(url, params);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace api.product.logistic.profiles.list.get {
+export namespace api.logistic.profile.get {
   export interface IResponse {
-    profiles: LogisticProfile[];
-    total: number;
+    profile: LogisticProfile;
+    articles: Article[];
   }
 
-  export interface IParams {
-    sortBy: string | null;
-    sortDesc: boolean | null;
-    search: string | null;
-    contain: number | null;
-    compact: boolean | null;
-    type: keyof typeof LogisticProfileType | null;
-  }
+  export interface IParams {}
 }

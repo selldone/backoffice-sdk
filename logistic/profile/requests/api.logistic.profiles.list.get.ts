@@ -12,21 +12,41 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import apiLogisticProfilesListGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profiles.list.get";
-import {APIAbstract} from "@core/server/APIAbstract";
-import apiLogisticProfileGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profile.get";
+import {LogisticProfileType} from "@core/enums/logistic/LogisticProfileType";
+import {LogisticProfile} from "@core/models/shop/logistic/profile/logistic-profile.model";
+import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
 
-export class ApiLogisticProfile extends APIAbstract {
-  public list = apiLogisticProfilesListGet;
-  public get = apiLogisticProfileGet;
-
-  constructor() {
-    super();
-  }
+export default function apiLogisticProfilesListGet(
+  this: ApiLogisticProfile,
+  shop_id: number,
+  offset: number,
+  limit: number,
+  options?: api.logistic.profiles.list.get.IParams,
+) {
+  const params = { offset: offset, limit: limit, ...options };
+  const url = window.API.GET_SHOP_LOGISTIC_PROFILES(shop_id);
+  return this.getNow<api.logistic.profiles.list.get.IResponse>(
+    url,
+    params,
+  );
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiLogisticProfile {}
+export namespace api.logistic.profiles.list.get {
+  export interface IResponse {
+    profiles: LogisticProfile[];
+    total: number;
+  }
+
+  export interface IParams {
+    sortBy: string | null;
+    sortDesc: boolean | null;
+    search: string | null;
+    contain: number | null;
+    compact: boolean | null;
+    type: keyof typeof LogisticProfileType | null;
+  }
+}
