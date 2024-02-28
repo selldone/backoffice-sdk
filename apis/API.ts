@@ -346,6 +346,9 @@ export class API {
   PUT_EDIT_SHOP_INFO(shop_id: number | string) {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/info`;
   }
+  PUT_EDIT_SHOP_SUPPORT_MODE(shop_id: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/edit/support-mode`;
+  }
   DELETE_SHOP(shop_id: number | string) {
     return `${this.selldone_api_url}/shops/${shop_id}/delete`;
   }
