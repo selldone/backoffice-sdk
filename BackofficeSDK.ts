@@ -23,6 +23,7 @@ import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
 import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
 import {ApiLogistic} from "@sdk-backoffice/logistic/ApiLogistic";
 import {ApiMap} from "@sdk-backoffice/map/ApiMap";
+import {ApiAffiliate} from "@sdk-backoffice/affiliate/ApiAffiliate";
 
 const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.
@@ -69,6 +70,9 @@ declare global {
 
       // Map:
       map: ApiMap;
+
+      // Affiliate:
+      affiliate: ApiAffiliate;
     };
   }
 }
@@ -110,6 +114,9 @@ export class BackofficeSDK {
 
       // Map:
       map: new ApiMap(),
+
+      // Affiliate:
+      affiliate: new ApiAffiliate(),
     };
   }
 
