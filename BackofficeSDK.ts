@@ -24,6 +24,7 @@ import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
 import {ApiLogistic} from "@sdk-backoffice/logistic/ApiLogistic";
 import {ApiMap} from "@sdk-backoffice/map/ApiMap";
 import {ApiAffiliate} from "@sdk-backoffice/affiliate/ApiAffiliate";
+import {ApiUser} from "@sdk-backoffice/user/ApiUser";
 
 const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.
@@ -52,6 +53,8 @@ declare global {
     $backoffice: {
       // Auth:
       auth: ApiAuth;
+      // User:
+      user: ApiUser;
 
       // Shop:
       page: ApiPage;
@@ -96,6 +99,9 @@ export class BackofficeSDK {
     window.$backoffice = {
       // Auth:
       auth: new ApiAuth(),
+
+      // User:
+      user: new ApiUser(),
 
       // Shop:
       page: new ApiPage(),
