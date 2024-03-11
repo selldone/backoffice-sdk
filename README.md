@@ -1,6 +1,7 @@
-![License](https://img.shields.io/github/license/selldone/backoffice-sdk.svg)
-
 ![Selldone Official Storefront App](_docs/images/banner-backoffice-sdk.jpg)
+
+![Selldone](https://img.shields.io/badge/type-Selldone-f39f37?style=flat&label=Backoffice&labelColor=%23567&color=%23000)
+![License](https://img.shields.io/github/license/selldone/backoffice-sdk.svg)
 
 # Selldone ⮕ Backoffice SDK
 
