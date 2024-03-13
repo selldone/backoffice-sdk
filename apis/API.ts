@@ -3290,7 +3290,12 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/access`;
   }
-
+  PUT_SHOP_CUSTOMER_SET_BANNED(
+      shop_id: string | number,
+      customer_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/banned`;
+  }
   POST_SHOP_CUSTOMER_CREATE_SUBSCRIPTION_PORTAL_URL(
     shop_id: string | number,
     customer_id: string | number,
