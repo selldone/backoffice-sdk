@@ -2253,7 +2253,9 @@ export class API {
   POST_CREATE_DISCOUNT_CODE(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/discount-codes`;
   }
-
+  POST_CREATE_DISCOUNT_CODE_AI(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/discount-codes/ai`;
+  }
   PUT_EDIT_DISCOUNT_CODE(
     shop_id: string | number,
     discount_code_id: string | number,
