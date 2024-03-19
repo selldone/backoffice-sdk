@@ -2309,6 +2309,9 @@ export class API {
   POST_CREATE_COUPON(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/coupons`;
   }
+  POST_CREATE_COUPON_AI(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/coupons/ai`;
+  }
 
   PUT_EDIT_COUPON(shop_id: string | number, coupon_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/coupons/${coupon_id}`;
