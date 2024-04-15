@@ -3233,6 +3233,16 @@ export class API {
     return `/dapi/shops/${shop_id}/pos/${user_id}/customer-view/${token}`;
   }
 
+  //―――――――――――――――――――――― POS HUB ――――――――――――――――――――
+  POST_MY_HUB_GENERATE_PIN(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/hub/pin`;
+  }
+  POST_MY_HUB_DEVICE_TEST(shop_id: string | number,device_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/hub/devices/${device_id}/test`;
+  }
+  GET_MY_HUB_DEVICES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/hub/devices`;
+  }
   //―――――――――――――――――――――― Customers ――――――――――――――――――――
 
   GET_SHOP_CUSTOMERS(shop_id: string | number) {
