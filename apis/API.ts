@@ -29,9 +29,11 @@ import { Language } from "@core/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
+  selldone_dapi_url="";
 
   constructor() {
     this.selldone_api_url = SetupService.GetMetaValue("selldone-api");
+    this.selldone_dapi_url = SetupService.GetMetaValue("selldone-dapi");
   }
   //―――――――――――――――――――――― Users ――――――――――――――――――――
   /**
@@ -3230,7 +3232,7 @@ export class API {
     user_id: string | number,
     token: string,
   ) {
-    return `/dapi/shops/${shop_id}/pos/${user_id}/customer-view/${token}`;
+    return `${this.selldone_dapi_url}/shops/${shop_id}/pos/${user_id}/customer-view/${token}`;
   }
 
   //―――――――――――――――――――――― POS HUB ――――――――――――――――――――
