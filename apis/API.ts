@@ -3834,7 +3834,10 @@ export class API {
   ) {
     return `${this.selldone_api_url}/guilds/${guild_id}/members/${member_id}/recommendation`;
   }
-
+  //―――――――――――――――――――――― Direct Feedback ――――――――――――――――――――
+  POST_SEND_DIRECT_FEEDBACK(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/feedback/direct`;
+  }
   //―――――――――――――――――――――― Shop Options ――――――――――――――――――――
   POST_SET_SHOP_OPTIONS_GDPR(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/gdpr`;
