@@ -13,7 +13,7 @@
  */
 
 import {ApiProductSubscriptionPrice} from "@sdk-backoffice/product/subscription-price/ApiProductSubscriptionPrice";
-import {SubscriptionPrice} from "@core/models/shop/product/subscription_price.model";
+import {SubscriptionPrice} from "@selldone/core-js/models/shop/product/subscription_price.model";
 
 export default function apiProductSubscriptionPriceListGet(
   this: ApiProductSubscriptionPrice,

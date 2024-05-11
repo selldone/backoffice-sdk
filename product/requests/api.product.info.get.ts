@@ -13,25 +13,25 @@
  */
 
 import type { ApiProduct } from "../ApiProduct";
-import type { Product } from "@core/models/shop/product/product.model";
-import { Category } from "@core/models/shop/category/category.model";
-import type { ProductVariant } from "@core/models/shop/product/product_variant.model";
-import type { Shop } from "@core/models/shop/shop.model";
-import { Vendor } from "@core/models/shop/vendor/vendor.model";
-import type { SubscriptionPrice } from "@core/models/shop/product/subscription_price.model";
-import type { Valuation } from "@core/models/shop/accounting/valuation/valuation.model";
-import type { MapTag } from "@core/models/shop/map/map-tag.model";
-import type { Connect } from "@core/models/connect/connect.model";
-import type { ExtraPricing } from "@core/models/shop/extra-pricing/extra-pricing.model";
-import type { ShopInclude } from "@core/models/shop/shop-include/shop-include.model";
-import type { Page } from "@core/models/shop/page/page.model";
-import type { Article } from "@core/models/article/article.model";
-import type { ProductRating } from "@core/models/shop/product/product-rating.model";
-import type { ProductFile } from "@core/models/shop/product/product-file.model";
-import type { ProductImage } from "@core/models/shop/product/product-image.model";
-import type { ProductData } from "@core/models/shop/product/product-data.model";
-import { DeliveryStateCode } from "@core/enums/delivery/DeliveryStateCode";
-import type { OrderTypeCode } from "@core/enums/order/OrderTypeCode";
+import type { Product } from "@selldone/core-js/models/shop/product/product.model";
+import { Category } from "@selldone/core-js/models/shop/category/category.model";
+import type { ProductVariant } from "@selldone/core-js/models/shop/product/product_variant.model";
+import type { Shop } from "@selldone/core-js/models/shop/shop.model";
+import { Vendor } from "@selldone/core-js/models/shop/vendor/vendor.model";
+import type { SubscriptionPrice } from "@selldone/core-js/models/shop/product/subscription_price.model";
+import type { Valuation } from "@selldone/core-js/models/shop/accounting/valuation/valuation.model";
+import type { MapTag } from "@selldone/core-js/models/shop/map/map-tag.model";
+import type { Connect } from "@selldone/core-js/models/connect/connect.model";
+import type { ExtraPricing } from "@selldone/core-js/models/shop/extra-pricing/extra-pricing.model";
+import type { ShopInclude } from "@selldone/core-js/models/shop/shop-include/shop-include.model";
+import type { Page } from "@selldone/core-js/models/shop/page/page.model";
+import type { Article } from "@selldone/core-js/models/article/article.model";
+import type { ProductRating } from "@selldone/core-js/models/shop/product/product-rating.model";
+import type { ProductFile } from "@selldone/core-js/models/shop/product/product-file.model";
+import type { ProductImage } from "@selldone/core-js/models/shop/product/product-image.model";
+import type { ProductData } from "@selldone/core-js/models/shop/product/product-data.model";
+import { DeliveryStateCode } from "@selldone/core-js/enums/delivery/DeliveryStateCode";
+import type { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
 
 export default function apiProductInfoGet(
   this: ApiProduct,

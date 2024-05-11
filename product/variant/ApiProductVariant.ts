@@ -14,7 +14,7 @@
 
 import apiProductVariantRemove from "@sdk-backoffice/product/variant/requests/api.product.variant.remove";
 import apiProductVariantRestorePost from "@sdk-backoffice/product/variant/requests/api.product.variant.restore.post";
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 
 export class ApiProductVariant extends APIAbstract {
   public remove = apiProductVariantRemove;

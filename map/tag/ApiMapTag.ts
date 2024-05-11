@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiMapTagsListGet from "@sdk-backoffice/map/tag/requests/api.map.tags.list.get";
 
 export class ApiMapTag extends APIAbstract {

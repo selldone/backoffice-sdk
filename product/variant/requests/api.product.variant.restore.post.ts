@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ProductVariant} from "@core/models/shop/product/product_variant.model";
+import {ProductVariant} from "@selldone/core-js/models/shop/product/product_variant.model";
 import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
 
 export default function apiProductVariantRestorePost(

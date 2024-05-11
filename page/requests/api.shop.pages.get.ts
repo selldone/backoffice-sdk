@@ -13,7 +13,7 @@
  */
 
 import {ApiPage} from "../ApiPage";
-import {Page} from "@core/models/shop/page/page.model";
+import {Page} from "@selldone/core-js/models/shop/page/page.model";
 
 export default function ApiShopShopPagesGet(
   this: ApiPage,

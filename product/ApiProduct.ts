@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiProductsListGet from "./requests/api.products.list.get";
 import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
 import apiProductInfoGet from "./requests/api.product.info.get";

@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type {Product} from "@core/models/shop/product/product.model";
-import {Category} from "@core/models/shop/category/category.model";
+import type {Product} from "@selldone/core-js/models/shop/product/product.model";
+import {Category} from "@selldone/core-js/models/shop/category/category.model";
 import {ApiAffiliatePos} from "@sdk-backoffice/affiliate/pos/ApiAffiliatePos";
 
 export default function apiAffiliatePosProducts(

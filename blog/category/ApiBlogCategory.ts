@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import ApiShopBlogCategoriesListGet from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.get";
 import ApiShopBlogCategoriesEditPut from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.edit.put";
 import ApiShopBlogCategoriesAddPost from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.add.post";

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import setAccount from "./requests/api.agency.account.connect.post";
 import createWallet from "./requests/api.agency.wallet.create.post";
 import charge from "./requests/api.agency.wallet.charge.post";

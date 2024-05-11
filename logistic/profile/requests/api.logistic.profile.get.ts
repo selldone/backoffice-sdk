@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {LogisticProfile} from "@core/models/shop/logistic/profile/logistic-profile.model";
+import {LogisticProfile} from "@selldone/core-js/models/shop/logistic/profile/logistic-profile.model";
 import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
-import {Article} from "@core/models/article/article.model";
+import {Article} from "@selldone/core-js/models/article/article.model";
 
 export default function apiLogisticProfileGet(
   this: ApiLogisticProfile,

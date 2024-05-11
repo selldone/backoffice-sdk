@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import ApiAuthLogoutPost from "@sdk-backoffice/auth/requests/api.auth.logout.post";
 
 export class ApiAuth extends APIAbstract {

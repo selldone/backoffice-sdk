@@ -13,7 +13,7 @@
  */
 
 import {ApiUserPreferences} from "@sdk-backoffice/user/preferences/ApiUserPreferences";
-import {User} from "@core/models/user/user.model";
+import {User} from "@selldone/core-js/models/user/user.model";
 
 export default function apiUserPreferencesSave(
   this: ApiUserPreferences,

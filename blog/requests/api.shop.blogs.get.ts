@@ -13,7 +13,7 @@
  */
 
 import {ApiBlog} from "../ApiBlog";
-import {Article} from "@core/models/article/article.model";
+import {Article} from "@selldone/core-js/models/article/article.model";
 
 export default function ApiShopBlogsListGet(
   this: ApiBlog,

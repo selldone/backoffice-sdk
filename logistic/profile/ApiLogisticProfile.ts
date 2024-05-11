@@ -13,7 +13,7 @@
  */
 
 import apiLogisticProfilesListGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profiles.list.get";
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiLogisticProfileGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profile.get";
 
 export class ApiLogisticProfile extends APIAbstract {

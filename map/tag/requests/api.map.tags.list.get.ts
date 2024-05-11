@@ -13,7 +13,7 @@
  */
 
 import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
-import {MapTag} from "@core/models/shop/map/map-tag.model";
+import {MapTag} from "@selldone/core-js/models/shop/map/map-tag.model";
 
 export default function apiMapTagsListGet(
   this: ApiLogisticProfile,

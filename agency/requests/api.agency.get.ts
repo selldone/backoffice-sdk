@@ -13,7 +13,7 @@
  */
 
 import type {ApiAgency} from "../ApiAgency";
-import type {Agency} from "@core/models/agency/agency.model";
+import type {Agency} from "@selldone/core-js/models/agency/agency.model";
 
 export default function getInfo(
     this: ApiAgency,

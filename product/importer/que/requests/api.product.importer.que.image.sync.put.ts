@@ -13,7 +13,7 @@
  */
 
 import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
-import {ImportQueImage} from "@core/models/shop/importer/import-que-image.model";
+import {ImportQueImage} from "@selldone/core-js/models/shop/importer/import-que-image.model";
 
 export default function apiProductImporterQueImageSyncPut(
   this: ApiProductImporterQue,

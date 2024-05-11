@@ -13,7 +13,7 @@
  */
 
 import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
-import {Vendor} from "@core/models/shop/vendor/vendor.model";
+import {Vendor} from "@selldone/core-js/models/shop/vendor/vendor.model";
 
 export default function apiVendorsListGet(
   this: ApiVendor,

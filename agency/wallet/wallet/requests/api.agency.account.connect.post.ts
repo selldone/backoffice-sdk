@@ -13,8 +13,8 @@
  */
 
 import type {ApiAgency} from "../../../ApiAgency";
-import type {Agency} from "@core/models/agency/agency.model";
-import type {Account} from "@core/models/account/account.model";
+import type {Agency} from "@selldone/core-js/models/agency/agency.model";
+import type {Account} from "@selldone/core-js/models/account/account.model";
 import {ApiAgencyWallet} from "../ApiAgencyWallet";
 
 export default function setAccount(

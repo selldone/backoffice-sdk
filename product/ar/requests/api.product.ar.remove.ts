@@ -13,7 +13,7 @@
  */
 
 import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
-import {Product} from "@core/models/shop/product/product.model";
+import {Product} from "@selldone/core-js/models/shop/product/product.model";
 
 export default function apiProductArRemove(
   this: ApiProductAR,

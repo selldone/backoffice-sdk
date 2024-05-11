@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiVendorsListGet from "@sdk-backoffice/vendor/requests/api.vendors.list.get";
 
 export class ApiVendor extends APIAbstract {

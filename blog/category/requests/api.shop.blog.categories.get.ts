@@ -13,7 +13,7 @@
  */
 
 import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
-import {BlogCategory} from "@core/models/shop/blog/blog-category.model";
+import {BlogCategory} from "@selldone/core-js/models/shop/blog/blog-category.model";
 
 export default function ApiShopBlogCategoriesListGet(
   this: ApiBlogCategory,

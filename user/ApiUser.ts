@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import {ApiUserPreferences} from "@sdk-backoffice/user/preferences/ApiUserPreferences";
 
 export class ApiUser extends APIAbstract {

@@ -12,20 +12,20 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@core/server/SetupService";
-import { ShopMenuType } from "@core/enums/shop/ShopMenu";
-import { OrderType } from "@core/enums/order/OrderType";
-import { TimelineEmailType } from "@core/enums/timeline/TimelineEmailType";
-import { OrderExportPdfType } from "@core/enums/order/OrderExportPdfType";
-import { Currency } from "@core/enums/payment/Currency";
-import { AppVersionType } from "@core/enums/application/AppVersionType";
-import { CustomerClubLevels } from "@core/enums/customer/CustomerClubLevels";
-import { SocialNetwork } from "@core/enums/social/SocialNetwork";
-import { OrderTypeCode } from "@core/enums/order/OrderTypeCode";
-import { ArticleReport } from "@core/enums/article/ArticleReport";
-import { IArticleTypeCode } from "@core/enums/article/ArticleTypes";
-import { ShopChannelType } from "@core/enums/shop/notification-channels/ShopNotificationsChannels";
-import { Language } from "@core/enums/language/Language";
+import { SetupService } from "@selldone/core-js/server/SetupService";
+import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
+import { OrderType } from "@selldone/core-js/enums/order/OrderType";
+import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
+import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { AppVersionType } from "@selldone/core-js/enums/application/AppVersionType";
+import { CustomerClubLevels } from "@selldone/core-js/enums/customer/CustomerClubLevels";
+import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
+import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
+import { ArticleReport } from "@selldone/core-js/enums/article/ArticleReport";
+import { IArticleTypeCode } from "@selldone/core-js/enums/article/ArticleTypes";
+import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import { Language } from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";

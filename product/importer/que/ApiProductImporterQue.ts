@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@core/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiProductImporterQueImagesGet
   from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.images.get";
 import apiProductImporterQueImagesDelete

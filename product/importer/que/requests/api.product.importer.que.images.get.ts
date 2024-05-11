@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ImportQueImage} from "@core/models/shop/importer/import-que-image.model";
+import {ImportQueImage} from "@selldone/core-js/models/shop/importer/import-que-image.model";
 import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
 
 export default function apiProductImporterQueImagesGet(
