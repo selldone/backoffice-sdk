@@ -19,7 +19,7 @@ To install Selldone Core in your project, use the following command:
 
 
 ```bash
-npm install selldone/sdk-backoffice
+npm install @selldone/sdk-backoffice
 ```
 ```bash
 yarn add @selldone/sdk-backoffice
