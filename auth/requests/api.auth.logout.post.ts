@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
+import {ApiAuth} from "../../auth/ApiAuth";
 
 export default function ApiAuthLogoutPost(this: ApiAuth) {
   const url = window.API.LOGOUT();

@@ -13,8 +13,8 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import ApiShopBlogsListGet from "@sdk-backoffice/blog/requests/api.shop.blogs.get";
-import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
+import ApiShopBlogsListGet from "../blog/requests/api.shop.blogs.get";
+import {ApiBlogCategory} from "../blog/category/ApiBlogCategory";
 
 export class ApiBlog extends APIAbstract {
   public list = ApiShopBlogsListGet;

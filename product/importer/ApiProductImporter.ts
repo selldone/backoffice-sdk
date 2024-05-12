@@ -14,9 +14,9 @@
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 
-import apiProductImporterPost from "@sdk-backoffice/product/importer/requests/api.product.importer.post";
-import apiProductImporterInfoGet from "@sdk-backoffice/product/importer/requests/api.product.importer.info.get";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
+import apiProductImporterPost from "../../product/importer/requests/api.product.importer.post";
+import apiProductImporterInfoGet from "../../product/importer/requests/api.product.importer.info.get";
+import {ApiProductImporterQue} from "./que/ApiProductImporterQue.ts";
 
 export class ApiProductImporter extends APIAbstract {
   public send = apiProductImporterPost;

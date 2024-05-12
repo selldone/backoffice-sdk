@@ -13,7 +13,7 @@
  */
 
 import {ProductVariant} from "@selldone/core-js/models/shop/product/product_variant.model";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
+import {ApiProductVariant} from "../ApiProductVariant.ts";
 
 export default function apiProductVariantRemove(
   this: ApiProductVariant,

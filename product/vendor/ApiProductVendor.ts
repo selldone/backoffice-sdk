@@ -12,21 +12,20 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import apiProductVariantRemove from "@sdk-backoffice/product/variant/requests/api.product.variant.remove";
-import apiProductVariantRestorePost from "@sdk-backoffice/product/variant/requests/api.product.variant.restore.post";
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiProductVendorsListGet from "@sdk-backoffice/product/vendor/requests/api.product.vendors.list.get";
+import apiProductVendorsListGet from "../../product/vendor/requests/api.product.vendors.list.get";
 
 export class ApiProductVendor extends APIAbstract {
-  public list = apiProductVendorsListGet;
+    public list = apiProductVendorsListGet;
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProductVariant {}
+export namespace ApiProductVariant {
+}

@@ -14,7 +14,7 @@
 
 import {LogisticProfileType} from "@selldone/core-js/enums/logistic/LogisticProfileType";
 import {LogisticProfile} from "@selldone/core-js/models/shop/logistic/profile/logistic-profile.model";
-import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
+import {ApiLogisticProfile} from "../../../logistic/profile/ApiLogisticProfile";
 
 export default function apiLogisticProfilesListGet(
   this: ApiLogisticProfile,

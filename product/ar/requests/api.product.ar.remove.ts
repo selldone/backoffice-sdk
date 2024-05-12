@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
+import {ApiProductAR} from "../ApiProductAR.ts";
 import {Product} from "@selldone/core-js/models/shop/product/product.model";
 
 export default function apiProductArRemove(

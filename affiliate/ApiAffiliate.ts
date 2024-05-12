@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import {ApiAffiliatePos} from "@sdk-backoffice/affiliate/pos/ApiAffiliatePos";
+import {ApiAffiliatePos} from "./pos/ApiAffiliatePos";
 
 export class ApiAffiliate extends APIAbstract {
   public pos = new ApiAffiliatePos();

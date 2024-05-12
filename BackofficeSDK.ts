@@ -18,13 +18,13 @@ import {ApiPage} from "./page/ApiPage";
 import {ApiAgency} from "./agency/ApiAgency";
 import {ApiProduct} from "./product/ApiProduct";
 import {ApiArticle} from "./article/ApiArticle";
-import {ApiBlog} from "@sdk-backoffice/blog/ApiBlog";
-import {ApiAuth} from "@sdk-backoffice/auth/ApiAuth";
-import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
-import {ApiLogistic} from "@sdk-backoffice/logistic/ApiLogistic";
-import {ApiMap} from "@sdk-backoffice/map/ApiMap";
-import {ApiAffiliate} from "@sdk-backoffice/affiliate/ApiAffiliate";
-import {ApiUser} from "@sdk-backoffice/user/ApiUser";
+import {ApiBlog} from "./blog/ApiBlog";
+import {ApiAuth} from "./auth/ApiAuth";
+import {ApiVendor} from "./vendor/ApiVendor";
+import {ApiLogistic} from "./logistic/ApiLogistic";
+import {ApiMap} from "./map/ApiMap";
+import {ApiAffiliate} from "./affiliate/ApiAffiliate";
+import {ApiUser} from "./user/ApiUser";
 
 const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.

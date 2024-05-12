@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiUserPreferences} from "@sdk-backoffice/user/preferences/ApiUserPreferences";
+import {ApiUserPreferences} from "../ApiUserPreferences.ts";
 import {User} from "@selldone/core-js/models/user/user.model";
 
 export default function apiUserPreferencesSave(

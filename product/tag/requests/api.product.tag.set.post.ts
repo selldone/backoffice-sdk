@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
+import {ApiProductTag} from "../ApiProductTag.ts";
 
 export default function apiProductTagSetPost(
   this: ApiProductTag,

@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiVendorsListGet from "@sdk-backoffice/vendor/requests/api.vendors.list.get";
+import apiVendorsListGet from "../vendor/requests/api.vendors.list.get";
 
 export class ApiVendor extends APIAbstract {
   public list = apiVendorsListGet;

@@ -14,15 +14,15 @@
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiProductImporterQueImagesGet
-  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.images.get";
+  from "../../../product/importer/que/requests/api.product.importer.que.images.get";
 import apiProductImporterQueImagesDelete
-  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.images.delete";
+  from "../../../product/importer/que/requests/api.product.importer.que.images.delete";
 import apiProductImporterQueImageSyncPut
-  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.image.sync.put";
+  from "../../../product/importer/que/requests/api.product.importer.que.image.sync.put";
 import apiProductImporterQueProductsGet
-  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.products.get";
+  from "../../../product/importer/que/requests/api.product.importer.que.products.get";
 import apiProductImporterQueProductsDelete
-  from "@sdk-backoffice/product/importer/que/requests/api.product.importer.que.products.delete";
+  from "../../../product/importer/que/requests/api.product.importer.que.products.delete";
 
 export class ApiProductImporterQue extends APIAbstract {
   public images = apiProductImporterQueImagesGet;

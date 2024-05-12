@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiProductTagSetPost from "@sdk-backoffice/product/tag/requests/api.product.tag.set.post";
+import apiProductTagSetPost from "../../product/tag/requests/api.product.tag.set.post";
 
 export class ApiProductTag extends APIAbstract {
   public set = apiProductTagSetPost;

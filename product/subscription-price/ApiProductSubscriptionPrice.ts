@@ -14,7 +14,7 @@
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiProductSubscriptionPriceListGet
-    from "@sdk-backoffice/product/subscription-price/requests/api.product.subscription-price.list.get";
+    from "../../product/subscription-price/requests/api.product.subscription-price.list.get";
 
 export class ApiProductSubscriptionPrice extends APIAbstract {
   public list = apiProductSubscriptionPriceListGet;

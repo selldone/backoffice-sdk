@@ -13,10 +13,10 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import ApiShopBlogCategoriesListGet from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.get";
-import ApiShopBlogCategoriesEditPut from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.edit.put";
-import ApiShopBlogCategoriesAddPost from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.add.post";
-import ApiShopBlogCategoriesDelete from "@sdk-backoffice/blog/category/requests/api.shop.blog.categories.delete";
+import ApiShopBlogCategoriesListGet from "../../blog/category/requests/api.shop.blog.categories.get";
+import ApiShopBlogCategoriesEditPut from "../../blog/category/requests/api.shop.blog.categories.edit.put";
+import ApiShopBlogCategoriesAddPost from "../../blog/category/requests/api.shop.blog.categories.add.post";
+import ApiShopBlogCategoriesDelete from "../../blog/category/requests/api.shop.blog.categories.delete";
 
 export class ApiBlogCategory extends APIAbstract {
   public list = ApiShopBlogCategoriesListGet;

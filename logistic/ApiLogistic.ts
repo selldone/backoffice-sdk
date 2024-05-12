@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
+import {ApiLogisticProfile} from "./profile/ApiLogisticProfile.ts";
 
 export class ApiLogistic extends APIAbstract {
   public profile = new ApiLogisticProfile();

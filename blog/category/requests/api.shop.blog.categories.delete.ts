@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
+import {ApiBlogCategory} from "../../../blog/category/ApiBlogCategory";
 
 export default function ApiShopBlogCategoriesDelete(
   this: ApiBlogCategory,

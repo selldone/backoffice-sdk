@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiProductSubscriptionPrice} from "@sdk-backoffice/product/subscription-price/ApiProductSubscriptionPrice";
+import {ApiProductSubscriptionPrice} from "../ApiProductSubscriptionPrice.ts";
 import {SubscriptionPrice} from "@selldone/core-js/models/shop/product/subscription_price.model";
 
 export default function apiProductSubscriptionPriceListGet(

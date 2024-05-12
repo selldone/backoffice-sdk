@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import {ApiMapTag} from "@sdk-backoffice/map/tag/ApiMapTag";
+import {ApiMapTag} from "../map/tag/ApiMapTag";
 
 export class ApiMap extends APIAbstract {
   public tag = new ApiMapTag();

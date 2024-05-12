@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import {ApiUserPreferences} from "@sdk-backoffice/user/preferences/ApiUserPreferences";
+import {ApiUserPreferences} from "./preferences/ApiUserPreferences.ts";
 
 export class ApiUser extends APIAbstract {
   public preferences = new ApiUserPreferences();

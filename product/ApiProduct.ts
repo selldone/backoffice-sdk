@@ -16,44 +16,43 @@ import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 import apiProductsListGet from "./requests/api.products.list.get";
 import apiProductChangeCategoryPut from "./requests/api.product.change-category.put";
 import apiProductInfoGet from "./requests/api.product.info.get";
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
-import {ApiProductTag} from "@sdk-backoffice/product/tag/ApiProductTag";
-import apiProductSetQuantityPost from "@sdk-backoffice/product/requests/api.product.set-quantity.post";
-import {ApiProductVariant} from "@sdk-backoffice/product/variant/ApiProductVariant";
-import {ApiProductAR} from "@sdk-backoffice/product/ar/ApiProductAR";
-import {ApiProductVendor} from "@sdk-backoffice/product/vendor/ApiProductVendor";
-import {
-  ApiProductSubscriptionPrice
-} from "@sdk-backoffice/product/subscription-price/ApiProductSubscriptionPrice";
+import {ApiProductImporter} from "../product/importer/ApiProductImporter";
+import {ApiProductTag} from "../product/tag/ApiProductTag";
+import apiProductSetQuantityPost from "../product/requests/api.product.set-quantity.post";
+import {ApiProductVariant} from "../product/variant/ApiProductVariant";
+import {ApiProductAR} from "./ar/ApiProductAR.ts";
+import {ApiProductVendor} from "../product/vendor/ApiProductVendor";
+import {ApiProductSubscriptionPrice} from "../product/subscription-price/ApiProductSubscriptionPrice";
 
 export class ApiProduct extends APIAbstract {
-  public list = apiProductsListGet;
-  public changeCategory = apiProductChangeCategoryPut;
+    public list = apiProductsListGet;
+    public changeCategory = apiProductChangeCategoryPut;
 
-  public getInfo = apiProductInfoGet;
+    public getInfo = apiProductInfoGet;
 
-  public setQuantity = apiProductSetQuantityPost;
+    public setQuantity = apiProductSetQuantityPost;
 
-  public importer = new ApiProductImporter();
+    public importer = new ApiProductImporter();
 
-  public tags = new ApiProductTag();
+    public tags = new ApiProductTag();
 
-  public variants = new ApiProductVariant();
+    public variants = new ApiProductVariant();
 
-  public ar = new ApiProductAR();
+    public ar = new ApiProductAR();
 
-  public vendor = new ApiProductVendor();
+    public vendor = new ApiProductVendor();
 
 
-  public subscriptionPricing = new ApiProductSubscriptionPrice();
+    public subscriptionPricing = new ApiProductSubscriptionPrice();
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace ApiProduct {}
+export namespace ApiProduct {
+}

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiVendor} from "@sdk-backoffice/vendor/ApiVendor";
+import {ApiVendor} from "../ApiVendor.ts";
 import {Vendor} from "@selldone/core-js/models/shop/vendor/vendor.model";
 
 export default function apiVendorsListGet(

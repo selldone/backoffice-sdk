@@ -13,7 +13,7 @@
  */
 
 import {ImportQueImage} from "@selldone/core-js/models/shop/importer/import-que-image.model";
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
+import {ApiProductImporterQue} from "../ApiProductImporterQue.ts";
 
 export default function apiProductImporterQueImagesGet(
   this: ApiProductImporterQue,

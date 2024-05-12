@@ -14,7 +14,7 @@
 
 import { APIAbstract } from "@selldone/core-js/server/APIAbstract";
 import getPageAugment from "./requests/api.page.augment.get";
-import ApiShopShopPagesGet from "@sdk-backoffice/page/requests/api.shop.pages.get";
+import ApiShopShopPagesGet from "../page/requests/api.shop.pages.get";
 
 export class ApiPage extends APIAbstract {
 

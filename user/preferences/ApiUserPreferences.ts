@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiUserPreferencesSave from "@sdk-backoffice/user/preferences/requests/api.user.preferences.save";
+import apiUserPreferencesSave from "../../user/preferences/requests/api.user.preferences.save";
 
 export class ApiUserPreferences extends APIAbstract {
   public save = apiUserPreferencesSave;

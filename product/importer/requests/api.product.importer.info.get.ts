@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiProductImporter} from "@sdk-backoffice/product/importer/ApiProductImporter";
+import {ApiProductImporter} from "../ApiProductImporter.ts";
 
 export default function apiProductImporterInfoGet(
   this: ApiProductImporter,

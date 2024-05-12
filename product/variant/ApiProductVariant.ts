@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import apiProductVariantRemove from "@sdk-backoffice/product/variant/requests/api.product.variant.remove";
-import apiProductVariantRestorePost from "@sdk-backoffice/product/variant/requests/api.product.variant.restore.post";
+import apiProductVariantRemove from "../../product/variant/requests/api.product.variant.remove";
+import apiProductVariantRestorePost from "../../product/variant/requests/api.product.variant.restore.post";
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 
 export class ApiProductVariant extends APIAbstract {

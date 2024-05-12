@@ -35,9 +35,7 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@selldone/sdk-backoffice/*": [
-        "*"
-      ]
+      //"@selldone/sdk-backoffice/*": ["*"]
     }
   },
   "include": [

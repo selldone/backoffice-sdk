@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiProductArRemove from "@sdk-backoffice/product/ar/requests/api.product.ar.remove";
+import apiProductArRemove from "../../product/ar/requests/api.product.ar.remove";
 
 export class ApiProductAR extends APIAbstract {
   public remove = apiProductArRemove;

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ApiProductImporter } from "@sdk-backoffice/product/importer/ApiProductImporter";
+import { ApiProductImporter } from "../ApiProductImporter.ts";
 import IProduct = api.product.importer.post.IProduct;
 import IHeader = api.product.importer.post.IHeader;
 

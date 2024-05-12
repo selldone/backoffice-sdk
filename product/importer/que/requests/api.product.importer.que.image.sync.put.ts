@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiProductImporterQue} from "@sdk-backoffice/product/importer/que/ApiProductImporterQue";
+import {ApiProductImporterQue} from "../ApiProductImporterQue.ts";
 import {ImportQueImage} from "@selldone/core-js/models/shop/importer/import-que-image.model";
 
 export default function apiProductImporterQueImageSyncPut(

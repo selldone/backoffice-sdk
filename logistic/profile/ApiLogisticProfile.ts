@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import apiLogisticProfilesListGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profiles.list.get";
+import apiLogisticProfilesListGet from "../../logistic/profile/requests/api.logistic.profiles.list.get";
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import apiLogisticProfileGet from "@sdk-backoffice/logistic/profile/requests/api.logistic.profile.get";
+import apiLogisticProfileGet from "../../logistic/profile/requests/api.logistic.profile.get";
 
 export class ApiLogisticProfile extends APIAbstract {
   public list = apiLogisticProfilesListGet;

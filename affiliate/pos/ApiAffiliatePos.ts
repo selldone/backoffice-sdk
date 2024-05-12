@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import apiAffiliatePosProducts from "@sdk-backoffice/affiliate/pos/requests/api.affiliate.pos.products";
+import apiAffiliatePosProducts from "../pos/requests/api.affiliate.pos.products";
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
 
 export class ApiAffiliatePos extends APIAbstract {

@@ -13,7 +13,7 @@
  */
 
 import {LogisticProfile} from "@selldone/core-js/models/shop/logistic/profile/logistic-profile.model";
-import {ApiLogisticProfile} from "@sdk-backoffice/logistic/profile/ApiLogisticProfile";
+import {ApiLogisticProfile} from "../../../logistic/profile/ApiLogisticProfile";
 import {Article} from "@selldone/core-js/models/article/article.model";
 
 export default function apiLogisticProfileGet(

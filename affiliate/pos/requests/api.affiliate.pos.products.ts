@@ -14,7 +14,7 @@
 
 import type {Product} from "@selldone/core-js/models/shop/product/product.model";
 import {Category} from "@selldone/core-js/models/shop/category/category.model";
-import {ApiAffiliatePos} from "@sdk-backoffice/affiliate/pos/ApiAffiliatePos";
+import {ApiAffiliatePos} from "../../../affiliate/pos/ApiAffiliatePos";
 
 export default function apiAffiliatePosProducts(
   this: ApiAffiliatePos,

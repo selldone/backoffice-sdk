@@ -13,7 +13,7 @@
  */
 
 import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
-import ApiAuthLogoutPost from "@sdk-backoffice/auth/requests/api.auth.logout.post";
+import ApiAuthLogoutPost from "../auth/requests/api.auth.logout.post";
 
 export class ApiAuth extends APIAbstract {
   public logout = ApiAuthLogoutPost;

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApiBlogCategory} from "@sdk-backoffice/blog/category/ApiBlogCategory";
+import {ApiBlogCategory} from "../ApiBlogCategory.ts";
 import {BlogCategory} from "@selldone/core-js/models/shop/blog/blog-category.model";
 
 export default function ApiShopBlogCategoriesAddPost(
