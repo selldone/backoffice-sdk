@@ -12,6 +12,31 @@
 
 🛍️ Go to the [**Full Storefront Project ▶**](https://github.com/selldone/storefront)
 
+## Installation
+
+To install Selldone Core in your project, use the following command:
+
+
+```bash
+npm install selldone/sdk-backoffice
+```
+```bash
+yarn add @selldone/sdk-backoffice
+```
+
+## Usage
+
+Here's a basic example to get you started:
+
+```javascript
+import {BackofficeSDK} from "@selldone/sdk-backoffice";
+
+// ━━━ Backoffice SDK (api,...) ━━━
+BackofficeSDK.Setup();
+```
+
+
+
 
 
 ---
