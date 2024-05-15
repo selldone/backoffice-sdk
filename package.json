@@ -1,6 +1,6 @@
 {
   "name": "@selldone/sdk-backoffice",
-  "version": "1.5.14",
+  "version": "1.5.15-3",
   "private": false,
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://selldone.com)",
@@ -22,7 +22,7 @@
   "license": "MIT",
 
   "dependencies": {
-    "@selldone/core-js": "^1.0.0",
+    "@selldone/core-js": "latest",
 
     "axios": "^1.6.8",
     "lodash-es": "^4.17.21"
