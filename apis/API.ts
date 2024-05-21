@@ -503,7 +503,12 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/engine`;
   }
-
+  GET_CATEGORY_ALL_SUB_CATEGORIES(
+      shop_id: string | number,
+      category_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/sub-categories`;
+  }
   //―――――――――――――――――――――― Product ――――――――――――――――――――
 
   POST_CLONE_PRODUCT(shop_id: string | number) {
