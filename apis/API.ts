@@ -4528,6 +4528,10 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-requests/${request_id}`;
   }
 
+  GET_SHOP_VENDOR_REQUEST_ATTACHMENT_DOWNLOAD_LINK(shop_id: string | number,request_id: string | number,attachment_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/vendor-requests/${request_id}/attachments/${attachment_id}`;
+  }
+
   GET_SHOP_VENDOR_PAYMENT_OPTIONS(
     shop_id: string | number,
     vendor_id: string | number,
