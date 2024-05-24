@@ -4844,7 +4844,7 @@ export class API {
 
   POST_REPORT_ARTICLE(
     article_id: string | number,
-    report: keyof typeof ArticleReport.Category,
+    report: keyof typeof ArticleReport.Categories,
   ) {
     return `${this.selldone_api_url}/articles/${article_id}/report/${report}`;
   }
