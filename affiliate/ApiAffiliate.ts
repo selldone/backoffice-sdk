@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js";
 import {ApiAffiliatePos} from "./pos/ApiAffiliatePos";
 
 export class ApiAffiliate extends APIAbstract {

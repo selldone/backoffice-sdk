@@ -18,12 +18,10 @@ import {OrderType} from "@selldone/core-js/enums/order/OrderType";
 import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
 import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
 import {Currency} from "@selldone/core-js/enums/payment/Currency";
-import {AppVersionType} from "@selldone/core-js/enums/application/AppVersionType";
+import {Application, Article, ArticleReport} from "@selldone/core-js";
 import {CustomerClubLevels} from "@selldone/core-js/enums/customer/CustomerClubLevels";
 import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
 import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
-import {ArticleReport} from "@selldone/core-js/enums/article/ArticleReport";
-import {IArticleTypeCode} from "@selldone/core-js/enums/article/ArticleTypes";
 import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
 import {Language} from "@selldone/core-js/enums/language/Language";
 
@@ -503,12 +501,14 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/engine`;
   }
+
   GET_CATEGORY_ALL_SUB_CATEGORIES(
-      shop_id: string | number,
-      category_id: string | number,
+    shop_id: string | number,
+    category_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/categories/${category_id}/sub-categories`;
   }
+
   //―――――――――――――――――――――― Product ――――――――――――――――――――
 
   POST_CLONE_PRODUCT(shop_id: string | number) {
@@ -1536,7 +1536,7 @@ export class API {
   POST_APP_EDIT_PUBLISH(
     company_id: string | number,
     app_id: string | number,
-    upload_mode: AppVersionType,
+    upload_mode: Application.AppVersionType,
   ) {
     return `${this.selldone_api_url}/company/${company_id}/apps/${app_id}/publish/${upload_mode}`;
   }
@@ -4528,7 +4528,11 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-requests/${request_id}`;
   }
 
-  GET_SHOP_VENDOR_REQUEST_ATTACHMENT_DOWNLOAD_LINK(shop_id: string | number,request_id: string | number,attachment_id: string | number) {
+  GET_SHOP_VENDOR_REQUEST_ATTACHMENT_DOWNLOAD_LINK(
+    shop_id: string | number,
+    request_id: string | number,
+    attachment_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-requests/${request_id}/attachments/${attachment_id}`;
   }
 
@@ -4840,7 +4844,7 @@ export class API {
 
   POST_REPORT_ARTICLE(
     article_id: string | number,
-    report: keyof typeof ArticleReport,
+    report: keyof typeof ArticleReport.Category,
   ) {
     return `${this.selldone_api_url}/articles/${article_id}/report/${report}`;
   }
@@ -4851,7 +4855,7 @@ export class API {
   }
 
   //―――――――――――――――――――――― Edit ――――――――――――――――――――
-  POST_ADD_EDIT_ARTICLE(type: IArticleTypeCode) {
+  POST_ADD_EDIT_ARTICLE(type: Article.TypeValue) {
     return `${this.selldone_api_url}/article/${type}/edit`;
   }
 
@@ -4870,7 +4874,7 @@ export class API {
    * @param extra         shop ID
    * @returns {string}
    */
-  UPLOAD_ARTICLE_IMAGE(type: IArticleTypeCode, extra = null) {
+  UPLOAD_ARTICLE_IMAGE(type: Article.TypeValue, extra = null) {
     if (!extra) return `${this.selldone_api_url}/article/${type}/upload`;
     return `${this.selldone_api_url}/article/${type}/upload/${extra}`;
   }
@@ -4880,7 +4884,7 @@ export class API {
   }
 
   //―――――――――――――――――――――― Delete ――――――――――――――――――――
-  DELETE_ARTICLE(type: IArticleTypeCode, article_id: string | number) {
+  DELETE_ARTICLE(type: Article.TypeValue, article_id: string | number) {
     return `${this.selldone_api_url}/article/${type}/${article_id}`;
   }
 

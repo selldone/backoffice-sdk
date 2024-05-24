@@ -13,7 +13,7 @@
  */
 
 import apiAffiliatePosProducts from "../pos/requests/api.affiliate.pos.products";
-import {APIAbstract} from "@selldone/core-js/server/APIAbstract";
+import {APIAbstract} from "@selldone/core-js";
 
 export class ApiAffiliatePos extends APIAbstract {
   public list = apiAffiliatePosProducts;

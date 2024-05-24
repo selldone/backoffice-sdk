@@ -14,7 +14,7 @@
 
 import {LogisticProfile} from "@selldone/core-js/models/shop/logistic/profile/logistic-profile.model";
 import {ApiLogisticProfile} from "../../../logistic/profile/ApiLogisticProfile";
-import {Article} from "@selldone/core-js/models/article/article.model";
+import {Article} from "@selldone/core-js";
 
 export default function apiLogisticProfileGet(
   this: ApiLogisticProfile,
