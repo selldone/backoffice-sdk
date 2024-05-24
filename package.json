@@ -1,9 +1,11 @@
 {
   "name": "@selldone/sdk-backoffice",
-  "version": "1.5.23",
+  "version": "1.5.24",
   "private": false,
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://selldone.com)",
+  "description": "SDK for Selldone Backoffice API to connect and interact with Selldone API, enabling the creation of custom dashboards for your ecommerce with a serverless solution.",
+
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
