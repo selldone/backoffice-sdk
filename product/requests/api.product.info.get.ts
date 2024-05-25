@@ -12,26 +12,26 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type { ApiProduct } from "../ApiProduct";
-import type { Product } from "@selldone/core-js/models/shop/product/product.model";
-import { Category } from "@selldone/core-js/models/shop/category/category.model";
-import type { ProductVariant } from "@selldone/core-js/models/shop/product/product_variant.model";
-import type { Shop } from "@selldone/core-js/models/shop/shop.model";
-import { Vendor } from "@selldone/core-js/models/shop/vendor/vendor.model";
-import type { SubscriptionPrice } from "@selldone/core-js/models/shop/product/subscription_price.model";
-import type { Valuation } from "@selldone/core-js/models/shop/accounting/valuation/valuation.model";
-import type { MapTag } from "@selldone/core-js/models/shop/map/map-tag.model";
-import type { Connect } from "@selldone/core-js/models/connect/connect.model";
-import type { ExtraPricing } from "@selldone/core-js/models/shop/extra-pricing/extra-pricing.model";
-import type { ShopInclude } from "@selldone/core-js/models/shop/shop-include/shop-include.model";
-import type { Page } from "@selldone/core-js/models/shop/page/page.model";
-import type { Article } from "@selldone/core-js/models/article/article.model";
-import type { ProductRating } from "@selldone/core-js/models/shop/product/product-rating.model";
-import type { ProductFile } from "@selldone/core-js/models/shop/product/product-file.model";
-import type { ProductImage } from "@selldone/core-js/models/shop/product/product-image.model";
-import type { ProductData } from "@selldone/core-js/models/shop/product/product-data.model";
-import { DeliveryStateCode } from "@selldone/core-js/enums/delivery/DeliveryStateCode";
-import type { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
+import type {ApiProduct} from "../ApiProduct";
+import type {Product} from "@selldone/core-js/models/shop/product/product.model";
+import {Category} from "@selldone/core-js/models/shop/category/category.model";
+import type {ProductVariant} from "@selldone/core-js/models/shop/product/product_variant.model";
+import type {Shop} from "@selldone/core-js/models/shop/shop.model";
+import {Vendor} from "@selldone/core-js/models/shop/vendor/vendor.model";
+import type {SubscriptionPrice} from "@selldone/core-js/models/shop/product/subscription_price.model";
+import type {Valuation} from "@selldone/core-js/models/shop/accounting/valuation/valuation.model";
+import type {MapTag} from "@selldone/core-js/models/shop/map/map-tag.model";
+import type {Connect} from "@selldone/core-js/models/connect/connect.model";
+import type {ExtraPricing} from "@selldone/core-js/models/shop/extra-pricing/extra-pricing.model";
+import type {ShopInclude} from "@selldone/core-js/models/shop/shop-include/shop-include.model";
+import type {Page} from "@selldone/core-js/models/shop/page/page.model";
+import type {Article} from "@selldone/core-js/models/article/article.model";
+import type {ProductRating} from "@selldone/core-js/models/shop/product/product-rating.model";
+import type {ProductFile} from "@selldone/core-js/models/shop/product/product-file.model";
+import type {ProductImage} from "@selldone/core-js/models/shop/product/product-image.model";
+import type {ProductData} from "@selldone/core-js/models/shop/product/product-data.model";
+import type {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
+import {Order} from "@selldone/core-js";
 
 export default function apiProductInfoGet(
   this: ApiProduct,
@@ -39,7 +39,7 @@ export default function apiProductInfoGet(
   product_id: number,
   offset: number,
   limit: number,
-  options?: api.shop.product.info.get.IParams
+  options?: api.shop.product.info.get.IParams,
 ) {
   const params = { offset: offset, limit: limit, ...options };
   const url = window.API.GET_PRODUCT_INFO_ADMIN(shop_id, product_id);
@@ -137,7 +137,7 @@ export namespace api.shop.product.info.get {
     };
     product_data: ProductData[];
     orderQue: {
-      delivery_state: DeliveryStateCode;
+      delivery_state: Order.DeliveryStateCode;
       count: number;
       type: OrderTypeCode;
     }[];
