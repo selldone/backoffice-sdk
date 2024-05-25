@@ -18,8 +18,7 @@ import {OrderType} from "@selldone/core-js/enums/order/OrderType";
 import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
 import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
 import {Currency} from "@selldone/core-js/enums/payment/Currency";
-import {Application, Article, ArticleReport} from "@selldone/core-js";
-import {CustomerClubLevels} from "@selldone/core-js/enums/customer/CustomerClubLevels";
+import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
 import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
 import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
 import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
@@ -2924,10 +2923,7 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/clubs`;
   }
 
-  DELETE_SHOP_CLUB(
-    shop_id: string | number,
-    level: keyof typeof CustomerClubLevels,
-  ) {
+  DELETE_SHOP_CLUB(shop_id: string | number, level: keyof typeof Club.Levels) {
     return `${this.selldone_api_url}/shops/${shop_id}/clubs/${level}`;
   }
 
