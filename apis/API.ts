@@ -3203,6 +3203,10 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/email/service/reset`;
   }
 
+  POST_SHOP_MAIL_SERVICE_TEST(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/email/service/test`;
+  }
+
   /**
    *
    * @param shop_id
