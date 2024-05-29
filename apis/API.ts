@@ -4430,6 +4430,12 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}`;
   }
+  POST_SHOP_VENDOR_SEND_INVITE_EMAIL(
+      shop_id: string | number,
+      vendor_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/send-invitation`;
+  }
 
   POST_UPLOAD_VENDOR_ICON(
     shop_id: string | number,
