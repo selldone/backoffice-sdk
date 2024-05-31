@@ -5003,6 +5003,17 @@ export class API {
     return `${this.selldone_api_url}/developer/layouts/${layout_id}/deploys`;
   }
 
+  //―――――――――――――――――――――― Container (Custom instances) ――――――――――――――――――――
+  POST_SET_SHOP_CONTAINERS_GENERATE_SIGNED_URL(shop_id: number | string,type:'INSTANCE') {
+    return `${this.selldone_api_url}/shops/${shop_id}/container/${type}/generate`;
+  }
+  GET_SHOP_CONTAINERS(shop_id: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/containers`;
+  }
+ DELETE_SHOP_CONTAINER(shop_id: number | string,container_id:number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/containers/${container_id}`;
+  }
+
   //―――――――――――――――――――――― Shop > Map Search (tags) ――――――――――――――――――――
   GET_SHOP_MAP_TAGS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags`;

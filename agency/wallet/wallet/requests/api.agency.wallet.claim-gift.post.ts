@@ -16,20 +16,19 @@ import type {AgencyWallet} from "@selldone/core-js/models/agency/agency-wallet.m
 import {ApiAgencyWallet} from "../ApiAgencyWallet";
 import {Currency} from "@selldone/core-js/enums/payment/Currency";
 
-
 /**
  * Charge wallet by available free credit.
  * @param agency_id
  * @param code
  */
 export default function claimGift(
-    this: ApiAgencyWallet,
-    agency_id: number,
-    code: string,
+  this: ApiAgencyWallet,
+  agency_id: number,
+  code: string,
 ) {
-    const params = {code: code}
-    const url = window.API.POST_AGENCY_CLAIM_GIFT_CREDIT(agency_id);
-    return this.postNow<api.agency.wallet.claim_gift.post.IResponse>(url, params);
+  const params = { code: code };
+  const url = window.API.POST_AGENCY_CLAIM_GIFT_CREDIT(agency_id);
+  return this.postNow<api.agency.wallet.claim_gift.post.IResponse>(url, params);
 }
 
 //█████████████████████████████████████████████████████████████
@@ -37,10 +36,10 @@ export default function claimGift(
 //█████████████████████████████████████████████████████████████
 
 export namespace api.agency.wallet.claim_gift.post {
-    export interface IResponse {
-        success: boolean;
-        wallet: AgencyWallet;
-        amount: number;
-        currency: keyof typeof Currency;
-    }
+  export interface IResponse {
+    success: boolean;
+    wallet: AgencyWallet;
+    amount: number;
+    currency: keyof typeof Currency;
+  }
 }
