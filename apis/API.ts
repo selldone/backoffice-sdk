@@ -1163,6 +1163,9 @@ export class API {
   POST_ADD_SHOP_PERMISSION(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/permissions`;
   }
+  PUT_EDIT_SHOP_PERMISSION(shop_id: string | number,permission_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/permissions/${permission_id}`;
+  }
 
   DELETE_SHOP_PERMISSION(
     shop_id: string | number,
