@@ -1163,7 +1163,11 @@ export class API {
   POST_ADD_SHOP_PERMISSION(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/permissions`;
   }
-  PUT_EDIT_SHOP_PERMISSION(shop_id: string | number,permission_id: string | number) {
+
+  PUT_EDIT_SHOP_PERMISSION(
+    shop_id: string | number,
+    permission_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/permissions/${permission_id}`;
   }
 
@@ -3630,6 +3634,47 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/meta/${key}/portal`;
   }
 
+  //―――――――――――――――――――――― Customer > Wallets ――――――――――――――――――――
+
+  GET_SHOP_CUSTOMER_WALLETS(
+    shop_id: string | number,
+    customer_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/wallets`;
+  }
+
+  POST_SHOP_CUSTOMER_WALLETS_ADD(
+    shop_id: string | number,
+    customer_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/wallets`;
+  }
+
+  POST_SHOP_CUSTOMER_WALLET_ADD_FUND(
+    shop_id: string | number,
+    customer_id: string | number,
+    wallet_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/wallets/${wallet_id}/fund`;
+  }
+
+  GET_SHOP_CUSTOMER_WALLET_TRANSACTIONS(
+    shop_id: string | number,
+    customer_id: string | number,
+    wallet_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/wallets/${wallet_id}/transactions`;
+  }
+
+  PUT_SHOP_CUSTOMER_WALLET_EXPIRE_NOW(
+    shop_id: string | number,
+    customer_id: string | number,
+    wallet_id: string | number,
+    transaction_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/wallets/${wallet_id}/transactions/${transaction_id}/expire`;
+  }
+
   //―――――――――――――――――――――― Import Products ――――――――――――――――――――
 
   POST_IMPORT_PRODUCTS(shop_id: string | number) {
@@ -4433,9 +4478,10 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}`;
   }
+
   POST_SHOP_VENDOR_SEND_INVITE_EMAIL(
-      shop_id: string | number,
-      vendor_id: string | number,
+    shop_id: string | number,
+    vendor_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/send-invitation`;
   }
@@ -5007,13 +5053,21 @@ export class API {
   }
 
   //―――――――――――――――――――――― Container (Custom instances) ――――――――――――――――――――
-  POST_SET_SHOP_CONTAINERS_GENERATE_SIGNED_URL(shop_id: number | string,type:'INSTANCE') {
+  POST_SET_SHOP_CONTAINERS_GENERATE_SIGNED_URL(
+    shop_id: number | string,
+    type: "INSTANCE",
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/container/${type}/generate`;
   }
+
   GET_SHOP_CONTAINERS(shop_id: number | string) {
     return `${this.selldone_api_url}/shops/${shop_id}/containers`;
   }
- DELETE_SHOP_CONTAINER(shop_id: number | string,container_id:number | string) {
+
+  DELETE_SHOP_CONTAINER(
+    shop_id: number | string,
+    container_id: number | string,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/containers/${container_id}`;
   }
 
