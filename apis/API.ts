@@ -5767,6 +5767,15 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks`;
   }
 
+  GET_CASHBACK_DATA(shop_id: string | number, cashback_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
+  }
+
+  GET_CASHBACK_ORDERS(shop_id: string | number, cashback_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/orders`;
+  }
+
+
   DELETE_SHOP_CASHBACK(shop_id: string | number, cashback_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
   }
