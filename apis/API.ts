@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {SetupService} from "@selldone/core-js/server/SetupService";
-import {ShopMenuType} from "@selldone/core-js/enums/shop/ShopMenu";
-import {OrderType} from "@selldone/core-js/enums/order/OrderType";
-import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
-import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
-import {Currency} from "@selldone/core-js/enums/payment/Currency";
-import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
-import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
-import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
-import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
-import {Language} from "@selldone/core-js/enums/language/Language";
+import { SetupService } from "@selldone/core-js/server/SetupService";
+import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
+import { OrderType } from "@selldone/core-js/enums/order/OrderType";
+import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
+import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { Application, Article, ArticleReport, Club } from "@selldone/core-js";
+import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
+import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
+import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import { Language } from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
@@ -5323,6 +5323,15 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/coupons/${coupon_id}/translations/${key}`;
   }
 
+  PUT_CASHBACK_SET_TRANSLATIONS(
+      shop_id: string | number,
+      cashback_id: number | string,
+      key: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashback/${cashback_id}/translations/${key}`;
+  }
+
+
   PUT_OFFER_SET_TRANSLATIONS(
     shop_id: string | number,
     offer_id: number | string,
@@ -5741,5 +5750,60 @@ export class API {
   //―――――――――――――――――――――― Selldone Collect VAT ――――――――――――――――――――
   POST_CALCULATE_SELLDONE_VAT() {
     return `${this.selldone_api_url}/selldone-vat`;
+  }
+
+  //―――――――――――――――――――――― Customer Wallets ――――――――――――――――――――
+
+  GET_SHOP_ALL_CUSTOMERS_WALLETS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/wallets`;
+  }
+  POST_SHOP_CASHBACK_PROGRAM(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashback-program`;
+  }
+
+  //―――――――――――――――――――――― Shop Cashback ――――――――――――――――――――
+
+  GET_SHOP_CASHBACKS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks`;
+  }
+
+  DELETE_SHOP_CASHBACK(shop_id: string | number, cashback_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
+  }
+  POST_SHOP_CASHBACK_RESTORE(
+    shop_id: string | number,
+    cashback_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/restore`;
+  }
+
+  POST_SHOP_CASHBACK_ADD(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks`;
+  }
+  PUT_SHOP_CASHBACK_EDIT(
+      shop_id: string | number,
+      cashback_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
+  }
+
+
+
+
+  POST_SHOP_CASHBACK_ADD_NOTE(
+    shop_id: string | number,
+    cashback_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/note`;
+  }
+
+  DELETE_SHOP_CASHBACK_NOTE(
+    shop_id: string | number,
+    cashback_id: string | number,
+    note_index: number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/note/${note_index}`;
   }
 }
