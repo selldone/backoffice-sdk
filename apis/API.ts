@@ -3811,6 +3811,13 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/reseller/shops/${drop_shop_id}/products`;
   }
 
+  GET_DROP_SHIPPING_SHOP_CATEGORIES(
+      shop_id: string | number,
+      drop_shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reseller/shops/${drop_shop_id}/categories`;
+  }
+
   GET_DROP_SHIPPING_RESELLER_RECEIPTS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/finance/reseller/receipts`;
   }
