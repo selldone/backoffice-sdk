@@ -1706,42 +1706,42 @@ export class API {
   GET_DELIVERY_SERVICE_INFO(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number,
+    service_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}`;
+    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}`;
   }
 
   GET_DELIVERY_SERVICE_PRICE(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number,
+    service_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/price`;
+    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}/price`;
   }
 
   POST_DELIVERY_SERVICE_ADD_ORDER(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number,
+    service_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/order`;
+    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}/order`;
   }
 
   GET_DELIVERY_SERVICE_ORDER_INFO(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number,
+    service_id: string | number,
     uid: string,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/order/${uid}`;
+    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}/order/${uid}`;
   }
 
   GET_DELIVERY_SERVICE_PROFILE(
     shop_id: string | number,
     transportation_id: string | number,
-    delivery_service_id: string | number,
+    service_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${delivery_service_id}/profile`;
+    return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/services/${service_id}/profile`;
   }
 
   // ―――――― + Delivery person access: (by secure) ――――――
