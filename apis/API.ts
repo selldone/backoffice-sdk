@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@selldone/core-js/server/SetupService";
-import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
-import { OrderType } from "@selldone/core-js/enums/order/OrderType";
-import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
-import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
-import { Currency } from "@selldone/core-js/enums/payment/Currency";
-import { Application, Article, ArticleReport, Club } from "@selldone/core-js";
-import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
-import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
-import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
-import { Language } from "@selldone/core-js/enums/language/Language";
+import {SetupService} from "@selldone/core-js/server/SetupService";
+import {ShopMenuType} from "@selldone/core-js/enums/shop/ShopMenu";
+import {OrderType} from "@selldone/core-js/enums/order/OrderType";
+import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
+import {Currency} from "@selldone/core-js/enums/payment/Currency";
+import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
+import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
+import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
+import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import {Language} from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
@@ -287,6 +287,7 @@ export class API {
   GET_MY_REFERRAL() {
     return `${this.selldone_api_url}/referral`;
   }
+
   PUT_MY_REFERRAL_SET_BANK() {
     return `${this.selldone_api_url}/referral/bank`;
   }
@@ -295,26 +296,21 @@ export class API {
     return `${this.selldone_api_url}/referral/transactions`;
   }
 
-  POST_MY_REFERRAL_WALLET_TRANSFER_TO_ACCOUNT(
-      wallet_id: number,
-  ) {
+  POST_MY_REFERRAL_WALLET_TRANSFER_TO_ACCOUNT(wallet_id: number) {
     return `${this.selldone_api_url}/referral/transfer/${wallet_id}`;
   }
 
-  POST_MY_REFERRAL_REQUEST_TRANSFER_TO_BANK(
-      wallet_id: number,
-  ) {
+  POST_MY_REFERRAL_REQUEST_TRANSFER_TO_BANK(wallet_id: number) {
     return `${this.selldone_api_url}/referral/withdraw/${wallet_id}`;
   }
 
   POST_REFERRAL_INVITES() {
     return `${this.selldone_api_url}/invite/send`;
   }
+
   GET_MY_REFERRAL_FEES() {
     return `${this.selldone_api_url}/referral/fees`;
   }
-
-
 
   /* GET_REFERRAL_PROGRAMS() {
      return `${this.selldone_api_url}/referral/programs`;
@@ -360,6 +356,7 @@ export class API {
      return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/bank`;
    }
  */
+
   //―――――――――――――――――――――― Referral Linked Accounts ――――――――――――――――――――
 
   GET_GIFT_ACCOUNTS() {
@@ -2675,6 +2672,14 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/exchange/rates/${rate_id}/auto`;
   }
 
+  /**
+   * Selldone official exchange rates
+   * @constructor
+   */
+  GET_SELLDONE_EXCHANGE_RATES() {
+    return `${this.selldone_api_url}/exchange/rates`;
+  }
+
   //―――――――――――――――――――――― Shop > Gift Card ――――――――――――――――――――
 
   GET_GIFT_CARD_TYPES(shop_id: string | number) {
@@ -3840,8 +3845,8 @@ export class API {
   }
 
   GET_DROP_SHIPPING_SHOP_CATEGORIES(
-      shop_id: string | number,
-      drop_shop_id: string | number,
+    shop_id: string | number,
+    drop_shop_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reseller/shops/${drop_shop_id}/categories`;
   }
@@ -5359,13 +5364,12 @@ export class API {
   }
 
   PUT_CASHBACK_SET_TRANSLATIONS(
-      shop_id: string | number,
-      cashback_id: number | string,
-      key: string,
+    shop_id: string | number,
+    cashback_id: number | string,
+    key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashback/${cashback_id}/translations/${key}`;
   }
-
 
   PUT_OFFER_SET_TRANSLATIONS(
     shop_id: string | number,
@@ -5792,6 +5796,7 @@ export class API {
   GET_SHOP_ALL_CUSTOMERS_WALLETS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/wallets`;
   }
+
   POST_SHOP_CASHBACK_PROGRAM(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashback-program`;
   }
@@ -5810,10 +5815,10 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/orders`;
   }
 
-
   DELETE_SHOP_CASHBACK(shop_id: string | number, cashback_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
   }
+
   POST_SHOP_CASHBACK_RESTORE(
     shop_id: string | number,
     cashback_id: string | number,
@@ -5821,20 +5826,16 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/restore`;
   }
 
-  POST_SHOP_CASHBACK_ADD(
-      shop_id: string | number,
-  ) {
+  POST_SHOP_CASHBACK_ADD(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks`;
   }
+
   PUT_SHOP_CASHBACK_EDIT(
-      shop_id: string | number,
-      cashback_id: string | number,
+    shop_id: string | number,
+    cashback_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}`;
   }
-
-
-
 
   POST_SHOP_CASHBACK_ADD_NOTE(
     shop_id: string | number,
