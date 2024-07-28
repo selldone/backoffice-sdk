@@ -284,54 +284,82 @@ export class API {
   }
 
   //―――――――――――――――――――――― Selldone referral programs ――――――――――――――――――――
-
-  GET_REFERRAL_PROGRAMS() {
-    return `${this.selldone_api_url}/referral/programs`;
+  GET_MY_REFERRAL() {
+    return `${this.selldone_api_url}/referral`;
+  }
+  PUT_MY_REFERRAL_SET_BANK() {
+    return `${this.selldone_api_url}/referral/bank`;
   }
 
-  POST_APPLY_FOR_REFERRAL_PROGRAMS(program_id: string | number) {
-    return `${this.selldone_api_url}/referral/programs/${program_id}/apply`;
+  GET_MY_REFERRAL_TRANSACTIONS() {
+    return `${this.selldone_api_url}/referral/transactions`;
   }
 
-  POST_REFERRAL_PROGRAM_GET_CREDIT(
-    program_id: string | number,
-    link_id: string | number,
-    currency: keyof typeof Currency,
+  POST_MY_REFERRAL_WALLET_TRANSFER_TO_ACCOUNT(
+      wallet_id: number,
   ) {
-    return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/get/${currency}`;
+    return `${this.selldone_api_url}/referral/transfer/${wallet_id}`;
   }
 
-  POST_REFERRAL_PROGRAM_REQUEST_CREDIT_TO_BANK(
-    program_id: string | number,
-    link_id: string | number,
-    currency: keyof typeof Currency,
+  POST_MY_REFERRAL_REQUEST_TRANSFER_TO_BANK(
+      wallet_id: number,
   ) {
-    return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/request/${currency}`;
-  }
-
-  GET_REFERRAL_LINK_INFO(referral_id: string | number) {
-    return `${this.selldone_api_url}/referrals/${referral_id}`;
-  }
-
-  GET_REFERRAL_LINK_PAYMENTS(referral_id: string | number) {
-    return `${this.selldone_api_url}/referrals/${referral_id}/payments`;
-  }
-
-  GET_REFERRAL_INVITE_CHECK_EMAIL() {
-    return `${this.selldone_api_url}/invite/check`;
+    return `${this.selldone_api_url}/referral/withdraw/${wallet_id}`;
   }
 
   POST_REFERRAL_INVITES() {
     return `${this.selldone_api_url}/invite/send`;
   }
-
-  PUT_REFERRAL_PROGRAM_SAVE_BANK_DETAILS(
-    program_id: string | number,
-    link_id: string | number,
-  ) {
-    return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/bank`;
+  GET_MY_REFERRAL_FEES() {
+    return `${this.selldone_api_url}/referral/fees`;
   }
 
+
+
+  /* GET_REFERRAL_PROGRAMS() {
+     return `${this.selldone_api_url}/referral/programs`;
+   }
+
+   POST_APPLY_FOR_REFERRAL_PROGRAMS(program_id: string | number) {
+     return `${this.selldone_api_url}/referral/programs/${program_id}/apply`;
+   }
+
+   POST_REFERRAL_PROGRAM_GET_CREDIT(
+     program_id: string | number,
+     link_id: string | number,
+     currency: keyof typeof Currency,
+   ) {
+     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/get/${currency}`;
+   }
+
+   POST_REFERRAL_PROGRAM_REQUEST_CREDIT_TO_BANK(
+     program_id: string | number,
+     link_id: string | number,
+     currency: keyof typeof Currency,
+   ) {
+     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/request/${currency}`;
+   }
+
+   GET_REFERRAL_LINK_INFO(referral_id: string | number) {
+     return `${this.selldone_api_url}/referrals/${referral_id}`;
+   }
+
+   GET_REFERRAL_LINK_PAYMENTS(referral_id: string | number) {
+     return `${this.selldone_api_url}/referrals/${referral_id}/payments`;
+   }
+
+   GET_REFERRAL_INVITE_CHECK_EMAIL() {
+     return `${this.selldone_api_url}/invite/check`;
+   }
+
+
+   PUT_REFERRAL_PROGRAM_SAVE_BANK_DETAILS(
+     program_id: string | number,
+     link_id: string | number,
+   ) {
+     return `${this.selldone_api_url}/referral/programs/${program_id}/links/${link_id}/bank`;
+   }
+ */
   //―――――――――――――――――――――― Referral Linked Accounts ――――――――――――――――――――
 
   GET_GIFT_ACCOUNTS() {
