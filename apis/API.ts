@@ -5851,4 +5851,21 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/note/${note_index}`;
   }
+
+
+  //―――――――――――――――――――――― Shop > Print Templates ――――――――――――――――――――
+  GET_SHOP_PRINT_TEMPLATES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/print-templates`;
+  }
+
+  POST_SHOP_PRINT_TEMPLATE_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/print-templates`;
+  }
+  PUT_SHOP_PRINT_TEMPLATE_UPDATE(shop_id: string | number,template_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
+  }
+  DELETE_SHOP_PRINT_TEMPLATE(shop_id: string | number,template_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
+  }
+
 }
