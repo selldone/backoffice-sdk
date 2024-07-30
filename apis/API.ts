@@ -1165,9 +1165,10 @@ export class API {
     shop_id: string | number,
     basket_id: string | number,
     type: OrderExportPdfType,
+    render: "html" | "pdf" |"standard",
   ) {
     // type: label receipt
-    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/${type}/pdf`;
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/${type}/${render}`;
   }
 
   GET_POS_ORDERS_PDF(
