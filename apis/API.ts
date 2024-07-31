@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {SetupService} from "@selldone/core-js/server/SetupService";
-import {ShopMenuType} from "@selldone/core-js/enums/shop/ShopMenu";
-import {OrderType} from "@selldone/core-js/enums/order/OrderType";
-import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
-import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
-import {Currency} from "@selldone/core-js/enums/payment/Currency";
-import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
-import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
-import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
-import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
-import {Language} from "@selldone/core-js/enums/language/Language";
+import { SetupService } from "@selldone/core-js/server/SetupService";
+import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
+import { OrderType } from "@selldone/core-js/enums/order/OrderType";
+import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
+import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { Application, Article, ArticleReport, Club } from "@selldone/core-js";
+import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
+import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
+import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import { Language } from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
@@ -1165,10 +1165,14 @@ export class API {
     shop_id: string | number,
     basket_id: string | number,
     type: OrderExportPdfType,
-    render: "html" | "pdf" |"standard",
+    render: "html" | "pdf" | "standard" = "pdf",
+    size: null | "square" = null,
   ) {
     // type: label receipt
-    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/${type}/${render}`;
+    return (
+      `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/${type}/${render}` +
+      (size ? `?size=${size}` : "")
+    );
   }
 
   GET_POS_ORDERS_PDF(
@@ -5853,7 +5857,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/note/${note_index}`;
   }
 
-
   //―――――――――――――――――――――― Shop > Print Templates ――――――――――――――――――――
   GET_SHOP_PRINT_TEMPLATES(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates`;
@@ -5862,11 +5865,16 @@ export class API {
   POST_SHOP_PRINT_TEMPLATE_ADD(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates`;
   }
-  PUT_SHOP_PRINT_TEMPLATE_UPDATE(shop_id: string | number,template_id: string | number) {
+  PUT_SHOP_PRINT_TEMPLATE_UPDATE(
+    shop_id: string | number,
+    template_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
   }
-  DELETE_SHOP_PRINT_TEMPLATE(shop_id: string | number,template_id: string | number) {
+  DELETE_SHOP_PRINT_TEMPLATE(
+    shop_id: string | number,
+    template_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
   }
-
 }
