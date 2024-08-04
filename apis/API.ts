@@ -4331,6 +4331,14 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/options/login`;
   }
 
+  GET_SHOP_OPTION_LOGIN_METHOD_DETAILS(shop_id: string | number,login_code:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/options/login/${login_code}`;
+  }
+
+  POST_SHOP_OPTION_LOGIN_METHOD_CLIENT(shop_id: string | number,login_code:string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/options/login/${login_code}`;
+  }
+
   POST_SET_SHOP_OPTIONS_CHECKOUT(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/checkout`;
   }
