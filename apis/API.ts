@@ -1399,6 +1399,20 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/bills`;
   }
 
+  POST_PAYMENT_GATEWAY_ACTIONS_REFUND(
+      shop_id: string | number,
+      gateway_code: string,
+      payment_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/refund`;
+  }
+  POST_PAYMENT_GATEWAY_ACTIONS_DELIVERY(
+      shop_id: string | number,
+      gateway_code: string,
+      payment_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/delivery`;
+  }
   //―――――――――――――――――――――― COD Payments' Confirmation ――――――――――――――――――――
 
   POST_CONFIRM_COD_PAYMENT_MANUALLY_FOR_ONLINE_BASKET(
