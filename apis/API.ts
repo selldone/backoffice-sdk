@@ -3465,6 +3465,13 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/update-ai`;
   }
 
+  POST_AI_CREATE_NEW_PRODUCT_IMAGE(
+      shop_id: string | number,
+      product_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/reimagine`;
+  }
+
   //―――――――――――――――――――――― TAX ――――――――――――――――――――
   PUT_SET_SHOP_TAX_SETTING(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/tax`;
