@@ -3949,17 +3949,15 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram`;
   }
 
-  POST_INSTAGRAM_LINK_ACCOUNT(shop_id: string | number) {
-    return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/link`;
+
+
+  POST_INSTAGRAM_SET_SETTING(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram`;
   }
 
-  DELETE_INSTAGRAM_DATA(shop_id: string | number) {
-    return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/link`;
-  }
 
-  POST_REQUEST_SYNC(shop_id: string | number) {
-    return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/sync`;
-  }
 
   PUT_INSTAGRAM_MEDIA_SET_PRODUCTS(
     shop_id: string | number,
