@@ -1083,6 +1083,12 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-orders/${vendor_order_id}/refund`;
   }
 
+  POST_BASKET_CREATE_SECURE_LINK(
+      shop_id: string | number,
+      basket_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/secure-link`;
+  }
   //―――――――――――――――――――――― Shop > Fulfillments ――――――――――――――――――――
   POST_UPDATE_FULFILLMENT_ORDER_STATE(
     shop_id: string | number,
