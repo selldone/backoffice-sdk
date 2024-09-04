@@ -1905,7 +1905,9 @@ export class API {
   GET_PAGE_DATA(shop_id: string | number, page_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}`;
   }
-
+  GET_AUGMENT_DATA(shop_id: string | number, asset_type: 'product'|'vendor'|'include', asset_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/${asset_type}/augment/${asset_id}`;
+  }
   POST_PAGE_DATA_UPDATE_PREVIEW(
     shop_id: string | number,
     page_id: string | number,
