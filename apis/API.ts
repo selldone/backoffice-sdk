@@ -3603,6 +3603,13 @@ export class API {
     return `${this.selldone_dapi_url}/shops/${shop_id}/pos/${user_id}/customer-view/${token}`;
   }
 
+  POST_POS_BASKET_CREATE_SECURE_LINK(
+      shop_id: string | number,
+      basket_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/pos-baskets/${basket_id}/secure-link`;
+  }
+
   //―――――――――――――――――――――― POS HUB ――――――――――――――――――――
   POST_MY_HUB_GENERATE_PIN(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/hub/pin`;
