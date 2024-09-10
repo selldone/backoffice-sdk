@@ -14,6 +14,11 @@
 
 import {ApiFinanceExchange} from "@selldone/sdk-backoffice/finance/exchange/ApiFinanceExchange.ts";
 
+
+/**
+ * Use `window.$backoffice.finance.exchange`
+ * @constructor
+ */
 export default function ApiFinanceExchangeListGet(this: ApiFinanceExchange) {
   const url = window.API.GET_SELLDONE_EXCHANGE_RATES();
   return this.getNow<api.finance.exchange.list.get.IResponse>(url, null);

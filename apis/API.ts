@@ -2744,7 +2744,12 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards`;
   }
-
+  POST_GIFT_CARD_TYPE_CARDS_ADD(
+      shop_id: string | number,
+      gift_card_type_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards`;
+  }
   POST_UPDATE_GIFT_CARD_TYPE_BG(
     shop_id: string | number,
     gift_card_type_id: string | number,
