@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@selldone/core-js/server/SetupService";
-import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
-import { OrderType } from "@selldone/core-js/enums/order/OrderType";
-import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
-import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
-import { Currency } from "@selldone/core-js/enums/payment/Currency";
-import { Application, Article, ArticleReport, Club } from "@selldone/core-js";
-import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
-import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
-import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
-import { Language } from "@selldone/core-js/enums/language/Language";
+import {SetupService} from "@selldone/core-js/server/SetupService";
+import {ShopMenuType} from "@selldone/core-js/enums/shop/ShopMenu";
+import {OrderType} from "@selldone/core-js/enums/order/OrderType";
+import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
+import {Currency} from "@selldone/core-js/enums/payment/Currency";
+import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
+import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
+import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
+import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import {Language} from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
@@ -1084,11 +1084,12 @@ export class API {
   }
 
   POST_BASKET_CREATE_SECURE_LINK(
-      shop_id: string | number,
-      basket_id: string | number,
+    shop_id: string | number,
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/secure-link`;
   }
+
   //―――――――――――――――――――――― Shop > Fulfillments ――――――――――――――――――――
   POST_UPDATE_FULFILLMENT_ORDER_STATE(
     shop_id: string | number,
@@ -1406,19 +1407,21 @@ export class API {
   }
 
   POST_PAYMENT_GATEWAY_ACTIONS_REFUND(
-      shop_id: string | number,
-      gateway_code: string,
-      payment_id: string | number,
+    shop_id: string | number,
+    gateway_code: string,
+    payment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/refund`;
   }
+
   POST_PAYMENT_GATEWAY_ACTIONS_DELIVERY(
-      shop_id: string | number,
-      gateway_code: string,
-      payment_id: string | number,
+    shop_id: string | number,
+    gateway_code: string,
+    payment_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/payments/${payment_id}/delivery`;
   }
+
   //―――――――――――――――――――――― COD Payments' Confirmation ――――――――――――――――――――
 
   POST_CONFIRM_COD_PAYMENT_MANUALLY_FOR_ONLINE_BASKET(
@@ -1905,9 +1908,15 @@ export class API {
   GET_PAGE_DATA(shop_id: string | number, page_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}`;
   }
-  GET_AUGMENT_DATA(shop_id: string | number, asset_type: 'product'|'vendor'|'include', asset_id: string | number) {
+
+  GET_AUGMENT_DATA(
+    shop_id: string | number,
+    asset_type: "product" | "vendor" | "include",
+    asset_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/${asset_type}/augment/${asset_id}`;
   }
+
   POST_PAGE_DATA_UPDATE_PREVIEW(
     shop_id: string | number,
     page_id: string | number,
@@ -2744,12 +2753,14 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards`;
   }
+
   POST_GIFT_CARD_TYPE_CARDS_ADD(
-      shop_id: string | number,
-      gift_card_type_id: string | number,
+    shop_id: string | number,
+    gift_card_type_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/gift-card-types/${gift_card_type_id}/cards`;
   }
+
   POST_UPDATE_GIFT_CARD_TYPE_BG(
     shop_id: string | number,
     gift_card_type_id: string | number,
@@ -3479,8 +3490,8 @@ export class API {
   }
 
   POST_AI_CREATE_NEW_PRODUCT_IMAGE(
-      shop_id: string | number,
-      product_id: string | number,
+    shop_id: string | number,
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/reimagine`;
   }
@@ -3609,8 +3620,8 @@ export class API {
   }
 
   POST_POS_BASKET_CREATE_SECURE_LINK(
-      shop_id: string | number,
-      basket_id: string | number,
+    shop_id: string | number,
+    basket_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/pos-baskets/${basket_id}/secure-link`;
   }
@@ -3969,15 +3980,9 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram`;
   }
 
-
-
-  POST_INSTAGRAM_SET_SETTING(
-      shop_id: string | number,
-  ) {
+  POST_INSTAGRAM_SET_SETTING(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram`;
   }
-
-
 
   PUT_INSTAGRAM_MEDIA_SET_PRODUCTS(
     shop_id: string | number,
@@ -4370,11 +4375,17 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/options/login`;
   }
 
-  GET_SHOP_OPTION_LOGIN_METHOD_DETAILS(shop_id: string | number,login_code:string) {
+  GET_SHOP_OPTION_LOGIN_METHOD_DETAILS(
+    shop_id: string | number,
+    login_code: string,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/login/${login_code}`;
   }
 
-  POST_SHOP_OPTION_LOGIN_METHOD_CLIENT(shop_id: string | number,login_code:string) {
+  POST_SHOP_OPTION_LOGIN_METHOD_CLIENT(
+    shop_id: string | number,
+    login_code: string,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/login/${login_code}`;
   }
 
@@ -4722,6 +4733,13 @@ export class API {
     shop_connect_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}`;
+  }
+
+  POST_SHOP_CONNECT_SETUP_DIRECT(
+    shop_id: string | number,
+    connect_code: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/connects/${connect_code}/setup`;
   }
 
   PUT_UPDATE_SHOP_CONNECT(
@@ -5912,12 +5930,14 @@ export class API {
   POST_SHOP_PRINT_TEMPLATE_ADD(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates`;
   }
+
   PUT_SHOP_PRINT_TEMPLATE_UPDATE(
     shop_id: string | number,
     template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
   }
+
   DELETE_SHOP_PRINT_TEMPLATE(
     shop_id: string | number,
     template_id: string | number,
