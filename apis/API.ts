@@ -3472,6 +3472,13 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/remove-bg`;
   }
+  POST_AI_UPSCALE_BACKGROUND_PRODUCT_MAIN_IMAGE(
+      shop_id: string | number,
+      product_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/upscale`;
+  }
+
 
   POST_AI_REMOVE_BACKGROUND_PRODUCT_IMAGES(
     shop_id: string | number,
