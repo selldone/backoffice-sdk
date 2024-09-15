@@ -4374,6 +4374,11 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/options/mass_unit`;
   }
 
+  POST_SET_SHOP_OPTIONS_DISTANCE_UNIT(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/options/distance_unit`;
+  }
+
+
   POST_SET_SHOP_OPTIONS_BOOST(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/boost`;
   }
