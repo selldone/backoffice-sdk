@@ -4831,6 +4831,13 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/connects/${shop_connect_id}/logs`;
   }
 
+  POST_SHOP_CONNECT_SYNC_PRODUCT(
+      shop_id: string | number,
+      product_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/connect-products/${product_id}/sync`;
+  }
+
   //―――――――――――――――――――――― Shop > Valuation ――――――――――――――――――――
   GET_SHOP_VALUATIONS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/valuations`;
