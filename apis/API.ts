@@ -1090,6 +1090,29 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/secure-link`;
   }
 
+  POST_BASKET_SEND_ORDER_UPDATE_STATUS_EMAIL(
+    shop_id: string | number,
+    basket_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/send-update-status`;
+  }
+  //―――――――――――――――――――――― Shop > Message Template ――――――――――――――――――――
+  GET_SHOP_TEMPLATE_MESSAGES(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/template-messages`;
+  }
+  POST_SHOP_TEMPLATE_MESSAGE_ADD(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/template-messages`;
+  }
+  PUT_SHOP_TEMPLATE_MESSAGE_EDIT(
+      shop_id: string | number,
+        template_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/template-messages/${template_id}`;
+  }
   //―――――――――――――――――――――― Shop > Fulfillments ――――――――――――――――――――
   POST_UPDATE_FULFILLMENT_ORDER_STATE(
     shop_id: string | number,
@@ -3247,6 +3270,12 @@ export class API {
 
   /**
    *
+   * Optional: for orders you can set order_id to get the email render for a specific order.
+   *
+   * Support: order-update, order-payment, order-checkout , order-payment-admin
+   * Support: pos-checkout, pos-payment, pos-payment-admin
+   *
+   *
    * @param shop_id
    * @param code    Get code from api.selldone.com/shops/{shop_id}/email/list
    * @constructor
@@ -3260,6 +3289,7 @@ export class API {
       | "login-code"
       | "order-checkout"
       | "order-payment"
+      | "order-update"
       | "order-payment-admin"
       | "pos-checkout"
       | "pos-payment"
@@ -3472,13 +3502,13 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/remove-bg`;
   }
+
   POST_AI_UPSCALE_BACKGROUND_PRODUCT_MAIN_IMAGE(
-      shop_id: string | number,
-      product_id: string | number,
+    shop_id: string | number,
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/upscale`;
   }
-
 
   POST_AI_REMOVE_BACKGROUND_PRODUCT_IMAGES(
     shop_id: string | number,
@@ -4378,7 +4408,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/options/distance_unit`;
   }
 
-
   POST_SET_SHOP_OPTIONS_BOOST(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/options/boost`;
   }
@@ -4832,8 +4861,8 @@ export class API {
   }
 
   POST_SHOP_CONNECT_SYNC_PRODUCT(
-      shop_id: string | number,
-      product_id: string | number,
+    shop_id: string | number,
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/connect-products/${product_id}/sync`;
   }
