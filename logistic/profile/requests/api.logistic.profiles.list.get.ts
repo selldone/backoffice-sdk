@@ -23,7 +23,7 @@ export default function apiLogisticProfilesListGet(
   limit: number,
   options?: api.logistic.profiles.list.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = {  ...options,offset: offset, limit: limit };
   const url = window.API.GET_SHOP_LOGISTIC_PROFILES(shop_id);
   return this.getNow<api.logistic.profiles.list.get.IResponse>(
     url,

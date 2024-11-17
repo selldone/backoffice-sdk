@@ -25,7 +25,7 @@ export default function list(
     options?: api.agency.shops.get.IParams,
 
 ) {
-    const params = {offset: offset, limit: limit, ...options}
+    const params = {...options,offset: offset, limit: limit}
     const url = window.API.GET_MY_AGENCY_SHOPS(agency_id);
     return this.getNow<api.agency.shops.get.IResponse>(url, params);
 

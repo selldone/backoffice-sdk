@@ -23,7 +23,7 @@ export default function apiAffiliatePosProducts(
   limit: number,
   options?: api.affiliate.pos.products.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = {  ...options,offset: offset, limit: limit };
   const url = window.API.GET_AFFILIATE_POS_PRODUCTS(affiliate_id);
   return this.getNow<api.affiliate.pos.products.IResponse>(url, params);
 }

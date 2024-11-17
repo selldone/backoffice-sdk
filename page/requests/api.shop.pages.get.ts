@@ -22,7 +22,7 @@ export default function ApiShopShopPagesGet(
   limit: number,
   options?: api.shop.pages.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options,offset: offset, limit: limit };
 
   const url = window.API.GET_SHOP_PAGES(shop_id);
   return this.getNow<api.shop.pages.get.IResponse>(url, params);

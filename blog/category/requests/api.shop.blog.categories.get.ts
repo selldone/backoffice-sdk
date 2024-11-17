@@ -22,7 +22,7 @@ export default function ApiShopBlogCategoriesListGet(
   limit: number,
   options?: api.shop.blog.categories.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options,offset: offset, limit: limit };
 
   const url = window.API.GET_SHOP_BLOG_CATEGORIES(shop_id);
   return this.getNow<api.shop.blog.categories.get.IResponse>(url, params);

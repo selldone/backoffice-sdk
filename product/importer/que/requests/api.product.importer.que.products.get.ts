@@ -22,7 +22,7 @@ export default function apiProductImporterQueProductsGet(
   limit: number,
   options?: api.product.importer.que.products.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options, offset: offset, limit: limit};
   const url = window.API.GET_IMPORT_PRODUCTS_LIST(shop_id);
   return this.getNow<api.product.importer.que.products.get.IResponse>(
     url,

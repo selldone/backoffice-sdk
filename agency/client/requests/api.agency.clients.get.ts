@@ -23,7 +23,7 @@ export default function list(
     options?: api.agency.clients.get.IParams,
 
 ) {
-    const params = {offset: offset, limit: limit, ...options}
+    const params = { ...options,offset: offset, limit: limit}
     const url = window.API.GET_MY_AGENCY_CLIENTS(agency_id);
     return this.getNow<api.agency.clients.get.IResponse>(url, params);
 }

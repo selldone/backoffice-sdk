@@ -23,7 +23,7 @@ export default function apiProductsListGet(
   limit: number,
   options?: api.shop.products.get.IParams
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options,offset: offset, limit: limit };
   const url = window.API.GET_ALL_MY_PRODUCTS(shop_id);
   return this.getNow<api.shop.products.get.IResponse>(url, params);
 }

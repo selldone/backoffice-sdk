@@ -22,7 +22,7 @@ export default function apiProductSubscriptionPriceListGet(
   limit: number,
   options?: api.product.subscription_price.list.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options ,offset: offset, limit: limit};
   const url = window.API.GET_SHOP_SUBSCRIPTION_PRICES(shop_id);
   return this.getNow<api.product.subscription_price.list.get.IResponse>(
     url,

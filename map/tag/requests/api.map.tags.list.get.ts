@@ -22,7 +22,7 @@ export default function apiMapTagsListGet(
   limit: number,
   options?: api.map.tags.list.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options,offset: offset, limit: limit };
   const url = window.API.GET_SHOP_MAP_TAGS(shop_id);
   return this.getNow<api.map.tags.list.get.IResponse>(url, params);
 }

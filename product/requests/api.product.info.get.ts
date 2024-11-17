@@ -41,7 +41,7 @@ export default function apiProductInfoGet(
   limit: number,
   options?: api.shop.product.info.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = {  ...options,offset: offset, limit: limit };
   const url = window.API.GET_PRODUCT_INFO_ADMIN(shop_id, product_id);
   return this.getNow<api.shop.product.info.get.IResponse>(url, params);
 }

@@ -22,7 +22,7 @@ export default function apiVendorsListGet(
   limit: number,
   options?: api.vendors.list.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options ,offset: offset, limit: limit};
   const url = window.API.GET_SHOP_VENDORS(shop_id);
   return this.getNow<api.vendors.list.get.IResponse>(url, params);
 }

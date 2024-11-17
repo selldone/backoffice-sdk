@@ -22,7 +22,7 @@ export default function apiProductImporterQueImagesGet(
   limit: number,
   options?: api.product.importer.que.images.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options,offset: offset, limit: limit  };
   const url = window.API.GET_IMPORT_IMAGES_LIST(shop_id);
   return this.getNow<api.product.importer.que.images.get.IResponse>(
     url,

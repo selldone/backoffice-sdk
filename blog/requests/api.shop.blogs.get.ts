@@ -22,7 +22,7 @@ export default function ApiShopBlogsListGet(
   limit: number,
   options?: api.shop.blogs.get.IParams,
 ) {
-  const params = { offset: offset, limit: limit, ...options };
+  const params = { ...options, offset: offset, limit: limit };
 
   const url = window.API.GET_SHOP_BLOGS(shop_id);
   return this.getNow<api.shop.blogs.get.IResponse>(url, params);
