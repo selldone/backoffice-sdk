@@ -26,6 +26,7 @@ import {ApiMap} from "./map/ApiMap";
 import {ApiAffiliate} from "./affiliate/ApiAffiliate";
 import {ApiUser} from "./user/ApiUser";
 import {ApiFinance} from "@selldone/sdk-backoffice/finance/ApiFinance.ts";
+import {ApiCategory} from "@selldone/sdk-backoffice/category/ApiCategory.ts";
 
 const SDK_VERSION = "0.02";
 // Extend the Window interface to recognize the properties you add to the global window object.
@@ -60,6 +61,7 @@ declare global {
       // Shop:
       page: ApiPage;
       product: ApiProduct;
+      category: ApiCategory;
       blog: ApiBlog;
       vendor: ApiVendor;
 
@@ -110,6 +112,7 @@ export class BackofficeSDK {
       // Shop:
       page: new ApiPage(),
       product: new ApiProduct(),
+      category: new ApiCategory(),
       blog: new ApiBlog(),
       vendor: new ApiVendor(),
 

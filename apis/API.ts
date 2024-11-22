@@ -955,6 +955,16 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/extra-pricings/${extra_pricing_id}`;
   }
 
+  //―――――――――――――――――――――― Product > Thresholds ――――――――――――――――――――
+
+  PUT_SET_PRODUCT_THRESHOLDS(
+      shop_id: string | number,
+      product_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/thresholds`;
+  }
+
+
   //―――――――――――――――――――――― Product > 3D / AR ――――――――――――――――――――
 
   POST_UPLOAD_PRODUCT_3D_MODEL(
