@@ -958,12 +958,11 @@ export class API {
   //―――――――――――――――――――――― Product > Thresholds ――――――――――――――――――――
 
   PUT_SET_PRODUCT_THRESHOLDS(
-      shop_id: string | number,
-      product_id: string | number,
+    shop_id: string | number,
+    product_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/thresholds`;
   }
-
 
   //―――――――――――――――――――――― Product > 3D / AR ――――――――――――――――――――
 
@@ -1106,23 +1105,23 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/send-update-status`;
   }
+
   //―――――――――――――――――――――― Shop > Message Template ――――――――――――――――――――
-  GET_SHOP_TEMPLATE_MESSAGES(
-      shop_id: string | number,
-  ) {
+  GET_SHOP_TEMPLATE_MESSAGES(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/template-messages`;
   }
-  POST_SHOP_TEMPLATE_MESSAGE_ADD(
-      shop_id: string | number,
-  ) {
+
+  POST_SHOP_TEMPLATE_MESSAGE_ADD(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/template-messages`;
   }
+
   PUT_SHOP_TEMPLATE_MESSAGE_EDIT(
-      shop_id: string | number,
-        template_id: string | number,
+    shop_id: string | number,
+    template_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/template-messages/${template_id}`;
   }
+
   //―――――――――――――――――――――― Shop > Fulfillments ――――――――――――――――――――
   POST_UPDATE_FULFILLMENT_ORDER_STATE(
     shop_id: string | number,
@@ -3309,9 +3308,41 @@ export class API {
       | "shop-vendor-invite"
       | "shop-vendor-order"
       | "shop-vendor-products"
+      | "bulk-orders"       // Send daily orders
       | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/email/render/${code}`;
+  }
+
+  /**
+   * Send test email to me
+   * @param shop_id
+   * @param code
+   * @constructor
+   */
+  POST_SHOP_EMAIL_SEND_ME(
+    shop_id: string | number,
+    code:
+      | "shop-customer-join"
+      | "shop-giftcard"
+      | "shop-login"
+      | "login-code"
+      | "order-checkout"
+      | "order-payment"
+      | "order-update"
+      | "order-payment-admin"
+      | "pos-checkout"
+      | "pos-payment"
+      | "pos-payment-admin"
+      | "shop-contact"
+      | "shop-vendor-join"
+      | "shop-vendor-invite"
+      | "shop-vendor-order"
+      | "shop-vendor-products"
+      | "bulk-orders"
+      | string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/email/send/${code}`;
   }
 
   GET_SHOP_MAIL_SERVICE(shop_id: string | number) {
