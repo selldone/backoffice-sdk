@@ -3806,6 +3806,27 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/customers/${customer_id}/meta/${key}/portal`;
   }
 
+  //―――――――――――――――――――――― Reviews (From external source like facebook, google,...) ――――――――――――――――――――
+
+  GET_SHOP_REVIEWS_SOURCES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources`;
+  }
+
+  GET_SHOP_REVIEW_SOURCE_INFO(shop_id: string | number,source_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}`;
+  }
+
+  GET_SHOP_REVIEWS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews`;
+  }
+
+  GET_SHOP_REVIEW_SOURCE_DEBUG(shop_id: string | number,source_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}/debug`;
+  }
+  POST_SHOP_REVIEW_SOURCE_SYNC(shop_id: string | number,source_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}/sync`;
+  }
+
   //―――――――――――――――――――――― Customer > Wallets ――――――――――――――――――――
 
   GET_SHOP_CUSTOMER_WALLETS(
