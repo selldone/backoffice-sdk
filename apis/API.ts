@@ -3819,6 +3819,9 @@ export class API {
   GET_SHOP_REVIEWS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews`;
   }
+  POST_SHOP_REVIEW_UPDATE(shop_id: string | number,review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/reviews/${review_id}`;
+  }
 
   GET_SHOP_REVIEW_SOURCE_DEBUG(shop_id: string | number,source_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}/debug`;
