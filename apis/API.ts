@@ -6038,6 +6038,14 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/cashbacks/${cashback_id}/note/${note_index}`;
   }
+  //―――――――――――――――――――――― Shop > Download Bulk Daily Orders ――――――――――――――――――――
+  DOWNLOAD_DAILY_ORDERS(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/export/daily-orders`;
+  }
+
+
 
   //―――――――――――――――――――――― Shop > Print Templates ――――――――――――――――――――
   GET_SHOP_PRINT_TEMPLATES(shop_id: string | number) {
