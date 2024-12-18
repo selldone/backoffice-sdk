@@ -5874,6 +5874,50 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/shortcuts`;
   }
 
+
+  //―――――――――――――――――――――― Shop > Property Set ――――――――――――――――――――
+  GET_PROPERTY_SETS(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/property-sets`;
+  }
+
+
+  POST_ADD_PROPERTY_SET(
+      shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/property-sets`;
+  }
+
+  PUT_EDIT_PROPERTY_SET(
+      shop_id: string | number,
+      property_set_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/property-sets/${property_set_id}`;
+  }
+  DELETE_EDIT_PROPERTY_SET(
+      shop_id: string | number,
+      property_set_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/property-sets/${property_set_id}`;
+  }
+
+
+  //―――――――――――――――――――――― Shop > Product > Property Set ――――――――――――――――――――
+
+  /**
+   * Assign proper set to product | Set custom variants label,icon and order
+   * @param shop_id
+   * @param product_id
+   * @constructor
+   */
+  PUT_PRODUCT_SET_PROPERTY_SET(
+      shop_id: string | number,
+      product_id: number | string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/property-set`;
+  }
+
   //―――――――――――――――――――――― Shop > Product > Cross-selling ――――――――――――――――――――
   GET_PRODUCT_CROSS_SELL_ITEMS(
     shop_id: string | number,
