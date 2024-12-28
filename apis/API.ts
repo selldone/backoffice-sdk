@@ -6113,4 +6113,10 @@ export class API {
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/print-templates/${template_id}`;
   }
+
+  //―――――――――――――――――――――― Token SLDN ――――――――――――――――――――
+  POST_TOKEN_PLAY_GAME() {
+    return `${this.selldone_api_url}/sldn/play-game`;
+  }
+
 }
