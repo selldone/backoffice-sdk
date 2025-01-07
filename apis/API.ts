@@ -668,6 +668,19 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/delete-products`;
   }
 
+  /**
+   * Smart Actions > Auto Remove Duplicated Products
+   * @param shop_id
+   * @constructor
+   */
+  POST_SHOP_AUTO_REMOVE_DUPLICATED_PRODUCTS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/remove-duplicates`;
+  }
+  GET_SHOP_AUTO_REMOVE_DUPLICATED_PRODUCTS_PREVIEW(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/remove-duplicates`;
+  }
+
+
   POST_RESTORE_DELETED_PRODUCT(
     shop_id: string | number,
     product_id: string | number,
@@ -5148,6 +5161,7 @@ export class API {
   POST_SHOP_ALL_PRODUCTS_ARTICLE_BODY_AUTO_FIX(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/fix-articles`;
   }
+
 
   //―――――――――――――――――――――― Upload ――――――――――――――――――――
   /**
