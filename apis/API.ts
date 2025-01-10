@@ -874,6 +874,12 @@ export class API {
   }
 
 
+  /**
+   * Product Video
+   * @param shop_id
+   * @param product_id
+   * @constructor
+   */
   POST_PRODUCT_VIDEO_UPLOAD(shop_id: string | number, product_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/videos`;
   }
