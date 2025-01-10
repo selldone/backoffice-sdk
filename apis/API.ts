@@ -873,6 +873,17 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/locations`;
   }
 
+
+  POST_PRODUCT_VIDEO_UPLOAD(shop_id: string | number, product_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/videos`;
+  }
+  DELETE_PRODUCT_VIDEO(shop_id: string | number, product_id: string | number, video_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/videos/${video_id}`;
+  }
+
+
+
+
   POST_ADD_PRODUCT_LOCATIONS_SAVES(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/product-locations`;
   }
