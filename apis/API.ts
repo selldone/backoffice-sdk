@@ -6150,4 +6150,12 @@ export class API {
     return `${this.selldone_api_url}/sldn/play-game`;
   }
 
+
+  POST_TOKEN_PURCHASE() {
+    return `${this.selldone_api_url}/sldn/purchase`;
+  }
+  POST_TOKEN_PURCHASE_CHECK() {
+    return `${this.selldone_api_url}/sldn/purchase/check`;
+  }
+
 }
