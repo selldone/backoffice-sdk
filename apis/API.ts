@@ -6158,4 +6158,23 @@ export class API {
     return `${this.selldone_api_url}/sldn/purchase/check`;
   }
 
+
+  /**
+   * params: count_adjustment | Negative count_adjustment: means less will be shipped | Positive count_adjustment: means more will bve shipped
+   * @param shop_id
+   * @param basket_id
+   * @param basket_item_id
+   * @constructor
+   */
+  PUT_SHOP_ORDER_ITEM_SET_COUNT_ADJUSTMENT(
+      shop_id: string | number,
+      basket_id: string | number,
+      basket_item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/items/${basket_item_id}/count-adjustment`;
+  }
+
+
+
+
 }
