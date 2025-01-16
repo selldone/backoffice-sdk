@@ -92,5 +92,10 @@ export namespace api.shop.products.get {
 
     /** When set to true, all vendors are shown. */
     show_vendors?: boolean;
+
+    /**
+     * Attach category to the product.
+     */
+    with_category?: boolean;
   }
 }
