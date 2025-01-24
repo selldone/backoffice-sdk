@@ -4141,6 +4141,14 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/instagram/stories/${story_id}/products`;
   }
 
+  //―――――――――――――――――――――― OpenAI ――――――――――――――――――――
+  GET_CHANNELS_OPENAI_DOWNLOAD_KNOWLEDGE_BASE(
+      shop_id: string | number,
+      resource: 'products'|'instructions' ,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/channels/openai/knowledge-base/${resource}`;
+  }
+
   //―――――――――――――――――――――― Experts > Expert Zone ――――――――――――――――――――
 
   POST_SET_MY_EXPERT_PROFILE() {
