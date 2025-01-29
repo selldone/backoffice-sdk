@@ -2176,6 +2176,9 @@ export class API {
   DELETE_ACCOUNT(account_id: string | number) {
     return `${this.selldone_api_url}/accounts/${account_id}`;
   }
+  POST_RESTORE_ACCOUNT(account_id: string | number) {
+    return `${this.selldone_api_url}/accounts/${account_id}/restore`;
+  }
 
   GET_CHECK_ACCOUNT_NUMBER(account_number: string) {
     return `${
@@ -2332,6 +2335,11 @@ export class API {
   POST_CONFIRM_TRANSACTION() {
     return `${this.selldone_api_url}/transactions/send/confirm`;
   }
+
+  GET_ACCOUNT_CONNECTED_SHOPS(account_number: string) {
+    return `${this.selldone_api_url}/accounts/${account_number}/shops`;
+  }
+
 
   //―――――――――――――――――――――― Application Builder > Android ――――――――――――――――――――
 
