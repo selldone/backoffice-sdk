@@ -6193,5 +6193,14 @@ export class API {
 
 
 
+  //―――――――――――――――――――――― Red Alert ――――――――――――――――――――
+
+  POST_RED_ALERT_REPORT() {
+    return `${this.selldone_api_url}/red-alert`;
+  }
+  POST_RED_ALERT_REPORT_CHECK_STORE() {
+    return `${this.selldone_api_url}/red-alert/check-store`;
+  }
+
 
 }
