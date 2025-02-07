@@ -4864,6 +4864,17 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-payments/${payment_id}/revers`;
   }
 
+  /**
+   * Download vendor finance excel
+   * @param shop_id
+   * @param vendor_id
+   * @constructor
+   */
+  GET_SHOP_VENDOR_FINANCE_DOWNLOAD(shop_id: string | number,vendor_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/finance/excel`;
+  }
+
+
   //―――――――――――――――――――――― Import Vendors ――――――――――――――――――――
 
   POST_IMPORT_VENDORS(shop_id: string | number) {
