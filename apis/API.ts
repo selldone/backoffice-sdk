@@ -5861,6 +5861,14 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/ai/spec`;
   }
 
+  POST_AI_PAGE_BUILDER_IMAGE_TO_COMPONENT(
+    shop_id: string | number,
+    page_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/ai/image-to-component`;
+  }
+
+
   //―――――――――――――――――――――― Shop > Quota ――――――――――――――――――――
   SET_SHOP_QUOTA(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/quota`;
