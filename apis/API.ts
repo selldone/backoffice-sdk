@@ -2217,6 +2217,15 @@ export class API {
     return `${this.selldone_api_url}/accounts/${account_number}/charges/${charge_id}/receipt`;
   }
 
+
+
+  POST_ACCOUNT_EXCHANGE_WITH_ANOTHER_WALLET_CHECK(account_number: string | number) {
+    return `${this.selldone_api_url}/accounts/${account_number}/exchange/check`;
+  }
+  POST_ACCOUNT_EXCHANGE_WITH_ANOTHER_WALLET(account_number: string | number) {
+    return `${this.selldone_api_url}/accounts/${account_number}/exchange`;
+  }
+
   //―――――――――――――――――――――― Claim Free Initial Charge ――――――――――――――――――――
 
   POST_CLAIM_FREE_CHARGE(account_number: string) {
