@@ -1891,6 +1891,48 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/pickups`;
   }
 
+
+
+// ―――――――――― Shop ▶ Logistic ▶ Transportations ▶ Boxes ――――――――――
+
+  GET_SHOP_BOXES(
+    shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/boxes`;
+  }
+
+  /**
+   * POST — Add a new box to a transportation.
+   * Body: { name:string, length:number, width:number, height:number, weight:number, distance_unit?:'cm'|'in', mass_unit?:'kg'|'lb'|'g'|'oz' }
+   */
+  POST_SHOP_BOXES_ADD(
+    shop_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/boxes`;
+  }
+
+  /**
+   * PUT — Edit an existing box by uid.
+   * Body: (partial allowed) { name?, length?, width?, height?, weight?, distance_unit?, mass_unit? }
+   */
+  PUT_SHOP_BOXES_EDIT(
+    shop_id: string | number,
+    box_uid: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/boxes/${box_uid}`;
+  }
+
+  /**
+   * DELETE — Remove a box by uid.
+   */
+  DELETE_SHOP_BOX(
+    shop_id: string | number,
+    box_uid: string,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/boxes/${box_uid}`;
+  }
+
+
   // ―――――――――――――――――――――――――――――――――――
 
   //―――――――――――――――――――――― Warehouse ――――――――――――――――――――
