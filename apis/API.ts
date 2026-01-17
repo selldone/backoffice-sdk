@@ -6273,4 +6273,172 @@ export class API {
   }
 
 
+
+
+
+  //―――――――――――――――――――――― Shop Listing――――――――――――――――――――
+
+  // Listing config (GET is optional if you add it in routes)
+  GET_SHOP_LISTING(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing`;
+  }
+
+  POST_SHOP_LISTING_SAVE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing`;
+  }
+
+  // Categories (IMPORTANT: should be /listing/categories to avoid conflict with items)
+  GET_SHOP_LISTING_CATEGORIES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/categories`;
+  }
+
+  POST_SHOP_LISTING_CATEGORY_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/categories`;
+  }
+
+  POST_SHOP_LISTING_CATEGORY_EDIT(
+    shop_id: string | number,
+    category_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/categories/${category_id}`;
+  }
+
+  DELETE_SHOP_LISTING_CATEGORY(
+    shop_id: string | number,
+    category_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/categories/${category_id}`;
+  }
+
+  // Items
+  GET_SHOP_LISTING_ITEMS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items`;
+  }
+
+  POST_SHOP_LISTING_ITEM_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items`;
+  }
+
+  POST_SHOP_LISTING_ITEM_EDIT(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}`;
+  }
+
+  DELETE_SHOP_LISTING_ITEM(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}`;
+  }
+
+  // Moderation
+  POST_SHOP_LISTING_ITEM_APPROVE(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/approve`;
+  }
+
+  POST_SHOP_LISTING_ITEM_REJECT(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/reject`;
+  }
+
+  POST_SHOP_LISTING_ITEM_PUBLISH(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/publish`;
+  }
+
+  POST_SHOP_LISTING_ITEM_UNPUBLISH(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/unpublish`;
+  }
+
+  POST_SHOP_LISTING_ITEM_ARCHIVE(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/archive`;
+  }
+
+  POST_SHOP_LISTING_ITEM_RESTORE(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/restore`;
+  }
+
+  POST_SHOP_LISTING_ITEM_PENALTY(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/penalty`;
+  }
+
+  // Media
+  GET_SHOP_LISTING_ITEM_MEDIA_LIST(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/list`;
+  }
+
+  POST_SHOP_LISTING_ITEM_MEDIA_IMAGES(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/images`;
+  }
+
+  POST_SHOP_LISTING_ITEM_MEDIA_URL(
+    shop_id: string | number,
+    item_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/url`;
+  }
+
+  DELETE_SHOP_LISTING_ITEM_MEDIA(
+    shop_id: string | number,
+    item_id: string | number,
+    media_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}`;
+  }
+
+  POST_SHOP_LISTING_ITEM_MEDIA_EDIT(
+    shop_id: string | number,
+    item_id: string | number,
+    media_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}`;
+  }
+
+  PUT_SHOP_LISTING_ITEM_MEDIA_MAIN(
+    shop_id: string | number,
+    item_id: string | number,
+    media_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}/main`;
+  }
+
+  PUT_SHOP_LISTING_ITEM_MEDIA_REORDER(
+    shop_id: string | number,
+    item_id: string | number,
+    media_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}/reorder`;
+  }
+
+
+
+
+
 }
