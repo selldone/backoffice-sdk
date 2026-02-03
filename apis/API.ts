@@ -6338,49 +6338,49 @@ export class API {
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/approve`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/approve`;
   }
 
   POST_SHOP_LISTING_ITEM_REJECT(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/reject`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/reject`;
   }
 
   POST_SHOP_LISTING_ITEM_PUBLISH(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/publish`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/publish`;
   }
 
   POST_SHOP_LISTING_ITEM_UNPUBLISH(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/unpublish`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/unpublish`;
   }
 
   POST_SHOP_LISTING_ITEM_ARCHIVE(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/archive`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/archive`;
   }
 
   POST_SHOP_LISTING_ITEM_RESTORE(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/restore`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/restore`;
   }
 
   POST_SHOP_LISTING_ITEM_PENALTY(
     shop_id: string | number,
     item_id: string | number,
   ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/penalty`;
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/moderation/penalty`;
   }
 
   // Media
@@ -6435,6 +6435,39 @@ export class API {
     media_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}/reorder`;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Listing Designs
+  GET_SHOP_LISTING_DESIGNS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/designs`;
+  }
+
+  POST_SHOP_LISTING_DESIGN_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/designs`;
+  }
+
+  POST_SHOP_LISTING_DESIGN_EDIT(shop_id: string | number, design_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/designs/${design_id}`;
+  }
+
+  DELETE_SHOP_LISTING_DESIGN(shop_id: string | number, design_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/designs/${design_id}`;
   }
 
 
