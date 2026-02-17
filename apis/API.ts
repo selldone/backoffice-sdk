@@ -6474,4 +6474,158 @@ export class API {
 
 
 
+
+
+
+
+
+
+
+
+  // Listing Badges
+  GET_SHOP_LISTING_BADGES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/badges`;
+  }
+
+  POST_SHOP_LISTING_BADGE_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/badges`;
+  }
+
+  POST_SHOP_LISTING_BADGE_EDIT(shop_id: string | number, badge_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/badges/${badge_id}`;
+  }
+
+  DELETE_SHOP_LISTING_BADGE(shop_id: string | number, badge_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/badges/${badge_id}`;
+  }
+
+// Listing Companies
+  GET_SHOP_LISTING_COMPANIES(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/companies`;
+  }
+
+  POST_SHOP_LISTING_COMPANY_ADD(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/companies`;
+  }
+
+  POST_SHOP_LISTING_COMPANY_EDIT(shop_id: string | number, company_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/companies/${company_id}`;
+  }
+
+  DELETE_SHOP_LISTING_COMPANY(shop_id: string | number, company_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/companies/${company_id}`;
+  }
+
+
+
+
+
+
+
+
+
+  // Listing all reviews (backoffice)
+
+  GET_SHOP_LISTING_REVIEWS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews`;
+  }
+
+  POST_SHOP_LISTING_REVIEW_REPLY(shop_id: string | number, review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/reply`;
+  }
+
+  POST_SHOP_LISTING_REVIEW_APPROVE(shop_id: string | number, review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/approve`;
+  }
+
+  POST_SHOP_LISTING_REVIEW_REJECT(shop_id: string | number, review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/reject`;
+  }
+
+  DELETE_SHOP_LISTING_REVIEW(shop_id: string | number, review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}`;
+  }
+
+  POST_SHOP_LISTING_REVIEW_RESTORE(shop_id: string | number, review_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/restore`;
+  }
+
+
+
+
+
+
+
+
+
+
+  //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Shop ▶ Listing ▶ Messages (Dashboard)
+  //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  GET_SHOP_LISTING_MESSAGES(shop_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages`;
+  }
+
+  GET_SHOP_LISTING_MESSAGE(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}`;
+  }
+
+  POST_SHOP_LISTING_MESSAGE_READ(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/read`;
+  }
+
+  POST_SHOP_LISTING_MESSAGE_ARCHIVE(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/archive`;
+  }
+
+  POST_SHOP_LISTING_MESSAGE_SPAM(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/spam`;
+  }
+
+  POST_SHOP_LISTING_MESSAGE_REPLY(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/reply`;
+  }
+
+  DELETE_SHOP_LISTING_MESSAGE(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}`;
+  }
+
+  POST_SHOP_LISTING_MESSAGE_RESTORE(shop_id: number, message_id: number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/restore`;
+  }
+
+
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Shop ▶ Listing ▶ Active
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  POST_SHOP_LISTING_SET_ACTIVE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/active`;
+  }
+
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Shop ▶ Listing ▶ Search Settings
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  GET_SHOP_LISTING_SEARCH(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/search`;
+  }
+
+  POST_SHOP_LISTING_SEARCH_SAVE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/search`;
+  }
+
+  POST_SHOP_LISTING_SEARCH_GENERATE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/listing/search/generate`;
+  }
+
+
+
+
+
+
+
 }

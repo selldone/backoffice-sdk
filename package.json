@@ -1,6 +1,6 @@
 {
   "name": "@selldone/sdk-backoffice",
-  "version": "1.8.19",
+  "version": "1.9.0",
   "private": false,
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://selldone.com)",
@@ -26,17 +26,17 @@
   "dependencies": {
     "@selldone/core-js": "latest",
 
-    "axios": "^1.13.2",
+    "axios": "^1.13.4",
     "lodash-es": "^4.17.22"
 
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
-     "@typescript-eslint/eslint-plugin": "^8.50.0",
-    "@typescript-eslint/parser": "^8.50.0",
+     "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.7.4",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }
