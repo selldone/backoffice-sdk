@@ -6624,7 +6624,13 @@ export class API {
 
 
 
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Shop ▶ Listing ▶ Form Builder
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+  POST_SHOP_LISTING_FORM_BUILDER_UPLOAD_IMAGE (shop_id: string | number) {
+    return `/api/shops/${shop_id}/listing/form-builder/upload-image`;
+  }
 
 
 
