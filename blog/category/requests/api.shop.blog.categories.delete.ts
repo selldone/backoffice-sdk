@@ -20,14 +20,14 @@ export default function ApiShopBlogCategoriesDelete(
   category_id: number,
 ) {
   const url = window.API.DELETE_SHOP_BLOG_CATEGORY(shop_id, category_id);
-  return this.deleteNow<api.shop.blog.categories.delete.IResponse>(url);
+  return this.deleteNow<api.shop.blog.categories.remove.IResponse>(url);
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace api.shop.blog.categories.delete {
+export namespace api.shop.blog.categories.remove {
   export interface IResponse {
     id: number;
     success: boolean;
