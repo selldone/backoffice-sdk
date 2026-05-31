@@ -2150,6 +2150,10 @@ export class API {
     return `${this.selldone_api_url}/tokens`;
   }
 
+  DELETE_TOKEN(token_id: string | number) {
+    return `${this.selldone_api_url}/tokens/${token_id}`;
+  }
+
   GET_CLIENTS() {
     return `${this.selldone_api_url}/clients`;
   }
@@ -2162,8 +2166,20 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/clients`;
   }
 
+  PUT_UPDATE_SHOP_CLIENT(shop_id: string | number, client_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/clients/${client_id}`;
+  }
+
+  DELETE_SHOP_CLIENT(shop_id: string | number, client_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/clients/${client_id}`;
+  }
+
   GET_MY_PERSONAL_ACCESS_TOKENS() {
     return `${this.selldone_api_url}/personal-access-tokens`;
+  }
+
+  DELETE_MY_PERSONAL_ACCESS_TOKEN(token_id: string | number) {
+    return `${this.selldone_api_url}/personal-access-tokens/${token_id}`;
   }
 
   //―――――――――――――――――――――― SEO ――――――――――――――――――――
