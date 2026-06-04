@@ -2645,9 +2645,9 @@ export class API {
   }
 
 
-  POST_COMMANDER_AI(shop_id: string | number) {
+/*  POST_COMMANDER_AI(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/ai-commander`;
-  }
+  }*/
   //―――――――――――――――――――――― Shop > Discount Codes ――――――――――――――――――――
 
   GET_DISCOUNT_CODES(shop_id: string | number) {
