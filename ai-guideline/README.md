@@ -18,12 +18,14 @@ This folder is designed so a human or an AI agent can understand how the Selldon
 
 ## Main Files
 
-- `00-documentation-plan.md`: documentation plan and writing conventions.
+- `00-ai-agent-entrypoint.md`: mandatory starting point for AI agents (reading order, no-skip execution flow, done criteria).
+- `00-documentation-plan.md`: documentation writing conventions and extraction method.
 - `01-dashboard-architecture.md`: runtime architecture, layout, state, SDK, and permissions.
 - `02-ai-build-guide.md`: practical guide for an AI agent building a custom dashboard.
 - `03-routing-proposal.md`: recommended route hierarchy for a custom web app.
 - `04-api-and-data-contracts.md`: API contracts, pagination, error handling, and common response shapes.
 - `05-ui-patterns.md`: framework-independent UI/UX patterns.
+- `06-feature-inventory.md`: complete feature/module checklist from Backoffice source and route packs.
 - `dashboard/`: section-by-section dashboard documentation.
 - `_generated/`: source-generated catalogs for routes and APIs.
 
@@ -38,4 +40,6 @@ This folder is designed so a human or an AI agent can understand how the Selldon
 
 ## How An AI Agent Should Use This Pack
 
-Start with `01-dashboard-architecture.md` and `02-ai-build-guide.md`. Then read the relevant file under `dashboard/` for the feature being implemented. Use `_generated/api-url-builders.md` and `_generated/sdk-request-wrappers.md` to confirm exact endpoints, methods, params, and response keys.
+Start with `00-ai-agent-entrypoint.md`, then follow its mandatory reading and implementation order.  
+Treat `06-feature-inventory.md` as the no-skip coverage checklist.  
+For API implementation, map module usage from `_generated/api-usage-by-area.md` to **full URL endpoints** in `_generated/api-url-builders.md`.

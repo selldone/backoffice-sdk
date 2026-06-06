@@ -44,6 +44,13 @@ DELETE https://api.selldone.com/shops/{shop_id}/products/{product_id}/delete
 
 Use `_generated/api-usage-index.md` and `_generated/api-usage-by-area.md` to see where each endpoint is used in the current UI.
 
+Mandatory resolution flow for implementation agents:
+
+1. Find the module area in `_generated/api-usage-by-area.md`.
+2. Copy the referenced API builder names.
+3. Resolve each builder in `_generated/api-url-builders.md`.
+4. Call the resolved full endpoint URL and method.
+
 Use `_generated/sdk-request-wrappers.md` only when you need typed param/response hints from the old SDK wrapper implementation.
 
 ## Common Pagination

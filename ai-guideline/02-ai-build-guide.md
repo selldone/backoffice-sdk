@@ -4,6 +4,8 @@
 
 Build a custom Selldone dashboard with any UI and any framework, while preserving Backoffice-compatible routing, state, API calls, permissions, and operational behavior.
 
+Before implementation, read `00-ai-agent-entrypoint.md` and use `06-feature-inventory.md` as the full coverage checklist.
+
 ## Recommended Build Order
 
 1. Prepare auth plus the base API/HTTP client.
@@ -13,6 +15,7 @@ Build a custom Selldone dashboard with any UI and any framework, while preservin
 5. Implement Products Manager first because its folder/list/filter/bulk-action model is the pattern for many other sections.
 6. Add Process Center, Finance, Logistic, CRM, Marketing, Pages, Access, and Settings.
 7. For every operation, confirm the full HTTP endpoint, method, params, auth, and response shape in `_generated/api-url-builders.md`; use `_generated/sdk-request-wrappers.md` only for legacy param/response hints.
+8. Continue implementation until all modules in `06-feature-inventory.md` are covered.
 
 ## Framework-Independent Rules
 
@@ -61,6 +64,8 @@ A custom implementation can use any HTTP client. The important parts are full en
 
 ## Source-To-Docs Mapping
 
+- Entrypoint and mandatory flow: `00-ai-agent-entrypoint.md`
+- Full module checklist: `06-feature-inventory.md`
 - Routes: `_generated/route-index.md`
 - Full endpoint catalog: `_generated/api-url-builders.md`
 - Typed wrappers: `_generated/sdk-request-wrappers.md`
