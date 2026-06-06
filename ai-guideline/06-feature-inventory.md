@@ -8,6 +8,7 @@ This inventory is derived from:
 - `_generated/source-module-index.md`
 
 Use this file as the no-skip checklist for full-function dashboard delivery.
+Use `07-module-implementation-matrix.md` immediately after this file to map every module to route placement, permission region, source directory, API usage areas, and core full endpoints.
 
 ## A) User Dashboard (`/shuttle`)
 
@@ -257,4 +258,6 @@ For every module above:
 1. Discover used API builders from `_generated/api-usage-by-area.md`.
 2. Resolve each to full URL and method in `_generated/api-url-builders.md`.
 3. Implement using the resolved full endpoints only.
+
+Do not create generic fallback endpoints. If an exact full endpoint is missing from the generated catalog, record the feature as an API documentation gap until the endpoint is verified.
 

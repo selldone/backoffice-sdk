@@ -4,14 +4,14 @@
 
 Build a custom Selldone dashboard with any UI and any framework, while preserving Backoffice-compatible routing, state, API calls, permissions, and operational behavior.
 
-Before implementation, read `00-ai-agent-entrypoint.md` and use `06-feature-inventory.md` as the full coverage checklist.
+Before implementation, read `00-ai-agent-entrypoint.md` and use both `06-feature-inventory.md` and `07-module-implementation-matrix.md` as the full coverage checklist.
 
 ## Recommended Build Order
 
 1. Prepare auth plus the base API/HTTP client.
 2. Build the generic `/shuttle` user shell.
 3. Build the shop shell at `/shuttle/shop/:shop_id` and load shop context through `GET https://api.selldone.com/shops/me/{shop_id}`.
-4. Build the main shop navigation filtered by permission regions.
+4. Build a module registry from `07-module-implementation-matrix.md`, then render navigation filtered by permission regions, business model, installed apps, and shop state.
 5. Implement Products Manager first because its folder/list/filter/bulk-action model is the pattern for many other sections.
 6. Add Process Center, Finance, Logistic, CRM, Marketing, Pages, Access, and Settings.
 7. For every operation, confirm the full HTTP endpoint, method, params, auth, and response shape in `_generated/api-url-builders.md`; use `_generated/sdk-request-wrappers.md` only for legacy param/response hints.
@@ -66,13 +66,14 @@ A custom implementation can use any HTTP client. The important parts are full en
 
 - Entrypoint and mandatory flow: `00-ai-agent-entrypoint.md`
 - Full module checklist: `06-feature-inventory.md`
+- Module placement and implementation matrix: `07-module-implementation-matrix.md`
 - Routes: `_generated/route-index.md`
 - Full endpoint catalog: `_generated/api-url-builders.md`
 - Typed wrappers: `_generated/sdk-request-wrappers.md`
 - Real UI API usage by file: `_generated/api-usage-index.md`
 - Section explanations: `dashboard/`
 
-## MVP Pages
+## Minimum Launch Slice
 
 - User shop list.
 - Shop dashboard shell.
@@ -82,4 +83,4 @@ A custom implementation can use any HTTP client. The important parts are full en
 - Finance report and gateways.
 - Settings info, domains, and notifications.
 
-After this MVP, add the remaining modules using the same conventions.
+This minimum launch slice is not full completion. After it works, continue through every row in `07-module-implementation-matrix.md` and every module in `06-feature-inventory.md`.

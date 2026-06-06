@@ -2,6 +2,8 @@
 
 This routing proposal is intended for a custom web app. Names are aligned with the current Backoffice routes so an AI agent can map the documentation back to source and generated catalogs easily.
 
+Use this file with `07-module-implementation-matrix.md`. This file proposes route shape; the matrix decides module placement, permission region, API lookup areas, and completion coverage.
+
 ## Base Routes
 
 | Proposed path | Purpose | Current route source |
@@ -71,4 +73,4 @@ All routes below require `shop_id` and must load `GET https://api.selldone.com/s
 | `delivery` | Enables delivery queue UI. |
 | `vendor` | Vendor-panel mode. |
 
-The complete route catalog is available in `_generated/route-index.md`.
+The complete route catalog is available in `_generated/route-index.md`. Full coverage must also be checked against `07-module-implementation-matrix.md`.

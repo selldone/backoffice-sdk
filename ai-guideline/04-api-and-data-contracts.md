@@ -13,6 +13,8 @@ A custom Selldone dashboard should call HTTP endpoints directly. The primary con
 
 Backoffice JavaScript globals such as URL builders and typed wrappers are implementation details of the current Vue dashboard. Use them only as source trace when validating an endpoint.
 
+Do not invent endpoints. If a feature is known from `06-feature-inventory.md` or `07-module-implementation-matrix.md` but no matching full endpoint can be found in `_generated/api-url-builders.md`, record a documentation/API gap and stop that API integration until the endpoint is verified.
+
 ## Base Request Shape
 
 ```http
@@ -46,10 +48,12 @@ Use `_generated/api-usage-index.md` and `_generated/api-usage-by-area.md` to see
 
 Mandatory resolution flow for implementation agents:
 
-1. Find the module area in `_generated/api-usage-by-area.md`.
-2. Copy the referenced API builder names.
-3. Resolve each builder in `_generated/api-url-builders.md`.
-4. Call the resolved full endpoint URL and method.
+1. Find the feature in `07-module-implementation-matrix.md`.
+2. Read the listed `dashboard/` section doc.
+3. Find the module area in `_generated/api-usage-by-area.md`.
+4. Copy the referenced API builder names.
+5. Resolve each builder in `_generated/api-url-builders.md`.
+6. Call only the resolved full endpoint URL and method.
 
 Use `_generated/sdk-request-wrappers.md` only when you need typed param/response hints from the old SDK wrapper implementation.
 

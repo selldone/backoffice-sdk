@@ -10,6 +10,7 @@ These documents describe the behavior of the Backoffice dashboard. They do not p
 - `dashboard/shuttle` covers the user dashboard: shop list, wallet, roles, affiliate, company, and security.
 - `dashboard/shop` covers the shop admin shell and its operational modules.
 - `dashboard/product` covers the product detail dashboard. It lives under the shop route but has its own nested structure.
+- `07-module-implementation-matrix.md` maps every source-derived module to placement, route family, permission region, docs, API usage areas, and core full endpoints.
 - `_generated` contains catalogs generated from source and should be regenerated whenever source routes or SDK APIs change.
 
 ## Standard Section File Shape
@@ -38,5 +39,6 @@ This pack has two layers:
 
 - Generated coverage: routes and APIs that can be extracted mechanically are listed under `_generated`.
 - Human-readable coverage: architecture, shared patterns, and major dashboard sections are documented under `dashboard/`.
+- Implementation coverage: `06-feature-inventory.md` and `07-module-implementation-matrix.md` together are the no-skip checklist for an agent building a full dashboard.
 
 When the dashboard changes, regenerate the `_generated` catalogs first, then update the corresponding human-readable section file.
