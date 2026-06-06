@@ -1,4 +1,4 @@
-![Selldone Official Storefront App](_docs/images/banner-backoffice-sdk.jpg)
+![Selldone Official Storefront App](_doc/images/banner-backoffice-sdk.jpg)
 
 <a href="https://www.npmjs.com/package/@selldone/sdk-backoffice"><img src="https://img.shields.io/npm/v/@selldone/sdk-backoffice.svg?sanitize=true" alt="Version"></a>
 ![Selldone](https://img.shields.io/badge/type-Selldone-f39f37?style=flat&label=Backoffice&labelColor=%23567&color=%23000)
