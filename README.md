@@ -37,6 +37,14 @@ BackofficeSDK.Setup();
 ```
 
 
+## Dashboard API Rate Limits
+
+Dashboard API calls through `api.{domain}` are rate limited to protect the shared backoffice API.
+
+| API surface | Current limit |
+| --- | --- |
+| `api.{domain}` dashboard API routes | `80` requests per `1` minute |
+
 
 
 
