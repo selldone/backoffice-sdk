@@ -35783,47 +35783,29 @@ export class API {
   }
 
   //―――――――――――――――――――――― Container (Custom instances) ――――――――――――――――――――
-  /**
-   * Set shop containers generate signed URL endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint POST /shops/{shop_id}/container/{type}/generate
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
-   *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param type - Endpoint type discriminator passed as a route segment.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `ShopContainerRegisterController::api_generateContainerSignedUrl` expose observed keys including `domain`, `error`, `error_msg`, `shop_id`, `type`, `user_id`, `success`, `register_url`, `command`, `message`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`, `ErrorCodes::NOT_FOUND_SHOP_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_SET_SHOP_CONTAINERS_GENERATE_SIGNED_URL(123, "cover");
-   * ```
-   */
-  POST_SET_SHOP_CONTAINERS_GENERATE_SIGNED_URL(
-    shop_id: number | string,
-    type: "INSTANCE",
-  ) {
-    return `${this.selldone_api_url}/shops/${shop_id}/container/${type}/generate`;
+  GET_CONTAINER_SETUP_PAGE(params: {
+    return_url: string;
+    domain?: string | null;
+    name?: string | null;
+    shop_id?: number | string | null;
+  }) {
+    const query = new URLSearchParams();
+
+    query.set("return_url", params.return_url);
+
+    if (params.domain) {
+      query.set("domain", params.domain);
+    }
+
+    if (params.name) {
+      query.set("name", params.name);
+    }
+
+    if (params.shop_id) {
+      query.set("shop_id", String(params.shop_id));
+    }
+
+    return `${SetupService.MainServiceUrl()}/container/setup?${query.toString()}`;
   }
 
   /**
