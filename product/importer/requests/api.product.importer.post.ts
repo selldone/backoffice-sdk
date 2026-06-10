@@ -20,6 +20,7 @@ export default function apiProductImporterPost(
   this: ApiProductImporter,
   shop_id: number,
   dataset: (IHeader | IProduct)[],
+  keep_image_urls = true,
 ) {
   // Check if the first row of the dataset is an IHeader (array of strings)
   if (
@@ -31,7 +32,7 @@ export default function apiProductImporterPost(
     );
   }
 
-  const params = { dataset: dataset };
+  const params = { dataset: dataset, keep_image_urls: keep_image_urls };
   const url = window.API.POST_IMPORT_PRODUCTS(shop_id);
   return this.postNow<api.product.importer.post.IResponse>(url, params);
 }
