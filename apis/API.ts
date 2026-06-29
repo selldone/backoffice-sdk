@@ -30281,6 +30281,15 @@ export class API {
   }
 
   /**
+   * Set shop refund policy option endpoint URL.
+   *
+   * @endpoint POST /shops/{shop_id}/options/refund_policy
+   */
+  POST_SET_SHOP_OPTIONS_REFUND_POLICY(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/options/refund_policy`;
+  }
+
+  /**
    * Set shop options types endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
