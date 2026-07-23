@@ -16692,6 +16692,26 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/theme`;
   }
 
+  /** List shop-managed custom fonts and the current license quota. */
+  GET_SHOP_FONTS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/fonts`;
+  }
+
+  /** Create a shop custom font using a multipart request. */
+  POST_SHOP_FONT(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/fonts`;
+  }
+
+  /** Update a shop custom font using multipart form data. */
+  PUT_SHOP_FONT(shop_id: string | number, font_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/fonts/${font_id}`;
+  }
+
+  /** Delete a shop custom font and its stored face files. */
+  DELETE_SHOP_FONT(shop_id: string | number, font_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/fonts/${font_id}`;
+  }
+
   //―――――――――――――――――――――― Shop > Menu ――――――――――――――――――――
 
   /**
