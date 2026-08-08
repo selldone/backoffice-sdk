@@ -2604,6 +2604,22 @@ export class API {
   }
 
   /**
+   * Recover an owned, soft-deleted shop.
+   *
+   * @endpoint POST /shops/{shop_id}/recovery
+   * @auth Required web session; the authenticated user must own the deleted
+   * shop.
+   * @scope Browser-only because backoffice:shop:delete is restricted for bearer
+   * tokens.
+   *
+   * @param shop_id - Deleted Selldone shop identifier.
+   * @returns Absolute URL string; call it with the SDK HTTP client using POST.
+   */
+  POST_SHOP_RECOVER(shop_id: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/recovery`;
+  }
+
+  /**
    * Set shop currencies endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
