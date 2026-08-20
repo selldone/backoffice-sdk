@@ -2,7 +2,7 @@
 
 This file is the entry point for AI agents that need to design or implement a fully functional custom Selldone business dashboard. It is framework-agnostic. It does not require Vue, React, Angular, Svelte, Laravel, Next.js, or any other specific frontend stack.
 
-The custom dashboard must not be a copy of the existing Backoffice UI. The existing Backoffice source is used to understand real Selldone capabilities, API contracts, routes, permissions, flows, widgets, dialogs, tables, and business rules. The final dashboard should be business-focused, customizable, and implemented with the design system and technology chosen by the merchant or developer.
+The custom dashboard must not be a copy of the existing Backoffice UI. The existing Backoffice source is used to understand real Selldone capabilities, API contracts, routes, permissions, flows, widgets, dialogs, tables, and business rules. The final dashboard should be business-focused, customizable, and implemented with the design system and technology chosen by the merchant or developer, provided it follows the mandatory visual contract in `08-product-design-guidelines.md`.
 
 ## 1. Mission
 
@@ -75,6 +75,7 @@ Do not skip generated files or nested documentation folders. Required high-value
 | `03-routing-proposal.md` | Route and navigation proposal. |
 | `04-api-and-data-contracts.md` | API request, response, pagination, auth, error contracts. |
 | `05-ui-patterns.md` | Common UI patterns and behavior contracts. |
+| `08-product-design-guidelines.md` | Mandatory calm, minimal, professional visual direction, including neutral alerts and the no-semantic-colored-body-text rule. |
 | `06-feature-inventory.md` | Full feature inventory by dashboard area. |
 | `07-module-implementation-matrix.md` | Module placement, permission region, source directory, API areas, core endpoints. |
 | `dashboard/**/README.md` | Module-specific rules and feature details. |

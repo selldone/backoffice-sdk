@@ -4,7 +4,9 @@ This folder is the source-derived guide for building a full-function Selldone Ba
 
 ## Start Here
 
-Start with `00-ai-agent-entrypoint.md`. It defines the mandatory reading order, implementation sequence, endpoint resolution rules, and completion criteria.
+Start with `00-ai-agent-entrypoint.md`. It defines the mandatory reading order, implementation sequence, endpoint resolution rules, visual-design requirements, and completion criteria.
+
+Read `08-product-design-guidelines.md` before proposing or changing any visual UI. It is the mandatory, framework-agnostic product-design contract, including the neutral alert and no-semantic-colored-body-text rule.
 
 Do not use `Agent.md` as a separate specification. It is a compatibility bootstrap that points back to `00-ai-agent-entrypoint.md`.
 
@@ -21,6 +23,7 @@ Do not use `Agent.md` as a separate specification. It is a compatibility bootstr
 | UI behavior | `05-ui-patterns.md` | Reusable dashboard, list, folder, dialog, bulk action, and upload patterns. |
 | Feature checklist | `06-feature-inventory.md` | No-skip inventory of Backoffice modules and submodules. |
 | Implementation matrix | `07-module-implementation-matrix.md` | Module-by-module build map with priority, route family, permission region, docs, API lookup areas, and core full endpoints. |
+| Product visual design | `08-product-design-guidelines.md` | Mandatory calm, minimal, professional UI direction; alert, color, form, responsive, accessibility, and guideline-update rules. |
 | Section docs | `dashboard/` | Human-readable module behavior and UI notes. |
 | Generated catalogs | `_generated/` | Route, source-module, API usage, and full endpoint catalogs generated from source. |
 

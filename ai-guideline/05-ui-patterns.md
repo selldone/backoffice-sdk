@@ -1,5 +1,7 @@
 # UI Patterns
 
+This document defines functional UI behavior. For all visual treatment, read and apply `08-product-design-guidelines.md` first. In particular, alerts, notices, and validation must use its neutral structural pattern: no semantic-colored alert backgrounds and no semantic-colored explanatory/body text.
+
 ## Shell Pattern
 
 Every shell should include:

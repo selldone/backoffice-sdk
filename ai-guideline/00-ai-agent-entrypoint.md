@@ -2,7 +2,7 @@
 
 ## Mission
 
-Build a full-function Selldone Backoffice dashboard in any frontend framework. The dashboard must preserve Selldone behavior across routing, shop context, permissions, API calls, data contracts, and operational workflows while allowing any UI design.
+Build a full-function Selldone Backoffice dashboard in any frontend framework. The dashboard must preserve Selldone behavior across routing, shop context, permissions, API calls, data contracts, and operational workflows while following the mandatory visual contract in `08-product-design-guidelines.md`.
 
 The current Vue source is only a traceability source. A new implementation can use React, Vue, Angular, Svelte, native mobile, server-rendered HTML, or any other stack.
 
@@ -15,6 +15,7 @@ The current Vue source is only a traceability source. A new implementation can u
 5. Every `/shuttle/shop/:shop_id/...` route must load shop context before rendering any child module.
 6. Navigation and actions must be permission-gated by route region and write capability.
 7. Secondary or advanced modules may be collapsed, but they must remain accessible when the shop model, permission, and feature state allow them.
+8. Read and apply `08-product-design-guidelines.md` before proposing or changing a visual UI. Use its calm, minimal, professional visual direction; never use semantic-colored alert backgrounds or semantic-colored explanatory/body text.
 
 ## Mandatory First Pass
 
@@ -26,6 +27,7 @@ Before writing application code, build an internal feature registry from these f
 4. `_generated/api-usage-by-area.md`: source areas and API builders used by each area.
 5. `_generated/api-url-builders.md`: full endpoint URLs, HTTP methods, scopes, and auth requirements.
 6. `_generated/source-module-index.md`: source folder coverage check.
+7. `08-product-design-guidelines.md`: mandatory visual, alert, color, responsive, accessibility, and visual-review contract.
 
 The registry should store at least this shape:
 
@@ -72,10 +74,11 @@ A full dashboard must account for these surface groups:
 6. `03-routing-proposal.md`
 7. `04-api-and-data-contracts.md`
 8. `05-ui-patterns.md`
-9. The matching `dashboard/` section file for the module being implemented.
-10. `_generated/route-index.md`
-11. `_generated/api-usage-by-area.md`
-12. `_generated/api-url-builders.md`
+9. `08-product-design-guidelines.md`
+10. The matching `dashboard/` section file for the module being implemented.
+11. `_generated/route-index.md`
+12. `_generated/api-usage-by-area.md`
+13. `_generated/api-url-builders.md`
 
 ## Implementation Sequence
 
@@ -197,3 +200,4 @@ A dashboard implementation is complete only when all of these are true:
 5. Primary modules are visible by default; secondary and conditional modules are discoverable without cluttering the main dashboard.
 6. CRUD, uploads, bulk actions, and destructive actions include loading, success, validation, confirmation, and explicit error states.
 7. A parity pass has checked route coverage against `_generated/route-index.md` and source folder coverage against `_generated/source-module-index.md`.
+8. New or changed visual UI follows `08-product-design-guidelines.md`, including neutral structural alerts, accessible contrast/focus, responsive behavior, and no semantic-colored explanatory/body text.
