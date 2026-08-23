@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {SetupService} from "@selldone/core-js/server/SetupService";
-import {ShopMenuType} from "@selldone/core-js/enums/shop/ShopMenu";
-import {OrderType} from "@selldone/core-js/enums/order/OrderType";
-import {TimelineEmailType} from "@selldone/core-js/enums/timeline/TimelineEmailType";
-import {OrderExportPdfType} from "@selldone/core-js/enums/order/OrderExportPdfType";
-import {Currency} from "@selldone/core-js/enums/payment/Currency";
-import {Application, Article, ArticleReport, Club} from "@selldone/core-js";
-import {SocialNetwork} from "@selldone/core-js/enums/social/SocialNetwork";
-import {OrderTypeCode} from "@selldone/core-js/enums/order/OrderTypeCode";
-import {ShopChannelType} from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
-import {Language} from "@selldone/core-js/enums/language/Language";
+import { SetupService } from "@selldone/core-js/server/SetupService";
+import { ShopMenuType } from "@selldone/core-js/enums/shop/ShopMenu";
+import { OrderType } from "@selldone/core-js/enums/order/OrderType";
+import { TimelineEmailType } from "@selldone/core-js/enums/timeline/TimelineEmailType";
+import { OrderExportPdfType } from "@selldone/core-js/enums/order/OrderExportPdfType";
+import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { Application, Article, ArticleReport, Club } from "@selldone/core-js";
+import { SocialNetwork } from "@selldone/core-js/enums/social/SocialNetwork";
+import { OrderTypeCode } from "@selldone/core-js/enums/order/OrderTypeCode";
+import { ShopChannelType } from "@selldone/core-js/enums/shop/notification-channels/ShopNotificationsChannels";
+import { Language } from "@selldone/core-js/enums/language/Language";
 
 export class API {
   selldone_api_url = "";
@@ -2258,6 +2258,16 @@ export class API {
   }
 
   /**
+   * Setup package orders purchased for a shop.
+   *
+   * @endpoint GET /shops/{shop_id}/setup-package-orders
+   * @scope SCOPE_BACKOFFICE_REPORT_READ (backoffice:report:read)
+   */
+  GET_SHOP_SETUP_PACKAGE_ORDERS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/setup-package-orders`;
+  }
+
+  /**
    * Shop image endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
@@ -4420,7 +4430,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/remove-duplicates`;
   }
 
-
   /**
    * Restore deleted product endpoint URL.
    *
@@ -5717,7 +5726,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/locations`;
   }
 
-
   /**
    * Product video upload endpoint URL.
    *
@@ -5752,7 +5760,10 @@ export class API {
    * const url = API.POST_PRODUCT_VIDEO_UPLOAD(123, 456);
    * ```
    */
-  POST_PRODUCT_VIDEO_UPLOAD(shop_id: string | number, product_id: string | number) {
+  POST_PRODUCT_VIDEO_UPLOAD(
+    shop_id: string | number,
+    product_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/videos`;
   }
   /**
@@ -5790,12 +5801,13 @@ export class API {
    * const url = API.DELETE_PRODUCT_VIDEO(123, 456, 123);
    * ```
    */
-  DELETE_PRODUCT_VIDEO(shop_id: string | number, product_id: string | number, video_id: string | number) {
+  DELETE_PRODUCT_VIDEO(
+    shop_id: string | number,
+    product_id: string | number,
+    video_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/videos/${video_id}`;
   }
-
-
-
 
   /**
    * Add product locations saves endpoint URL.
@@ -11983,9 +11995,7 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/transportations/${transportation_id}/pickups`;
   }
 
-
-
-// ―――――――――― Shop ▶ Logistic ▶ Transportations ▶ Boxes ――――――――――
+  // ―――――――――― Shop ▶ Logistic ▶ Transportations ▶ Boxes ――――――――――
 
   /**
    * Shop boxes endpoint URL.
@@ -12020,9 +12030,7 @@ export class API {
    * const url = API.GET_SHOP_BOXES(123);
    * ```
    */
-  GET_SHOP_BOXES(
-    shop_id: string | number,
-  ) {
+  GET_SHOP_BOXES(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/boxes`;
   }
 
@@ -12059,9 +12067,7 @@ export class API {
    * const url = API.POST_SHOP_BOXES_ADD(123);
    * ```
    */
-  POST_SHOP_BOXES_ADD(
-    shop_id: string | number,
-  ) {
+  POST_SHOP_BOXES_ADD(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/boxes`;
   }
 
@@ -12099,10 +12105,7 @@ export class API {
    * const url = API.PUT_SHOP_BOXES_EDIT(123, "value");
    * ```
    */
-  PUT_SHOP_BOXES_EDIT(
-    shop_id: string | number,
-    box_uid: string,
-  ) {
+  PUT_SHOP_BOXES_EDIT(shop_id: string | number, box_uid: string) {
     return `${this.selldone_api_url}/shops/${shop_id}/boxes/${box_uid}`;
   }
 
@@ -12140,13 +12143,9 @@ export class API {
    * const url = API.DELETE_SHOP_BOX(123, "value");
    * ```
    */
-  DELETE_SHOP_BOX(
-    shop_id: string | number,
-    box_uid: string,
-  ) {
+  DELETE_SHOP_BOX(shop_id: string | number, box_uid: string) {
     return `${this.selldone_api_url}/shops/${shop_id}/boxes/${box_uid}`;
   }
-
 
   // ―――――――――――――――――――――――――――――――――――
 
@@ -14743,8 +14742,6 @@ export class API {
     return `${this.selldone_api_url}/accounts/${account_number}/charges/${charge_id}/receipt`;
   }
 
-
-
   /**
    * Account exchange with another wallet check endpoint URL.
    *
@@ -14779,7 +14776,9 @@ export class API {
    * const url = API.POST_ACCOUNT_EXCHANGE_WITH_ANOTHER_WALLET_CHECK("value");
    * ```
    */
-  POST_ACCOUNT_EXCHANGE_WITH_ANOTHER_WALLET_CHECK(account_number: string | number) {
+  POST_ACCOUNT_EXCHANGE_WITH_ANOTHER_WALLET_CHECK(
+    account_number: string | number,
+  ) {
     return `${this.selldone_api_url}/accounts/${account_number}/exchange/check`;
   }
   /**
@@ -15566,7 +15565,6 @@ export class API {
   GET_ACCOUNT_CONNECTED_SHOPS(account_number: string) {
     return `${this.selldone_api_url}/accounts/${account_number}/shops`;
   }
-
 
   //―――――――――――――――――――――― Application Builder > Android ――――――――――――――――――――
 
@@ -16972,8 +16970,7 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/edit/social/${network_code}`;
   }
 
-
-/*  POST_COMMANDER_AI(shop_id: string | number) {
+  /*  POST_COMMANDER_AI(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/ai-commander`;
   }*/
   //―――――――――――――――――――――― Shop > Discount Codes ――――――――――――――――――――
@@ -22205,7 +22202,7 @@ export class API {
       | "shop-vendor-invite"
       | "shop-vendor-order"
       | "shop-vendor-products"
-      | "bulk-orders"       // Send daily orders
+      | "bulk-orders" // Send daily orders
       | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/email/render/${code}`;
@@ -25364,7 +25361,10 @@ export class API {
    * const url = API.GET_SHOP_REVIEW_SOURCE_INFO(123, 123);
    * ```
    */
-  GET_SHOP_REVIEW_SOURCE_INFO(shop_id: string | number,source_id: string | number) {
+  GET_SHOP_REVIEW_SOURCE_INFO(
+    shop_id: string | number,
+    source_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}`;
   }
 
@@ -25442,7 +25442,10 @@ export class API {
    * const url = API.POST_SHOP_REVIEW_UPDATE(123, 123);
    * ```
    */
-  POST_SHOP_REVIEW_UPDATE(shop_id: string | number,review_id: string | number) {
+  POST_SHOP_REVIEW_UPDATE(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews/${review_id}`;
   }
 
@@ -25480,7 +25483,10 @@ export class API {
    * const url = API.GET_SHOP_REVIEW_SOURCE_DEBUG(123, 123);
    * ```
    */
-  GET_SHOP_REVIEW_SOURCE_DEBUG(shop_id: string | number,source_id: string | number) {
+  GET_SHOP_REVIEW_SOURCE_DEBUG(
+    shop_id: string | number,
+    source_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}/debug`;
   }
   /**
@@ -25517,7 +25523,10 @@ export class API {
    * const url = API.POST_SHOP_REVIEW_SOURCE_SYNC(123, 123);
    * ```
    */
-  POST_SHOP_REVIEW_SOURCE_SYNC(shop_id: string | number,source_id: string | number) {
+  POST_SHOP_REVIEW_SOURCE_SYNC(
+    shop_id: string | number,
+    source_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/reviews/sources/${source_id}/sync`;
   }
 
@@ -27411,8 +27420,8 @@ export class API {
    * ```
    */
   GET_CHANNELS_OPENAI_DOWNLOAD_KNOWLEDGE_BASE(
-      shop_id: string | number,
-      resource: 'products'|'instructions' ,
+    shop_id: string | number,
+    resource: "products" | "instructions",
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/channels/openai/knowledge-base/${resource}`;
   }
@@ -32671,10 +32680,12 @@ export class API {
    * const url = API.GET_SHOP_VENDOR_FINANCE_DOWNLOAD(123, 401);
    * ```
    */
-  GET_SHOP_VENDOR_FINANCE_DOWNLOAD(shop_id: string | number,vendor_id: string | number) {
+  GET_SHOP_VENDOR_FINANCE_DOWNLOAD(
+    shop_id: string | number,
+    vendor_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendors/${vendor_id}/finance/excel`;
   }
-
 
   //―――――――――――――――――――――― Import Vendors ――――――――――――――――――――
 
@@ -34798,7 +34809,6 @@ export class API {
   POST_SHOP_ALL_PRODUCTS_ARTICLE_BODY_AUTO_FIX(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/bulk-actions/fix-articles`;
   }
-
 
   //―――――――――――――――――――――― Upload ――――――――――――――――――――
   /**
@@ -39236,7 +39246,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/pages/${page_id}/ai/image-to-component`;
   }
 
-
   //―――――――――――――――――――――― Shop > Quota ――――――――――――――――――――
   /**
    * Set shop quota endpoint URL.
@@ -39724,7 +39733,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/shortcuts`;
   }
 
-
   //―――――――――――――――――――――― Shop > Property Set ――――――――――――――――――――
   /**
    * Property sets endpoint URL.
@@ -39761,12 +39769,9 @@ export class API {
    * const url = API.GET_PROPERTY_SETS(123);
    * ```
    */
-  GET_PROPERTY_SETS(
-      shop_id: string | number,
-  ) {
+  GET_PROPERTY_SETS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/property-sets`;
   }
-
 
   /**
    * Add property set endpoint URL.
@@ -39803,9 +39808,7 @@ export class API {
    * const url = API.POST_ADD_PROPERTY_SET(123);
    * ```
    */
-  POST_ADD_PROPERTY_SET(
-      shop_id: string | number,
-  ) {
+  POST_ADD_PROPERTY_SET(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/property-sets`;
   }
 
@@ -39846,8 +39849,8 @@ export class API {
    * ```
    */
   PUT_EDIT_PROPERTY_SET(
-      shop_id: string | number,
-      property_set_id: string | number,
+    shop_id: string | number,
+    property_set_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/property-sets/${property_set_id}`;
   }
@@ -39886,12 +39889,11 @@ export class API {
    * ```
    */
   DELETE_EDIT_PROPERTY_SET(
-      shop_id: string | number,
-      property_set_id: string | number,
+    shop_id: string | number,
+    property_set_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/property-sets/${property_set_id}`;
   }
-
 
   //―――――――――――――――――――――― Shop > Product > Property Set ――――――――――――――――――――
 
@@ -39930,8 +39932,8 @@ export class API {
    * ```
    */
   PUT_PRODUCT_SET_PROPERTY_SET(
-      shop_id: string | number,
-      product_id: number | string,
+    shop_id: string | number,
+    product_id: number | string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/products/${product_id}/property-set`;
   }
@@ -41118,13 +41120,9 @@ export class API {
    * const url = API.DOWNLOAD_DAILY_ORDERS(123);
    * ```
    */
-  DOWNLOAD_DAILY_ORDERS(
-      shop_id: string | number,
-  ) {
+  DOWNLOAD_DAILY_ORDERS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/export/daily-orders`;
   }
-
-
 
   //―――――――――――――――――――――― Shop > Print Templates ――――――――――――――――――――
   /**
@@ -41326,7 +41324,6 @@ export class API {
     return `${this.selldone_api_url}/sldn/play-game`;
   }
 
-
   /**
    * Token purchase endpoint URL.
    *
@@ -41398,8 +41395,6 @@ export class API {
     return `${this.selldone_api_url}/sldn/purchase/check`;
   }
 
-
-
   /**
    * Shop order item set count adjustment endpoint URL.
    *
@@ -41436,14 +41431,12 @@ export class API {
    * ```
    */
   PUT_SHOP_ORDER_ITEM_SET_COUNT_ADJUSTMENT(
-      shop_id: string | number,
-      basket_id: string | number,
-      basket_item_id: string | number,
+    shop_id: string | number,
+    basket_id: string | number,
+    basket_item_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/baskets/${basket_id}/items/${basket_item_id}/count-adjustment`;
   }
-
-
 
   //―――――――――――――――――――――― Red Alert ――――――――――――――――――――
 
@@ -41515,10 +41508,6 @@ export class API {
   POST_RED_ALERT_REPORT_CHECK_STORE() {
     return `${this.selldone_api_url}/red-alert/check-store`;
   }
-
-
-
-
 
   //―――――――――――――――――――――― Shop Listing――――――――――――――――――――
 
@@ -41918,10 +41907,7 @@ export class API {
    * const url = API.DELETE_SHOP_LISTING_ITEM(123, 123);
    * ```
    */
-  DELETE_SHOP_LISTING_ITEM(
-    shop_id: string | number,
-    item_id: string | number,
-  ) {
+  DELETE_SHOP_LISTING_ITEM(shop_id: string | number, item_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}`;
   }
 
@@ -42518,22 +42504,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/items/${item_id}/media/${media_id}/reorder`;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Listing Designs
   /**
    * Shop listing designs endpoint URL.
@@ -42649,7 +42619,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_DESIGN_EDIT(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_DESIGN_EDIT(shop_id: string | number, design_id: string | number) {
+  POST_SHOP_LISTING_DESIGN_EDIT(
+    shop_id: string | number,
+    design_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/designs/${design_id}`;
   }
 
@@ -42687,21 +42660,12 @@ export class API {
    * const url = API.DELETE_SHOP_LISTING_DESIGN(123, 123);
    * ```
    */
-  DELETE_SHOP_LISTING_DESIGN(shop_id: string | number, design_id: string | number) {
+  DELETE_SHOP_LISTING_DESIGN(
+    shop_id: string | number,
+    design_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/designs/${design_id}`;
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Listing Badges
   /**
@@ -42818,7 +42782,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_BADGE_EDIT(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_BADGE_EDIT(shop_id: string | number, badge_id: string | number) {
+  POST_SHOP_LISTING_BADGE_EDIT(
+    shop_id: string | number,
+    badge_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/badges/${badge_id}`;
   }
 
@@ -42856,11 +42823,14 @@ export class API {
    * const url = API.DELETE_SHOP_LISTING_BADGE(123, 123);
    * ```
    */
-  DELETE_SHOP_LISTING_BADGE(shop_id: string | number, badge_id: string | number) {
+  DELETE_SHOP_LISTING_BADGE(
+    shop_id: string | number,
+    badge_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/badges/${badge_id}`;
   }
 
-// Listing Companies
+  // Listing Companies
   /**
    * Shop listing companies endpoint URL.
    *
@@ -42975,7 +42945,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_COMPANY_EDIT(123, 999);
    * ```
    */
-  POST_SHOP_LISTING_COMPANY_EDIT(shop_id: string | number, company_id: string | number) {
+  POST_SHOP_LISTING_COMPANY_EDIT(
+    shop_id: string | number,
+    company_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/companies/${company_id}`;
   }
 
@@ -43013,17 +42986,12 @@ export class API {
    * const url = API.DELETE_SHOP_LISTING_COMPANY(123, 999);
    * ```
    */
-  DELETE_SHOP_LISTING_COMPANY(shop_id: string | number, company_id: string | number) {
+  DELETE_SHOP_LISTING_COMPANY(
+    shop_id: string | number,
+    company_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/companies/${company_id}`;
   }
-
-
-
-
-
-
-
-
 
   // Listing all reviews (backoffice)
 
@@ -43102,7 +43070,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_REVIEW_REPLY(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_REVIEW_REPLY(shop_id: string | number, review_id: string | number) {
+  POST_SHOP_LISTING_REVIEW_REPLY(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/reply`;
   }
 
@@ -43140,7 +43111,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_REVIEW_APPROVE(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_REVIEW_APPROVE(shop_id: string | number, review_id: string | number) {
+  POST_SHOP_LISTING_REVIEW_APPROVE(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/approve`;
   }
 
@@ -43178,7 +43152,10 @@ export class API {
    * const url = API.POST_SHOP_LISTING_REVIEW_REJECT(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_REVIEW_REJECT(shop_id: string | number, review_id: string | number) {
+  POST_SHOP_LISTING_REVIEW_REJECT(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/reject`;
   }
 
@@ -43216,7 +43193,10 @@ export class API {
    * const url = API.DELETE_SHOP_LISTING_REVIEW(123, 123);
    * ```
    */
-  DELETE_SHOP_LISTING_REVIEW(shop_id: string | number, review_id: string | number) {
+  DELETE_SHOP_LISTING_REVIEW(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}`;
   }
 
@@ -43254,18 +43234,12 @@ export class API {
    * const url = API.POST_SHOP_LISTING_REVIEW_RESTORE(123, 123);
    * ```
    */
-  POST_SHOP_LISTING_REVIEW_RESTORE(shop_id: string | number, review_id: string | number) {
+  POST_SHOP_LISTING_REVIEW_RESTORE(
+    shop_id: string | number,
+    review_id: string | number,
+  ) {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/reviews/${review_id}/restore`;
   }
-
-
-
-
-
-
-
-
-
 
   //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   //  Shop ▶ Listing ▶ Messages (Dashboard)
@@ -43578,11 +43552,9 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/messages/${message_id}/restore`;
   }
 
-
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Shop ▶ Listing ▶ Active
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // Shop ▶ Listing ▶ Active
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   /**
    * Shop listing set active endpoint URL.
@@ -43623,10 +43595,9 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/active`;
   }
 
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Shop ▶ Listing ▶ Search Settings
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // Shop ▶ Listing ▶ Search Settings
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   /**
    * Shop listing search endpoint URL.
@@ -43743,11 +43714,9 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/listing/search/generate`;
   }
 
-
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Shop ▶ Listing ▶ Form Builder
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // Shop ▶ Listing ▶ Form Builder
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   /**
    * Listing form-builder image upload endpoint URL.
@@ -43785,10 +43754,7 @@ export class API {
    * const url = API.POST_SHOP_LISTING_FORM_BUILDER_UPLOAD_IMAGE(123);
    * ```
    */
-  POST_SHOP_LISTING_FORM_BUILDER_UPLOAD_IMAGE (shop_id: string | number) {
+  POST_SHOP_LISTING_FORM_BUILDER_UPLOAD_IMAGE(shop_id: string | number) {
     return `/api/shops/${shop_id}/listing/form-builder/upload-image`;
   }
-
-
-
 }
