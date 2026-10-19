@@ -7943,6 +7943,19 @@ export class API {
   //―――――――――――――――――――――― Shop > Permission ――――――――――――――――――――
 
   /**
+   * List the shop owner and confirmed staff eligible for resource assignment.
+   *
+   * @endpoint GET /shops/{shop_id}/staffs/eligible
+   * @scope SCOPE_BACKOFFICE_STAFF_READ (backoffice:staff:read)
+   * @param shop_id - Authorized shop identifier.
+   * @returns Endpoint URL; optional `search` matches name, email or exact user ID.
+   * The `limit` query defaults to 30 and accepts 1–30. Invitations are excluded.
+   */
+  GET_SHOP_ELIGIBLE_STAFFS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/staffs/eligible`;
+  }
+
+  /**
    * Shop permissions endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
@@ -9661,6 +9674,18 @@ export class API {
    */
   GET_SHOP_BLOGS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/blogs`;
+  }
+
+  /**
+   * Assign an eligible author to an existing shop blog article.
+   *
+   * @endpoint PUT /shops/{shop_id}/articles/{article_id}/author
+   * @param shop_id - Authorized shop identifier.
+   * @param article_id - Shop blog article identifier.
+   * @returns Endpoint URL; send the selected `user_id` in the request body.
+   */
+  PUT_SHOP_ARTICLE_AUTHOR(shop_id: string | number, article_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/articles/${article_id}/author`;
   }
 
   /**
