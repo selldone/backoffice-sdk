@@ -1997,6 +1997,11 @@ export class API {
     return `${this.selldone_api_url}/invite/send`;
   }
 
+  /** Authenticated referral email check (GET /invite/check). */
+  GET_REFERRAL_INVITE_CHECK_EMAIL() {
+    return `${this.selldone_api_url}/invite/check`;
+  }
+
   /**
    * My referral fees endpoint URL.
    *
@@ -2062,11 +2067,6 @@ export class API {
    GET_REFERRAL_LINK_PAYMENTS(referral_id: string | number) {
      return `${this.selldone_api_url}/referrals/${referral_id}/payments`;
    }
-
-   GET_REFERRAL_INVITE_CHECK_EMAIL() {
-     return `${this.selldone_api_url}/invite/check`;
-   }
-
 
    PUT_REFERRAL_PROGRAM_SAVE_BANK_DETAILS(
      program_id: string | number,
@@ -33561,6 +33561,26 @@ export class API {
     valuation_id: string | number,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/valuations/${valuation_id}`;
+  }
+
+  /**
+   * Upload a pricing form avatar; builds the URL without performing a request.
+   * Send multipart `photo`: PNG, JPEG or WebP, at most 2 MiB. The server sanitizes
+   * and crops it to 256×256, returning `{ success, icon, valuation }`.
+   *
+   * @endpoint POST /shops/{shop_id}/valuations/{valuation_id}/icon
+   * @auth Required; authenticated shop access.
+   * @scope SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write)
+   * @permission ShopPermissionRegion::ACCOUNTING
+   * @param shop_id - Authorized owning shop identifier.
+   * @param valuation_id - Existing valuation within the authorized shop.
+   * @returns Absolute upload endpoint URL.
+   */
+  POST_SHOP_VALUATION_ICON(
+    shop_id: string | number,
+    valuation_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/valuations/${valuation_id}/icon`;
   }
 
   /**
