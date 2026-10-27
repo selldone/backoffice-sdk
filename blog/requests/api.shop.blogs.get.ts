@@ -41,6 +41,7 @@ export namespace api.shop.blogs.get {
   export interface IParams {
     search?: string; // Optional: Search query
     cluster_id?: number; // Optional: Cluster ID
+    category_id?: number; // Optional: Filter by blog category
     sortBy?: string; // Optional: Sort by this field
     sortDesc?: boolean; // Optional: Whether to sort in descending order
   }
