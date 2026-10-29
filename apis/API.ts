@@ -20493,6 +20493,21 @@ export class API {
   }
 
   //―――――――――――――――――――――― Shop > Clubs ――――――――――――――――――――
+  /** Read bounded Club membership and authorized native-currency discount analytics. */
+  GET_SHOP_CLUB_DATA(shop_id: string | number, club_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/clubs/${club_id}/data`;
+  }
+
+  /** Read paginated current Club members; dates refer to shop customer creation. */
+  GET_SHOP_CLUB_CUSTOMERS(shop_id: string | number, club_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/clubs/${club_id}/customers`;
+  }
+
+  /** Read authorized Club ledger references; offset paginates rows, day_offset selects the period. */
+  GET_SHOP_CLUB_ORDERS(shop_id: string | number, club_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/clubs/${club_id}/orders`;
+  }
+
   /**
    * Set shop club endpoint URL.
    *
@@ -20759,6 +20774,14 @@ export class API {
    */
   GET_SHOP_CONTACT_US_LIST(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/contacts`;
+  }
+
+  /** Read-only support context. Optional customer, activity and order data keep their own access checks. */
+  GET_SHOP_CONTACT_CUSTOMER_CONTEXT(
+    shop_id: string | number,
+    contact_id: string | number,
+  ) {
+    return `${this.selldone_api_url}/shops/${shop_id}/contacts/${contact_id}/customer-context`;
   }
 
   /**
@@ -30820,6 +30843,21 @@ export class API {
    */
   POST_PARTNER_LOGIN_APPLY_DEALT(shop_id: string | number) {
     return `${this.selldone_api_url}/partners/apply-deal/${shop_id}`;
+  }
+
+  /** Owner's current deal clients, paginated with offset/limit; authoritative eligibility and free slots. */
+  GET_SHOP_LICENSE_DEALS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/license/deals`;
+  }
+
+  /** POST {client_id}; returns preview with target, refund quote, opaque review_token and expiry. */
+  POST_SHOP_LICENSE_DEAL_PREVIEW(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/license/deals/preview`;
+  }
+
+  /** PUT {client_id,review_token,accept_subscription_settlement?}; atomically replaces the reviewed license. */
+  PUT_SHOP_LICENSE_DEAL(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/license/deal`;
   }
 
   /**
