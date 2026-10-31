@@ -2219,6 +2219,11 @@ export class API {
     return `${this.selldone_api_url}/shops/me`;
   }
 
+  /** Set the authenticated web user's personal star: {favorite:boolean}. */
+  PUT_SHOP_FAVORITE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/favorite`;
+  }
+
   /**
    * My shop info endpoint URL.
    *
@@ -2255,6 +2260,16 @@ export class API {
    */
   GET_MY_SHOP_INFO(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/me/${shop_id}`;
+  }
+
+  /**
+   * Bounded recent staff and current user's active agents for the shop footer.
+   * @endpoint GET /shops/{shop_id}/presence
+   * @scope SCOPE_BACKOFFICE_SHOP_READ (backoffice:shop:read)
+   * @permission DASHBOARD READ; agent identities remain current-user scoped.
+   */
+  GET_SHOP_PRESENCE(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/presence`;
   }
 
   /**
@@ -2422,6 +2437,18 @@ export class API {
   }
 
   /**
+   * Read the current user's shop creation fee without charging their wallet.
+   * GET /shop/audit; authenticated scope: backoffice:shop:add.
+   * Returns count, fee, currency, is_free, charged_from_wallet and reason.
+   * Optional query account_number quotes an owned approved wallet in its currency;
+   * requires wallet-read scope and adds base_fee/base_currency, account_number,
+   * available_balance and can_pay. This read never charges or refreshes exchange rates.
+   */
+  GET_SHOP_CREATION_FEE() {
+    return `${this.selldone_api_url}/shop/audit`;
+  }
+
+  /**
    * Add shop endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
@@ -2430,6 +2457,9 @@ export class API {
    * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
    *
    * @endpoint POST /shop/add
+   * Guided creation sends expected_fee/expected_currency, including free quotes;
+   * paid creation also sends account_number. The server recomputes the price and
+   * charges only that wallet, or returns quote_changed without creating a shop.
    * @domain api.localhost
    * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
    * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
@@ -14344,6 +14374,15 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/profiles/${type}`;
   }
 
+  /**
+   * Bounded current-shop resource search. Supply q (2–80 characters) as a query parameter.
+   * The backend checks membership plus each resource's existing scope/region and returns minimal typed results.
+   * @endpoint GET /shops/{shop_id}/search/mega
+   */
+  GET_SHOP_MEGA_SEARCH(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/search/mega`;
+  }
+
   //―――――――――――――――――――――― Accounts ――――――――――――――――――――
   /**
    * Accounts endpoint URL.
@@ -16523,6 +16562,23 @@ export class API {
    */
   GET_SHOP_DOMAINS(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/domains`;
+  }
+
+  /**
+   * Read one saved domain workspace; performs no DNS, OAuth or SSL synchronization.
+   *
+   * @endpoint GET /shops/{shop_id}/domains/{domain_key}/overview
+   * @auth Required; existing authenticated API middleware applies.
+   * @scope SCOPE_BACKOFFICE_SHOP_READ (backoffice:shop:read)
+   * @permission ShopPermissionRegion::SETTINGS (read)
+   * @param domain_key - A positive custom-domain ID, `local`, or `sub`.
+   * @returns URL for a response containing `{item}` in the domain-list item shape,
+   * including a persisted public certificate summary and existing public callback metadata.
+   * Returns existing TOKEN_HAS_NO_ACCESS_ERROR, NOT_FOUND_SHOP_ERROR or
+   * NOT_FOUND_DOMAIN_ERROR business errors; malformed keys fail route matching.
+   */
+  GET_DOMAIN_OVERVIEW(shop_id: string | number, domain_key: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/domains/${encodeURIComponent(String(domain_key))}/overview`;
   }
 
   //―――――――――――――――――――――― Domain verifications ――――――――――――――――――――
