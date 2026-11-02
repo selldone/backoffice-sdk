@@ -454,7 +454,7 @@ Files with API usage: 475
 | src/Applications/Backoffice/pages/shop/setting/menus/translation/SShopMenuTranslationDialog.vue | POST_TRANSLATE_SHOP_MENU |  |  |  |
 | src/Applications/Backoffice/pages/shop/setting/notifications/BPageShopSettingNotifications.vue | GET_SHOP_NOTIFICATION_CHANNELS<br>PUT_SHOP_NOTIFICATION_CHANNEL_CONFIG<br>SET_SHOP_NOTIFICATION_CHANNELS<br>SET_TEST_SHOP_NOTIFICATION_CHANNEL |  |  |  |
 | src/Applications/Backoffice/pages/shop/setting/quota/BPageShopSettingQuota.vue | SET_SHOP_QUOTA |  |  |  |
-| src/Applications/Backoffice/pages/shop/setting/seo/BPageShopSettingSeo.vue | POST_SET_SHOP_OPTIONS_AMP<br>POST_SET_SHOP_OPTIONS_BOOST |  |  |  |
+| src/Applications/Backoffice/pages/shop/setting/seo/BPageShopSettingSeo.vue | POST_SET_SHOP_OPTIONS_BOOST |  |  |  |
 | src/Applications/Backoffice/pages/shop/setting/sms/BPageShopSettingSms.vue | GET_SHOP_SMS_LIST |  |  |  |
 | src/Applications/Backoffice/pages/shop/setting/theme/BPageShopSettingTheme.vue | POST_EDIT_SHOP_THEME |  |  |  |
 | src/Applications/Backoffice/pages/shuttle/affiliate/BPageShuttleAffiliate.vue | GET_MY_AFFILIATES |  |  |  |

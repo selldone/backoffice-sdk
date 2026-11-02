@@ -30073,45 +30073,6 @@ export class API {
   }
 
   /**
-   * Set shop options AMP endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint POST /shops/{shop_id}/options/{code}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_OFFER_WRITE (backoffice:offer:write)
-   * @permission ShopPermissionRegion::SETTINGS
-   *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `ShopOptionsController::api_setShopOption` expose observed keys including `enable`, `value`, `boost`, `product`, `category`, `code`, `error`, `error_msg`, `types`, `driver`, `color`, `style`, `volume`, `weight`, `pack`, `type`, `color_icon`, `style_icon`, `volume_icon`, `weight_icon`, `pack_icon`, `type_icon`, `shipping_restriction`, `mode`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`, `ErrorCodes::NOT_FOUND_SHOP_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_SET_SHOP_OPTIONS_AMP(123);
-   * ```
-   */
-  POST_SET_SHOP_OPTIONS_AMP(shop_id: string | number) {
-    return `${this.selldone_api_url}/shops/${shop_id}/options/amp`;
-  }
-
-  /**
    * Set shop options size unit endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
@@ -35868,6 +35829,21 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/layout`;
   }
 
+  /** Read the current shop default and bounded eligible official/private layout candidates. */
+  GET_SHOP_LAYOUT_OPTIONS(shop_id: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/layout/options`;
+  }
+
+  /** Read layout assignment/candidates for an authorized custom, local or sub domain. */
+  GET_DOMAIN_LAYOUT_OPTIONS(shop_id: number | string, domain_key: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/domains/${encodeURIComponent(domain_key)}/layout/options`;
+  }
+
+  /** Save one domain's explicit inherit, standard, official or private selection. */
+  POST_SET_DOMAIN_LAYOUT(shop_id: number | string, domain_key: number | string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/domains/${encodeURIComponent(domain_key)}/layout`;
+  }
+
   /**
    * My layouts endpoint URL.
    *
@@ -35902,6 +35878,25 @@ export class API {
    */
   GET_MY_LAYOUTS() {
     return `${this.selldone_api_url}/developer/layouts`;
+  }
+
+  /**
+   * Register an owned private layout before its first deployment.
+   * POST multipart: package, name, optional description and image file.
+   * Requires a verified account, developer-write scope and available layout quota.
+   */
+  POST_MY_LAYOUT() {
+    return `${this.selldone_api_url}/developer/layouts`;
+  }
+
+  /**
+   * Edit an owned layout's metadata with a sparse multipart POST.
+   * Omitted name/description/image preserve saved values; explicit null clears
+   * description/image. Image accepts an uploaded file, never a caller storage path.
+   * The package identifier is immutable; deployed versions are unchanged.
+   */
+  POST_MY_LAYOUT_EDIT(layout_id: string | number) {
+    return `${this.selldone_api_url}/developer/layouts/${layout_id}`;
   }
 
   /**
@@ -35974,6 +35969,11 @@ export class API {
    */
   GET_MY_LAYOUT_DEPLOYS(layout_id: string | number) {
     return `${this.selldone_api_url}/developer/layouts/${layout_id}/deploys`;
+  }
+
+  /** Read authorized shop/domain selections for an owned layout; no store is changed. */
+  GET_MY_LAYOUT_STORES(layout_id: string | number) {
+    return `${this.selldone_api_url}/developer/layouts/${layout_id}/stores`;
   }
 
   //―――――――――――――――――――――― Container (Custom instances) ――――――――――――――――――――
