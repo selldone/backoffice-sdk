@@ -750,7 +750,7 @@ export class API {
    * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
    *
    * Response shape:
-   * - Backend response arrays in `PublicProfilePageController::api_getPublicProfile` expose observed keys including `profile`, `participants`.
+   * - Backend response arrays in `PublicProfilePageController::api_getPublicProfile` expose observed keys including `profile`.
    * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
    *
    * Possible errors:
@@ -16579,6 +16579,26 @@ export class API {
    */
   GET_DOMAIN_OVERVIEW(shop_id: string | number, domain_key: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/domains/${encodeURIComponent(String(domain_key))}/overview`;
+  }
+
+  /** Saved custom-domain maintenance. Pass include_html=true explicitly to read the bounded editable source. */
+  GET_DOMAIN_MAINTENANCE(shop_id: string | number, domain_id: string | number) {
+    return `${this.selldone_api_url}/shops/${encodeURIComponent(String(shop_id))}/domain/${encodeURIComponent(String(domain_id))}/maintenance`;
+  }
+
+  /** Sparse enabled/HTML update, or multipart file. Disabling preserves the stored document. */
+  POST_DOMAIN_MAINTENANCE(shop_id: string | number, domain_id: string | number) {
+    return `${this.selldone_api_url}/shops/${encodeURIComponent(String(shop_id))}/domain/${encodeURIComponent(String(domain_id))}/maintenance`;
+  }
+
+  /** Saved loading summary, byte limits and AI guide; include_code=true explicitly reads editable fragments. */
+  GET_DOMAIN_LOADING(shop_id: string | number, domain_id: string | number) {
+    return `${this.selldone_api_url}/shops/${encodeURIComponent(String(shop_id))}/domain/${encodeURIComponent(String(domain_id))}/loading`;
+  }
+
+  /** Sparse mode/head/body update. Default mode preserves custom drafts; custom requires a valid body. */
+  POST_DOMAIN_LOADING(shop_id: string | number, domain_id: string | number) {
+    return `${this.selldone_api_url}/shops/${encodeURIComponent(String(shop_id))}/domain/${encodeURIComponent(String(domain_id))}/loading`;
   }
 
   //―――――――――――――――――――――― Domain verifications ――――――――――――――――――――
@@ -36280,113 +36300,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/map/tags/${map_tag_id}/products`;
   }
 
-  //―――――――――――――――――――――― User > Participants ――――――――――――――――――――
-  /**
-   * My participants endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint GET /participants
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission None found in matched controller method by static inspection.
-   *
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `ParticipantsController::list` expose observed keys including `offset`, `limit`, `search`, `participants`, `total`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.GET_MY_PARTICIPANTS();
-   * ```
-   */
-  GET_MY_PARTICIPANTS() {
-    return `${this.selldone_api_url}/participants`;
-  }
-
-  /**
-   * My participants add endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint POST /participants
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission None found in matched controller method by static inspection.
-   *
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `ParticipantsController::add` expose observed keys including `link`, `error`, `error_msg`, `success`, `participant`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_MY_PARTICIPANTS_ADD();
-   * ```
-   */
-  POST_MY_PARTICIPANTS_ADD() {
-    return `${this.selldone_api_url}/participants`;
-  }
-
-  /**
-   * My participants play game endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint POST /participants/{participant_id}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission None found in matched controller method by static inspection.
-   *
-   * @param participant_id - participant_id route parameter identifier.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `ParticipantsController::play` expose observed keys including `card`, `account_number`, `error`, `error_msg`, `amount`, `currency`, `account_id`, `transaction_id`, `success`, `participant`, `win_amount`, `win_currency`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`, `ErrorCodes::NOT_FOUND_ACCOUNT_ERROR()`, `ErrorCodes::TRANSACTION_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_MY_PARTICIPANTS_PLAY_GAME(123);
-   * ```
-   */
-  POST_MY_PARTICIPANTS_PLAY_GAME(participant_id: string | number) {
-    return `${this.selldone_api_url}/participants/${participant_id}`;
-  }
-
   //―――――――――――――――――――――― User > Agency affiliate deals ――――――――――――――――――――
   /**
    * My affiliate deals endpoint URL.
@@ -37883,45 +37796,6 @@ export class API {
     key: string,
   ) {
     return `${this.selldone_api_url}/shops/${shop_id}/vendor-pricings/${vendor_pricing_id}/translations/${key}`;
-  }
-
-  //―――――――――――――――――――――― Investors ――――――――――――――――――――
-  /**
-   * Investors files endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend method uses access helper(s): `CheckTokenScopesOrThrow`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint GET /investors/files/{category}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_SELLDONE_INVESTOR (selldone:investor)
-   * @permission None found in matched controller method by static inspection.
-   *
-   * @param category - Route parameter passed through to the backend endpoint.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `SelldoneInvestorsPageController::list` expose observed keys including `offset`, `limit`, `search`, `files`, `total`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.GET_INVESTORS_FILES("value");
-   * ```
-   */
-  GET_INVESTORS_FILES(category: string) {
-    return `${this.selldone_api_url}/investors/files/${category}`;
   }
 
   //―――――――――――――――――――――― 🪐 Partner ――――――――――――――――――――

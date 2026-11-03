@@ -280,7 +280,6 @@ Generated methods: 673
 
 | Builder | Endpoint(s) | Scope | Auth | Source |
 |---|---|---|---|---|
-| GET_INVESTORS_FILES(category: string) | GET https://api.selldone.com/investors/files/{category} | SCOPE_SELLDONE_INVESTOR (selldone:investor) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:37747 |
 
 ## invite
 
@@ -318,14 +317,6 @@ Generated methods: 673
 | Builder | Endpoint(s) | Scope | Auth | Source |
 |---|---|---|---|---|
 | GET_PAGE_BUILDER_TEMPLATE_CONTENT(template_id: string \| number) | GET https://api.selldone.com/page-templates/{template_id} | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:13124 |
-
-## participants
-
-| Builder | Endpoint(s) | Scope | Auth | Source |
-|---|---|---|---|---|
-| GET_MY_PARTICIPANTS() | GET https://api.selldone.com/participants | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:36139 |
-| POST_MY_PARTICIPANTS_ADD() | POST https://api.selldone.com/participants | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:36174 |
-| POST_MY_PARTICIPANTS_PLAY_GAME(participant_id: string \| number) | POST https://api.selldone.com/participants/{participant_id} | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:36210 |
 
 ## partners
 
