@@ -9029,6 +9029,36 @@ export class API {
   }
 
   /**
+   * 🧾 Shop gateway payment logs endpoint URL (last 48 hours).
+   *
+   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
+   * Read endpoint: provider calls, webhooks/callbacks and payment events of this shop's gateway,
+   * redacted at write time. Grouped by order by default (`group=1`); `group=0` returns a flat page.
+   * Backend method uses access helper(s): `readShopAccess`.
+   *
+   * @endpoint GET /shops/{shop_id}/gateways/{gateway_code}/logs
+   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
+   * @permission ShopPermissionRegion::ACCOUNTING
+   *
+   * @param shop_id - Selldone shop identifier from the route path.
+   * @param gateway_code - Payment gateway code in the route path.
+   * @returns Absolute URL string; query: `hours` (1|6|24|48), `result` (all|error|success), `type`
+   *   (request|webhook|event), `mode` (live|test), `q`, `target` (`basket:123`), `batch`, `group`, `offset`, `limit`.
+   *
+   * Response shape:
+   * - Grouped: `groups` (each with `logs`), `total`, `summary`.
+   * - Flat: `logs`, `total`, `summary`.
+   *
+   * @example
+   * ```ts
+   * const url = API.GET_SHOP_GATEWAY_LOGS(123, "stripe_usd");
+   * ```
+   */
+  GET_SHOP_GATEWAY_LOGS(shop_id: string | number, gateway_code: string) {
+    return `${this.selldone_api_url}/shops/${shop_id}/gateways/${gateway_code}/logs`;
+  }
+
+  /**
    * Check payment gateway endpoint URL.
    *
    * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
