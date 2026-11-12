@@ -60,7 +60,7 @@ A full dashboard must account for these surface groups:
 | Growth and content | Marketing, campaigns, affiliate, email marketing, stream, blogs, pages, popups, static files, SEO and page builder. |
 | Relationship modules | CRM, community, comments, reviews, FAQ, customer club, customer journeys. |
 | Catalog structure | Categories, hierarchy, clusters, import/export, listing marketplace taxonomy. |
-| Integrations | Channels, Connect, Google, Instagram, Meta, OpenAI, bots, apps, PWA, iOS, Android, Metaverse, automation, webhooks. |
+| Integrations | Channels, Connect, Google, Meta, OpenAI, bots, apps, PWA, iOS, Android, Metaverse, automation, webhooks. |
 | Business-model modules | Marketplace, listing, dropshipping/wholesaler, transportation/provider, logistic profile, vendor flows. |
 | Entity dashboards | Affiliate, campaign, cashback, coupon, discount code, gift card, gateway, email, connect, review source, role, account, product, order, transportation service. |
 

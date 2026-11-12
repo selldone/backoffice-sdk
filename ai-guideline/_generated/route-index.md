@@ -2,7 +2,7 @@
 
 This file was generated from Backoffice/Shuttle route packs. `Local path` is the path in that route object; parent route packs are required to build the full path.
 
-Named routes: 371
+Named routes: 370
 
 ## src/Applications/Selldone/router/shuttle/provider/ProvidersRoutes.ts
 
@@ -361,7 +361,6 @@ Named routes: 371
 | clusters | BPageShopClassificationClusters | Clusters |  | 1224 |
 | channel | BPageShopChannel |  | ShopPermissionRegions.CHANNELS | 1237 |
 | bots/:driver | BPageShopChannelBots | Bots \| {driver} |  | 1246 |
-| instagram | BPageShopChannelInstagram | Instagram Apps |  | 1255 |
 | google | BPageShopChannelGoogle | Google Apps |  | 1266 |
 | facebook | BPageShopChannelMeta | Facebook Apps |  | 1275 |
 | avocado | BPageShopChannelAvocado | Avocado \| Social Sale |  | 1284 |

@@ -2,14 +2,13 @@
 
 ## Purpose
 
-Channels manages the shop's external sales and integration channels: bots, Instagram, Google, Meta, Avocado, Hyper, Ribbon, Clover, Connect, Map, OpenAI, and Listing channel.
+Channels manages the shop's external sales and integration channels: bots, Google, Meta, Avocado, Hyper, Ribbon, Clover, Connect, Map, OpenAI, and Listing channel.
 
 ## Routes
 
 | Path segment | Current route name | Purpose |
 |---|---|---|
 | `channels/bots` | `BPageShopChannelBots` | Bot integrations. |
-| `channels/instagram` | `BPageShopChannelInstagram` | Instagram channel. |
 | `channels/google` | `BPageShopChannelGoogle` | Google integrations. |
 | `channels/meta` | `BPageShopChannelMeta` | Meta/Facebook integrations. |
 | `channels/avocado` | `BPageShopChannelAvocado` | Avocado channel. |
@@ -38,7 +37,7 @@ Channels manages the shop's external sales and integration channels: bots, Insta
 
 ## API calls
 
-- Channel, Connect, Instagram, Google, Meta, Map, and OpenAI endpoints are listed in `_generated/api-url-builders.md` with full `https://api.selldone.com/...` URLs.
+- Channel, Connect, Google, Meta, Map, and OpenAI endpoints are listed in `_generated/api-url-builders.md` with full `https://api.selldone.com/...` URLs.
 - Map tags are listed by `GET https://api.selldone.com/shops/{shop_id}/map/tags`.
 - See `_generated/api-usage-by-area.md` areas `shop/channels`, `connect`, `map`, `components/connect`, and `components/google`.
 

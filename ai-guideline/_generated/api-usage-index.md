@@ -2,7 +2,7 @@
 
 This file was generated from `src/Applications/Backoffice` and `@selldone/components-vue/backoffice`. It shows which APIs each page or component calls.
 
-Files with API usage: 475
+Files with API usage: 473
 
 | Source | `window.API` builders | `window.VAPI` builders | `$backoffice` SDK calls | `$vendor` SDK calls |
 |---|---|---|---|---|
@@ -154,7 +154,6 @@ Files with API usage: 475
 | @selldone/components-vue/backoffice/product/edit/info/BProductEditInfo.vue | POST_MY_VENDOR_PRODUCT_SET_SHORTCUT_CATEGORIES<br>POST_PRODUCT_SET_SHORTCUT_CATEGORIES<br>POST_SET_PRODUCT_VALUATION | POST_MY_VENDOR_PRODUCT_SET_SHORTCUT_CATEGORIES |  |  |
 | @selldone/components-vue/backoffice/product/edit/price/BProductEditPrice.vue | PUT_EDIT_PRODUCT_PRICE |  |  |  |
 | @selldone/components-vue/backoffice/product/edit/spec/BProductEditSpec.vue | GET_MY_VENDOR_SPEC_OF_PRODUCT<br>GET_SPEC_OF_PRODUCT<br>POST_AI_PRODUCT_AUTO_CREATE_SPEC<br>POST_MY_VENDOR_AI_PRODUCT_AUTO_CREATE_SPEC<br>POST_MY_VENDOR_SAVE_SPEC<br>POST_SAVE_SPEC | GET_MY_VENDOR_SPEC_OF_PRODUCT<br>POST_MY_VENDOR_AI_PRODUCT_AUTO_CREATE_SPEC<br>POST_MY_VENDOR_SAVE_SPEC |  |  |
-| @selldone/components-vue/backoffice/product/edit/type/BProductEditType.vue | GET_MY_VENDOR_SEARCH_PRODUCT_REPOSITORY_SKU<br>GET_SEARCH_PRODUCT_REPOSITORY_SKU<br>POST_ADD_PRODUCT_BY_REPOSITORY<br>POST_MY_VENDOR_ADD_PRODUCT_BY_REPOSITORY | GET_MY_VENDOR_SEARCH_PRODUCT_REPOSITORY_SKU<br>POST_MY_VENDOR_ADD_PRODUCT_BY_REPOSITORY |  |  |
 | @selldone/components-vue/backoffice/product/extra-pricings/add/BProductExtraPricingAdd.vue | DELETE_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS<br>DELETE_PRODUCT_EDIT_EXTRA_PRICINGS<br>POST_MY_VENDOR_PRODUCT_ADD_EXTRA_PRICINGS<br>POST_PRODUCT_ADD_EXTRA_PRICINGS<br>PUT_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS<br>PUT_PRODUCT_EDIT_EXTRA_PRICINGS | DELETE_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS<br>POST_MY_VENDOR_PRODUCT_ADD_EXTRA_PRICINGS<br>PUT_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS |  |  |
 | @selldone/components-vue/backoffice/product/extra-pricings/row/BProductExtraPricingRow.vue | DELETE_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS<br>DELETE_PRODUCT_EDIT_EXTRA_PRICINGS | DELETE_MY_VENDOR_PRODUCT_EDIT_EXTRA_PRICINGS |  |  |
 | @selldone/components-vue/backoffice/product/google/category/input/BProductGoogleCategoryInput.vue | GET_GOOGLE_CATEGORY |  |  |  |
@@ -368,7 +367,6 @@ Files with API usage: 475
 | src/Applications/Backoffice/pages/shop/channels/bots/BPageShopChannelBots.vue | SET_SHOP_BOT |  |  |  |
 | src/Applications/Backoffice/pages/shop/channels/connect/BPageShopChannelConnect.vue | GET_SHOP_CONNECTS |  |  |  |
 | src/Applications/Backoffice/pages/shop/channels/hyper/BPageShopChannelHyper.vue | PUT_SET_SHOP_HYPER |  |  |  |
-| src/Applications/Backoffice/pages/shop/channels/instagram/BPageShopChannelInstagram.vue | POST_INSTAGRAM_SET_SETTING |  |  |  |
 | src/Applications/Backoffice/pages/shop/channels/listing/BPageShopChannelListing.vue | POST_SHOP_LISTING_SET_ACTIVE |  |  |  |
 | src/Applications/Backoffice/pages/shop/channels/ribbon/BPageShopChannelRibbon.vue | POST_AUTO_CONFIG_GATEWAY<br>PUT_SET_SHOP_RIBBON |  |  |  |
 | src/Applications/Backoffice/pages/shop/classification/categories/BPageShopClassificationCategories.vue | GET_MY_SHOP_CATEGORIES |  |  |  |

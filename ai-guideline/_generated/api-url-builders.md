@@ -2,7 +2,7 @@
 
 This file was generated from `@selldone/sdk-backoffice/apis/API.ts`. It maps URL builders to backend endpoints and detected HTTP request metadata.
 
-Generated methods: 673
+Generated methods: 664
 
 ## {any?}
 
@@ -361,12 +361,6 @@ Generated methods: 673
 |---|---|---|---|---|
 | PUT_SAVE_PREFERENCES() | PUT https://api.selldone.com/preferences | SCOPE_SELLDONE_SECURITY_WRITE (selldone:security:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:486 |
 
-## product-repository
-
-| Builder | Endpoint(s) | Scope | Auth | Source |
-|---|---|---|---|---|
-| GET_SEARCH_PRODUCT_REPOSITORY_SKU() | GET https://api.selldone.com/product-repository/search | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5888 |
-
 ## profile
 
 | Builder | Endpoint(s) | Scope | Auth | Source |
@@ -506,7 +500,6 @@ Generated methods: 673
 | DELETE_PRODUCT_VIDEO(shop_id: string \| number, product_id: string \| number, video_id: string \| number) | DELETE https://api.selldone.com/shops/{shop_id}/products/{product_id}/videos/{video_id} | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5777 |
 | POST_ADD_PRODUCT_LOCATIONS_SAVES(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/product-locations | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5817 |
 | GET_PRODUCT_LOCATIONS_SAVES(shop_id: string \| number) | GET https://api.selldone.com/shops/{shop_id}/product-locations | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5854 |
-| POST_ADD_PRODUCT_BY_REPOSITORY(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/product-repository/add | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5925 |
 | POST_ADD_CUSTOM_BADGE(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/badges | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:5964 |
 | POST_EDIT_CUSTOM_BADGE(shop_id: string \| number, badge_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/badges/{badge_id} | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:6004 |
 | GET_CUSTOM_BADGE(shop_id: string \| number) | GET https://api.selldone.com/shops/{shop_id}/badges | SCOPE_BACKOFFICE_PRODUCT_WRITE (backoffice:product:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:6041 |
@@ -746,8 +739,6 @@ Generated methods: 673
 | GET_DROP_SHIPPING_RESELLER_ACCOUNTS(shop_id: string \| number) | GET https://api.selldone.com/shops/{shop_id}/finance/reseller/accounts | SCOPE_BACKOFFICE_ORDER_READ (backoffice:order:read) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:26795 |
 | GET_DROP_SHIPPING_RESELLER_PAY_FOR_FULFILLMENTS(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/finance/reseller/receipts/pay | SCOPE_BACKOFFICE_ORDER_READ (backoffice:order:read) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:26918 |
 | POST_ADD_PRODUCT_BY_DROP_SHIPPING(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/reseller/products/add | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:26959 |
-| GET_INSTAGRAM_DATA(shop_id: string \| number) | GET https://api.selldone.com/shops/{shop_id}/channels/instagram | SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:27170 |
-| POST_INSTAGRAM_SET_SETTING(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/channels/instagram | SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:27209 |
 | PUT_SET_SHOP_AVOCADO(shop_id: string \| number) | PUT https://api.selldone.com/shops/{shop_id}/avocado | SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29066 |
 | GET_SHOP_INFO_FOR_AVOCADO(shop_id: string \| number) | GET https://api.selldone.com/shops/{shop_id}/avocado-info | SCOPE_BACKOFFICE_SHOP_READ (backoffice:shop:read) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29103 |
 | POST_AVOCADO_CREATE(shop_id: string \| number) | POST https://api.selldone.com/shops/{shop_id}/avocados | SCOPE_BACKOFFICE_ORDER_WRITE (backoffice:order:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29143 |

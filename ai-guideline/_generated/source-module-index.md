@@ -212,14 +212,13 @@ Overview of `src/Applications/Backoffice/pages` folders for aligning documentati
 | src/Applications/Backoffice/pages/shop/blogs/edit | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/blogs/list | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/blogs/timeline | 1 | 0 |
-| src/Applications/Backoffice/pages/shop/channels | 1 | 12 |
+| src/Applications/Backoffice/pages/shop/channels | 1 | 11 |
 | src/Applications/Backoffice/pages/shop/channels/avocado | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/bots | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/clover | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/connect | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/google | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/hyper | 1 | 0 |
-| src/Applications/Backoffice/pages/shop/channels/instagram | 1 | 3 |
 | src/Applications/Backoffice/pages/shop/channels/listing | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/map | 1 | 0 |
 | src/Applications/Backoffice/pages/shop/channels/meta | 1 | 0 |

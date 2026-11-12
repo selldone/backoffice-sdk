@@ -68,4 +68,4 @@ Permission, business model, installed apps, and shop state decide whether a modu
 
 ## Coverage Baseline
 
-The current generated baseline includes 371 named routes and 673 generated API methods. Full coverage means every module in `06-feature-inventory.md` and every source directory listed in `07-module-implementation-matrix.md` has an implemented route, navigation entry, permission gate, and API mapping.
+The current generated baseline includes 370 named routes and 664 cataloged API methods. Full coverage means every module in `06-feature-inventory.md` and every source directory listed in `07-module-implementation-matrix.md` has an implemented route, navigation entry, permission gate, and API mapping.

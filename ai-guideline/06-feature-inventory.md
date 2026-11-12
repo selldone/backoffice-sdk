@@ -123,7 +123,6 @@ Use `07-module-implementation-matrix.md` immediately after this file to map ever
 ### 11) Channels
 - Connect
 - Google
-- Instagram
 - Meta
 - OpenAI
 - Bots
