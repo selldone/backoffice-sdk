@@ -2,7 +2,7 @@
 
 This file was generated from `@selldone/sdk-backoffice/apis/API.ts`. It maps URL builders to backend endpoints and detected HTTP request metadata.
 
-Generated methods: 664
+Generated methods: 657
 
 ## {any?}
 
@@ -260,16 +260,6 @@ Generated methods: 664
 | GET_GIFTS_PENDING_LIST() | GET https://api.selldone.com/gift/pending-list | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:21238 |
 | POST_SEND_GIFT() | POST https://api.selldone.com/gift/send | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:21273 |
 
-## guild
-
-| Builder | Endpoint(s) | Scope | Auth | Source |
-|---|---|---|---|---|
-| GET_MY_GUILD() | GET https://api.selldone.com/guild | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29631 |
-| POST_SETUP_GUILD() | POST https://api.selldone.com/guild | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29665 |
-| POST_GUILD_ADD_MEMBER() | POST https://api.selldone.com/guild/members | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29699 |
-| POST_GUILD_EDIT_MEMBER(member_id: string \| number) | POST https://api.selldone.com/guild/members/{member_id} | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29734 |
-| DELETE_GUILD_MEMBER(member_id: string \| number) | DELETE https://api.selldone.com/guild/members/{member_id} | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:29767 |
-
 ## iframe
 
 | Builder | Endpoint(s) | Scope | Auth | Source |
@@ -327,12 +317,6 @@ Generated methods: 664
 | GET_PARTNER_UPGRADE_URL(shop_id: string \| number) | GET https://api.selldone.com/partners/upgrade-url/{shop_id} | SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:30816 |
 | GET_MY_PARTNER_PURCHASE_DEALS() | GET https://api.selldone.com/partners/deals | SCOPE_BACKOFFICE_SHOP_ADD (backoffice:shop:add) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:30892 |
 | GET_MY_PARTNER_PENDING_PURCHASE_DEALS() | GET https://api.selldone.com/partners/deals/pending | SCOPE_BACKOFFICE_SHOP_ADD (backoffice:shop:add) | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:30965 |
-
-## partnership
-
-| Builder | Endpoint(s) | Scope | Auth | Source |
-|---|---|---|---|---|
-| POST_SEND_REQUEST_PARTNERSHIP() | POST https://api.selldone.com/partnership | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:33887 |
 
 ## personal-access-tokens
 
@@ -894,12 +878,6 @@ Generated methods: 664
 |---|---|---|---|---|
 | GET_MY_SUBSCRIPTIONS() | GET https://api.selldone.com/subscriptions | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:40550 |
 | POST_SUBSCRIBE_TO_PREMIUM(gateway_code: string) | POST https://api.selldone.com/subscriptions/premium/{gateway_code} | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:40586 |
-
-## supplier
-
-| Builder | Endpoint(s) | Scope | Auth | Source |
-|---|---|---|---|---|
-| POST_SEND_REQUEST_SUPPLIER() | POST https://api.selldone.com/supplier | None found in matched route/controller method by static inspection. | Required; OAuth2/Bearer API token via `Authenticate:api`. | apis/API.ts:33922 |
 
 ## tokens
 
