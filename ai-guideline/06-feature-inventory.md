@@ -1,14 +1,6 @@
 # Full Feature Inventory (Backoffice Coverage Map)
 
-This inventory is derived from:
-
-- `src/Applications/Backoffice/pages`
-- `src/Applications/Selldone/router/shuttle/**`
-- `_generated/route-index.md`
-- `_generated/source-module-index.md`
-
-Use this file as the no-skip checklist for full-function dashboard delivery.
-Use `07-module-implementation-matrix.md` immediately after this file to map every module to route placement, permission region, source directory, API usage areas, and core full endpoints.
+Use this inventory with `_generated/route-index.md` to check merchant dashboard coverage. The `07-module-implementation-matrix.md` maps each module to route placement, permission region, API usage, and core endpoints.
 
 ## A) User Dashboard (`/shuttle`)
 

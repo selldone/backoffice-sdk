@@ -17,8 +17,6 @@ Products Manager is the central place for managing shop products and category/fo
 
 ## Source Trace
 
-- `src/Applications/Backoffice/pages/shop/products/BPageShopProducts.vue`
-- `src/Applications/Backoffice/pages/shop/products/list/BPageShopProductsList.vue`
 - `@selldone/components-vue/backoffice/product/panel/BProductsPanel.vue`
 - `@selldone/components-vue/backoffice/product/window/BProductsWindow.vue`
 - `@selldone/components-vue/backoffice/product/list/BProductsList.vue`

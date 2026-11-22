@@ -25,7 +25,7 @@ This guideline is for:
 - Integrators mapping Selldone Backoffice features to custom UI modules.
 - Teams that need feature completeness without copying the current Backoffice visual interface.
 
-The agent consuming this document may work inside the Selldone monorepo, inside the SDK repository, or through the Selldone MCP Server. If local source code is unavailable, the agent must use the published guideline files and clearly mark any source-only details as unavailable for manual confirmation.
+Use the published guides and public SDK sources. Mark details they do not establish for manual confirmation.
 
 ## 3. Source of Truth
 
@@ -33,14 +33,13 @@ Use the sources in this order:
 
 | Source | Purpose | Conflict rule |
 |---|---|---|
-| `src/Applications/Backoffice` | Actual implemented behavior, routes, pages, flows, forms, widgets, dialogs, tables, API usage, permissions, conditions. | Prefer this for implementation reality. |
 | `@selldone/sdk-backoffice/ai-guideline/` | Architectural intent, naming, generated route catalog, generated API catalog, module docs, business rules, agent instructions. | Prefer this for documentation structure and explanation. |
 | `@selldone/sdk-backoffice/ai-guideline/_generated/api-url-builders.md` | Full endpoint URL and HTTP method catalog. | Required before calling any endpoint. |
 | `@selldone/sdk-backoffice/ai-guideline/_generated/api-usage-by-area.md` | API builders grouped by dashboard area. | Use this to connect features to endpoint builders. |
-| `@selldone/sdk-backoffice/ai-guideline/_generated/api-usage-index.md` | Line-by-line source trace of API usage. | Use this for source references and conflict checks. |
+| `@selldone/sdk-backoffice/ai-guideline/_generated/api-usage-index.md` | API usage by public component. | Use this for source references and conflict checks. |
 | `@selldone/sdk-backoffice/ai-guideline/_generated/route-index.md` | Backoffice routes and route families. | Use this for navigation parity and deep links. |
-| `@selldone/sdk-backoffice/ai-guideline/_generated/source-module-index.md` | Source module coverage. | Use this for no-skip audits. |
-| Public documentation mirror | Remote path for agents outside the monorepo. | Use for reading guideline docs when local files are unavailable. |
+| `@selldone/sdk-backoffice/ai-guideline/_generated/source-module-index.md` | Merchant module coverage. | Use this for no-skip audits. |
+| Public documentation mirror | Published guide for SDK consumers. | Use for reading guideline docs when local files are unavailable. |
 
 Public documentation mirror:
 
@@ -50,7 +49,7 @@ https://github.com/selldone/backoffice-sdk/tree/main/ai-guideline
 
 If documentation and source code conflict:
 
-- Prefer `src/Applications/Backoffice` for actual implemented behavior.
+- Prefer the published API contract for endpoints, authentication, and request and response formats.
 - Prefer `@selldone/sdk-backoffice/ai-guideline/` for architecture, naming, and high-level explanations.
 - Record the conflict in the final output with source references.
 - Do not hide conflicts by choosing an invented compromise.
@@ -77,20 +76,14 @@ Do not skip generated files or nested documentation folders. Required high-value
 | `05-ui-patterns.md` | Common UI patterns and behavior contracts. |
 | `08-product-design-guidelines.md` | Mandatory calm, minimal, professional visual direction, including neutral alerts and the no-semantic-colored-body-text rule. |
 | `06-feature-inventory.md` | Full feature inventory by dashboard area. |
-| `07-module-implementation-matrix.md` | Module placement, permission region, source directory, API areas, core endpoints. |
+| `07-module-implementation-matrix.md` | Module placement, permission region, API areas, core endpoints. |
 | `dashboard/**/README.md` | Module-specific rules and feature details. |
 | `_generated/api-url-builders.md` | Full method plus URL endpoint catalog. |
 | `_generated/api-usage-by-area.md` | Source-derived API usage grouped by area. |
-| `_generated/api-usage-index.md` | Source trace for API calls. |
+| `_generated/api-usage-index.md` | API usage by public component. |
 | `_generated/route-index.md` | Route inventory. |
-| `_generated/source-module-index.md` | Source directory inventory. |
+| `_generated/source-module-index.md` | Merchant module coverage references. |
 | `_generated/sdk-request-wrappers.md` | Wrapper hints for params and responses. |
-
-Also inspect the real implementation under:
-
-```txt
-src/Applications/Backoffice
-```
 
 When available, inspect shared Backoffice component sources referenced by generated docs, especially under:
 
@@ -105,7 +98,7 @@ These component paths are source-trace references only. They must not force a Vu
 Follow this sequence exactly:
 
 1. Read all Markdown files under `@selldone/sdk-backoffice/ai-guideline/`.
-2. Inspect `src/Applications/Backoffice` for routes, pages, menus, layouts, widgets, tables, forms, dialogs, drawers, modals, actions, and API usage.
+2. Review the merchant route index, module guides, and public Backoffice components for behavior and API usage.
 3. Search source code for API and permission patterns.
 4. Build a complete feature inventory before designing UI.
 5. Categorize every discovered feature as Primary, Secondary, Advanced, Conditional, Entity, or System.
@@ -172,22 +165,18 @@ For every feature, capture:
 
 A feature is not complete until it has either verified endpoint mappings or an explicit unknown/gap note.
 
-## 7. Backoffice Source Code Analysis Rules
+## 7. Merchant Routes and Permissions
 
-Inspect these source areas first:
+Review these references first:
 
-| Source area | What to extract |
+| Reference | What to check |
 |---|---|
-| `src/Applications/Backoffice/pages` | Pages, module boundaries, entity dashboards, tabs, forms, tables, dialogs, import/export flows. |
-| `src/Applications/Backoffice/router` | Route definitions owned by Backoffice. |
-| `src/Applications/Selldone/router/shuttle` | Shop, shuttle, provider, and Backoffice route packs. |
-| `src/Applications/Backoffice/mixins` | Shop context, permission checks, shared behaviors. |
 | Shared component paths referenced in `_generated/api-usage-by-area.md` | Component-level API usage and reusable UI contracts. |
 
 Route and permission source signals discovered in the current repository include:
 
 - Shop route permission regions: `ACCOUNTING`, `APPLICATIONS`, `AUTOMATION`, `BLOG`, `CATEGORIES`, `CHANNELS`, `COMMUNITY`, `CUSTOMERS`, `INCENTIVES`, `LOGISTIC`, `MARKETING`, `MARKETPLACE`, `ORDERS`, `PAGES`, `POS`, `PRODUCTS`, `SETTINGS`, `WHOLESALER`.
-- Permission helpers are implemented in `src/Applications/Backoffice/mixins/BackofficeMixin.ts`, including `readShopAccess(...)` and `writeShopAccess(...)`.
+- Apply the merchant's read and write access for the affected permission region.
 - Route catalogs are generated in `_generated/route-index.md`.
 - API usage catalogs are generated in `_generated/api-usage-by-area.md` and `_generated/api-usage-index.md`.
 
@@ -244,15 +233,7 @@ Build the inventory before UI design. Use this schema conceptually:
         }
       ],
       "source_files": [
-        "src/Applications/Backoffice/pages/order-physical",
-        "src/Applications/Backoffice/pages/order-virtual",
-        "src/Applications/Backoffice/pages/order-file",
-        "src/Applications/Backoffice/pages/order-service",
-        "src/Applications/Backoffice/pages/order-subscription",
-        "src/Applications/Backoffice/pages/order-pos",
-        "src/Applications/Backoffice/pages/order-hyper",
-        "src/Applications/Backoffice/pages/order-avocado",
-        "src/Applications/Backoffice/pages/order-fulfillment"
+        "@selldone/sdk-backoffice/ai-guideline/dashboard/shop/orders/README.md"
       ]
     }
   ],
@@ -340,51 +321,51 @@ Advanced or conditional defaults:
 
 Use this map as the starting inventory. Verify every item against `06-feature-inventory.md`, `07-module-implementation-matrix.md`, generated route docs, and source code before implementation.
 
-| Module | Placement | Capability groups | Permission/context | Source and docs | Core verified endpoints or resolution rule |
+| Module | Placement | Capability groups | Permission/context | Documentation | Core verified endpoints or resolution rule |
 |---|---|---|---|---|---|
-| Shuttle root | System | Shop list, vendor list, roles, wallet, identity, security, company, affiliate, expert, deals. | Authenticated user. | `src/Applications/Backoffice/pages/shuttle`, `dashboard/shuttle/README.md`. | `GET https://api.selldone.com/shops/me`, `GET https://api.selldone.com/roles`, `GET https://api.selldone.com/user/security`. |
-| Wallet and accounts | System | Accounts, deposit, cards, transfer, transactions, charge history, connected shops, subscriptions. | Wallet/account access. | `src/Applications/Backoffice/pages/account`, `dashboard/shuttle/README.md`. | `GET https://api.selldone.com/accounts`, `GET https://api.selldone.com/accounts/{account_number}`, `GET https://api.selldone.com/accounts/{account_number}/shops`. |
-| Identity and security | System | Profile, KYC, personal information, password, 2FA, devices, delete account. | Authenticated user. | `src/Applications/Backoffice/pages/shuttle/identity`, `src/Applications/Backoffice/pages/shuttle/security`. | `GET https://api.selldone.com/personal-information`, `GET https://api.selldone.com/profiles/me`, `GET https://api.selldone.com/user/security`. |
-| Shop shell and overview | Primary | Shop context, dashboard data, live view, sessions, timeline, queues, apps, permission-filtered nav. | Shop read plus child permissions. | `src/Applications/Backoffice/pages/shop`, `dashboard/shop/README.md`. | `GET https://api.selldone.com/shops/me/{shop_id}`, `GET https://api.selldone.com/shops/{shop_id}/real-time`, `GET https://api.selldone.com/shops/{shop_id}/statistic/sessions`, `GET https://api.selldone.com/shops/{shop_id}/statistic/timeline`. |
-| Products Manager | Primary | Product/category file manager, folder navigation, table mode, search, filters, import/export, queues, bulk actions. | `PRODUCTS`. | `src/Applications/Backoffice/pages/shop/products`, `dashboard/shop/products/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/products/all-admin`, `POST https://api.selldone.com/shops/{shop_id}/product/add`, `POST https://api.selldone.com/shops/{shop_id}/categories/add`, `DELETE https://api.selldone.com/shops/{shop_id}/products/{product_id}/delete`. |
-| Product detail | Entity | Dashboard, edit, inventory, orders, article, 3D, hyper, subscription, membership, vendors, embed, cross-selling, template, dropshipping. | `PRODUCTS`. | `src/Applications/Backoffice/pages/product`, `dashboard/product/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/products/{product_id}/admin`, `PUT https://api.selldone.com/shops/{shop_id}/products/{product_id}/edit`, `POST https://api.selldone.com/shops/{shop_id}/products/{product_id}/quantity`, `GET https://api.selldone.com/shops/{shop_id}/products/{product_id}/files`. |
-| Orders and Process Center | Primary | Physical, virtual, file, service, subscription, POS, hyper, avocado, dropshipping order lists, filters, type-specific details, timeline, chat, bills, returns, payment confirmation, fulfillment. | `ORDERS`. | `src/Applications/Backoffice/pages/order-*`, `dashboard/shop/orders/README.md`, `dashboard/commerce/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets-{type}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets/{basket_id}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets/{basket_id}/bills`, `GET https://api.selldone.com/shops/{shop_id}/process-center/pos-baskets/{basket_id}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/hypers/{hyper_id}`. |
-| Customers and CRM | Primary | Customer list/detail/edit, segments, wallets, journey, customer orders, chat, club, comments, community, FAQ, reports, reviews. | `CUSTOMERS`. | `src/Applications/Backoffice/pages/shop/crm`, `src/Applications/Backoffice/pages/customer`, `dashboard/shop/crm/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/customers`, `GET https://api.selldone.com/shops/{shop_id}/customer/segments`, `GET https://api.selldone.com/shops/{shop_id}/contacts`, `GET https://api.selldone.com/shops/{shop_id}/faqs`, `GET https://api.selldone.com/shops/{shop_id}/reviews`. |
-| Finance | Primary | Report, gateways, tax, bill, exchange, valuations, customer wallets, reseller wallets, reseller fulfillment, ribbon. | `ACCOUNTING`. | `src/Applications/Backoffice/pages/shop/finance`, `src/Applications/Backoffice/pages/gateway`, `dashboard/shop/finance/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/gateways`, `GET https://api.selldone.com/shops/{shop_id}/tax`, `GET https://api.selldone.com/shops/{shop_id}/exchange/rates`, `GET https://api.selldone.com/shops/{shop_id}/valuations`, `GET https://api.selldone.com/shops/{shop_id}/wallets`. |
-| Logistics and inventory | Primary | Inventory, warehouse, shipping, returns, profiles, includes, property sets, boxes, print templates, import/export. | `LOGISTIC`. | `src/Applications/Backoffice/pages/shop/logistic`, `dashboard/shop/logistic/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/warehouse`, `GET https://api.selldone.com/shops/{shop_id}/return-request`, `GET https://api.selldone.com/shops/{shop_id}/transportation`, `GET https://api.selldone.com/shops/{shop_id}/logistic-profiles`, `GET https://api.selldone.com/shops/{shop_id}/includes`, `GET https://api.selldone.com/shops/{shop_id}/print-templates`. |
-| Settings | Primary/Advanced | Info, flow, business model, license, menus, critical zone, SEO, GDPR/access, quota, advanced, notifications, locations, languages, theme, SMS, email, domains. | `SETTINGS`. | `src/Applications/Backoffice/pages/shop/setting`, `dashboard/shop/settings/README.md`. | `PUT https://api.selldone.com/shops/{shop_id}/edit`, `PUT https://api.selldone.com/shops/{shop_id}/edit/info`, `GET https://api.selldone.com/shops/{shop_id}/domains`, `GET https://api.selldone.com/shops/{shop_id}/menus/{type}`, `GET https://api.selldone.com/shops/{shop_id}/notification-channels`, `GET https://api.selldone.com/shops/{shop_id}/email/list`, `GET https://api.selldone.com/shops/{shop_id}/sms/list`. |
-| Incentives | Secondary | Discount codes, coupons, gift cards, offers, cashback, lottery, notes, restore flows, orders per incentive. | `INCENTIVES`. | `src/Applications/Backoffice/pages/shop/incentives`, entity pages, `dashboard/shop/incentives/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/discount-codes`, `GET https://api.selldone.com/shops/{shop_id}/coupons`, `GET https://api.selldone.com/shops/{shop_id}/gift-card-types`, `GET https://api.selldone.com/shops/{shop_id}/offers`, `GET https://api.selldone.com/shops/{shop_id}/cashbacks`, `GET https://api.selldone.com/shops/{shop_id}/lotteries`. |
-| Marketing | Secondary | Campaigns, affiliate marketing, email marketing, funnels, stream users. | `MARKETING`. | `src/Applications/Backoffice/pages/shop/marketing`, campaign/email entity pages. | `GET https://api.selldone.com/shops/{shop_id}/campaigns`, `GET https://api.selldone.com/shops/{shop_id}/affiliates`, `GET https://api.selldone.com/shops/{shop_id}/emails`, `POST https://api.selldone.com/shops/{shop_id}/funnel/users/count`, `GET https://api.selldone.com/shops/{shop_id}/stream-users`. |
+| Shuttle root | System | Shop list, vendor list, roles, wallet, identity, security, company, affiliate, expert, deals. | Authenticated user. | `dashboard/shuttle/README.md`. | `GET https://api.selldone.com/shops/me`, `GET https://api.selldone.com/roles`, `GET https://api.selldone.com/user/security`. |
+| Wallet and accounts | System | Accounts, deposit, cards, transfer, transactions, charge history, connected shops, subscriptions. | Wallet/account access. | `dashboard/shuttle/README.md`. | `GET https://api.selldone.com/accounts`, `GET https://api.selldone.com/accounts/{account_number}`, `GET https://api.selldone.com/accounts/{account_number}/shops`. |
+| Identity and security | System | Profile, KYC, personal information, password, 2FA, devices, delete account. | Authenticated user. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/personal-information`, `GET https://api.selldone.com/profiles/me`, `GET https://api.selldone.com/user/security`. |
+| Shop shell and overview | Primary | Shop context, dashboard data, live view, sessions, timeline, queues, apps, permission-filtered nav. | Shop read plus child permissions. | `dashboard/shop/README.md`. | `GET https://api.selldone.com/shops/me/{shop_id}`, `GET https://api.selldone.com/shops/{shop_id}/real-time`, `GET https://api.selldone.com/shops/{shop_id}/statistic/sessions`, `GET https://api.selldone.com/shops/{shop_id}/statistic/timeline`. |
+| Products Manager | Primary | Product/category file manager, folder navigation, table mode, search, filters, import/export, queues, bulk actions. | `PRODUCTS`. | `dashboard/shop/products/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/products/all-admin`, `POST https://api.selldone.com/shops/{shop_id}/product/add`, `POST https://api.selldone.com/shops/{shop_id}/categories/add`, `DELETE https://api.selldone.com/shops/{shop_id}/products/{product_id}/delete`. |
+| Product detail | Entity | Dashboard, edit, inventory, orders, article, 3D, hyper, subscription, membership, vendors, embed, cross-selling, template, dropshipping. | `PRODUCTS`. | `dashboard/product/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/products/{product_id}/admin`, `PUT https://api.selldone.com/shops/{shop_id}/products/{product_id}/edit`, `POST https://api.selldone.com/shops/{shop_id}/products/{product_id}/quantity`, `GET https://api.selldone.com/shops/{shop_id}/products/{product_id}/files`. |
+| Orders and Process Center | Primary | Physical, virtual, file, service, subscription, POS, hyper, avocado, dropshipping order lists, filters, type-specific details, timeline, chat, bills, returns, payment confirmation, fulfillment. | `ORDERS`. | `dashboard/shop/orders/README.md`, `dashboard/commerce/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets-{type}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets/{basket_id}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/baskets/{basket_id}/bills`, `GET https://api.selldone.com/shops/{shop_id}/process-center/pos-baskets/{basket_id}`, `GET https://api.selldone.com/shops/{shop_id}/process-center/hypers/{hyper_id}`. |
+| Customers and CRM | Primary | Customer list/detail/edit, segments, wallets, journey, customer orders, chat, club, comments, community, FAQ, reports, reviews. | `CUSTOMERS`. | `dashboard/shop/crm/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/customers`, `GET https://api.selldone.com/shops/{shop_id}/customer/segments`, `GET https://api.selldone.com/shops/{shop_id}/contacts`, `GET https://api.selldone.com/shops/{shop_id}/faqs`, `GET https://api.selldone.com/shops/{shop_id}/reviews`. |
+| Finance | Primary | Report, gateways, tax, bill, exchange, valuations, customer wallets, reseller wallets, reseller fulfillment, ribbon. | `ACCOUNTING`. | `dashboard/shop/finance/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/gateways`, `GET https://api.selldone.com/shops/{shop_id}/tax`, `GET https://api.selldone.com/shops/{shop_id}/exchange/rates`, `GET https://api.selldone.com/shops/{shop_id}/valuations`, `GET https://api.selldone.com/shops/{shop_id}/wallets`. |
+| Logistics and inventory | Primary | Inventory, warehouse, shipping, returns, profiles, includes, property sets, boxes, print templates, import/export. | `LOGISTIC`. | `dashboard/shop/logistic/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/warehouse`, `GET https://api.selldone.com/shops/{shop_id}/return-request`, `GET https://api.selldone.com/shops/{shop_id}/transportation`, `GET https://api.selldone.com/shops/{shop_id}/logistic-profiles`, `GET https://api.selldone.com/shops/{shop_id}/includes`, `GET https://api.selldone.com/shops/{shop_id}/print-templates`. |
+| Settings | Primary/Advanced | Info, flow, business model, license, menus, critical zone, SEO, GDPR/access, quota, advanced, notifications, locations, languages, theme, SMS, email, domains. | `SETTINGS`. | `dashboard/shop/settings/README.md`. | `PUT https://api.selldone.com/shops/{shop_id}/edit`, `PUT https://api.selldone.com/shops/{shop_id}/edit/info`, `GET https://api.selldone.com/shops/{shop_id}/domains`, `GET https://api.selldone.com/shops/{shop_id}/menus/{type}`, `GET https://api.selldone.com/shops/{shop_id}/notification-channels`, `GET https://api.selldone.com/shops/{shop_id}/email/list`, `GET https://api.selldone.com/shops/{shop_id}/sms/list`. |
+| Incentives | Secondary | Discount codes, coupons, gift cards, offers, cashback, lottery, notes, restore flows, orders per incentive. | `INCENTIVES`. | entity pages, `dashboard/shop/incentives/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/discount-codes`, `GET https://api.selldone.com/shops/{shop_id}/coupons`, `GET https://api.selldone.com/shops/{shop_id}/gift-card-types`, `GET https://api.selldone.com/shops/{shop_id}/offers`, `GET https://api.selldone.com/shops/{shop_id}/cashbacks`, `GET https://api.selldone.com/shops/{shop_id}/lotteries`. |
+| Marketing | Secondary | Campaigns, affiliate marketing, email marketing, funnels, stream users. | `MARKETING`. | campaign/email entity pages. | `GET https://api.selldone.com/shops/{shop_id}/campaigns`, `GET https://api.selldone.com/shops/{shop_id}/affiliates`, `GET https://api.selldone.com/shops/{shop_id}/emails`, `POST https://api.selldone.com/shops/{shop_id}/funnel/users/count`, `GET https://api.selldone.com/shops/{shop_id}/stream-users`. |
 | Blogs | Secondary | Blog list, timeline, categories, add/edit, upload, tags, SEO audit. | `BLOG`. | `dashboard/shop/blogs/README.md`, shared blog components. | `GET https://api.selldone.com/shops/{shop_id}/blogs`, `GET https://api.selldone.com/shops/{shop_id}/blog/categories`, `POST https://api.selldone.com/shops/{shop_id}/blogs/upload`, `GET https://api.selldone.com/shops/{shop_id}/timeline/articles`. |
-| Pages and page builder | Secondary | Landings, popups, static files, about, contact, privacy, terms, live/editor routes, uploads. | `PAGES`. | `src/Applications/Backoffice/pages/shop/pages`, `src/Applications/Backoffice/pages/landing`, `src/Applications/Backoffice/pages/popup`. | `GET https://api.selldone.com/shops/{shop_id}/pages`, `POST https://api.selldone.com/shops/{shop_id}/pages`, `POST https://api.selldone.com/shops/{shop_id}/pages/{page_id}/upload/content-image`, `GET https://api.selldone.com/shops/{shop_id}/popups`, `GET https://api.selldone.com/shops/{shop_id}/static/{folder?}`. |
-| Channels | Secondary | Connect, Google, Meta, OpenAI, bots, ribbon, listing, Clover, Avocado, Hyper, Map. | `CHANNELS`. | `src/Applications/Backoffice/pages/shop/channels`, `dashboard/shop/channels/README.md`, `dashboard/integrations/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/connects`, `GET https://api.selldone.com/shops/{shop_id}/services/google/search`, `POST https://api.selldone.com/shops/{shop_id}/bots`, `PUT https://api.selldone.com/shops/{shop_id}/avocado`, `PUT https://api.selldone.com/shops/{shop_id}/hyper`. |
-| Classification | Secondary | Categories, clusters, hierarchy, import, exporter. | `CATEGORIES`. | `src/Applications/Backoffice/pages/shop/classification`, shared category/cluster components. | `GET https://api.selldone.com/shops/{shop_id}/categories`, `GET https://api.selldone.com/shops/{shop_id}/categories-hierarchy`, `POST https://api.selldone.com/shops/{shop_id}/import/categories`, `GET https://api.selldone.com/shops/{shop_id}/clusters`. |
-| Community | Secondary | Categories, topics, posts, comments, moderation. | `COMMUNITY`. | `src/Applications/Backoffice/pages/shop/community`, `dashboard/shop/community/README.md`. | Resolve exact community endpoints from `_generated/api-url-builders.md` and source usage. Use shared comment endpoints such as `GET https://api.selldone.com/shops/{shop_id}/comments` only when source confirms them. |
-| Access and permissions | Secondary/Advanced | Staff/personnel, roles, API clients, permission matrix, invites, leave access. | Current route metadata uses `SETTINGS`. | `src/Applications/Backoffice/pages/shop/permission`, `dashboard/shop/access/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/permissions`, `POST https://api.selldone.com/shops/{shop_id}/permissions`, `GET https://api.selldone.com/shops/{shop_id}/roles`, `POST https://api.selldone.com/shops/{shop_id}/roles`, `POST https://api.selldone.com/shops/{shop_id}/clients`. |
-| Applications | Secondary | PWA, iOS, Android, Metaverse, app assets, build state, app store list, installed apps. | `APPLICATIONS`. | `src/Applications/Backoffice/pages/shop/applications`, `src/Applications/Backoffice/pages/application`. | `GET https://api.selldone.com/shops/{shop_id}/apps`, `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}/full`, `GET https://api.selldone.com/shops/{shop_id}/app-store/list`, `GET https://api.selldone.com/shops/{shop_id}/native/android`, `GET https://api.selldone.com/shops/{shop_id}/metaverse/lands`. |
-| Automation | Secondary/Advanced | Webhooks, webhook calls, logging, notifications repository, events, Niomatic, Autopilot. | `AUTOMATION`. | `src/Applications/Backoffice/pages/shop/automation`, `dashboard/shop/automation/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/webhooks`, `POST https://api.selldone.com/shops/{shop_id}/webhooks`, `GET https://api.selldone.com/shops/{shop_id}/events`, `GET https://api.selldone.com/shops/{shop_id}/logging`, `GET https://api.selldone.com/shops/{shop_id}/notifications`. |
-| Listing | Conditional | Setup, items, categories, supervision, templates/designs, options, badges, companies, reviews, messages, search. | `PRODUCTS` in current route metadata. | `src/Applications/Backoffice/pages/shop/listing`, shared listing components. | `GET https://api.selldone.com/shops/{shop_id}/listing`, `GET https://api.selldone.com/shops/{shop_id}/listing/items`, `GET https://api.selldone.com/shops/{shop_id}/listing/categories`, `GET https://api.selldone.com/shops/{shop_id}/listing/messages`, `GET https://api.selldone.com/shops/{shop_id}/listing/search`. |
-| Marketplace | Conditional | Vendors, vendor products, orders, accounts, payouts, pricing, requests, settings. | `MARKETPLACE`. | `src/Applications/Backoffice/pages/marketplace`, `dashboard/shop/marketplace/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/vendors`, `GET https://api.selldone.com/shops/{shop_id}/vendor-products`, `GET https://api.selldone.com/shops/{shop_id}/vendor-accounts`, `GET https://api.selldone.com/shops/{shop_id}/vendor-payments`, `GET https://api.selldone.com/shops/{shop_id}/vendor-requests`, `GET https://api.selldone.com/shops/{shop_id}/pricings`. |
-| Dropshipping and wholesaler | Conditional | Wholesaler dashboard, shops, orders, requests, inventory, wholesaler-shop dashboard/orders/wallet, reseller finance. | `WHOLESALER`. | `src/Applications/Backoffice/pages/wholesaler`, `src/Applications/Backoffice/pages/wholesaler-shop`, `dashboard/shop/dropshipping/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/dropshipping`, `GET https://api.selldone.com/shops/{shop_id}/dropshipping/requests`, `GET https://api.selldone.com/shops/{shop_id}/dropshipping/resellers`, `GET https://api.selldone.com/shops/{shop_id}/reseller/shops`, `GET https://api.selldone.com/shops/{shop_id}/finance/reseller/account`. |
-| POS and cash register | Conditional | POS panel, orders, customers, inventory, devices, customer view, product card/list, offline basket, payment confirmation. | `POS`. | `src/Applications/Backoffice/pages/pos`, `src/Applications/Backoffice/pages/order-pos`, `dashboard/shop/pos/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/pos`, `POST https://api.selldone.com/shops/{shop_id}/pos/add`, `GET https://api.selldone.com/shops/{shop_id}/pos/coupons`, `GET https://api.selldone.com/shops/{shop_id}/hub/devices`, `GET https://api.selldone.com/shops/{shop_id}/process-center/pos-baskets/{basket_id}`. |
-| Transportation | Conditional | Couriers, orders, pickups, services, settings, transportation-service detail/edit/orders. | `LOGISTIC` or route metadata. | `src/Applications/Backoffice/pages/transportation`, `src/Applications/Backoffice/pages/transportation-service`. | `GET https://api.selldone.com/shops/{shop_id}/transportation`, `POST https://api.selldone.com/shops/{shop_id}/transportation`, `GET https://api.selldone.com/shops/{shop_id}/transportation-orders`. |
-| Logistic profile | Entity | Profile dashboard, products, settings. | `LOGISTIC`. | `src/Applications/Backoffice/pages/logistic-profile`. | `GET https://api.selldone.com/shops/{shop_id}/logistic-profiles`, `POST https://api.selldone.com/shops/{shop_id}/logistic-profiles`. |
-| Connect entity | Entity | Connect dashboard, orders by type, products, logs, settings. | `CHANNELS` or route metadata. | `src/Applications/Backoffice/pages/connect`. | `GET https://api.selldone.com/shops/{shop_id}/connects`, `GET https://api.selldone.com/shops/{shop_id}/connect-services`; resolve detail/order/log endpoints from the generated API catalog. |
-| Campaign entity | Entity | Dashboard, finance, ads, landing, settings, links. | `MARKETING`. | `src/Applications/Backoffice/pages/campaign`. | `GET https://api.selldone.com/shops/{shop_id}/campaigns/{campaign_id}`, `DELETE https://api.selldone.com/shops/{shop_id}/campaigns/{campaign_id}`. |
-| Email marketing entity | Entity | Dashboard, editor, render, statistic, send/cancel. | `MARKETING`. | `src/Applications/Backoffice/pages/email-marketing`. | `GET https://api.selldone.com/shops/{shop_id}/emails/{email_id}`, `GET https://api.selldone.com/shops/{shop_id}/emails/{email_id}/render`, `POST https://api.selldone.com/shops/{shop_id}/emails/{email_id}/send`. |
-| Affiliate entity | Entity | Dashboard, edit, orders, payments. | `MARKETING`. | `src/Applications/Backoffice/pages/affiliate`. | `GET https://api.selldone.com/shops/{shop_id}/affiliates/{affiliate_id}`. |
-| Coupon entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `src/Applications/Backoffice/pages/coupon`. | `GET https://api.selldone.com/shops/{shop_id}/coupons/{coupon_id}`, `GET https://api.selldone.com/shops/{shop_id}/coupons/{coupon_id}/orders`. |
-| Discount-code entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `src/Applications/Backoffice/pages/discount-code`. | `GET https://api.selldone.com/shops/{shop_id}/discount-codes`; resolve detail/edit/order endpoints from the generated catalog before implementation. |
-| Gift-card entity | Entity | Dashboard, edit, cards/list, orders. | `INCENTIVES`. | `src/Applications/Backoffice/pages/giftcard`. | `GET https://api.selldone.com/shops/{shop_id}/gift-card-types`; resolve card/order/detail endpoints from the generated catalog before implementation. |
-| Offer entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `src/Applications/Backoffice/pages/offer`. | `GET https://api.selldone.com/shops/{shop_id}/offers/{offer_id}`, `GET https://api.selldone.com/shops/{shop_id}/offers/{offer_id}/orders`. |
-| Cashback entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `src/Applications/Backoffice/pages/cashback`. | `GET https://api.selldone.com/shops/{shop_id}/cashbacks/{cashback_id}`, `GET https://api.selldone.com/shops/{shop_id}/cashbacks/{cashback_id}/orders`. |
-| Gateway entity | Entity | Dashboard, transactions, edit, Stripe or blockchain settings. | `ACCOUNTING`. | `src/Applications/Backoffice/pages/gateway`. | `GET https://api.selldone.com/shops/{shop_id}/gateways/{gateway_code}`, `POST https://api.selldone.com/shops/{shop_id}/gateways/{gateway_code}`. |
-| Review source entity | Entity | Dashboard, review list, edit, debug, sync. | `CUSTOMERS`. | `src/Applications/Backoffice/pages/review`. | `GET https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}`, `GET https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}/debug`, `POST https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}/sync`. |
-| Application loader | Entity | App detail by code and tab. | `APPLICATIONS`. | `src/Applications/Backoffice/pages/application`. | `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}/full`, `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}`. |
-| Courier | Entity | Courier page shell and delivery operations. | Logistic or transportation context. | `src/Applications/Backoffice/pages/courier`. | Resolve exact courier endpoints from generated catalog before implementation. |
-| Provider routes | Conditional/System | Provider dashboard, API docs, auth, settings, logs, shops, webhooks. | Provider/connect owner access. | `src/Applications/Selldone/router/shuttle/provider`, `dashboard/integrations/README.md`. | Resolve provider endpoints from generated catalog; do not invent provider paths. |
+| Pages and page builder | Secondary | Landings, popups, static files, about, contact, privacy, terms, live/editor routes, uploads. | `PAGES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/pages`, `POST https://api.selldone.com/shops/{shop_id}/pages`, `POST https://api.selldone.com/shops/{shop_id}/pages/{page_id}/upload/content-image`, `GET https://api.selldone.com/shops/{shop_id}/popups`, `GET https://api.selldone.com/shops/{shop_id}/static/{folder?}`. |
+| Channels | Secondary | Connect, Google, Meta, OpenAI, bots, ribbon, listing, Clover, Avocado, Hyper, Map. | `CHANNELS`. | `dashboard/shop/channels/README.md`, `dashboard/integrations/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/connects`, `GET https://api.selldone.com/shops/{shop_id}/services/google/search`, `POST https://api.selldone.com/shops/{shop_id}/bots`, `PUT https://api.selldone.com/shops/{shop_id}/avocado`, `PUT https://api.selldone.com/shops/{shop_id}/hyper`. |
+| Classification | Secondary | Categories, clusters, hierarchy, import, exporter. | `CATEGORIES`. | shared category/cluster components. | `GET https://api.selldone.com/shops/{shop_id}/categories`, `GET https://api.selldone.com/shops/{shop_id}/categories-hierarchy`, `POST https://api.selldone.com/shops/{shop_id}/import/categories`, `GET https://api.selldone.com/shops/{shop_id}/clusters`. |
+| Community | Secondary | Categories, topics, posts, comments, moderation. | `COMMUNITY`. | `dashboard/shop/community/README.md`. | Resolve exact community endpoints from `_generated/api-url-builders.md` and source usage. Use shared comment endpoints such as `GET https://api.selldone.com/shops/{shop_id}/comments` only when source confirms them. |
+| Access and permissions | Secondary/Advanced | Staff/personnel, roles, API clients, permission matrix, invites, leave access. | Current route metadata uses `SETTINGS`. | `dashboard/shop/access/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/permissions`, `POST https://api.selldone.com/shops/{shop_id}/permissions`, `GET https://api.selldone.com/shops/{shop_id}/roles`, `POST https://api.selldone.com/shops/{shop_id}/roles`, `POST https://api.selldone.com/shops/{shop_id}/clients`. |
+| Applications | Secondary | PWA, iOS, Android, Metaverse, app assets, build state, app store list, installed apps. | `APPLICATIONS`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/apps`, `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}/full`, `GET https://api.selldone.com/shops/{shop_id}/app-store/list`, `GET https://api.selldone.com/shops/{shop_id}/native/android`, `GET https://api.selldone.com/shops/{shop_id}/metaverse/lands`. |
+| Automation | Secondary/Advanced | Webhooks, webhook calls, logging, notifications repository, events, Niomatic, Autopilot. | `AUTOMATION`. | `dashboard/shop/automation/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/webhooks`, `POST https://api.selldone.com/shops/{shop_id}/webhooks`, `GET https://api.selldone.com/shops/{shop_id}/events`, `GET https://api.selldone.com/shops/{shop_id}/logging`, `GET https://api.selldone.com/shops/{shop_id}/notifications`. |
+| Listing | Conditional | Setup, items, categories, supervision, templates/designs, options, badges, companies, reviews, messages, search. | `PRODUCTS` in current route metadata. | shared listing components. | `GET https://api.selldone.com/shops/{shop_id}/listing`, `GET https://api.selldone.com/shops/{shop_id}/listing/items`, `GET https://api.selldone.com/shops/{shop_id}/listing/categories`, `GET https://api.selldone.com/shops/{shop_id}/listing/messages`, `GET https://api.selldone.com/shops/{shop_id}/listing/search`. |
+| Marketplace | Conditional | Vendors, vendor products, orders, accounts, payouts, pricing, requests, settings. | `MARKETPLACE`. | `dashboard/shop/marketplace/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/vendors`, `GET https://api.selldone.com/shops/{shop_id}/vendor-products`, `GET https://api.selldone.com/shops/{shop_id}/vendor-accounts`, `GET https://api.selldone.com/shops/{shop_id}/vendor-payments`, `GET https://api.selldone.com/shops/{shop_id}/vendor-requests`, `GET https://api.selldone.com/shops/{shop_id}/pricings`. |
+| Dropshipping and wholesaler | Conditional | Wholesaler dashboard, shops, orders, requests, inventory, wholesaler-shop dashboard/orders/wallet, reseller finance. | `WHOLESALER`. | `dashboard/shop/dropshipping/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/dropshipping`, `GET https://api.selldone.com/shops/{shop_id}/dropshipping/requests`, `GET https://api.selldone.com/shops/{shop_id}/dropshipping/resellers`, `GET https://api.selldone.com/shops/{shop_id}/reseller/shops`, `GET https://api.selldone.com/shops/{shop_id}/finance/reseller/account`. |
+| POS and cash register | Conditional | POS panel, orders, customers, inventory, devices, customer view, product card/list, offline basket, payment confirmation. | `POS`. | `dashboard/shop/pos/README.md`. | `GET https://api.selldone.com/shops/{shop_id}/pos`, `POST https://api.selldone.com/shops/{shop_id}/pos/add`, `GET https://api.selldone.com/shops/{shop_id}/pos/coupons`, `GET https://api.selldone.com/shops/{shop_id}/hub/devices`, `GET https://api.selldone.com/shops/{shop_id}/process-center/pos-baskets/{basket_id}`. |
+| Transportation | Conditional | Couriers, orders, pickups, services, settings, transportation-service detail/edit/orders. | `LOGISTIC` or route metadata. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/transportation`, `POST https://api.selldone.com/shops/{shop_id}/transportation`, `GET https://api.selldone.com/shops/{shop_id}/transportation-orders`. |
+| Logistic profile | Entity | Profile dashboard, products, settings. | `LOGISTIC`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/logistic-profiles`, `POST https://api.selldone.com/shops/{shop_id}/logistic-profiles`. |
+| Connect entity | Entity | Connect dashboard, orders by type, products, logs, settings. | `CHANNELS` or route metadata. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/connects`, `GET https://api.selldone.com/shops/{shop_id}/connect-services`; resolve detail/order/log endpoints from the generated API catalog. |
+| Campaign entity | Entity | Dashboard, finance, ads, landing, settings, links. | `MARKETING`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/campaigns/{campaign_id}`, `DELETE https://api.selldone.com/shops/{shop_id}/campaigns/{campaign_id}`. |
+| Email marketing entity | Entity | Dashboard, editor, render, statistic, send/cancel. | `MARKETING`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/emails/{email_id}`, `GET https://api.selldone.com/shops/{shop_id}/emails/{email_id}/render`, `POST https://api.selldone.com/shops/{shop_id}/emails/{email_id}/send`. |
+| Affiliate entity | Entity | Dashboard, edit, orders, payments. | `MARKETING`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/affiliates/{affiliate_id}`. |
+| Coupon entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/coupons/{coupon_id}`, `GET https://api.selldone.com/shops/{shop_id}/coupons/{coupon_id}/orders`. |
+| Discount-code entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/discount-codes`; resolve detail/edit/order endpoints from the generated catalog before implementation. |
+| Gift-card entity | Entity | Dashboard, edit, cards/list, orders. | `INCENTIVES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/gift-card-types`; resolve card/order/detail endpoints from the generated catalog before implementation. |
+| Offer entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/offers/{offer_id}`, `GET https://api.selldone.com/shops/{shop_id}/offers/{offer_id}/orders`. |
+| Cashback entity | Entity | Dashboard, edit, orders, notes, restore/delete. | `INCENTIVES`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/cashbacks/{cashback_id}`, `GET https://api.selldone.com/shops/{shop_id}/cashbacks/{cashback_id}/orders`. |
+| Gateway entity | Entity | Dashboard, transactions, edit, Stripe or blockchain settings. | `ACCOUNTING`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/gateways/{gateway_code}`, `POST https://api.selldone.com/shops/{shop_id}/gateways/{gateway_code}`. |
+| Review source entity | Entity | Dashboard, review list, edit, debug, sync. | `CUSTOMERS`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}`, `GET https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}/debug`, `POST https://api.selldone.com/shops/{shop_id}/reviews/sources/{source_id}/sync`. |
+| Application loader | Entity | App detail by code and tab. | `APPLICATIONS`. | `_generated/api-usage-by-area.md`. | `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}/full`, `GET https://api.selldone.com/shops/{shop_id}/apps/{app_code}`. |
+| Courier | Entity | Courier page shell and delivery operations. | Logistic or transportation context. | `_generated/api-usage-by-area.md`. | Resolve exact courier endpoints from generated catalog before implementation. |
+| Provider routes | Conditional/System | Provider dashboard, API docs, auth, settings, logs, shops, webhooks. | Provider/connect owner access. | `dashboard/integrations/README.md`. | Resolve provider endpoints from generated catalog; do not invent provider paths. |
 
-Every top-level directory under `src/Applications/Backoffice/pages` must be mapped to one module, entity route, conditional route, system route, or an explicit unsupported-gap note. The coverage checklist is maintained in `07-module-implementation-matrix.md`.
+Map each merchant area to a module, entity route, conditional route, system route, or documented gap. The coverage checklist is maintained in `07-module-implementation-matrix.md`.
 
 ## 12. API Endpoint Mapping Rules
 
@@ -462,7 +443,7 @@ Implement these permission behaviors:
 - Show a clear restricted-access state for deep links the user cannot open.
 - Re-check permissions before write, delete, restore, approve, reject, refund, transfer ownership, or destructive actions.
 - Treat read and write access separately where source code exposes this distinction.
-- Use route permission regions from generated docs and `BackofficeMixin.ts` helpers as source trace.
+- Use the route index to identify merchant permission regions.
 - Do not rely only on client-side permission checks; expect the API to enforce authorization too.
 - Handle HTTP 403 with a permission-specific error state and a reconnect or contact-owner action when appropriate.
 
@@ -707,10 +688,10 @@ Security requirements:
 Before claiming the dashboard plan or implementation is complete, validate:
 
 - All Markdown files under `@selldone/sdk-backoffice/ai-guideline/` were read or indexed.
-- `src/Applications/Backoffice` was inspected when available.
-- Every top-level source directory under `src/Applications/Backoffice/pages` is mapped to a module, entity, conditional route, system route, or explicit gap.
+- Review relevant public Backoffice route and API references.
+- Map every applicable merchant area to a module, route, or documented gap.
 - Every route family in `_generated/route-index.md` is represented or has an unsupported-gap note.
-- Every source area in `_generated/source-module-index.md` is represented or has an unsupported-gap note.
+- Check feature coverage against `06-feature-inventory.md`.
 - Every implemented module has API usage resolved through `_generated/api-usage-by-area.md` and `_generated/api-url-builders.md`.
 - Every endpoint in the output uses a full method plus URL beginning with `https://api.selldone.com`.
 - No invented endpoints such as `/api/shops/{shop_id}/orders` appear.

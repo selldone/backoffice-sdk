@@ -1,24 +1,24 @@
 # Routing Proposal
 
-This routing proposal is intended for a custom web app. Names are aligned with the current Backoffice routes so an AI agent can map the documentation back to source and generated catalogs easily.
+This routing proposal is intended for a custom web app. See the [merchant route index](_generated/route-index.md) for existing paths and route names.
 
 Use this file with `07-module-implementation-matrix.md`. This file proposes route shape; the matrix decides module placement, permission region, API lookup areas, and completion coverage.
 
 ## Base Routes
 
-| Proposed path | Purpose | Current route source |
-|---|---|---|
-| `/shuttle` | User dashboard and shop list. | `ShuttleRoutes.ts` |
-| `/shuttle/vendors` | Vendors related to the user. | `ShuttleRoutes.ts` |
-| `/shuttle/roles` | User roles across shops. | `ShuttleRoutes.ts` |
-| `/shuttle/wallet` | Wallet accounts. | `ShuttleRoutes.ts` |
-| `/shuttle/wallet/received` | Received gifts. | `ShuttleRoutes.ts` |
-| `/shuttle/wallet/send` | Send gifts. | `ShuttleRoutes.ts` |
-| `/shuttle/wallet/subscriptions` | User subscriptions. | `ShuttleRoutes.ts` |
-| `/shuttle/kyc` | Identity and KYC information. | `ShuttleRoutes.ts` |
-| `/shuttle/company` | User companies. | `ShuttleRoutes.ts` |
-| `/shuttle/security` | Security center. | `ShuttleRoutes.ts` |
-| `/shuttle/affiliate` | Affiliate overview. | `ShuttleRoutes.ts` |
+| Proposed path | Purpose |
+|---|---|
+| `/shuttle` | User dashboard and shop list. |
+| `/shuttle/vendors` | Vendors related to the user. |
+| `/shuttle/roles` | User roles across shops. |
+| `/shuttle/wallet` | Wallet accounts. |
+| `/shuttle/wallet/received` | Received gifts. |
+| `/shuttle/wallet/send` | Send gifts. |
+| `/shuttle/wallet/subscriptions` | User subscriptions. |
+| `/shuttle/kyc` | Identity and KYC information. |
+| `/shuttle/company` | User companies. |
+| `/shuttle/security` | Security center. |
+| `/shuttle/affiliate` | Affiliate overview. |
 
 ## Shop Admin Routes
 

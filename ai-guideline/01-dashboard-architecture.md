@@ -1,9 +1,5 @@
 # Dashboard Architecture
 
-## Entry Point
-
-Backoffice boots from `src/Applications/Backoffice/backoffice.ts`. This file mounts the app, attaches the shared router and store, initializes language and UI plugins, and initializes the SDK layer used by the current Vue implementation.
-
 ## API Contract Boundary
 
 For a custom dashboard, the API contract is not the current JavaScript globals. Use HTTP endpoints under:
@@ -19,7 +15,7 @@ Use these generated catalogs:
 | File | Purpose |
 |---|---|
 | `_generated/api-url-builders.md` | Full endpoint URLs, HTTP methods, scopes, auth requirements, and source locations. |
-| `_generated/api-usage-index.md` | Which source file calls which API. |
+| `_generated/api-usage-index.md` | API usage by public component. |
 | `_generated/api-usage-by-area.md` | API usage grouped by dashboard area. |
 | `_generated/sdk-request-wrappers.md` | Old SDK wrapper traces and typed response hints. Use only as implementation reference. |
 
@@ -27,10 +23,8 @@ Use these generated catalogs:
 
 The dashboard has two main shells:
 
-- `/shuttle`: the user dashboard, rendered by `BLayoutShuttle` in the current app.
-- `/shuttle/shop/:shop_id`: the shop admin dashboard, rendered by `BLayoutBackofficeShop` in the current app.
-
-Backoffice uses the shared router from `@app-selldone/router/SelldoneRouter`. Shop route packs live under `src/Applications/Selldone/router/shuttle/shop`.
+- `/shuttle` is the user dashboard.
+- `/shuttle/shop/:shop_id` is the dashboard for a specific shop.
 
 ## Shop Context Lifecycle
 
@@ -53,22 +47,13 @@ A custom web app should load or retrieve this shop context from cache before ren
 
 ## Important Store State
 
-`src/Applications/Backoffice/store/SaminStore.ts` contains these key dashboard states:
-
-- `user`: authenticated user.
-- `permissions`: user permissions.
-- `current_admin_shop`: current shop context.
-- `current_admin_shop_data`: shop summary and time-series data.
-- `current_admin_shop_apps`: installed shop apps.
-- `current_admin_shop_order_que`: order queue summary.
-- `current_admin_shop_avocado_que`: Avocado queue summary.
-- `copy_product` and `cut_product`: product copy/cut state used by Products Manager.
-- `uploading_keeper`: active upload state.
-- `vendor`: vendor context for vendor-panel flows.
+Track the authenticated user and permissions, current shop context and apps,
+shop summary and time series, order queues, and vendor context. The products
+manager also needs transient copy/cut state and upload progress.
 
 ## Permission Model
 
-Routes usually define `meta.region`. `BLayoutBackofficeShop` finds the nearest matched route with a region and checks read access. Internal write actions are checked with write access on the same region or vendor permission helpers.
+Use the merchant route's permission region to check shop read access. For mutations, check the corresponding write access or vendor permission.
 
 Main rules:
 
@@ -79,7 +64,7 @@ Main rules:
 
 ## Global UI Overlays
 
-`BackofficeApp.vue` renders global overlays in addition to the router view: server and side notifications, map dialog, upload keeper, login dialog, preferences dialog, PWA update, fullscreen image viewer, premium dialog, and feedback popup. A custom UI does not need the same components, but it should provide equivalent capabilities for notifications, auth-required flows, upload progress, and feedback.
+Provide shared surfaces for notifications, sign-in, upload progress, and feedback across routes.
 
 ## Page Builder Integration
 

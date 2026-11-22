@@ -6,7 +6,7 @@ Marketplace is available only for shops whose business model is marketplace. It 
 
 ## Routes
 
-Routes come from `ShuttleShopMarketplaceRoutes.ts`. Common path groups are:
+See the [marketplace route index](../../../_generated/route-index.md#marketplace) for merchant routes.
 
 | Section | Purpose |
 |---|---|

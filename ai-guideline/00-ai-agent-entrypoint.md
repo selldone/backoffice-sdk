@@ -26,7 +26,7 @@ Before writing application code, build an internal feature registry from these f
 3. `_generated/route-index.md`: exact current route names and permission regions.
 4. `_generated/api-usage-by-area.md`: source areas and API builders used by each area.
 5. `_generated/api-url-builders.md`: full endpoint URLs, HTTP methods, scopes, and auth requirements.
-6. `_generated/source-module-index.md`: source folder coverage check.
+6. `_generated/source-module-index.md`: merchant module coverage references.
 7. `08-product-design-guidelines.md`: mandatory visual, alert, color, responsive, accessibility, and visual-review contract.
 
 The registry should store at least this shape:
@@ -194,10 +194,10 @@ For each screen and action:
 A dashboard implementation is complete only when all of these are true:
 
 1. Every module and submodule in `06-feature-inventory.md` has an implemented route or reachable screen.
-2. Every source directory listed in `07-module-implementation-matrix.md` is covered by a module, entity route, or explicit unsupported-gap note.
+2. Every area listed in `07-module-implementation-matrix.md` is covered by a module, entity route, or explicit unsupported-gap note.
 3. Every implemented API call uses a full endpoint from `_generated/api-url-builders.md`.
 4. Every shop page is blocked by shop context and permission checks before data calls run.
 5. Primary modules are visible by default; secondary and conditional modules are discoverable without cluttering the main dashboard.
 6. CRUD, uploads, bulk actions, and destructive actions include loading, success, validation, confirmation, and explicit error states.
-7. A parity pass has checked route coverage against `_generated/route-index.md` and source folder coverage against `_generated/source-module-index.md`.
+7. Check route coverage against `_generated/route-index.md` and module coverage against `06-feature-inventory.md`.
 8. New or changed visual UI follows `08-product-design-guidelines.md`, including neutral structural alerts, accessible contrast/focus, responsive behavior, and no semantic-colored explanatory/body text.

@@ -37,4 +37,4 @@ All routes under `shop/` and `product/` require shop context. If `shop` is not l
 
 - Route catalog: `_generated/route-index.md`
 - API usage by area: `_generated/api-usage-by-area.md`
-- Source module index: `_generated/source-module-index.md`
+- Module coverage: `_generated/source-module-index.md`

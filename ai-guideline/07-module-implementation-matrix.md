@@ -1,6 +1,6 @@
 # Module Implementation Matrix
 
-This matrix turns the Backoffice source tree into an implementation plan for a custom Selldone dashboard. Use it with `06-feature-inventory.md`; the inventory says what exists, and this file says how an implementation agent should place, gate, document, and resolve APIs for each surface.
+This matrix maps merchant Backoffice capabilities to placement, permissions, and API references for a custom Selldone dashboard. Review it alongside `06-feature-inventory.md`.
 
 ## How To Use This Matrix
 
@@ -107,11 +107,11 @@ GET https://api.selldone.com/shops/{shop_id}/customers
 | Courier | Courier page shell. | Entity | Transportation/logistic flows. | `courier`, `transportation`, `components/transportation` | Resolve exact courier endpoints from usage catalog before implementation. |
 | Landing and popup editors | Fullscreen editor/live route for pages and popups. | Entity | Pages module. | `landing`, `popup`, `components/page` | `POST https://api.selldone.com/shops/{shop_id}/pages/{page_id}/upload/content-image`; `POST https://api.selldone.com/shops/{shop_id}/pages/{page_id}/upload/content-video`; `POST https://api.selldone.com/shops/{shop_id}/popups/{page_id}/upload/content-image` |
 
-## Source Directory Coverage Checklist
+## Module Coverage Checklist
 
-Every top-level directory under `src/Applications/Backoffice/pages` is covered below. A full implementation must include each item as a module, entity route, conditional route, or documented unsupported-gap note.
+Account for each merchant area as a module, entity or conditional route, or documented gap.
 
-| Source directory | Coverage target |
+| Area | Coverage target |
 |---|---|
 | `account` | Wallet/account detail system surface. |
 | `affiliate` | Shop affiliate entity dashboard. |
@@ -158,6 +158,6 @@ Every top-level directory under `src/Applications/Backoffice/pages` is covered b
 Before declaring completion, audit these generated sources:
 
 - `_generated/route-index.md`: every named route family has an implemented route or an explicit unsupported-gap note.
-- `_generated/source-module-index.md`: every source directory above is covered.
+- `06-feature-inventory.md`: every merchant module above is covered.
 - `_generated/api-usage-by-area.md`: every implemented area has its API builders resolved.
 - `_generated/api-url-builders.md`: every runtime request uses a full URL and method from the catalog.

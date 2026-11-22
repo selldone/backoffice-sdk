@@ -6,7 +6,7 @@ Dropshipping and Wholesaler areas are used by shops that sell through dropshippi
 
 ## Routes
 
-Routes come from `ShuttleShopDropShippingRoutes.ts` and pages under `wholesaler`, `wholesaler-shop`, `product/dropshipping`, and dropshipping order routes.
+See the [dropshipping route index](../../../_generated/route-index.md#dropshipping) for merchant routes.
 
 | Area | Purpose |
 |---|---|

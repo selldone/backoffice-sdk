@@ -25,8 +25,6 @@ This section manages one specific product. Its parent route is `/shuttle/shop/:s
 
 ## Source Trace
 
-- `src/Applications/Selldone/router/shuttle/shop/product/ShuttleShopProductRoutes.ts`
-- `src/Applications/Backoffice/pages/product/BPageProduct.vue`
 - `@selldone/sdk-backoffice/product/requests/api.product.info.get.ts`
 
 ## Required Context

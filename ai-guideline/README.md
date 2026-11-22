@@ -25,12 +25,10 @@ Do not use `Agent.md` as a separate specification. It is a compatibility bootstr
 | Implementation matrix | `07-module-implementation-matrix.md` | Module-by-module build map with priority, route family, permission region, docs, API lookup areas, and core full endpoints. |
 | Product visual design | `08-product-design-guidelines.md` | Mandatory calm, minimal, professional UI direction; alert, color, form, responsive, accessibility, and guideline-update rules. |
 | Section docs | `dashboard/` | Human-readable module behavior and UI notes. |
-| Generated catalogs | `_generated/` | Route, source-module, API usage, and full endpoint catalogs generated from source. |
+| Catalogs | `_generated/` | Merchant routes, module coverage, API usage, and consumer endpoints. |
 
 ## Primary Sources
 
-- `src/Applications/Backoffice`: Backoffice app entry, layouts, pages, mixins, and store.
-- `src/Applications/Selldone/router/shuttle`: route packs used by the Backoffice app.
 - `@selldone/components-vue/backoffice`: source behavior for reusable Backoffice components.
 - `@selldone/sdk-backoffice/apis/API.ts`: source for URL builders normalized into full endpoint URLs.
 - `@selldone/sdk-backoffice`: typed request wrappers and SDK hints.
@@ -39,10 +37,10 @@ Do not use `Agent.md` as a separate specification. It is a compatibility bootstr
 
 | Catalog | What it provides |
 |---|---|
-| `_generated/route-index.md` | Current route names, local route paths, titles, permission regions, and source lines. |
-| `_generated/source-module-index.md` | Backoffice page/source folder coverage. |
-| `_generated/api-usage-by-area.md` | API usage grouped by dashboard area and source examples. |
-| `_generated/api-usage-index.md` | Line-by-line API usage in source files. |
+| `_generated/route-index.md` | Merchant route names, local paths, titles, and permission regions. |
+| `_generated/source-module-index.md` | Merchant module coverage references. |
+| `_generated/api-usage-by-area.md` | API usage grouped by dashboard area and public component examples. |
+| `_generated/api-usage-index.md` | API usage by public component. |
 | `_generated/api-url-builders.md` | Full `https://api.selldone.com/...` endpoints, HTTP methods, scopes, auth, and source lines. |
 | `_generated/sdk-request-wrappers.md` | Legacy typed wrapper traces. Use only for params and response-shape hints. |
 
@@ -68,4 +66,4 @@ Permission, business model, installed apps, and shop state decide whether a modu
 
 ## Coverage Baseline
 
-The current generated baseline includes 370 named routes and 664 cataloged API methods. Full coverage means every module in `06-feature-inventory.md` and every source directory listed in `07-module-implementation-matrix.md` has an implemented route, navigation entry, permission gate, and API mapping.
+Check each module in `06-feature-inventory.md` against its routes, navigation, permissions, and API mapping in `07-module-implementation-matrix.md`.

@@ -4,13 +4,6 @@
 
 `/shuttle/shop/:shop_id` is the main shell for managing one shop. Before entering any child route, the app must load shop context and permissions.
 
-## Source Trace
-
-- `src/Applications/Backoffice/layouts/backoffice-shop/BLayoutBackofficeShop.vue`
-- `src/Applications/Backoffice/pages/shop/BPageShop.vue`
-- `src/Applications/Backoffice/mixins/shop/BShopDashboardMixin.ts`
-- `src/Applications/Selldone/router/shuttle/shop/ShuttleShopRoutes.ts`
-
 ## Required Context
 
 | Data | Source |

@@ -14497,7 +14497,7 @@ export class API {
    * @returns Absolute URL string for the SDK account restore path.
    *
    * Response shape:
-   * - TODO(api-docs): unresolved route mismatch; inspect `Backend/routes/api/wallet/gifts-referrals-accounts.php` and `AccountDeleteController::api_restoreAccount` before relying on this endpoint.
+   * - The response contract for this legacy URL is unverified.
    *
    * Possible errors:
    * - TODO(api-docs): route mismatch may return 404 even with valid authentication.
@@ -22850,39 +22850,6 @@ export class API {
     return `${this.selldone_api_url}/address/autocomplete`;
   }
 
-  //―――――――――――――――――――――― Help ――――――――――――――――――――
-
-  /**
-   * Save help UID endpoint URL.
-   *
-   * Builds the staff/admin help UID update URL.
-   *
-   * @endpoint PUT /api/helps/{help_id}/uid
-   * @auth Admin/staff web session required.
-   * @middleware `web`, `Authenticate:web`, `EnsureEmailIsVerified`, `CheckSelldoneStaffAccess:HELP`
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission Selldone staff HELP access.
-   *
-   * @param help_id - Help article identifier.
-   * @returns Absolute URL string for the help UID update endpoint.
-   *
-   * Response shape:
-   * - Backend response body is defined by `HelpController::api_updateHelpUID`.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing staff/admin web session.
-   * - 403 forbidden: missing HELP staff access.
-   * - 404 not_found: help article is not found.
-   *
-   * @example
-   * ```ts
-   * const url = API.SAVE_HELP_UID(123);
-   * ```
-   */
-  SAVE_HELP_UID(help_id: string | number) {
-    return `${this.selldone_api_url}/helps/${help_id}/uid`;
-  }
-
   //―――――――――――――――――――――― Shop > Countries service ――――――――――――――――――――
   /**
    * Set shop countries endpoint URL.
@@ -24642,10 +24609,7 @@ export class API {
    * Builds the DAPI URL used by the POS customer display device. This method uses `selldone-dapi`, not `selldone-api`.
    *
    * @endpoint GET /dapi/shops/{shop_id}/pos/{user_id}/customer-view/{token}
-   * @auth Device/customer-view token in the route; no bearer-token requirement found on the DAPI route.
-   * @middleware Device route group middleware from `Backend/routes/device.php`.
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission None found in matched controller method by static inspection.
+   * @auth Customer-view device token in the route.
    *
    * @param shop_id - Selldone shop identifier from the route path.
    * @param user_id - POS user/device user identifier from the route path.
@@ -24653,7 +24617,7 @@ export class API {
    * @returns Absolute DAPI URL string for customer-view data fetch.
    *
    * Response shape:
-   * - Backend response body is defined by `POSDeviceController::dapi_getCustomerViewData`.
+   * - Customer-view data for the POS display.
    *
    * Possible errors:
    * - 403 forbidden: invalid customer-view token.
@@ -34252,37 +34216,12 @@ export class API {
 
   //―――――――――――――――――――――― Edit ――――――――――――――――――――
   /**
-   * Add or edit article endpoint URL.
-   *
-   * Builds one of the article edit routes selected by `type`.
-   *
-   * @endpoint POST /article/product/edit
-   * @endpoint POST /article/shop-blog/edit
-   * @endpoint POST /api/article/blog/edit
-   * @endpoint POST /api/article/help/edit
-   * @auth Required; authenticated API token or staff/admin web session depending on `type` route.
-   * @middleware `api-selldone`/`Authenticate:api` for shop article routes; `web`/staff middleware for blog/help routes.
-   * @scope Type-specific; product/shop-blog routes enforce shop/article scopes in their controllers.
-   * @permission Type-specific shop/staff permission.
-   *
-   * @param type - Article type route discriminator such as `product`, `shop-blog`, `blog`, or `help`.
-   * @returns Absolute URL string for the selected article edit endpoint.
-   *
-   * Response shape:
-   * - Backend returns the created/updated {@link Article} payload as implemented by the selected controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing required session/token.
-   * - 403 token_has_no_access/forbidden: missing required scope or staff/shop permission.
-   * - 404 not_found: article, product, shop, or help/blog context is not found.
-   * - 422 validation_error: article payload fails validation.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_ADD_EDIT_ARTICLE("product");
-   * ```
+   * Builds the URL for creating or updating a product article or shop blog post.
    */
   POST_ADD_EDIT_ARTICLE(type: Article.TypeValue) {
+    if (type !== "product" && type !== "shop-blog") {
+      throw new TypeError("Unsupported shop article type.");
+    }
     return `${this.selldone_api_url}/article/${type}/edit`;
   }
 
@@ -34361,36 +34300,12 @@ export class API {
 
   //―――――――――――――――――――――― Upload ――――――――――――――――――――
   /**
-   * Upload article image endpoint URL.
-   *
-   * Builds one of the article image upload routes selected by `type`. Product article uploads require the extra shop id segment.
-   *
-   * @endpoint POST /article/product/upload/{shop_id}
-   * @endpoint POST /api/article/blog/upload
-   * @endpoint POST /api/article/help/upload
-   * @auth Required; authenticated API token or staff/admin web session depending on `type` route.
-   * @middleware `api-selldone`/`Authenticate:api` for product route; `web`/staff middleware for blog/help routes.
-   * @scope Type-specific; product route uses shop/article permissions, blog/help routes use staff/admin access.
-   * @permission Type-specific shop/staff permission.
-   *
-   * @param type - Article type route discriminator.
-   * @param extra - Optional extra route segment; for `product`, pass the `shop_id` required by the backend route.
-   * @returns Absolute URL string for the selected article image upload endpoint.
-   *
-   * Response shape:
-   * - Backend returns uploaded image/file metadata from the selected controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing required session/token.
-   * - 403 forbidden: missing required scope or staff/shop permission.
-   * - 422 validation_error: uploaded file fails validation.
-   *
-   * @example
-   * ```ts
-   * const url = API.UPLOAD_ARTICLE_IMAGE("product", 123);
-   * ```
+   * Builds the product article image upload URL. Pass the shop ID as extra.
    */
   UPLOAD_ARTICLE_IMAGE(type: Article.TypeValue, extra = null) {
+    if (type !== "product") {
+      throw new TypeError("Unsupported image upload article type.");
+    }
     if (!extra) return `${this.selldone_api_url}/article/${type}/upload`;
     return `${this.selldone_api_url}/article/${type}/upload/${extra}`;
   }
@@ -34434,37 +34349,12 @@ export class API {
 
   //―――――――――――――――――――――― Delete ――――――――――――――――――――
   /**
-   * Delete article endpoint URL.
-   *
-   * Builds one of the article delete routes selected by `type`.
-   *
-   * @endpoint DELETE /article/product/{article_id}
-   * @endpoint DELETE /article/shop-blog/{article_id}
-   * @endpoint DELETE /api/article/blog/{article_id}
-   * @endpoint DELETE /api/article/help/{article_id}
-   * @auth Required; authenticated API token or staff/admin web session depending on `type` route.
-   * @middleware `api-selldone`/`Authenticate:api` for shop article routes; `web`/staff middleware for blog/help routes.
-   * @scope Type-specific.
-   * @permission Type-specific shop/staff permission.
-   *
-   * @param type - Article type route discriminator.
-   * @param article_id - Article identifier passed to the selected route.
-   * @returns Absolute URL string for the selected article delete endpoint.
-   *
-   * Response shape:
-   * - Backend returns deletion result from the selected controller, usually including `success` and article/deleted id data.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing required session/token.
-   * - 403 forbidden: missing required scope or permission.
-   * - 404 not_found: article is not found.
-   *
-   * @example
-   * ```ts
-   * const url = API.DELETE_ARTICLE("product", 301);
-   * ```
+   * Builds the delete URL for a product article or shop blog post.
    */
   DELETE_ARTICLE(type: Article.TypeValue, article_id: string | number) {
+    if (type !== "product" && type !== "shop-blog") {
+      throw new TypeError("Unsupported shop article type.");
+    }
     return `${this.selldone_api_url}/article/${type}/${article_id}`;
   }
 
