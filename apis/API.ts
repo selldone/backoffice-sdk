@@ -21710,32 +21710,21 @@ export class API {
 
   //―――――――――――――――――――――― Shop > Sms ――――――――――――――――――――
   /**
-   * Shop SMS list endpoint URL.
+   * SMS message definitions URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend method uses access helper(s): `hasShopAccess`, `readShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint GET /shops/{shop_id}/sms/list
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (read access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsController::api_getSmsList` expose observed keys including `list`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Response: `list` of the SMS messages a shop can customize (code, group, parameters, localized title, sample and default body).
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`, `ErrorCodes::NOT_FOUND_SHOP_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21747,32 +21736,23 @@ export class API {
   }
 
   /**
-   * Shop SMS service endpoint URL.
+   * Shop SMS provider settings URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend method uses access helper(s): `hasShopAccess`, `readShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint GET /shops/{shop_id}/sms/service
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (read access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsServiceController::api_getShopSmsService` expose observed keys including `error`, `error_msg`, `sms_service`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Response: `sms_service` (or `null`) with `enable`, `driver`, `option`, `otp_verify`, `errors`, `error`,
+   * `credentials_status` (field key → `stored` | `missing` | `unreadable`) and `credential_values` (non-secret values such as the sender).
+   * Secret credential values are write-only and never returned.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21784,34 +21764,29 @@ export class API {
   }
 
   /**
-   * Set shop SMS service endpoint URL.
+   * Create or update the shop SMS provider URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/service
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsServiceController::api_setShopSmsService` expose observed keys including `enable`, `driver`, `option`, `token_1`, `token_2`, `token_3`, `token_4`, `token_5`, `test`, `network`, `error`, `error_msg`, `success`, `sms_service`, `send_test`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Request (every key is optional on update; an omitted key keeps the stored value):
+   * - `enable`, `driver` (`default` = no custom provider: always stored disabled, and switching to it removes the stored credentials), `option` (`all` | `otp`), `otp_verify`.
+   * - `credentials`: `{ [field]: string | null }` for the selected driver; `null` clears one field and unknown fields are rejected.
+   *   Switching to another provider drops the stored credentials and needs the new provider's required fields in the same request.
+   * - `test`: `true` sends a test message through the shop's own provider to the signed-in user's phone after saving.
+   * - `token_1`..`token_5` and `network` are deprecated; use `credentials`. Empty values are ignored; only `credentials` clears a field.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success`, `sms_service` (same shape as the GET response) and `send_test`: `null` or `{ status: "accepted", verification }`.
+   * `accepted` means the provider accepted the request, not that the message was delivered. A refused test returns an error together with the saved `sms_service`.
+   *
+   * Errors: 401 when unauthenticated; 422 when a field is invalid. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21823,32 +21798,23 @@ export class API {
   }
 
   /**
-   * Reset shop SMS service endpoint URL.
+   * Reset shop SMS provider errors URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/service/reset
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsServiceController::api_resetShopSmsService` expose observed keys including `error`, `error_msg`, `errors`, `success`, `sms_service`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Clears the error counter and the last error, which also resumes a paused provider.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success` and `sms_service` (same shape as the GET response).
+   *
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21860,32 +21826,24 @@ export class API {
   }
 
   /**
-   * Shop SMS service action sync endpoint URL.
+   * Sync shop customers to the SMS provider URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/service/actions/sync
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsServiceActionsController::api_syncContacts` expose observed keys including `error`, `error_msg`, `success`, `message`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Starts adding customers that have a phone number and a name to the provider's contacts, when the saved provider
+   * supports contact sync and is enabled and not paused. A cooldown applies between requests.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success` and `message`.
+   *
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21897,34 +21855,23 @@ export class API {
   }
 
   /**
-   * Shop SMS templates endpoint URL.
+   * Shop SMS templates URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend method uses access helper(s): `hasShopAccess`, `readShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint GET /shops/{shop_id}/sms/templates
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (read access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::list` expose observed keys including `error`, `error_msg`, `offset`, `limit`, `templates`, `total`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Query: `offset`, `limit`, `sortBy`, `sortDesc`, `active`, `search`, `code`.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `templates` and `total`.
+   *
+   * Errors: 401 when unauthenticated; 422 when a query parameter is invalid. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21936,34 +21883,24 @@ export class API {
   }
 
   /**
-   * Shop SMS add template endpoint URL.
+   * Create SMS template URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/templates
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::add` expose observed keys including `error`, `error_msg`, `code`, `enable`, `language`, `mode`, `text`, `data`, `success`, `template`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Request: `code`, `enable`, `language` (`null` = every language), `mode` (`text` | `template`), `text` (text mode)
+   * and `data` (template mode): a list of `{ key, value }` rows, where `key: "template"` sets the provider pattern name.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success` and `template`.
+   *
+   * Errors: 401 when unauthenticated; 422 when a field is invalid. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
@@ -21975,39 +21912,28 @@ export class API {
   }
 
   /**
-   * Shop SMS edit template endpoint URL.
+   * Update SMS template URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write endpoint; updates existing backend state.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint PUT /shops/{shop_id}/sms/templates/{template_id}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param template_id - template_id route parameter identifier.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @param template_id - SMS template ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::edit` expose observed keys including `error`, `error_msg`, `code`, `enable`, `language`, `mode`, `text`, `data`, `user_id`, `errors`, `success`, `template`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Request: the create fields, all optional; an omitted key keeps the stored value and a supplied `data` list replaces the whole list.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success` and `template`.
+   *
+   * Errors: 401 when unauthenticated; 422 when a field is invalid. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
-   * const url = API.PUT_SHOP_SMS_EDIT_TEMPLATE(123, 123);
+   * const url = API.PUT_SHOP_SMS_EDIT_TEMPLATE(123, 456);
    * ```
    */
   PUT_SHOP_SMS_EDIT_TEMPLATE(
@@ -22018,37 +21944,26 @@ export class API {
   }
 
   /**
-   * Shop SMS template endpoint URL.
+   * Delete SMS template URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Delete endpoint; removes, detaches, cancels, archives, or otherwise destroys backend state as implemented by the controller.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint DELETE /shops/{shop_id}/sms/templates/{template_id}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param template_id - template_id route parameter identifier.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @param template_id - SMS template ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::delete` expose observed keys including `error`, `error_msg`, `success`, `id`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Response: `success` and the deleted `id`.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
-   * const url = API.DELETE_SHOP_SMS_TEMPLATE(123, 123);
+   * const url = API.DELETE_SHOP_SMS_TEMPLATE(123, 456);
    * ```
    */
   DELETE_SHOP_SMS_TEMPLATE(
@@ -22059,37 +21974,26 @@ export class API {
   }
 
   /**
-   * Shop SMS template reset errors endpoint URL.
+   * Reset SMS template errors URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/templates/{template_id}/reset
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param template_id - template_id route parameter identifier.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @param template_id - SMS template ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::resetErrors` expose observed keys including `error`, `error_msg`, `errors`, `success`, `template`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Response: `success` and `template`.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
-   * const url = API.POST_SHOP_SMS_TEMPLATE_RESET_ERRORS(123, 123);
+   * const url = API.POST_SHOP_SMS_TEMPLATE_RESET_ERRORS(123, 456);
    * ```
    */
   POST_SHOP_SMS_TEMPLATE_RESET_ERRORS(
@@ -22100,37 +22004,30 @@ export class API {
   }
 
   /**
-   * Shop SMS template send test endpoint URL.
+   * Send SMS template test URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend method uses access helper(s): `hasShopAccess`, `writeShopAccess`.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint POST /shops/{shop_id}/sms/templates/{template_id}/test
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (write access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param template_id - template_id route parameter identifier.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @param template_id - SMS template ID.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::test` expose observed keys including `error`, `error_msg`, `response`, `request`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Sends the template with sample values to the signed-in user's phone through the shop's own SMS provider.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `success`, `response: { accepted: true }` (the provider accepted the request; delivery is not confirmed)
+   * and `request`: what was sent (`driver`, `local`, `verification`, `template`, `body`, `param1`..`param5`).
+   * When the provider refuses, the error also has `external_error: true` and `request`.
+   *
+   * Errors: 401 when unauthenticated. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
-   * const url = API.POST_SHOP_SMS_TEMPLATE_SEND_TEST(123, 123);
+   * const url = API.POST_SHOP_SMS_TEMPLATE_SEND_TEST(123, 456);
    * ```
    */
   POST_SHOP_SMS_TEMPLATE_SEND_TEST(
@@ -22141,40 +22038,29 @@ export class API {
   }
 
   /**
-   * Shop SMS template default body endpoint URL.
+   * Default SMS template body URL.
    *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Read endpoint.
-   * Backend method uses access helper(s): `hasShopAccess`, `readShopAccess`.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
+   * Builds the URL only; it does not send the request.
    *
    * @endpoint GET /shops/{shop_id}/sms/defaults/{code}/{language}
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope SCOPE_BACKOFFICE_SHOP_WRITE (backoffice:shop:write)
-   * @permission ShopPermissionRegion::SETTINGS
+   * @auth Required: OAuth2 bearer token.
+   * @scope backoffice:shop:write
+   * @permission Shop settings (read access).
    *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @param code - Code value passed as a route segment.
-   * @param language - Route parameter passed through to the backend endpoint.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
+   * @param shop_id - Shop ID.
+   * @param code - SMS message code.
+   * @param language - Language code.
+   * @returns Absolute URL string.
    *
-   * Response shape:
-   * - Backend response arrays in `ShopSmsTemplatesController::getDefaultBody` expose observed keys including `mode`, `error`, `error_msg`, `language`, `code`, `body`, `tokens`, `driver`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
+   * Query: `mode` (`text` | `template`) and `driver` for provider template samples.
    *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 403 token_has_no_access: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()` when the token is missing a required scope or shop access check fails.
-   * - 404 not_found: shop/resource not found or inaccessible through the shop access helper.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
+   * Response: `code`, `language`, `mode`, `body`, `tokens` (provider template samples when available) and `driver`.
+   *
+   * Errors: 401 when unauthenticated; 422 when a query parameter is invalid. A missing token scope or shop permission, like every business error, returns HTTP 200 with `{ error: true, code, error_msg }`.
    *
    * @example
    * ```ts
-   * const url = API.GET_SHOP_SMS_TEMPLATE_DEFAULT_BODY(123, "code", "value");
+   * const url = API.GET_SHOP_SMS_TEMPLATE_DEFAULT_BODY(123, "shop-login", "en");
    * ```
    */
   GET_SHOP_SMS_TEMPLATE_DEFAULT_BODY(
