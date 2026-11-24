@@ -21764,6 +21764,39 @@ export class API {
   }
 
   /**
+   * Builds the URL to list the SMS providers a shop can choose from.
+   *
+   * Response: `providers` (each with `key`, `title`, `description`, `logo`, `url`, `docs_url`, `countries`,
+   * `international`, `plain_text`, `template`, `verify`, `actions` and `fields` with `key`, `title`, `hint`,
+   * `secret`, `required`, `max`, `options`) and `recommended` (provider keys in order for the shop's countries).
+   * No credential values are returned.
+   *
+   * @example
+   * ```ts
+   * const url = API.GET_SHOP_SMS_PROVIDERS(123);
+   * ```
+   */
+  GET_SHOP_SMS_PROVIDERS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/sms/providers`;
+  }
+
+  /**
+   * Builds the URL to read a shop's SMS log: what was sent, failed or skipped in the last `retention_days`.
+   *
+   * Query: `status` (sent | failed | skipped), `code` (message type), `offset`, `limit` (≤ 100).
+   * Response: `logs`, `total`, `summary` (`sent`, `failed`, `skipped`) and `retention_days`. Never the message
+   * text, a sign-in code, the full number or a credential.
+   *
+   * @example
+   * ```ts
+   * const url = API.GET_SHOP_SMS_LOGS(123);
+   * ```
+   */
+  GET_SHOP_SMS_LOGS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/sms/logs`;
+  }
+
+  /**
    * Create or update the shop SMS provider URL.
    *
    * Builds the URL only; it does not send the request.
@@ -22273,6 +22306,42 @@ export class API {
    */
   GET_SHOP_MAIL_SERVICE(shop_id: string | number) {
     return `${this.selldone_api_url}/shops/${shop_id}/email/service`;
+  }
+
+  /**
+   * Builds the URL to list the email providers a shop can connect.
+   *
+   * Response: `providers` (each with `key`, `title`, `description`, `kind` (`api` or `smtp`), `group`
+   * (`delivery`, `mailbox` or `custom`), `logo`, `url`, `docs_url` and `fields` with `key` (the
+   * `shop_mail_service` column), `title`, `hint`, `type`, `secret`, `required`, `options`, `default` and
+   * `suggestions`) and `recommended` (provider keys to show first). No credential values are returned.
+   *
+   * @example
+   * ```ts
+   * const url = API.GET_SHOP_EMAIL_PROVIDERS(123);
+   * ```
+   */
+  GET_SHOP_EMAIL_PROVIDERS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/email/providers`;
+  }
+
+  /**
+   * Builds the URL of the shop's email delivery log (last `retention_days`, newest first).
+   *
+   * Query: `status` (`sent`, `failed`, `skipped`), `code` (an email template code, or `test`,
+   * `order-notification`, `marketing`, `subscription`), `offset`, `limit` (1–100, default 20).
+   * Response: `logs` (each with `code`, `mailable`, `driver`, masked `recipient`, `recipients`, `status`,
+   * `reason`, `error_type`, redacted `error_message`, `duration_ms`, `exchanges` and `created_at`), `total`,
+   * `summary` (`sent`, `failed`, `skipped` counts) and `retention_days`. Never the subject, content,
+   * full addresses or credentials.
+   *
+   * @example
+   * ```ts
+   * const url = API.GET_SHOP_EMAIL_LOGS(123);
+   * ```
+   */
+  GET_SHOP_EMAIL_LOGS(shop_id: string | number) {
+    return `${this.selldone_api_url}/shops/${shop_id}/email/logs`;
   }
 
   /**
