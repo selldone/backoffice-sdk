@@ -55,7 +55,6 @@ Components with API usage: 248
 | @selldone/components-vue/backoffice/customer/segment/input/BCustomerSegmentInput.vue | GET_SHOP_CUSTOMERS_SEGMENTS |  |  |  |
 | @selldone/components-vue/backoffice/dashboard/shop/customers-activity/heatmap/BDashboardShopCustomersActivityHeatmap.vue | GET_SHOP_STATISTIC_TIMELINE |  |  |  |
 | @selldone/components-vue/backoffice/dashboard/shop/customers-activity/map/BDashboardShopCustomersActivityMap.vue | GET_SHOP_STATISTIC_COUNTRY |  |  |  |
-| @selldone/components-vue/backoffice/dashboard/shop/feedback/BDashboardShopFeedback.vue | POST_SEND_DIRECT_FEEDBACK |  |  |  |
 | @selldone/components-vue/backoffice/dashboard/shop/sessions/BDashboardShopSessions.vue | GET_SHOP_STATISTIC_SESSIONS |  |  |  |
 | @selldone/components-vue/backoffice/discount-code/add/BDiscountCodeAdd.vue | POST_CREATE_DISCOUNT_CODE<br>PUT_EDIT_DISCOUNT_CODE |  |  |  |
 | @selldone/components-vue/backoffice/discount-code/ai-assistance/BDiscountCodeAiAssistance.vue | POST_CREATE_DISCOUNT_CODE_AI |  |  |  |

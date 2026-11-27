@@ -29437,43 +29437,6 @@ export class API {
     return `${this.selldone_api_url}/shops/${shop_id}/process-center/hypers/${hyper_id}`;
   }
 
-  //―――――――――――――――――――――― Direct Feedback ――――――――――――――――――――
-  /**
-   * Send direct feedback endpoint URL.
-   *
-   * Builds the SDK URL for the matched Laravel route and does not perform the HTTP request itself.
-   * Write/action endpoint; may create records, upload files, or trigger backend actions depending on request body.
-   * Backend request validation is implemented in the matched controller/form request; send only fields accepted by that backend validator.
-   *
-   * @endpoint POST /shops/{shop_id}/feedback/direct
-   * @domain api.localhost
-   * @auth Required; OAuth2/Bearer API token via `Authenticate:api`.
-   * @middleware `api-selldone`, `Illuminate\Auth\Middleware\Authenticate:api`, `App\Http\Middleware\Google2FAMiddleware`, `Illuminate\Auth\Middleware\EnsureEmailIsVerified`, `App\Http\Middleware\Testing`, `Illuminate\Http\Middleware\SetCacheHeaders:private;max_age=0`
-   * @scope None found in matched route/controller method by static inspection.
-   * @permission None found in matched controller method by static inspection.
-   *
-   * @param shop_id - Selldone shop identifier from the route path.
-   * @returns Absolute URL string using `selldone-api`/`selldone-dapi` setup metadata; call it with the SDK HTTP client using the documented HTTP method.
-   *
-   * Response shape:
-   * - Backend response arrays in `FeedbackDirectController::api_feedback_direct` expose observed keys including `message`, `to`, `success`, `feedback`.
-   * - Model/resource fields follow the Laravel resource/model serialization returned by the controller.
-   *
-   * Possible errors:
-   * - 401 unauthenticated: missing or invalid authenticated session/token for route middleware.
-   * - 422 validation_error: Laravel validator rejects request body/query fields.
-   * - Backend ErrorCodes observed: `ErrorCodes::TOKEN_HAS_NO_ACCESS_ERROR()`, `ErrorCodes::NOT_FOUND_SHOP_ERROR()`.
-   * - 5xx server_error: unexpected backend failure.
-   *
-   * @example
-   * ```ts
-   * const url = API.POST_SEND_DIRECT_FEEDBACK(123);
-   * ```
-   */
-  POST_SEND_DIRECT_FEEDBACK(shop_id: string | number) {
-    return `${this.selldone_api_url}/shops/${shop_id}/feedback/direct`;
-  }
-
   //―――――――――――――――――――――― Shop Options ――――――――――――――――――――
   /**
    * Set shop options GDPR endpoint URL.
